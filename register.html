@@ -7,16 +7,16 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Texper Bilişim | Create an Account</title>
+        <title>Texper Bilişim | Coming Soon Page</title>
 
-        <!-- CSS FILES -->                
+        <!-- CSS FILES -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap-icons.css" rel="stylesheet">
         <link href="css/tooplate-kool-form-pack.css" rel="stylesheet">
-
+        
         <!-- Custom CSS for buttons -->
         <style>
             .custom-btn {
@@ -37,6 +37,28 @@
                 background-color: #000;
                 color: #fff;
                 cursor: pointer;
+            }
+
+            .neon-heading {
+                color: #ffffff;
+                text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 50px #ff0000, 0 0 75px #ff0000; /* Red neon effect */
+            }
+
+            .section-title {
+                margin-top: 60px;
+            }
+
+            .service-item {
+                margin-bottom: 30px;
+            }
+
+            .service-item h3 {
+                font-size: 1.5rem;
+            }
+
+            .service-item p {
+                font-size: 1.1rem;
+                color: #ffffff; /* White text */
             }
         </style>
     </head>
@@ -81,69 +103,53 @@
                 <div class="offcanvas-body d-flex flex-column justify-content-center align-items-center">
                     <nav>
                         <ul>
-                            <li><a href="login.html">Login Form</a></li>
-                            <li><a class="active" href="register.html">Create an account</a></li>
-                            <li><a href="password-reset.html">Password Reset</a></li>
-                            <li><a href="404.html">404 Page</a></li>
+                          <li><a href="login.html">Hakkımızda</a></li>
+                            <li><a href="register.html">Neler Yapıyoruz?</a></li>
+                            <li><a href="password-reset.html">Referanslar</a></li>
+                            <li><a class="active" href="404.html">Çözümlerimiz</a></li>
                             <li><a href="contact.html">Contact Form</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
 
-            <section class="hero-section d-flex justify-content-center align-items-center">
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-6 col-12 mx-auto">
-                            <form class="custom-form" role="form" method="post">
-                                <h2 class="hero-title text-center mb-4 pb-2">Create an Account</h2>
+                        <div class="col-lg-6 col-12 mx-auto text-center">
+                            <h1 class="neon-heading mt-2 mb-4 pb-2">Neler Yapıyoruz?</h1>
 
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="form-floating">
-                                            <input type="text" name="full-name" id="full-name" class="form-control" placeholder="Full Name" required="">
-                                            <label for="floatingInput">Full Name</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-12">
-                                        <div class="form-floating mb-4 p-0">
-                                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required="">
-                                            <label for="email">Email address</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-12">
-                                        <div class="form-floating p-0">
-                                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required="">
-                                            <label for="password">Password</label>
-                                        </div>
-
-                                        <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                I agree to the Terms of Service and Privacy Policy.
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="row justify-content-center align-items-center">
-                                        <div class="col-lg-5 col-md-5 col-5 ms-auto">
-                                            <button type="submit" class="form-control">Submit</button>
-                                        </div>
-
-                                        <div class="col-lg-6 col-md-6 col-7">
-                                            <p class="mb-0">Already have an account? <a href="login.html" class="ms-2">Login</a></p>
-                                        </div>
-                                    </div>
+                            <div class="section-title">
+                                <div class="service-item">
+                                    <h3 class="neon-heading">Ağ Kurulum ve Yönetimi</h3>
+                                    <p>Firmalar için ağ kurulumları, VPN çözümleri, güvenlik duvarı yönetimi gibi ağ altyapı hizmetleri sunuyoruz. İhtiyacınıza uygun çözümlerle verimli ve güvenli ağ yapıları kuruyoruz.</p>
                                 </div>
-                            </form>
+
+                                <div class="service-item">
+                                    <h3 class="neon-heading">Bulut Çözümleri</h3>
+                                    <p>Veri güvenliğinizi sağlayacak bulut tabanlı depolama ve sunucu çözümleri, yedekleme hizmetleri sunuyoruz. İşlerinizi her an her yerden yönetebileceğiniz altyapıları sağlıyoruz.</p>
+                                </div>
+
+                                <div class="service-item">
+                                    <h3 class="neon-heading">Teknik Destek</h3>
+                                    <p>7/24 teknik destek, arıza tespiti ve onarım hizmetleri ile teknolojik sorunlarınıza hızlı ve etkili çözümler sağlıyoruz. Sorununuz ne olursa olsun, yanınızdayız.</p>
+                                </div>
+
+                                <div class="service-item">
+                                    <h3 class="neon-heading">Yazılım Geliştirme</h3>
+                                    <p>İhtiyacınıza özel yazılım çözümleri geliştiriyor, web ve mobil uygulama projeleri için kapsamlı çözümler sunuyoruz. İşletmenizi dijital dünyada bir adım öne taşıyoruz.</p>
+                                </div>
+
+                                <div class="service-item">
+                                    <h3 class="neon-heading">Donanım Satışı ve Montajı</h3>
+                                    <p>Bilgisayar donanımları, ağ cihazları ve sunucuların satışı ve montaj hizmetlerini sağlıyoruz. İhtiyacınıza uygun ürünlerle donanım altyapınızı güçlendiriyoruz.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="video-wrap">
-                    <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                    <video autoplay loop muted class="custom-video" poster="">
                         <source src="videos/video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -156,6 +162,5 @@
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/init.js"></script>
-
     </body>
 </html>
