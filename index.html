@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <meta name="description" content="">
         <meta name="author" content="">
 
@@ -17,26 +16,50 @@
         <link href="css/bootstrap-icons.css" rel="stylesheet">
         <link href="css/tooplate-kool-form-pack.css" rel="stylesheet">
         
-        <!-- Custom CSS for buttons -->
+        <!-- Custom CSS for buttons and title -->
         <style>
+            /* Fade-out animasyonu */
+            .fade-out {
+                opacity: 0;
+                transition: opacity 1s ease-out;
+            }
+
+            h1 {
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+                font-size: 3rem;
+                color: #fff;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin-bottom: 30px;
+                text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            }
+
             .custom-btn {
-                background-color: #fff;
-                color: #000;
-                border: 2px solid #000;
-                padding: 10px 20px;
-                border-radius: 25px;
-                font-weight: bold;
+                background-color: transparent;
+                color: #ffffff;
+                border: 2px solid #ffffff;
+                padding: 12px 30px;
+                border-radius: 30px;
+                font-weight: 600;
+                font-size: 16px;
                 text-align: center;
                 display: inline-block;
                 text-decoration: none;
-                margin: 10px;
                 transition: all 0.3s ease;
+                text-transform: uppercase;
+                margin: 10px;
             }
 
             .custom-btn:hover {
-                background-color: #000;
-                color: #fff;
-                cursor: pointer;
+                background-color: #ffffff;
+                color: #000000;
+                transform: scale(1.05);
+                box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            }
+
+            .custom-btn i {
+                margin-right: 8px;
             }
         </style>
     </head>
@@ -97,9 +120,9 @@
                         <div class="col-lg-6 col-12 mx-auto text-center">
                             <h1 class="text-white mt-2 mb-4 pb-2">Texper Bilişim</h1>
                             <div class="buttons">
-                                <a href="destek.html" class="custom-btn">Destek Programı</a>
-                                <a href="https://1drv.ms/x/c/d9e2670e00da7b49/EUl72gAOZ-IggNlaBgAAAAABlL7cQ4yqRsurxyq5kRFm6g?e=y4ruAx" class="custom-btn">Software</a>
-                                <a href="http://webdav.texper.keenetic.pro/" class="custom-btn">Bulut Panel</a>
+                                <a href="destek.html" class="custom-btn"><i class="bi-person"></i>Destek Programı</a>
+                                <a href="gecis.html" class="custom-btn fade-link" id="software-btn"><i class="bi-laptop"></i>Software</a>
+                                <a href="clouds.html" class="custom-btn"><i class="bi-cloud"></i>Bulut Panel</a>
                             </div>
                         </div>
                     </div>
@@ -118,5 +141,17 @@
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/countdown.js"></script>
         <script src="js/init.js"></script>
+
+        <script>
+            // Yazılım butonuna tıklanıldığında fade out animasyonu ekleyip, linke yönlendiriyoruz
+            document.getElementById('software-btn').addEventListener('click', function(e) {
+                e.preventDefault(); // Linke doğrudan gitmemek için durduruyoruz
+                var link = this.href;
+                this.classList.add('fade-out'); // fade-out sınıfını ekliyoruz
+                setTimeout(function() {
+                    window.location.href = link; // 1 saniye sonra linke yönlendiriyoruz
+                }, 1000); // Geçiş süresi ile aynı
+            });
+        </script>
     </body>
 </html>
