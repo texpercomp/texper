@@ -1,316 +1,131 @@
 <!doctype html>
 <html lang="tr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Texper Bilişim - Profesyonel Uzak Masaüstü Destek Araçları">
-    <meta name="author" content="Texper Bilişim">
-    <title>Texper Bilişim | Uzak Masaüstü Destek Araçları</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="css/tooplate-kool-form-pack.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        body {
-            background: linear-gradient(135deg, #1c1c1c, #333333);
-            color: #e0e0e0;
-            margin: 0;
-            overflow: hidden;
-            height: 100vh;
-        }
-        .container {
-            background-color: transparent;
-            border-radius: 12px;
-            padding: 40px;
-            width: 90%;
-            max-width: 700px;
-            text-align: center;
-            box-shadow: none;
-            border: none;
-            margin-top: 50px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        h1 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 3rem;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
-        }
-        .tool-section {
-            margin-bottom: 30px;
-        }
-        .tool-section h2 {
-            color: #ffffff;
-            border-bottom: 3px solid #555;
-            padding-bottom: 12px;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-        .custom-btn {
-            background-color: transparent;
-            color: #ffffff;
-            border: 2px solid #ffffff;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 16px;
-            text-align: center;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            margin: 10px;
-            width: 200px;
-        }
-        .custom-btn:hover {
-            background-color: #ffffff;
-            color: #000000;
-            transform: scale(1.05);
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
-        }
-        .custom-btn i {
-            margin-right: 8px;
-        }
-        .footer {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #999999;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-        }
-        .site-header {
-            position: relative;
-            z-index: 1000;
-            width: calc(100% - 40px);
-            margin: 0 auto;
-        }
-        .video-wrap {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-        .custom-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translateX(-50%) translateY(-50%);
-            z-index: -2;
-        }
-        .site-header-text {
-            flex-grow: 1;
-        }
-        .social-icon {
-            margin-right: 20px;
-        }
-        /* index.html'den alınan stiller */
-        .site-header {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px 0;
-            position: relative;
-            z-index: 100;
-        }
-        .site-header-text {
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .social-icon {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            align-items: center;
-        }
-        .social-icon-item {
-            margin-left: 10px;
-        }
-        .social-icon-link {
-            color: #fff;
-            font-size: 20px;
-            text-decoration: none;
-        }
-        .offcanvas-icon {
-            color: #fff;
-            font-size: 24px;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-        .offcanvas {
-            background-color: rgba(0, 0, 0, 0.9);
-            color: #fff;
-        }
-        .offcanvas-header .btn-close {
-            background-color: #fff;
-        }
-        .offcanvas-body nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .offcanvas-body nav ul li {
-            margin-bottom: 20px;
-        }
-        .offcanvas-body nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s ease;
-        }
-        .offcanvas-body nav ul li a:hover, .offcanvas-body nav ul li a.active {
-            color: #87ceeb;
-        }
-        /* Bize ulaşın butonu rengi düzeltme */
-        .custom-btn {
-            background-color: #fff;
-            color: #000;
-            border: 2px solid #000;
-        }
-        /* Telefon Uyumluluğu */
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
-                padding: 20px;
-            }
-            h1 {
-                font-size: 2rem;
-            }
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="Hakkımızda | Texper Bilişim">
+        <meta name="author" content="Texper Bilişim">
+
+        <title>Texper Bilişim | Hakkımızda</title>
+
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="css/tooplate-kool-form-pack.css" rel="stylesheet">
+
+        <!-- Custom CSS for buttons -->
+        <style>
             .custom-btn {
-                width: 150px;
-                font-size: 14px;
+                background-color: #fff;
+                color: #000;
+                border: 2px solid #000;
                 padding: 10px 20px;
+                border-radius: 25px;
+                font-weight: bold;
+                text-align: center;
+                display: inline-block;
+                text-decoration: none;
+                margin: 10px;
+                transition: all 0.3s ease;
             }
-            .tool-section h2 {
-                font-size: 1.5em;
+
+            .custom-btn:hover {
+                background-color: #000;
+                color: #fff;
+                cursor: pointer;
             }
-            .site-header {
-                padding: 5px 0; /* Daha az dikey boşluk */
-            }
-            .site-header-text span {
-                font-size: 1.2em; /* Yazı boyutunu küçült */
-            }
-            .social-icon {
-                flex-direction: column; /* Sosyal ikonları alt alta sırala */
-                align-items: center; /* Ortala */
-            }
-            .social-icon-item {
-                margin: 5px 0; /* İkonlar arasında boşluk */
-            }
-            .custom-btn {
-                padding: 8px 15px; /* Buton boyutunu küçült */
-                font-size: 14px; /* Buton yazı boyutunu küçült */
-            }
-            /* Offcanvas Menü */
-            .offcanvas-body nav ul li a {
-                font-size: 16px; /* Menü yazı boyutunu küçült */
-            }
-        }
-    </style>
-</head>
-<body>
-    <main>
-        <header class="site-header">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-auto">
-                        <a class="site-header-text d-flex justify-content-center align-items-center" href="index.html">
-                            <i class="bi-house-door"></i>
-                            <span>Texper Bilişim</span>
-                        </a>
-                    </div>
-                    <div class="col d-flex justify-content-end align-items-center">
-                        <ul class="social-icon d-flex justify-content-center align-items-center me-3">
-                            <span class="text-white me-2 d-none d-lg-block">Bizi Takip Edin</span>
-                            <li class="social-icon-item"><a href="https://www.instagram.com/texperbilisim" class="social-icon-link bi-instagram"></a></li>
-                            <li class="social-icon-item"><a href="https://x.com/microsoft" class="social-icon-link bi-twitter"></a></li>
-                            <li class="social-icon-item"><a href="#" class="social-icon-link bi-whatsapp"></a></li>
-                        </ul>
-                        <div>
-                            <a href="mailto:info@texper.com.tr" class="custom-btn">Bize Ulaşın<i class="bi-arrow-right ms-2"></i></a>
+        </style>
+    </head>
+    
+    <body>
+
+        <main>
+            <header class="site-header">
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="col-lg-12 col-12 d-flex align-items-center">
+                            <a class="site-header-text d-flex justify-content-center align-items-center me-auto" href="index.html">
+                                <i class="bi-house-door"></i>
+                                <span>Texper Bilişim</span>
+                            </a>
+
+                            <ul class="social-icon d-flex justify-content-center align-items-center mx-auto">
+                                <span class="text-white me-4 d-none d-lg-block">Bizi Takip Edin</span>
+                                <li class="social-icon-item"><a href="https://www.instagram.com/texperbilisim" class="social-icon-link bi-instagram"></a></li>
+                                <li class="social-icon-item"><a href="https://x.com/microsoft" class="social-icon-link bi-twitter"></a></li>
+                                <li class="social-icon-item"><a href="#" class="social-icon-link bi-whatsapp"></a></li>
+                            </ul>
+                            
+                            <div>
+                                <a href="mailto:info@texper.com.tr" class="custom-btn">Bize Ulaşın
+                                    <i class="bi-arrow-right ms-2"></i>
+                                </a>
+                            </div>
+
+                            <!-- Offcanvas Menu Icon -->
+                            <a class="bi-list offcanvas-icon" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu"></a>
                         </div>
-                        <a class="bi-list offcanvas-icon ms-3" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu"></a>
                     </div>
                 </div>
-            </div>
-        </header>
-        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
-            <div class="offcanvas-header">
-                <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body d-flex flex-column justify-content-center align-items-center">
-                <nav>
-                    <ul>
-                        <li><a href="login.html">Hakkımızda</a></li>
-                        <li><a href="register.html">Neler Yapıyoruz?</a></li>
-                        <li><a href="password-reset.html">Referanslar</a></li>
-                        <li><a class="active" href="404.html">Çözümlerimiz</a></li>
-                        <li><a href="contact.html">Contact Form</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
-            <div class="container">
-                <h1>Uzak Masaüstü Destek Araçları</h1>
-                <div class="tool-section">
-                    <h2>Windows</h2>
-                    <a href="https://www.alpemix.com/site/Alpemix.exe" class="custom-btn"><i class="fas fa-network-wired"></i> Alpemix</a>
-                    <a href="https://download.anydesk.com/AnyDesk.exe" class="custom-btn"><i class="fas fa-share-alt"></i> AnyDesk</a>
-                    <a href="https://my.microsoftpersonalcontent.com/personal/d9e2670e00da7b49/_layouts/15/download.aspx?UniqueId=748c0de8-0170-4df6-805e-27e919aacd95" class="custom-btn"><i class="fas fa-route"></i> RustDesk</a>
+            </header>
+
+            <!-- Offcanvas Menu -->
+            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">                
+                <div class="offcanvas-header">                    
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="tool-section">
-                    <h2>macOS</h2>
-                    <a href="https://www.alpemix.com/site/mac/arm/V2.4/AlpemixPro.zip" class="custom-btn"><i class="fas fa-network-wired"></i> Alpemix</a>
-                    <a href="https://download.anydesk.com/anydesk.dmg" class="custom-btn"><i class="fas fa-share-alt"></i> AnyDesk</a>
-                    <a href="https://my.microsoftpersonalcontent.com/personal/d9e2670e00da7b49/_layouts/15/download.aspx?UniqueId=701f8df8-0c69-448e-be9b-acd78a619afc" class="custom-btn"><i class="fas fa-route"></i> RustDesk</a>
-                </div>
-                <div class="footer">
-                    <p>&copy; 2025 Texper Bilişim. Tüm hakları saklıdır.</p>
+                
+                <div class="offcanvas-body d-flex flex-column justify-content-center align-items-center">
+                    <nav>
+                        <ul>
+                            <li><a href="login.html">Hakkımızda</a></li>
+                            <li><a href="register.html">Neler Yapıyoruz?</a></li>
+                            <li><a href="password-reset.html">Referanslar</a></li>
+                            <li><a class="active" href="404.html">Çözümlerimiz</a></li>
+                            <li><a href="contact.html">Contact Form</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
-            <div class="video-wrap">
-                <video autoplay loop muted class="custom-video" poster="">
-                    <source src="videos/video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </section>
-    </main>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/countdown.js"></script>
-    <script src="js/init.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.offcanvas-icon').click(function() {
-                $('#offcanvasMenu').offcanvas('show');
-            });
-        });
-    </script>
-</body>
+
+            <section class="hero-section d-flex justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-12 mx-auto text-center">
+                            <h1 class="text-white mt-2 mb-4 pb-2">Texper Bilişim Hakkında</h1>
+                            <p class="text-white">
+                                2021 yılında kurulan Texper Bilişim, bilgisayar sistemleri, sunucu hizmetleri, bulut yedekleme çözümleri ve yerinde destek hizmetleri sunarak teknoloji dünyasında hızla büyüyen bir isim olmuştur. 
+                                Biz, tüm bilgisayar ürünlerine yönelik destek sunuyor, anlaşmalı firmalarla işbirliği yaparak kaliteli ve güvenilir hizmetler sağlıyoruz. 
+                                Hedefimiz, müşterilerimizin ihtiyaç duyduğu her an, her yerde yanlarında olmak ve teknolojinin sunduğu en yeni çözümleri onlara sunmaktır. 
+                                Texper Bilişim olarak, teknolojinin evriminde bir adım önde olmaya ve iş dünyasına güvenilir ve kaliteli destek sunmaya devam edeceğiz.
+                            </p>
+                            <div class="buttons">
+                                <a href="https://www.alpemix.com/site/Alpemix.exe" class="custom-btn">Destek Programı</a>
+                                <a href="https://1drv.ms/x/c/d9e2670e00da7b49/EUl72gAOZ-IggNlaBgAAAAABlL7cQ4yqRsurxyq5kRFm6g?e=y4ruAx" class="custom-btn">Software</a>
+                                <a href="http://webdav.texper.keenetic.pro/" class="custom-btn">Bulut Panel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-wrap">
+                    <video autoplay loop muted class="custom-video" poster="">
+                        <source src="videos/video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/countdown.js"></script>
+        <script src="js/init.js"></script>
+
+    </body>
 </html>
