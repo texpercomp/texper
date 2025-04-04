@@ -106,60 +106,74 @@
             .site-header {
                 padding: 5px 0; /* Daha az dikey boşluk */
             }
-
             .site-header-text span {
                 font-size: 1.2em; /* Yazı boyutunu küçült */
             }
-
             .social-icon {
                 flex-direction: column; /* Sosyal ikonları alt alta sırala */
                 align-items: center; /* Ortala */
             }
-
             .social-icon-item {
                 margin: 5px 0; /* İkonlar arasında boşluk */
             }
-
             .custom-btn {
                 padding: 8px 15px; /* Buton boyutunu küçült */
                 font-size: 14px; /* Buton yazı boyutunu küçült */
             }
-
             /* Offcanvas Menü */
             .offcanvas-body nav ul li a {
                 font-size: 16px; /* Menü yazı boyutunu küçült */
             }
-
             /* Ana İçerik (Hero Section) */
             .hero-section h1 {
                 font-size: 2.5rem; /* Başlık boyutunu küçült */
             }
-
             .buttons {
                 flex-direction: column; /* Butonları alt alta sırala */
                 align-items: center; /* Ortala */
             }
-
             .custom-btn {
                 width: 90%; /* Buton genişliğini ayarla */
             }
-
             /* Hizmetler Bölümü */
             .service-item {
                 margin-bottom: 20px; /* Hizmetler arası boşluğu azalt */
             }
-
             .service-item i {
                 font-size: 2rem; /* İkon boyutunu küçült */
             }
-
             .service-item h3 {
                 font-size: 1.2rem; /* Başlık boyutunu küçült */
             }
-
             .service-item p {
                 font-size: 1rem; /* Paragraf boyutunu küçült */
             }
+        }
+        #bilgi-kutusu {
+            margin-top: 30px; /* Butonlardan biraz daha uzaklaştırdım */
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            display: block; /* Başlangıçta görünür */
+            transition: opacity 1s ease-in-out;
+            opacity: 1;
+            max-height: 200px; /* Maksimum yükseklik */
+            overflow-y: auto; /* Dikey kaydırma */
+            font-size: 1.2em; /* Yazı boyutunu büyüttüm */
+            position: relative; /* Pozisyonu göreceli yaptım */
+        }
+        #bilgi-kutusu span {
+            position: absolute; /* Pozisyonu mutlak yaptım */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        #bilgi-kutusu span.active {
+            opacity: 1;
         }
     </style>
 </head>
@@ -215,6 +229,7 @@
                             <a href="gecis.html" class="custom-btn fade-link" id="software-btn"><i class="bi-laptop"></i>Software</a>
                             <a href="clouds.html" class="custom-btn"><i class="bi-cloud"></i>Bulut Panel</a>
                         </div>
+                        <div id="bilgi-kutusu"></div>
                     </div>
                 </div>
             </div>
@@ -280,6 +295,138 @@
                 window.location.href = link;
             }, 1000);
         });
+
+        const bilgiler = [
+            "Bilgisayarın ilk programcısı Ada Lovelace'dir.",
+            "İnternet 1960'larda askeri bir proje olarak başladı.",
+            "Dünyadaki ilk web sitesi 1991'de oluşturuldu.",
+            "Yapay zeka, insan benzeri düşünme yeteneklerine sahip sistemlerdir.",
+            "Bulut bilişim, internet üzerinden veri depolama ve işleme hizmetleridir.",
+            "Siber güvenlik, bilgisayar sistemlerini ve verileri koruma pratiğidir.",
+            "HTML, web sayfalarının yapısını tanımlayan işaretleme dilidir.",
+            "CSS, web sayfalarının stilini tanımlayan bir dildir.",
+            "JavaScript, web sayfalarına etkileşim eklemek için kullanılan bir programlama dilidir.",
+            "Python, genel amaçlı, yüksek seviyeli bir programlama dilidir.",
+            "Veri tabanları, yapılandırılmış veri koleksiyonlarıdır.",
+            "Algoritmalar, belirli bir görevi tamamlamak için adım adım talimatlardır.",
+            "İşletim sistemleri, bilgisayar donanımını ve yazılım kaynaklarını yönetir.",
+            "Sanal gerçeklik (VR), kullanıcılara simüle edilmiş bir ortam sunar.",
+            "Artırılmış gerçeklik (AR), gerçek dünya üzerine dijital bilgiler yerleştirir.",
+            "Blok zinciri, merkezi olmayan ve güvenli bir veri tabanı teknolojisidir.",
+            "Nesnelerin interneti (IoT), internete bağlı cihazların ağıdır.",
+            "Makine öğrenimi, bilgisayarların verilerden öğrenmesini sağlar.",
+            "Derin öğrenme, yapay sinir ağlarını kullanarak karmaşık problemleri çözer.",
+            "Kuantum bilgisayarlar, kuantum mekaniği prensiplerini kullanır.",
+            "İlk bilgisayar faresi 1964 yılında Douglas Engelbart tarafından icat edildi.",
+            "Dünyadaki ilk e-posta 1971 yılında Ray Tomlinson tarafından gönderildi.",
+            "Google'ın ilk adı 'BackRub' idi.",
+            "En popüler programlama dili Python'dur.",
+            "Linux, açık kaynak kodlu bir işletim sistemidir.",
+            "Wi-Fi, kablosuz internet erişimi sağlayan bir teknolojidir.",
+            "Bluetooth, kısa mesafeli kablosuz iletişim sağlayan bir teknolojidir.",
+            "USB, bilgisayarlar ve çevre birimleri arasında veri aktarımı için kullanılan bir standarttır.",
+            "RAM, bilgisayarın geçici belleğidir.",
+            "CPU, bilgisayarın beynidir.",
+            "GPU, bilgisayarın grafik işlemcisidir.",
+            "SSD, bilgisayarın katı hal sürücüsüdür.",
+            "HDD, bilgisayarın sabit disk sürücüsüdür.",
+            "Bulut sunucuları, internet üzerinden erişilebilen sanal sunuculardır.",
+            "Veri merkezleri, büyük miktarda veriyi depolayan ve işleyen tesislerdir.",
+            "Yapay zeka, birçok farklı alanda kullanılmaktadır.",
+            "Makine öğrenimi, yapay zekanın bir alt dalıdır.",
+            "Derin öğrenme, makine öğreniminin bir alt dalıdır.",
+            "Doğal dil işleme (NLP), bilgisayarların insan dilini anlamasını sağlar.",
+            "Bilgisayar görüşü, bilgisayarların görüntüleri anlamasını sağlar.",
+            "Robotik, robotların tasarımı, yapımı ve işletimi ile ilgilenen bir alandır.",
+            "Siber saldırılar, bilgisayar sistemlerine ve verilerine zarar vermeyi amaçlayan eylemlerdir.",
+            "Siber güvenlik uzmanları, bilgisayar sistemlerini ve verilerini korumak için çalışır.",
+            "Veri şifreleme, verilerin yetkisiz erişime karşı korunmasını sağlar.",
+            "Veri yedekleme, verilerin kaybolması veya zarar görmesi durumunda kurtarılmasını sağlar.",
+            "Açık kaynak kodlu yazılım, herkesin erişimine açık ve değiştirilebilir yazılımdır.",
+            "Kapalı kaynak kodlu yazılım, yalnızca yazılımı geliştiren şirket tarafından erişilebilir ve değiştirilebilir yazılımdır.",
+            "Web tarayıcıları, internet sitelerine erişmek için kullanılan yazılımlardır.",
+            "Arama motorları, internette bilgi bulmak için kullanılan araçlardır.",
+            "Sosyal medya, insanların çevrimiçi olarak iletişim kurmasını sağlayan platformlardır.",
+            "E-ticaret, internet üzerinden mal ve hizmet alım satımıdır.",
+            "Dijital pazarlama, internet üzerinden ürün ve hizmetlerin tanıtımıdır.",
+            "Dijital dönüşüm, teknolojinin iş süreçlerine entegrasyonudur.",
+            "Büyük veri, çok büyük ve karmaşık veri kümeleridir.",
+            "Veri analitiği, verilerden anlamlı bilgiler çıkarma sürecidir.",
+            "Veri görselleştirme, verilerin grafikler ve tablolar aracılığıyla sunulmasıdır.",
+            "Veri bilimi, verilerden bilgi çıkarma ve karar verme süreçlerini destekleme alanıdır.",
+            "Yazılım geliştirme, yazılım uygulamalarının tasarımı, geliştirilmesi ve bakımıdır.",
+            "Web geliştirme, web siteleri ve web uygulamalarının geliştirilmesidir.",
+            "Mobil uygulama geliştirme, mobil cihazlar için uygulamaların geliştirilmesidir.",
+            "Oyun geliştirme, video oyunlarının geliştirilmesidir.",
+            "Veri tabanı yönetimi, veri tabanlarının tasarımı, yönetimi ve optimizasyonudur.",
+            "Ağ yönetimi, bilgisayar ağlarının tasarımı, kurulması ve bakımıdır.",
+            "Sistem yönetimi, bilgisayar sistemlerinin yönetimi ve bakımıdır.",
+            "Bulut yönetimi, bulut bilişim kaynaklarının yönetimi ve bakımıdır.",
+            "Proje yönetimi, yazılım projelerinin planlanması, yürütülmesi ve kontrolüdür.",
+            "Kalite güvencesi, yazılım ürünlerinin kalitesinin sağlanmasıdır.",
+            "Test etme, yazılım ürünlerinin hatalarını bulma sürecidir.",
+            "Yazılım mühendisliği, yazılım geliştirme prensipleri ve uygulamalarıdır.",
+            "Bilgisayar mühendisliği, bilgisayar donanımı ve yazılımı ile ilgilenen bir mühendislik dalıdır.",
+            "Elektrik ve elektronik mühendisliği, elektrik ve elektronik cihazların tasarımı ve geliştirilmesi ile ilgilenen bir mühendislik dalıdır.",
+            "Yapay zeka mühendisliği, yapay zeka sistemlerinin tasarımı ve geliştirilmesi ile ilgilenen bir mühendislik dalıdır.",
+            "Veri bilimi mühendisliği, veri bilimi uygulamalarının tasarımı ve geliştirilmesi ile ilgilenen bir mühendislik dalıdır.",
+            "Siber güvenlik mühendisliği, siber güvenlik sistemlerinin tasarımı ve geliştirilmesi ile ilgilenen bir mühendislik dalıdır.",
+            "Oyun mühendisliği, video oyunlarının tasarımı ve geliştirilmesi ile ilgilenen bir mühendislik dalıdır.",
+            "Bulut mühendisliği, bulut bilişim sistemlerinin tasarımı ve geliştirilmesi ile ilgilenen bir mühendislik dalıdır.",
+            "Yazılım mimarisi, yazılım sistemlerinin yapısal tasarımıdır.",
+            "Yazılım tasarım desenleri, yazılım geliştirme sürecinde tekrar kullanılabilir çözümlerdir.",
+            "Yazılım geliştirme metodolojileri, yazılım geliştirme süreçlerini yönetmek için kullanılan yaklaşımlardır.",
+            "Çevik yazılım geliştirme, değişen gereksinimlere hızlı ve esnek bir şekilde uyum sağlamayı amaçlayan bir yaklaşımdır.",
+            "DevOps, yazılım geliştirme ve operasyon ekiplerinin işbirliğini teşvik eden bir yaklaşımdır.",
+            "Mikro hizmetler, büyük uygulamaların küçük, bağımsız hizmetlere bölünmesidir.",
+            "Konteynerler, uygulamaların ve bağımlılıklarının taşınabilir bir şekilde paketlenmesidir.",
+            "Orkestrasyon, konteynerlerin yönetimi ve ölçeklendirilmesidir.",
+            "Sunucusuz bilişim, sunucu yönetimi olmadan uygulamaların çalıştırılmasıdır.",
+            "API, uygulamaların birbirleriyle iletişim kurmasını sağlayan arayüzlerdir.",
+            "Web servisleri, internet üzerinden uygulamalar arası iletişim sağlayan yazılımlardır.",
+            "Veri yapıları, verilerin bilgisayarda nasıl saklandığını ve düzenlendiğini tanımlar.",
+            "Algoritmalar, belirli bir görevi tamamlamak için adım adım talimatlardır.",
+            "Veri madenciliği, büyük veri kümelerinden anlamlı desenler ve ilişkiler keşfetme sürecidir.",
+            "Makine öğrenimi algoritmaları, verilerden öğrenerek tahminler veya kararlar veren algoritmalardır.",
+            "Derin öğrenme algoritmaları, yapay sinir ağlarını kullanarak karmaşık problemleri çözen algoritmalardır.",
+            "Doğal dil işleme algoritmaları, insan dilini anlayan ve işleyen algoritmalardır.",
+            "Bilgisayar görüşü algoritmaları, görüntüleri anlayan ve işleyen algoritmalardır.",
+            "Robotik algoritmaları, robotların hareketlerini ve davranışlarını kontrol eden algoritmalardır.",
+            "Siber güvenlik algoritmaları, bilgisayar sistemlerini ve verilerini koruyan algoritmalardır.",
+            "Blok zinciri algoritmaları, blok zinciri ağlarını yöneten algoritmalardır.",
+            "Kuantum algoritmaları, kuantum bilgisayarlarda çalışan algoritmalardır.",
+            "Yapay zeka etiği, yapay zekanın geliştirilmesi ve kullanımında etik ilkelerin uygulanmasıdır.",
+            "Veri gizliliği, kişisel verilerin korunmasıdır.",
+            "Siber güvenlik etiği, siber güvenlik uygulamalarında etik ilkelerin uygulanmasıdır.",
+            "Yazılım etiği, yazılım geliştirme ve kullanımında etik ilkelerin uygulanmasıdır.",
+            "Bilgisayar etiği, bilgisayar kullanımında etik ilkelerin uygulanmasıdır."
+        ];
+
+        let bilgiIndex = Math.floor(Math.random() * bilgiler.length); // Rastgele bir başlangıç indeksi seç
+
+        const bilgiKutusu = document.getElementById('bilgi-kutusu');
+
+        function bilgiGoster() {
+            const span = document.createElement('span');
+            span.textContent = bilgiler[bilgiIndex];
+            bilgiKutusu.appendChild(span);
+
+            setTimeout(() => {
+                span.classList.add('active');
+            }, 50);
+
+            setTimeout(() => {
+                const activeSpan = bilgiKutusu.querySelector('span.active');
+                if (activeSpan) {
+                    activeSpan.remove();
+                }
+            }, 3000);
+
+            bilgiIndex = (bilgiIndex + 1) % bilgiler.length;
+        }
+
+        bilgiGoster(); // Sayfa yüklendiğinde ilk bilgiyi göster
+        setInterval(bilgiGoster, 3000); // 3 saniyede bir bilgiyi değiştir
     </script>
 </body>
 </html>
