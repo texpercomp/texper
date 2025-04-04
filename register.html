@@ -1,162 +1,267 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <title>Texper Bilişim | Coming Soon Page</title>
-
-        <!-- CSS FILES -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrap-icons.css" rel="stylesheet">
-        <link href="css/tooplate-kool-form-pack.css" rel="stylesheet">
-        
-        <!-- Custom CSS for buttons -->
-        <style>
-            .custom-btn {
-                background-color: #fff;
-                color: #000;
-                border: 2px solid #000;
-                padding: 10px 20px;
-                border-radius: 25px;
-                font-weight: bold;
-                text-align: center;
-                display: inline-block;
-                text-decoration: none;
-                margin: 10px;
-                transition: all 0.3s ease;
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Texper Bilişim | Coming Soon Page">
+    <meta name="author" content="Texper Bilişim">
+    <title>Texper Bilişim | Yakında Hizmetinizdeyiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/tooplate-kool-form-pack.css" rel="stylesheet">
+    <style>
+        .custom-btn {
+            background-color: #fff;
+            color: #000;
+            border: 2px solid #000;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        .custom-btn:hover {
+            background-color: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+        .section-title {
+            margin-top: 60px;
+            color: white;
+        }
+        .service-item {
+            margin-bottom: 30px;
+        }
+        .service-item h3 {
+            font-size: 1.5rem;
+            color: white;
+        }
+        .service-item p {
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+        /* Mobil uyumluluk için */
+        @media (max-width: 768px) {
+            .hero-section .container .row .col-lg-6 {
+                padding: 0 20px;
             }
-
-            .custom-btn:hover {
-                background-color: #000;
-                color: #fff;
-                cursor: pointer;
-            }
-
-            .section-title {
-                margin-top: 60px;
-            }
-
-            .service-item {
-                margin-bottom: 30px;
-            }
-
             .service-item h3 {
-                font-size: 1.5rem;
-                color: white; /* White text */
+                font-size: 1.3rem;
             }
-
             .service-item p {
-                font-size: 1.1rem;
-                color: #ffffff; /* White text */
+                font-size: 1rem;
             }
-        </style>
-    </head>
-    
-    <body>
-        <main>
-            <header class="site-header">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col-lg-12 col-12 d-flex align-items-center">
-                            <a class="site-header-text d-flex justify-content-center align-items-center me-auto" href="index.html">
-                                <i class="bi-house-door"></i>
-                                <span>Texper Bilişim</span>
-                            </a>
-
-                            <ul class="social-icon d-flex justify-content-center align-items-center mx-auto">
-                                <span class="text-white me-4 d-none d-lg-block">Bizi Takip Edin</span>
+        }
+        /* index.html'den alınan stiller */
+        .site-header {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 0;
+            position: relative;
+            z-index: 100;
+        }
+        .site-header-text {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .social-icon {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        .social-icon-item {
+            margin-left: 10px;
+        }
+        .social-icon-link {
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        .offcanvas-icon {
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .offcanvas {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+        }
+        .offcanvas-header .btn-close {
+            background-color: #fff;
+        }
+        .offcanvas-body nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .offcanvas-body nav ul li {
+            margin-bottom: 20px;
+        }
+        .offcanvas-body nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        .offcanvas-body nav ul li a:hover, .offcanvas-body nav ul li a.active {
+            color: #87ceeb;
+        }
+        /* Buton ikon renkleri */
+        .service-buttons .custom-btn .bi-terminal { color: #4CAF50; }
+        .service-buttons .custom-btn .bi-window { color: #2196F3; }
+        .service-buttons .custom-btn .bi-hdd { color: #FF9800; }
+        .service-buttons .custom-btn .bi-folder { color: #9C27B0; }
+        /* Bize ulaşın butonu rengi düzeltme */
+        .custom-btn {
+            background-color: #fff;
+            color: #000;
+            border: 2px solid #000;
+        }
+        /* Telefon Uyumluluğu */
+        @media (max-width: 768px) {
+            .hero-section .container .row .col-lg-6 {
+                padding: 0 15px; /* Daha az yatay boşluk */
+            }
+            .section-title {
+                margin-top: 40px; /* Daha az dikey boşluk */
+            }
+            .service-item h3 {
+                font-size: 1.3rem; /* Başlık boyutunu küçült */
+            }
+            .service-item p {
+                font-size: 1rem; /* Paragraf boyutunu küçült */
+            }
+            .site-header {
+                padding: 5px 0; /* Daha az dikey boşluk */
+            }
+            .site-header-text span {
+                font-size: 1.2em; /* Yazı boyutunu küçült */
+            }
+            .social-icon {
+                flex-direction: column; /* Sosyal ikonları alt alta sırala */
+                align-items: center; /* Ortala */
+            }
+            .social-icon-item {
+                margin: 5px 0; /* İkonlar arasında boşluk */
+            }
+            .custom-btn {
+                padding: 8px 15px; /* Buton boyutunu küçült */
+                font-size: 14px; /* Buton yazı boyutunu küçült */
+            }
+            /* Offcanvas Menü */
+            .offcanvas-body nav ul li a {
+                font-size: 16px; /* Menü yazı boyutunu küçült */
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <a class="site-header-text d-flex justify-content-center align-items-center" href="index.html">
+                            <i class="bi-house-door"></i>
+                            <span>Texper Bilişim</span>
+                        </a>
+                    </div>
+                    <div class="col d-flex justify-content-end align-items-center">
+                        <div class="d-flex align-items-center">
+                            <span class="text-white me-2 d-none d-lg-block">Bizi Takip Edin</span>
+                            <ul class="social-icon d-flex justify-content-center align-items-center">
                                 <li class="social-icon-item"><a href="https://www.instagram.com/texperbilisim" class="social-icon-link bi-instagram"></a></li>
                                 <li class="social-icon-item"><a href="https://x.com/microsoft" class="social-icon-link bi-twitter"></a></li>
                                 <li class="social-icon-item"><a href="#" class="social-icon-link bi-whatsapp"></a></li>
                             </ul>
-                            
-                            <div>
-                                <a href="mailto:info@texper.com.tr" class="custom-btn">Bize Ulaşın
-                                    <i class="bi-arrow-right ms-2"></i>
-                                </a>
+                            <div class="ms-3">
+                                <a href="mailto:info@texper.com.tr" class="custom-btn">Bize Ulaşın<i class="bi-arrow-right ms-2"></i></a>
                             </div>
-
-                            <!-- Offcanvas Menu Icon -->
-                            <a class="bi-list offcanvas-icon" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu"></a>
                         </div>
+                        <a class="bi-list offcanvas-icon ms-3" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu"></a>
                     </div>
-                </div>
-            </header>
-
-            <!-- Offcanvas Menu -->
-            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">                
-                <div class="offcanvas-header">                    
-                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                
-                <div class="offcanvas-body d-flex flex-column justify-content-center align-items-center">
-                    <nav>
-                        <ul>
-                          <li><a href="login.html">Hakkımızda</a></li>
-                            <li><a href="register.html">Neler Yapıyoruz?</a></li>
-                            <li><a href="password-reset.html">Referanslar</a></li>
-                            <li><a class="active" href="404.html">Çözümlerimiz</a></li>
-                            <li><a href="contact.html">Contact Form</a></li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
-
-            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-12 mx-auto text-center">
-                            <h1 class="mt-2 mb-4 pb-2">Neler Yapıyoruz?</h1>
-
-                            <div class="section-title">
-                                <div class="service-item">
-                                    <h3>Ağ Kurulum ve Yönetimi</h3>
-                                    <p>Firmalar için ağ kurulumları, VPN çözümleri, güvenlik duvarı yönetimi gibi ağ altyapı hizmetleri sunuyoruz. İhtiyacınıza uygun çözümlerle verimli ve güvenli ağ yapıları kuruyoruz.</p>
-                                </div>
-
-                                <div class="service-item">
-                                    <h3>Bulut Çözümleri</h3>
-                                    <p>Veri güvenliğinizi sağlayacak bulut tabanlı depolama ve sunucu çözümleri, yedekleme hizmetleri sunuyoruz. İşlerinizi her an her yerden yönetebileceğiniz altyapıları sağlıyoruz.</p>
-                                </div>
-
-                                <div class="service-item">
-                                    <h3>Teknik Destek</h3>
-                                    <p>7/24 teknik destek, arıza tespiti ve onarım hizmetleri ile teknolojik sorunlarınıza hızlı ve etkili çözümler sağlıyoruz. Sorununuz ne olursa olsun, yanınızdayız.</p>
-                                </div>
-
-                                <div class="service-item">
-                                    <h3>Yazılım Geliştirme</h3>
-                                    <p>İhtiyacınıza özel yazılım çözümleri geliştiriyor, web ve mobil uygulama projeleri için kapsamlı çözümler sunuyoruz. İşletmenizi dijital dünyada bir adım öne taşıyoruz.</p>
-                                </div>
-
-                                <div class="service-item">
-                                    <h3>Donanım Satışı ve Montajı</h3>
-                                    <p>Bilgisayar donanımları, ağ cihazları ve sunucuların satışı ve montaj hizmetlerini sağlıyoruz. İhtiyacınıza uygun ürünlerle donanım altyapınızı güçlendiriyoruz.</p>
-                                </div>
+        </header>
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column justify-content-center align-items-center">
+                <nav>
+                    <ul>
+                        <li><a href="login.html">Hakkımızda</a></li>
+                        <li><a href="register.html">Neler Yapıyoruz?</a></li>
+                        <li><a href="password-reset.html">Referanslar</a></li>
+                        <li><a class="active" href="404.html">Çözümlerimiz</a></li>
+                        <li><a href="contact.html">Contact Form</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12 mx-auto text-center">
+                        <h1 class="mt-2 mb-4 pb-2" style="color: white;">Neler Yapıyoruz?</h1>
+                        <div class="section-title">
+                            <div class="service-item">
+                                <h3>Ağ Kurulum ve Yönetimi</h3>
+                                <p>İşletmenizin ihtiyaçlarına uygun, yüksek performanslı ve güvenli ağ altyapıları kuruyoruz. VPN çözümleri, güvenlik duvarı yönetimi ve ağ optimizasyonu gibi hizmetlerimizle kesintisiz bağlantı ve veri güvenliği sağlıyoruz.</p>
+                            </div>
+                            <div class="service-item">
+                                <h3>Bulut Çözümleri</h3>
+                                <p>Veri güvenliğinizi en üst düzeye çıkaran bulut tabanlı depolama, sunucu ve yedekleme çözümleri sunuyoruz. Esnek ve ölçeklenebilir altyapılarımızla iş süreçlerinizi her yerden yönetebilmenizi sağlıyoruz.</p>
+                            </div>
+                            <div class="service-item">
+                                <h3>Teknik Destek</h3>
+                                <p>Teknolojik sorunlarınıza 7/24 hızlı ve etkili çözümler sunuyoruz. Uzman ekibimizle arıza tespiti, onarım ve bakım hizmetleri sağlayarak işlerinizin aksamadan devam etmesini garanti ediyoruz.</p>
+                            </div>
+                            <div class="service-item">
+                                <h3>Yazılım Geliştirme</h3>
+                                <p>İşletmenize özel, yenilikçi yazılım çözümleri geliştiriyoruz. Web ve mobil uygulama projelerinizde size özel çözümler sunarak dijital dünyada rekabet avantajı elde etmenizi sağlıyoruz.</p>
+                            </div>
+                            <div class="service-item">
+                                <h3>Donanım Satışı ve Montajı</h3>
+                                <p>İşletmenizin ihtiyaçlarına uygun, yüksek kaliteli bilgisayar donanımları, ağ cihazları ve sunucuların satışını ve montajını gerçekleştiriyoruz. Güvenilir ve performanslı donanım çözümleriyle altyapınızı güçlendiriyoruz.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="video-wrap">
-                    <video autoplay loop muted class="custom-video" poster="">
-                        <source src="videos/video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </section>
-        </main>
-
-        <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/countdown.js"></script>
-        <script src="js/init.js"></script>
-    </body>
+            </div>
+            <div class="video-wrap">
+                <video autoplay loop muted class="custom-video" poster="">
+                    <source src="videos/video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+    </main>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/init.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.offcanvas-icon').click(function() {
+                $('#offcanvasMenu').offcanvas('show');
+            });
+        });
+    </script>
+</body>
 </html>
