@@ -13,6 +13,12 @@
     <link href="css/bootstrap-icons.css" rel="stylesheet">
     <link href="css/tooplate-kool-form-pack.css" rel="stylesheet">
     <style>
+        /* Temel Stiller */
+        body {
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        
         .custom-btn {
             background-color: #fff;
             color: #000;
@@ -25,40 +31,45 @@
             text-decoration: none;
             margin: 10px;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
         .custom-btn:hover {
             background-color: #000;
             color: #fff;
             cursor: pointer;
         }
+        
+        /* Başlık Stilleri */
         .section-title {
-            margin-top: 60px;
+            margin-top: 40px;
             color: white;
         }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 30px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        /* Servis Öğeleri */
         .service-item {
             margin-bottom: 30px;
+            padding: 0 15px;
         }
         .service-item h3 {
             font-size: 1.5rem;
             color: white;
+            margin-bottom: 15px;
         }
         .service-item p {
             font-size: 1.1rem;
             color: #ffffff;
+            line-height: 1.6;
         }
-        /* Mobil uyumluluk için */
-        @media (max-width: 768px) {
-            .hero-section .container .row .col-lg-6 {
-                padding: 0 20px;
-            }
-            .service-item h3 {
-                font-size: 1.3rem;
-            }
-            .service-item p {
-                font-size: 1rem;
-            }
-        }
-        /* index.html'den alınan stiller */
+        
+        /* Header Stilleri */
         .site-header {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 10px 0;
@@ -72,6 +83,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 1.1rem;
         }
         .social-icon {
             list-style: none;
@@ -94,6 +106,8 @@
             cursor: pointer;
             margin-left: 10px;
         }
+        
+        /* Offcanvas Menü */
         .offcanvas {
             background-color: rgba(0, 0, 0, 0.9);
             color: #fff;
@@ -118,54 +132,135 @@
             font-size: 18px;
             transition: color 0.3s ease;
         }
-        .offcanvas-body nav ul li a:hover, .offcanvas-body nav ul li a.active {
+        .offcanvas-body nav ul li a:hover, 
+        .offcanvas-body nav ul li a.active {
             color: #87ceeb;
         }
-        /* Buton ikon renkleri */
+        
+        /* Video Arkaplan */
+        .video-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .custom-video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Buton İkon Renkleri */
         .service-buttons .custom-btn .bi-terminal { color: #4CAF50; }
         .service-buttons .custom-btn .bi-window { color: #2196F3; }
         .service-buttons .custom-btn .bi-hdd { color: #FF9800; }
         .service-buttons .custom-btn .bi-folder { color: #9C27B0; }
-        /* Bize ulaşın butonu rengi düzeltme */
-        .custom-btn {
-            background-color: #fff;
-            color: #000;
-            border: 2px solid #000;
+        
+        /* Ana İçerik */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 70px;
+            padding-bottom: 50px;
         }
-        /* Telefon Uyumluluğu */
+        .hero-section .container {
+            max-width: 100%;
+        }
+        
+        /* Mobil Uyumluluk */
         @media (max-width: 768px) {
-            .hero-section .container .row .col-lg-6 {
-                padding: 0 15px; /* Daha az yatay boşluk */
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
             }
+            
             .section-title {
-                margin-top: 40px; /* Daha az dikey boşluk */
+                margin-top: 30px;
+            }
+            
+            .service-item {
+                margin-bottom: 25px;
+                padding: 0 10px;
             }
             .service-item h3 {
-                font-size: 1.3rem; /* Başlık boyutunu küçült */
+                font-size: 1.3rem;
+                margin-bottom: 10px;
             }
             .service-item p {
-                font-size: 1rem; /* Paragraf boyutunu küçült */
+                font-size: 1rem;
+                line-height: 1.5;
             }
+            
             .site-header {
-                padding: 5px 0; /* Daha az dikey boşluk */
+                padding: 8px 0;
             }
             .site-header-text span {
-                font-size: 1.2em; /* Yazı boyutunu küçült */
+                font-size: 1rem;
             }
+            
             .social-icon {
-                flex-direction: column; /* Sosyal ikonları alt alta sırala */
-                align-items: center; /* Ortala */
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             .social-icon-item {
-                margin: 5px 0; /* İkonlar arasında boşluk */
+                margin: 5px;
             }
+            
             .custom-btn {
-                padding: 8px 15px; /* Buton boyutunu küçült */
-                font-size: 14px; /* Buton yazı boyutunu küçült */
+                padding: 8px 15px;
+                font-size: 14px;
+                margin: 5px;
+                white-space: normal;
             }
-            /* Offcanvas Menü */
+            
             .offcanvas-body nav ul li a {
-                font-size: 16px; /* Menü yazı boyutunu küçült */
+                font-size: 16px;
+            }
+            
+            /* Header düzenlemesi */
+            .site-header .row.align-items-center {
+                flex-wrap: nowrap;
+            }
+            .site-header .col-auto {
+                flex: 0 0 auto;
+                width: auto;
+            }
+            .site-header .col {
+                flex: 1;
+                min-width: 0;
+            }
+            .site-header .d-flex {
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero-section {
+                padding-top: 60px;
+            }
+            
+            .site-header-text span {
+                display: none;
+            }
+            
+            .text-white.me-2.d-none.d-lg-block {
+                display: none !important;
+            }
+            
+            .custom-btn {
+                width: 100%;
+                margin: 5px 0;
+                text-align: center;
             }
         }
     </style>
@@ -182,22 +277,23 @@
                         </a>
                     </div>
                     <div class="col d-flex justify-content-end align-items-center">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-wrap justify-content-end">
                             <span class="text-white me-2 d-none d-lg-block">Bizi Takip Edin</span>
-                            <ul class="social-icon d-flex justify-content-center align-items-center">
+                            <ul class="social-icon d-flex justify-content-center align-items-center m-0">
                                 <li class="social-icon-item"><a href="https://www.instagram.com/texperbilisim" class="social-icon-link bi-instagram"></a></li>
                                 <li class="social-icon-item"><a href="https://x.com/microsoft" class="social-icon-link bi-twitter"></a></li>
                                 <li class="social-icon-item"><a href="#" class="social-icon-link bi-whatsapp"></a></li>
                             </ul>
-                            <div class="ms-3">
+                            <div class="ms-2 ms-lg-3">
                                 <a href="mailto:info@texper.com.tr" class="custom-btn">Bize Ulaşın<i class="bi-arrow-right ms-2"></i></a>
                             </div>
                         </div>
-                        <a class="bi-list offcanvas-icon ms-3" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu"></a>
+                        <a class="bi-list offcanvas-icon ms-2 ms-lg-3" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu"></a>
                     </div>
                 </div>
             </div>
         </header>
+        
         <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
             <div class="offcanvas-header">
                 <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -214,31 +310,32 @@
                 </nav>
             </div>
         </div>
+        
         <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-12 mx-auto text-center">
-                        <h1 class="mt-2 mb-4 pb-2" style="color: white;">Neler Yapıyoruz?</h1>
+                    <div class="col-lg-6 col-12 mx-auto">
+                        <h1 class="text-center">Neler Yapıyoruz?</h1>
                         <div class="section-title">
                             <div class="service-item">
-                                <h3>Ağ Kurulum ve Yönetimi</h3>
-                                <p>İşletmenizin ihtiyaçlarına uygun, yüksek performanslı ve güvenli ağ altyapıları kuruyoruz. VPN çözümleri, güvenlik duvarı yönetimi ve ağ optimizasyonu gibi hizmetlerimizle kesintisiz bağlantı ve veri güvenliği sağlıyoruz.</p>
+                                <h3 class="text-center">Ağ Kurulum ve Yönetimi</h3>
+                                <p class="text-center">İşletmenizin ihtiyaçlarına uygun, yüksek performanslı ve güvenli ağ altyapıları kuruyoruz. VPN çözümleri, güvenlik duvarı yönetimi ve ağ optimizasyonu gibi hizmetlerimizle kesintisiz bağlantı ve veri güvenliği sağlıyoruz.</p>
                             </div>
                             <div class="service-item">
-                                <h3>Bulut Çözümleri</h3>
-                                <p>Veri güvenliğinizi en üst düzeye çıkaran bulut tabanlı depolama, sunucu ve yedekleme çözümleri sunuyoruz. Esnek ve ölçeklenebilir altyapılarımızla iş süreçlerinizi her yerden yönetebilmenizi sağlıyoruz.</p>
+                                <h3 class="text-center">Bulut Çözümleri</h3>
+                                <p class="text-center">Veri güvenliğinizi en üst düzeye çıkaran bulut tabanlı depolama, sunucu ve yedekleme çözümleri sunuyoruz. Esnek ve ölçeklenebilir altyapılarımızla iş süreçlerinizi her yerden yönetebilmenizi sağlıyoruz.</p>
                             </div>
                             <div class="service-item">
-                                <h3>Teknik Destek</h3>
-                                <p>Teknolojik sorunlarınıza 7/24 hızlı ve etkili çözümler sunuyoruz. Uzman ekibimizle arıza tespiti, onarım ve bakım hizmetleri sağlayarak işlerinizin aksamadan devam etmesini garanti ediyoruz.</p>
+                                <h3 class="text-center">Teknik Destek</h3>
+                                <p class="text-center">Teknolojik sorunlarınıza 7/24 hızlı ve etkili çözümler sunuyoruz. Uzman ekibimizle arıza tespiti, onarım ve bakım hizmetleri sağlayarak işlerinizin aksamadan devam etmesini garanti ediyoruz.</p>
                             </div>
                             <div class="service-item">
-                                <h3>Yazılım Geliştirme</h3>
-                                <p>İşletmenize özel, yenilikçi yazılım çözümleri geliştiriyoruz. Web ve mobil uygulama projelerinizde size özel çözümler sunarak dijital dünyada rekabet avantajı elde etmenizi sağlıyoruz.</p>
+                                <h3 class="text-center">Yazılım Geliştirme</h3>
+                                <p class="text-center">İşletmenize özel, yenilikçi yazılım çözümleri geliştiriyoruz. Web ve mobil uygulama projelerinizde size özel çözümler sunarak dijital dünyada rekabet avantajı elde etmenizi sağlıyoruz.</p>
                             </div>
                             <div class="service-item">
-                                <h3>Donanım Satışı ve Montajı</h3>
-                                <p>İşletmenizin ihtiyaçlarına uygun, yüksek kaliteli bilgisayar donanımları, ağ cihazları ve sunucuların satışını ve montajını gerçekleştiriyoruz. Güvenilir ve performanslı donanım çözümleriyle altyapınızı güçlendiriyoruz.</p>
+                                <h3 class="text-center">Donanım Satışı ve Montajı</h3>
+                                <p class="text-center">İşletmenizin ihtiyaçlarına uygun, yüksek kaliteli bilgisayar donanımları, ağ cihazları ve sunucuların satışını ve montajını gerçekleştiriyoruz. Güvenilir ve performanslı donanım çözümleriyle altyapınızı güçlendiriyoruz.</p>
                             </div>
                         </div>
                     </div>
@@ -252,6 +349,7 @@
             </div>
         </section>
     </main>
+    
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/countdown.js"></script>
@@ -261,6 +359,25 @@
             $('.offcanvas-icon').click(function() {
                 $('#offcanvasMenu').offcanvas('show');
             });
+            
+            // Mobil cihazlarda video boyutunu ayarla
+            function adjustVideoSize() {
+                const video = document.querySelector('.custom-video');
+                const aspectRatio = 16 / 9;
+                const windowWidth = window.innerWidth;
+                const windowHeight = window.innerHeight;
+                
+                if (windowWidth / windowHeight > aspectRatio) {
+                    video.style.width = '100%';
+                    video.style.height = 'auto';
+                } else {
+                    video.style.width = 'auto';
+                    video.style.height = '100%';
+                }
+            }
+            
+            adjustVideoSize();
+            window.addEventListener('resize', adjustVideoSize);
         });
     </script>
 </body>
