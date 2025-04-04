@@ -1,157 +1,285 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <title>Texper Bilişim | Coming Soon Page</title>
-
-        <!-- CSS FILES -->                
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrap-icons.css" rel="stylesheet">
-        <link href="css/tooplate-kool-form-pack.css" rel="stylesheet">
-        
-        <!-- Custom CSS for buttons and title -->
-        <style>
-            /* Fade-out animasyonu */
-            .fade-out {
-                opacity: 0;
-                transition: opacity 1s ease-out;
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Texper Bilişim - Profesyonel Bilgisayar Çözümleri">
+    <meta name="author" content="Texper Bilişim">
+    <title>Texper Bilişim | Profesyonel Bilgisayar Çözümleri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,700;1,200&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/tooplate-kool-form-pack.css" rel="stylesheet">
+    <style>
+        .fade-out {
+            opacity: 0;
+            transition: opacity 1s ease-out;
+        }
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 3.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            position: relative;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        h1 span {
+            position: relative;
+            display: inline-block;
+        }
+        @keyframes strongBlink {
+            50% { opacity: 0.5; text-shadow: 0 0 20px #87ceeb; }
+        }
+        h1 span {
+            animation: strongBlink 1.5s infinite alternate;
+            text-shadow: 2px 2px 10px #87ceeb, -2px -2px 10px #87ceeb;
+        }
+        .custom-btn {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            margin: 10px;
+        }
+        .custom-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+        .custom-btn i {
+            margin-right: 8px;
+        }
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        @media (max-width: 768px) {
+            .custom-btn {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+        .service-section {
+            background-color: #000;
+            padding: 50px 0;
+            color: #fff;
+            text-align: center;
+        }
+        .service-section h2 {
+            color: #fff;
+            margin-bottom: 30px;
+        }
+        .service-item {
+            margin-bottom: 30px;
+        }
+        .service-item i {
+            font-size: 3rem;
+            color: #87ceeb;
+            margin-bottom: 20px;
+        }
+        .service-item h3 {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        .service-item p {
+            color: #fff;
+        }
+        /* Telefonlar için (768px ve altı ekranlar) */
+        @media (max-width: 768px) {
+            /* Üst Menü */
+            .site-header {
+                padding: 5px 0; /* Daha az dikey boşluk */
             }
 
-            h1 {
-                font-family: 'Poppins', sans-serif;
-                font-weight: 700;
-                font-size: 3rem;
-                color: #fff;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                margin-bottom: 30px;
-                text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            .site-header-text span {
+                font-size: 1.2em; /* Yazı boyutunu küçült */
+            }
+
+            .social-icon {
+                flex-direction: column; /* Sosyal ikonları alt alta sırala */
+                align-items: center; /* Ortala */
+            }
+
+            .social-icon-item {
+                margin: 5px 0; /* İkonlar arasında boşluk */
             }
 
             .custom-btn {
-                background-color: transparent;
-                color: #ffffff;
-                border: 2px solid #ffffff;
-                padding: 12px 30px;
-                border-radius: 30px;
-                font-weight: 600;
-                font-size: 16px;
-                text-align: center;
-                display: inline-block;
-                text-decoration: none;
-                transition: all 0.3s ease;
-                text-transform: uppercase;
-                margin: 10px;
+                padding: 8px 15px; /* Buton boyutunu küçült */
+                font-size: 14px; /* Buton yazı boyutunu küçült */
             }
 
-            .custom-btn:hover {
-                background-color: #ffffff;
-                color: #000000;
-                transform: scale(1.05);
-                box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            /* Offcanvas Menü */
+            .offcanvas-body nav ul li a {
+                font-size: 16px; /* Menü yazı boyutunu küçült */
             }
 
-            .custom-btn i {
-                margin-right: 8px;
+            /* Ana İçerik (Hero Section) */
+            .hero-section h1 {
+                font-size: 2.5rem; /* Başlık boyutunu küçült */
             }
-        </style>
-    </head>
-    
-    <body>
-        <main>
-            <header class="site-header">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col-lg-12 col-12 d-flex align-items-center">
-                            <a class="site-header-text d-flex justify-content-center align-items-center me-auto" href="index.html">
-                                <i class="bi-house-door"></i>
-                                <span>Texper Bilişim</span>
-                            </a>
 
-                            <ul class="social-icon d-flex justify-content-center align-items-center mx-auto">
-                                <span class="text-white me-4 d-none d-lg-block">Bizi Takip Edin</span>
-                                <li class="social-icon-item"><a href="https://www.instagram.com/texperbilisim" class="social-icon-link bi-instagram"></a></li>
-                                <li class="social-icon-item"><a href="https://x.com/microsoft" class="social-icon-link bi-twitter"></a></li>
-                                <li class="social-icon-item"><a href="#" class="social-icon-link bi-whatsapp"></a></li>
-                            </ul>
-                            
-                            <div>
-                                <a href="mailto:info@texper.com.tr" class="custom-btn">Bize Ulaşın
-                                    <i class="bi-arrow-right ms-2"></i>
-                                </a>
-                            </div>
+            .buttons {
+                flex-direction: column; /* Butonları alt alta sırala */
+                align-items: center; /* Ortala */
+            }
 
-                            <!-- Offcanvas Menu Icon -->
-                            <a class="bi-list offcanvas-icon" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu"></a>
-                        </div>
-                    </div>
-                </div>
-            </header>
+            .custom-btn {
+                width: 90%; /* Buton genişliğini ayarla */
+            }
 
-            <!-- Offcanvas Menu -->
-            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">                
-                <div class="offcanvas-header">                    
-                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                
-                <div class="offcanvas-body d-flex flex-column justify-content-center align-items-center">
-                    <nav>
-                        <ul>
-                          <li><a href="login.html">Hakkımızda</a></li>
-                            <li><a href="register.html">Neler Yapıyoruz?</a></li>
-                            <li><a href="password-reset.html">Referanslar</a></li>
-                            <li><a class="active" href="404.html">Çözümlerimiz</a></li>
-                            <li><a href="contact.html">Contact Form</a></li>
+            /* Hizmetler Bölümü */
+            .service-item {
+                margin-bottom: 20px; /* Hizmetler arası boşluğu azalt */
+            }
+
+            .service-item i {
+                font-size: 2rem; /* İkon boyutunu küçült */
+            }
+
+            .service-item h3 {
+                font-size: 1.2rem; /* Başlık boyutunu küçült */
+            }
+
+            .service-item p {
+                font-size: 1rem; /* Paragraf boyutunu küçült */
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header class="site-header">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-12 col-12 d-flex align-items-center">
+                        <a class="site-header-text d-flex justify-content-center align-items-center me-auto" href="index.html">
+                            <i class="bi-house-door"></i>
+                            <span>Texper Bilişim</span>
+                        </a>
+                        <ul class="social-icon d-flex justify-content-center align-items-center mx-auto">
+                            <span class="text-white me-4 d-none d-lg-block">Bizi Takip Edin</span>
+                            <li class="social-icon-item"><a href="https://www.instagram.com/texperbilisim" class="social-icon-link bi-instagram"></a></li>
+                            <li class="social-icon-item"><a href="https://x.com/microsoft" class="social-icon-link bi-twitter"></a></li>
+                            <li class="social-icon-item"><a href="#" class="social-icon-link bi-whatsapp"></a></li>
                         </ul>
-                    </nav>
+                        <div>
+                            <a href="mailto:info@texper.com.tr" class="custom-btn">Bize Ulaşın<i class="bi-arrow-right ms-2"></i></a>
+                        </div>
+                        <a class="bi-list offcanvas-icon" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" aria-controls="offcanvasMenu"></a>
+                    </div>
                 </div>
             </div>
-
-            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-12 mx-auto text-center">
-                            <h1 class="text-white mt-2 mb-4 pb-2">Texper Bilişim</h1>
-                            <div class="buttons">
-                                <a href="destek.html" class="custom-btn"><i class="bi-person"></i>Destek Programı</a>
-                                <a href="gecis.html" class="custom-btn fade-link" id="software-btn"><i class="bi-laptop"></i>Software</a>
-                                <a href="clouds.html" class="custom-btn"><i class="bi-cloud"></i>Bulut Panel</a>
-                            </div>
+        </header>
+        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column justify-content-center align-items-center">
+                <nav>
+                    <ul>
+                        <li><a href="login.html">Hakkımızda</a></li>
+                        <li><a href="register.html">Neler Yapıyoruz?</a></li>
+                        <li><a href="password-reset.html">Referanslar</a></li>
+                        <li><a class="active" href="404.html">Çözümlerimiz</a></li>
+                        <li><a href="contact.html">Contact Form</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12 mx-auto text-center">
+                        <h1 class="text-white mt-2 mb-4 pb-2">
+                            <span>T</span><span>e</span><span>x</span><span>p</span><span>e</span><span>r</span> <span>B</span><span>i</span><span>l</span><span>i</span><span>ş</span><span>i</span><span>m</span>
+                        </h1>
+                        <div class="buttons">
+                            <a href="destek.html" class="custom-btn"><i class="bi-person"></i>Destek Programı</a>
+                            <a href="gecis.html" class="custom-btn fade-link" id="software-btn"><i class="bi-laptop"></i>Software</a>
+                            <a href="clouds.html" class="custom-btn"><i class="bi-cloud"></i>Bulut Panel</a>
                         </div>
                     </div>
                 </div>
-                <div class="video-wrap">
-                    <video autoplay loop muted class="custom-video" poster="">
-                        <source src="videos/video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+            </div>
+            <div class="video-wrap">
+                <video autoplay loop muted class="custom-video" poster="">
+                    <source src="videos/video.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+        <section class="service-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2>Sunduğumuz Hizmetler</h2>
+                    </div>
                 </div>
-            </section>
-        </main>
-
-        <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/countdown.js"></script>
-        <script src="js/init.js"></script>
-
-        <script>
-            // Yazılım butonuna tıklanıldığında fade out animasyonu ekleyip, linke yönlendiriyoruz
-            document.getElementById('software-btn').addEventListener('click', function(e) {
-                e.preventDefault(); // Linke doğrudan gitmemek için durduruyoruz
-                var link = this.href;
-                this.classList.add('fade-out'); // fade-out sınıfını ekliyoruz
-                setTimeout(function() {
-                    window.location.href = link; // 1 saniye sonra linke yönlendiriyoruz
-                }, 1000); // Geçiş süresi ile aynı
-            });
-        </script>
-    </body>
+                <div class="row">
+                    <div class="col-md-4 service-item">
+                        <i class="bi bi-laptop"></i>
+                        <h3>Bilgisayar Tamiri</h3>
+                        <p>Donanım ve yazılım sorunlarına profesyonel çözümler. Hızlı ve güvenilir servis.</p>
+                    </div>
+                    <div class="col-md-4 service-item">
+                        <i class="bi bi-cloud"></i>
+                        <h3>Bulut Çözümleri</h3>
+                        <p>Veri depolama, yedekleme ve bulut tabanlı uygulamalar. Güvenli ve ölçeklenebilir çözümler.</p>
+                    </div>
+                    <div class="col-md-4 service-item">
+                        <i class="bi bi-shield-lock"></i>
+                        <h3>Güvenlik Çözümleri</h3>
+                        <p>Ağ güvenliği, virüs koruması ve veri güvenliği. Kapsamlı güvenlik çözümleri.</p>
+                    </div>
+                    <div class="col-md-4 service-item">
+                        <i class="bi bi-code-slash"></i>
+                        <h3>Web Geliştirme</h3>
+                        <p>Özel web siteleri ve web uygulamaları geliştirme. Modern ve kullanıcı dostu tasarımlar.</p>
+                    </div>
+                    <div class="col-md-4 service-item">
+                        <i class="bi bi-phone"></i>
+                        <h3>Mobil Uygulama Geliştirme</h3>
+                        <p>iOS ve Android platformları için mobil uygulamalar geliştirme. Yenilikçi ve işlevsel çözümler.</p>
+                    </div>
+                    <div class="col-md-4 service-item">
+                        <i class="bi bi-database"></i>
+                        <h3>Veri Tabanı Yönetimi</h3>
+                        <p>Veri tabanı tasarımı, yönetimi ve optimizasyonu. Veri güvenliği ve performansı.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/init.js"></script>
+    <script>
+        document.getElementById('software-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            var link = this.href;
+            this.classList.add('fade-out');
+            setTimeout(function() {
+                window.location.href = link;
+            }, 1000);
+        });
+    </script>
+</body>
 </html>
