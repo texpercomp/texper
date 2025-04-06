@@ -18,7 +18,7 @@
             opacity: 0;
             transition: opacity 1s ease-out;
         }
-        
+
         h1 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
@@ -34,22 +34,22 @@
             width: 100%;
             text-align: center;
         }
-        
+
         h1 span {
             position: relative;
             display: inline-block;
             vertical-align: middle;
         }
-        
+
         @keyframes strongBlink {
             50% { opacity: 0.5; text-shadow: 0 0 20px #87ceeb; }
         }
-        
+
         h1 span {
             animation: strongBlink 1.5s infinite alternate;
             text-shadow: 2px 2px 10px #87ceeb, -2px -2px 10px #87ceeb;
         }
-        
+
         .custom-btn {
             background-color: transparent;
             color: #ffffff;
@@ -65,24 +65,24 @@
             text-transform: uppercase;
             margin: 10px;
         }
-        
+
         .custom-btn:hover {
             background-color: #ffffff;
             color: #000000;
             transform: scale(1.05);
             box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
         }
-        
+
         .custom-btn i {
             margin-right: 8px;
         }
-        
+
         .buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
-        
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.2rem;
@@ -90,128 +90,77 @@
                 white-space: normal;
                 word-break: keep-all;
             }
-            
+
             h1 span {
                 display: inline;
                 vertical-align: baseline;
             }
-            
+
             .custom-btn {
                 width: 100%;
                 margin: 10px 0;
             }
         }
-        
+
         .service-section {
             background-color: #000;
             padding: 50px 0;
             color: #fff;
             text-align: center;
         }
-        
+
         .service-section h2 {
             color: #fff;
             margin-bottom: 30px;
         }
-        
+
         .service-item {
             margin-bottom: 30px;
         }
-        
+
         .service-item i {
             font-size: 3rem;
             color: #87ceeb;
             margin-bottom: 20px;
         }
-        
+
         .service-item h3 {
             font-weight: 600;
             margin-bottom: 15px;
             color: #fff;
         }
-        
+
         .service-item p {
             color: #fff;
         }
-        
-        /* Telefonlar için (768px ve altı ekranlar) */
-        @media (max-width: 768px) {
-            /* Üst Menü */
-            .site-header {
-                padding: 5px 0; /* Daha az dikey boşluk */
-            }
-            .site-header-text span {
-                font-size: 1.2em; /* Yazı boyutunu küçült */
-            }
-            .social-icon {
-                flex-direction: column; /* Sosyal ikonları alt alta sırala */
-                align-items: center; /* Ortala */
-            }
-            .social-icon-item {
-                margin: 5px 0; /* İkonlar arasında boşluk */
-            }
-            .custom-btn {
-                padding: 8px 15px; /* Buton boyutunu küçült */
-                font-size: 14px; /* Buton yazı boyutunu küçült */
-            }
-            /* Offcanvas Menü */
-            .offcanvas-body nav ul li a {
-                font-size: 16px; /* Menü yazı boyutunu küçült */
-            }
-            /* Ana İçerik (Hero Section) */
-            .hero-section h1 {
-                font-size: 2.2rem; /* Başlık boyutunu küçült */
-                line-height: 1.3; /* Satır yüksekliğini ayarla */
-            }
-            .buttons {
-                flex-direction: column; /* Butonları alt alta sırala */
-                align-items: center; /* Ortala */
-            }
-            .custom-btn {
-                width: 90%; /* Buton genişliğini ayarla */
-            }
-            /* Hizmetler Bölümü */
-            .service-item {
-                margin-bottom: 20px; /* Hizmetler arası boşluğu azalt */
-            }
-            .service-item i {
-                font-size: 2rem; /* İkon boyutunu küçült */
-            }
-            .service-item h3 {
-                font-size: 1.2rem; /* Başlık boyutunu küçült */
-            }
-            .service-item p {
-                font-size: 1rem; /* Paragraf boyutunu küçült */
-            }
-        }
-        
-        #bilgi-kutusu {
-            margin-top: 30px;
-            padding: 20px;
+
+        /* Aşağıya kaydırma ok simgesi */
+        .scroll-down {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
             color: #fff;
-            text-align: center;
-            border-radius: 10px;
-            display: block;
-            transition: opacity 1s ease-in-out;
-            opacity: 1;
-            max-height: 200px;
-            overflow-y: auto;
-            font-size: 1.2em;
-            position: relative;
+            cursor: pointer;
+            animation: bounce 1.5s infinite;
+            z-index: 1000;
         }
-        
-        #bilgi-kutusu span {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
         }
-        
-        #bilgi-kutusu span.active {
-            opacity: 1;
+
+        .scroll-down:hover {
+            color: #87ceeb;
         }
     </style>
 </head>
@@ -292,38 +241,43 @@
                 <div class="row">
                     <div class="col-md-4 service-item">
                         <i class="bi bi-laptop"></i>
-                        <h3>Bilgisayar Tamiri</h3>
-                        <p>Donanım ve yazılım sorunlarına profesyonel çözümler. Hızlı ve güvenilir servis.</p>
+                        <h3>Server Kurulumu ve Yönetimi</h3>
+                        <p>Sunucu kurulumları, yapılandırmaları ve yönetimi. Performans optimizasyonu ve güvenlik.</p>
                     </div>
                     <div class="col-md-4 service-item">
-                        <i class="bi bi-cloud"></i>
-                        <h3>Bulut Çözümleri</h3>
-                        <p>Veri depolama, yedekleme ve bulut tabanlı uygulamalar. Güvenli ve ölçeklenebilir çözümler.</p>
+                        <i class="bi bi-hdd"></i>
+                        <h3>Bilgisayar Donanımı</h3>
+                        <p>Donanım kurulumları, yükseltmeler ve bakım hizmetleri. Hızlı ve güvenilir çözümler.</p>
                     </div>
                     <div class="col-md-4 service-item">
                         <i class="bi bi-shield-lock"></i>
-                        <h3>Güvenlik Çözümleri</h3>
-                        <p>Ağ güvenliği, virüs koruması ve veri güvenliği. Kapsamlı güvenlik çözümleri.</p>
+                        <h3>Ağ Güvenliği</h3>
+                        <p>Ağ güvenliği çözümleri, güvenlik duvarı kurulumları ve ağ izleme. Kapsamlı güvenlik önlemleri.</p>
                     </div>
                     <div class="col-md-4 service-item">
-                        <i class="bi bi-code-slash"></i>
-                        <h3>Web Geliştirme</h3>
-                        <p>Özel web siteleri ve web uygulamaları geliştirme. Modern ve kullanıcı dostu tasarımlar.</p>
+                        <i class="bi bi-cloud"></i>
+                        <h3>Veri Yedekleme ve Kurtarma</h3>
+                        <p>Veri yedekleme sistemleri kurulumları ve felaket kurtarma çözümleri. Veri güvenliği sağlama.</p>
                     </div>
                     <div class="col-md-4 service-item">
-                        <i class="bi bi-phone"></i>
-                        <h3>Mobil Uygulama Geliştirme</h3>
-                        <p>iOS ve Android platformları için mobil uygulamalar geliştirme. Yenilikçi ve işlevsel çözümler.</p>
+                        <i class="bi bi-server"></i>
+                        <h3>Sunucu Yönetimi</h3>
+                        <p>Sunucu yönetimi, bakım ve optimizasyon hizmetleri. 7/24 izleme ve performans artırma.</p>
                     </div>
                     <div class="col-md-4 service-item">
                         <i class="bi bi-database"></i>
-                        <h3>Veri Tabanı Yönetimi</h3>
-                        <p>Veri tabanı tasarımı, yönetimi ve optimizasyonu. Veri güvenliği ve performansı.</p>
+                        <h3>Sistem Entegrasyonu</h3>
+                        <p>Donanım ve yazılım entegrasyonu, uyumlu sistem kurulumu. Verimli çözümler sağlıyoruz.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Aşağıya kaydırma ok simgesi -->
+    <div id="scroll-down" class="scroll-down">
+        <i class="bi bi-arrow-down-circle"></i>
+    </div>
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -337,54 +291,57 @@
             setTimeout(function() {
                 window.location.href = link;
             }, 1000);
-const bilgiler = [
-    "Server kurulumu ve yönetimi sağlayabiliriz.",
-    "Bilgisayar donanımı kurulumu yapabiliriz.",
-    "Ağ altyapısı oluşturabiliriz.",
-    "Veri yedekleme sistemleri kurabiliriz.",
-    "Sistem entegrasyonu yapabiliriz.",
-    "Donanım bakımı ve onarımı gerçekleştirebiliriz.",
-    "Ağ güvenliği çözümleri sunabiliriz.",
-    "Yedekleme ve felaket kurtarma çözümleri sağlayabiliriz.",
-    "Sunucu yönetimi ve optimizasyonu yapabiliriz.",
-    "Sistem güncellemeleri ve yamanın yapılmasını sağlayabiliriz.",
-    "Veri merkezi yönetimi ve desteği sunabiliriz.",
-    "Yazılım ve donanım uyumluluğu testi gerçekleştirebiliriz.",
-    "Ağ izleme ve yönetimi yapabiliriz.",
-    "Sistem güvenliği sağlama ve tehdit analizi yapabiliriz.",
-    "İşletmenizin IT altyapısını modernize edebiliriz.",
-    "Veri depolama çözümleri sunabiliriz.",
-    "Uzaktan IT destek hizmeti verebiliriz.",
-    "Yazılım güncellemeleri ve bakımını yapabiliriz.",
-    "Sistem optimizasyonu ve hızlandırma hizmeti verebiliriz.",
-    "Fiziksel ve sanal sunucu kurulumları yapabiliriz."
-];
+        });
 
-        let bilgiIndex = Math.floor(Math.random() * bilgiler.length);
-
-        const bilgiKutusu = document.getElementById('bilgi-kutusu');
-
-        function bilgiGoster() {
-            const span = document.createElement('span');
-            span.textContent = bilgiler[bilgiIndex];
-            bilgiKutusu.appendChild(span);
-
-            setTimeout(() => {
-                span.classList.add('active');
-            }, 50);
-
-            setTimeout(() => {
-                const activeSpan = bilgiKutusu.querySelector('span.active');
-                if (activeSpan) {
-                    activeSpan.remove();
-                }
-            }, 3000);
-
-            bilgiIndex = (bilgiIndex + 1) % bilgiler.length;
+        const bilgiler = [
+            "Server kurulumu ve yönetimi sağlayabiliriz.",
+            "Bilgisayar donanımı kurulumu yapabiliriz.",
+            "Ağ altyapısı oluşturabiliriz.",
+            "Veri yedekleme sistemleri kurabiliriz.",
+            "Sistem entegrasyonu yapabiliriz.",
+            "Donanım bakımı ve onarımı gerçekleştirebiliriz.",
+            "Ağ güvenliği çözümleri sunabiliriz.",
+            "Yedekleme ve felaket kurtarma çözümleri sağlayabiliriz.",
+            "Sunucu yönetimi ve optimizasyonu yapabiliriz.",
+            "Sistem güncellemeleri ve yamanın yapılmasını sağlayabiliriz.",
+            "Veri merkezi yönetimi ve desteği sunabiliriz.",
+            "Yazılım ve donanım uyumluluğu testi gerçekleştirebiliriz.",
+            "Ağ izleme ve yönetimi yapabiliriz.",
+            "Sistem güvenliği sağlama ve tehdit analizi yapabiliriz.",
+            "İşletme verimliliğini artırmak için yazılım geliştirebiliriz.",
+        ];
+        
+        const bilgiKutusu = document.getElementById("bilgi-kutusu");
+        let index = 0;
+        
+        function yazdir() {
+            bilgiKutusu.innerHTML = `<span class="text-white">${bilgiler[index]}</span>`;
+            index++;
+            if (index === bilgiler.length) {
+                index = 0;
+            }
         }
 
-        bilgiGoster();
-        setInterval(bilgiGoster, 3000);
+        setInterval(yazdir, 2500);
+
+        // Sayfa altına kaydırma işlevi
+        document.getElementById('scroll-down').addEventListener('click', function() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        });
+
+        // Ok simgesinin görünürlüğünü kontrol et
+        window.addEventListener('scroll', function() {
+            const scrollDownButton = document.getElementById('scroll-down');
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                scrollDownButton.style.display = 'none'; // Sayfa sonuna gelindiğinde ok simgesini gizle
+            } else {
+                scrollDownButton.style.display = 'block'; // Sayfa üstündeyken ok simgesini göster
+            }
+        });
     </script>
 </body>
+
 </html>
