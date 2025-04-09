@@ -583,37 +583,36 @@ offcanvas nav ul {
 
 /* Telefon ekranları için düzenlemeler */
 @media (max-width: 768px) {
-    .hero-section h1 {
-        font-size: 36px; /* Telefon ekranlarında başlığı küçült */
-    }
+  .hero-section h1 {
+    font-size: 36px;
+  }
 
-    .service-buttons .custom-btn {
-        padding: 10px 20px; /* Butonları küçült */
-        font-size: 16px;
-    }
+  .service-buttons .custom-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
 
-    .service-buttons .new-buttons {
-        margin-top: 30px; /* Telefon ekranlarında boşluğu ayarla */
-    }
+  .service-buttons .new-buttons {
+    margin-top: 30px;
+  }
 
-    .global-server-hosting {
-        margin-top: 20px; /* Telefon ekranlarında boşluğu ayarla */
-    }
+  .global-server-hosting {
+    margin-top: 20px;
+  }
 
-    .client-login-btn {
-        bottom: 10px; /* Telefon ekranlarında konumu ayarla */
-        right: 10px;
-    }
+  .client-login-btn {
+    bottom: 10px;
+    right: 10px;
+  }
 }
 
-/* Daha küçük telefon ekranları için */
 @media (max-width: 480px) {
-    .hero-section h1 {
-        font-size: 30px;
-    }
+  .hero-section h1 {
+    font-size: 30px;
+  }
 
-    .service-buttons .custom-btn {
-        padding: 8px 16px;
-        font-size: 14px;
-    }
+  .service-buttons .custom-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
 }
