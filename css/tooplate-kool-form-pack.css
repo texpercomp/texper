@@ -1,59 +1,53 @@
 /*
-
 Tooplate 2136 Kool Form Pack
-
 https://www.tooplate.com/view/2136-kool-form-pack
-
 Bootstrap 5 Form Pack Template
-
 */
 
-
 /*---------------------------------------
-  CUSTOM PROPERTIES ( VARIABLES )             
+  CUSTOM PROPERTIES ( VARIABLES )
 -----------------------------------------*/
 :root {
-  --body-bg-color:                #181717;
-  --white-color:                  #ffffff;
-  --primary-color:                #E07A5F;
-  --secondary-color:              #F2CC8F;
-  --section-bg-color:             #f0f8ff;
-  --custom-btn-bg-color:          #E07A5F;
-  --custom-btn-bg-hover-color:    #F2CC8F;
-  --dark-color:                   #000000;
-  --p-color:                      #717275;
-  --link-hover-color:             #F2CC8F;
+  --body-bg-color: #181717;
+  --white-color: #ffffff;
+  --primary-color: #E07A5F;
+  --secondary-color: #F2CC8F;
+  --section-bg-color: #f0f8ff;
+  --custom-btn-bg-color: #E07A5F;
+  --custom-btn-bg-hover-color: #F2CC8F;
+  --dark-color: #000000;
+  --p-color: #717275;
+  --link-hover-color: #F2CC8F;
 
-  --body-font-family:             'Poppins', sans-serif;
-  --heading-font-family:          'Unbounded', sans-serif;
+  --body-font-family: 'Poppins', sans-serif;
+  --heading-font-family: 'Unbounded', sans-serif;
 
-  --h1-font-size:                 62px;
-  --h2-font-size:                 36px;
-  --h3-font-size:                 28px;
-  --h4-font-size:                 24px;
-  --h5-font-size:                 22px;
-  --h6-font-size:                 20px;
-  --p-font-size:                  18px;
-  --menu-font-size:               16px;
-  --btn-font-size:                14px;
+  --h1-font-size: 62px;
+  --h2-font-size: 36px;
+  --h3-font-size: 28px;
+  --h4-font-size: 24px;
+  --h5-font-size: 22px;
+  --h6-font-size: 20px;
+  --p-font-size: 18px;
+  --menu-font-size: 16px;
+  --btn-font-size: 14px;
 
-  --border-radius-large:          100px;
-  --border-radius-medium:         20px;
-  --border-radius-small:          10px;
+  --border-radius-large: 100px;
+  --border-radius-medium: 20px;
+  --border-radius-small: 10px;
 
-  --font-weight-normal:           400;
-  --font-weight-medium:           500;
-  --font-weight-bold:             700;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
 }
 
 body {
   background-color: var(--body-bg-color);
-  font-family: var(--body-font-family); 
+  font-family: var(--body-font-family);
 }
 
-
 /*---------------------------------------
-  TYPOGRAPHY               
+  TYPOGRAPHY
 -----------------------------------------*/
 h1,
 h2,
@@ -104,7 +98,7 @@ ul li {
   font-weight: var(--font-weight-normal);
 }
 
-a, 
+a,
 button {
   touch-action: manipulation;
   transition: all 0.3s;
@@ -125,9 +119,8 @@ strong {
   font-weight: var(--font-weight-bold);
 }
 
-
 /*---------------------------------------
-  SECTION               
+  SECTION
 -----------------------------------------*/
 .section-bg {
   background-color: var(--section-bg-color);
@@ -152,9 +145,8 @@ strong {
   color: var(--secondary-color);
 }
 
-
 /*---------------------------------------
-  CUSTOM BUTTON               
+  CUSTOM BUTTON
 -----------------------------------------*/
 .custom-btn {
   background: var(--custom-btn-bg-color);
@@ -199,9 +191,8 @@ strong {
   color: var(--link-hover-color);
 }
 
-
 /*---------------------------------------
-  SITE HEADER        
+  SITE HEADER
 -----------------------------------------*/
 .site-header {
   position: absolute;
@@ -258,7 +249,7 @@ strong {
   margin-left: 15px;
 }
 
-.offcanvas nav ul {
+offcanvas nav ul {
   margin: 0;
   padding: 0;
 }
@@ -283,9 +274,8 @@ strong {
   color: var(--link-hover-color);
 }
 
-
 /*---------------------------------------
-  HERO        
+  HERO
 -----------------------------------------*/
 .hero-section {
   position: relative;
@@ -356,9 +346,8 @@ strong {
   color: var(--white-color);
 }
 
-
 /*---------------------------------------
-  COUNTDOWN              
+  COUNTDOWN
 -----------------------------------------*/
 .countdown {
   padding-left: 0;
@@ -380,9 +369,8 @@ strong {
   font-style: italic;
 }
 
-
 /*---------------------------------------
-  MODAL EMAIL FORM        
+  MODAL EMAIL FORM
 -----------------------------------------*/
 .modal-content {
   background-color: var(--dark-color);
@@ -451,9 +439,8 @@ strong {
   font-size: var(--btn-font-size);
 }
 
-
 /*---------------------------------------
-  CUSTOM FORM               
+  CUSTOM FORM
 -----------------------------------------*/
 .custom-form .form-control {
   border-radius: var(--border-radius-large);
@@ -514,9 +501,8 @@ strong {
   font-size: var(--p-font-size);
 }
 
-
 /*---------------------------------------
-  SOCIAL ICON               
+  SOCIAL ICON
 -----------------------------------------*/
 .social-icon {
   margin: 0;
@@ -547,9 +533,8 @@ strong {
   color: var(--white-color);
 }
 
-
 /*---------------------------------------
-  RESPONSIVE STYLES               
+  RESPONSIVE STYLES
 -----------------------------------------*/
 @media screen and (max-width: 991px) {
   h1 {
@@ -596,3 +581,39 @@ strong {
   }
 }
 
+/* Telefon ekranları için düzenlemeler */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 36px; /* Telefon ekranlarında başlığı küçült */
+    }
+
+    .service-buttons .custom-btn {
+        padding: 10px 20px; /* Butonları küçült */
+        font-size: 16px;
+    }
+
+    .service-buttons .new-buttons {
+        margin-top: 30px; /* Telefon ekranlarında boşluğu ayarla */
+    }
+
+    .global-server-hosting {
+        margin-top: 20px; /* Telefon ekranlarında boşluğu ayarla */
+    }
+
+    .client-login-btn {
+        bottom: 10px; /* Telefon ekranlarında konumu ayarla */
+        right: 10px;
+    }
+}
+
+/* Daha küçük telefon ekranları için */
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 30px;
+    }
+
+    .service-buttons .custom-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
