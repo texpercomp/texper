@@ -153,11 +153,11 @@ strong {
     border: 2px solid transparent;
     border-radius: var(--border-radius-large);
     color: var(--white-color);
-    font-size: var(--btn-font-size);
+    font-size: 12px;
     font-weight: var(--font-weight-bold);
     line-height: normal;
     transition: all 0.3s;
-    padding: 6px 18px;
+    padding: 4px 12px;
 }
 
 .custom-btn:hover {
@@ -189,6 +189,14 @@ strong {
 
 .custom-btn-group .link:hover {
     color: var(--link-hover-color);
+}
+
+/* Mobil cihazlar için buton boyutunu küçültme */
+@media (max-width: 768px) {
+    .custom-btn {
+        font-size: 10px; /* Mobil cihazlarda yazı boyutunu küçült */
+        padding: 3px 8px; /* Mobil cihazlarda dolguyu küçült */
+    }
 }
 
 /*---------------------------------------
