@@ -345,14 +345,14 @@
         });
 
         // Ok simgesinin görünürlüğünü kontrol et
-        window.addEventListener('scroll', function() {
-            const scrollDownButton = document.getElementById('scroll-down');
-            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-                scrollDownButton.style.display = 'none'; // Sayfa sonuna gelindiğinde ok simgesini gizle
-            } else {
-                scrollDownButton.style.display = 'block'; // Sayfa üstündeyken ok simgesini göster
-            }
-        });
+window.addEventListener('scroll', function() {
+    const scrollDownButton = document.getElementById('scroll-down');
+    if (window.scrollY > 10) {
+        scrollDownButton.style.display = 'none'; // Sayfa biraz aşağı kayınca gizle
+    } else {
+        scrollDownButton.style.display = 'block'; // Sayfa en üstteyken göster
+    }
+});
     </script>
 </body>
 
