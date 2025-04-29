@@ -7,7 +7,8 @@
     <title>Destek Programları &mdash; Texper Bilişim</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Texper Bilişim Uzak Masaüstü Destek Programları" />
-    <meta name="keywords" content="uzak destek, masaüstü bağlantısı, alpemix, anydesk, rustdesk, teamviewer, vnc, zoho assist, texper bilişim destek" />
+    <meta name="keywords"
+        content="uzak destek, masaüstü bağlantısı, alpemix, anydesk, rustdesk, teamviewer, vnc, zoho assist, texper bilişim destek" />
     <meta name="author" content="Texper Bilişim" />
     <link rel="shortcut icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
@@ -151,6 +152,57 @@
                 transform: none;
             }
         }
+
+        /* Sağ Alt Köşe İletişim Butonları */
+        .contact-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+            /* Diğer elementlerin üzerinde görünmesi için yüksek bir z-index */
+        }
+
+        .contact-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            color: #000;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            /* Yuvarlak butonlar için */
+            width: 50px;
+            height: 50px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .contact-button i {
+            font-size: 24px;
+        }
+
+        /* WhatsApp Butonu Yeşil */
+        .whatsapp-button {
+            color: #25D366;
+        }
+
+        /* Telefon Butonu Mavi */
+        .phone-button {
+            color: #007bff;
+        }
+
+        /* E-posta Butonu Kırmızı */
+        .email-button {
+            color: #dc3545;
+        }
     </style>
     <script src="js/modernizr-2.6.2.min.js"></script>
 </head>
@@ -173,7 +225,8 @@
                 </ul>
             </nav>
             <div class="fh5co-footer">
-                <p><small>&copy; 2021 Texper Bilişim. Tüm Hakları Saklıdır.</span> <span>Texper tarafından kurulmuştur.</span></small></p>
+                <p><small>&copy; 2021 Texper Bilişim. Tüm Hakları Saklıdır.</span> <span>Texper tarafından
+                        kurulmuştur.</span></small></p>
                 <ul>
                     <li><a href="#" aria-label="Facebook"><i class="icon-facebook2"></i></a></li>
                     <li><a href="#" aria-label="Twitter"><i class="icon-twitter2"></i></a></li>
@@ -187,7 +240,8 @@
             <div class="fh5co-narrow-content support-section">
                 <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Destek Programları</h2>
                 <p class="animate-box" data-animate-effect="fadeInLeft">
-                    Aşağıda, size daha iyi destek verebilmemiz için kullanabileceğiniz uzak masaüstü bağlantı programlarını bulabilirsiniz. Lütfen
+                    Aşağıda, size daha iyi destek verebilmemiz için kullanabileceğiniz uzak masaüstü bağlantı programlarını
+                    bulabilirsiniz. Lütfen
                     işletim sisteminize uygun olanı seçin ve indirin.
                 </p>
 
@@ -202,7 +256,8 @@
                         </a>
                     </div>
                     <div class="support-buttons other-programs">
-                        <a href="https://download.anydesk.com/AnyDesk.exe" class="support-button" aria-label="AnyDesk İndir">
+                        <a href="https://download.anydesk.com/AnyDesk.exe" class="support-button"
+                            aria-label="AnyDesk İndir">
                             <i class="icon-share program-icon"></i> AnyDesk
                         </a>
                         <a href="https://github.com/rustdesk/rustdesk/releases/download/1.2.3/rustdesk-1.2.3-x86_64.exe"
@@ -235,7 +290,8 @@
                         </a>
                     </div>
                     <div class="support-buttons other-programs">
-                        <a href="https://download.anydesk.com/anydesk.dmg" class="support-button" aria-label="AnyDesk İndir">
+                        <a href="https://download.anydesk.com/anydesk.dmg" class="support-button"
+                            aria-label="AnyDesk İndir">
                             <i class="icon-share program-icon"></i> AnyDesk
                         </a>
                         <a href="https://github.com/rustdesk/rustdesk/releases/download/1.2.3/rustdesk-1.2.3-x86_64.dmg"
@@ -258,6 +314,19 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="contact-buttons">
+        <a href="https://wa.me/905314017375" class="contact-button whatsapp-button" target="_blank"
+            aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:+905314017375" class="contact-button phone-button" aria-label="Telefon">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="mailto:info@texperbilisim.com.tr" class="contact-button email-button" aria-label="E-posta">
+            <i class="far fa-envelope"></i>
+        </a>
     </div>
 
     <script src="js/jquery.min.js"></script>
