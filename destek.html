@@ -7,7 +7,7 @@
     <title>Destek Programları &mdash; Texper Bilişim</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Texper Bilişim Uzak Masaüstü Destek Programları" />
-    <meta name="keywords" content="uzak destek, masaüstü bağlantısı, alpemix, anydesk, rustdesk, texper bilişim destek" />
+    <meta name="keywords" content="uzak destek, masaüstü bağlantısı, alpemix, anydesk, rustdesk, teamviewer, vnc, zoho assist, texper bilişim destek" />
     <meta name="author" content="Texper Bilişim" />
     <link rel="shortcut icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
@@ -19,8 +19,11 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/flexslider.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* Destek Sayfasına Özel Stiller */
+        /* Genel Stiller */
         .support-section {
             padding: 80px 0;
         }
@@ -33,17 +36,48 @@
             text-align: center;
         }
 
+        .support-section p {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #555;
+            /* Açıklama metni rengi koyulaştırıldı */
+        }
+
+        .platform-card {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .platform-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .platform-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
         .support-buttons {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
             gap: 20px;
-            margin-top: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         .support-button {
             background-color: #f8f9fa;
-            /* Açık gri */
             color: #333;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -56,30 +90,66 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-width: 250px;
-        }
-
-        .support-button i {
-            margin-right: 8px;
+            gap: 10px;
+            white-space: nowrap;
+            min-width: 200px;
         }
 
         .support-button:hover {
             background-color: #e9ecef;
-            /* Biraz daha koyu açık gri */
+            transform: scale(1.05);
         }
 
-        .platform-title {
-            font-size: 2rem;
-            /* Daha büyük bir font boyutu */
-            font-weight: bold;
-            /* Kalın yazı tipi */
-            color: #333;
-            /* Ana temadaki başlık rengi */
-            margin-top: 40px;
-            margin-bottom: 15px;
-            text-align: center;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
+        .program-icon {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+
+        .platform-icon {
+            margin-right: 5px;
+        }
+
+        .other-programs {
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        /* Alpemix Butonu Stilleri */
+        .alpemix-button {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
+        .alpemix-button:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        /* Animasyon Stilleri */
+        .animate-box {
+            /* Bu sınıfı genel olarak kullanabilirsiniz */
+            opacity: 0;
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+        .fadeInLeft {
+            /* Bu sınıfı da genel olarak kullanabilirsiniz */
+            animation-name: fadeInLeft;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translate3d(-20px, 0, 0);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
         }
     </style>
     <script src="js/modernizr-2.6.2.min.js"></script>
@@ -89,54 +159,101 @@
     <div id="fh5co-page">
         <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
         <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
-            <h1 id="fh5co-logo"><a href="index.html">Texper</a></h1>
+            <h1 id="fh5co-logo"><a href="index.html" aria-label="Texper Bilişim Anasayfası">Texper</a></h1>
             <nav id="fh5co-main-menu" role="navigation">
                 <ul>
-                    <li><a href="index.html">Anasayfa</a></li>
+                    <li><a href="index.html" aria-current="page">Anasayfa</a></li>
                     <li><a href="cozum.html">Çözümlerimiz</a></li>
                     <li><a href="blog.html">Neler yapıyoruz</a></li>
                     <li><a href="portfolio.html">Referanslar</a></li>
                     <li><a href="about.html">Hakkımızda</a></li>
                     <li><a href="contact.html">Bize ulaşın</a></li>
                     <li><a href="programlar.html">Programlar</a></li>
+                    <li class="fh5co-active"><a href="destek.html">Destek</a></li>
                 </ul>
             </nav>
             <div class="fh5co-footer">
-                <p><small>&copy; 2021 Texper Bilişim. Tüm Hakları Saklıdır.</small> <span>Texper tarafından kurulmuştur.</span></p>
+                <p><small>&copy; 2021 Texper Bilişim. Tüm Hakları Saklıdır.</span> <span>Texper tarafından kurulmuştur.</span></small></p>
                 <ul>
                     <li><a href="#" aria-label="Facebook"><i class="icon-facebook2"></i></a></li>
                     <li><a href="#" aria-label="Twitter"><i class="icon-twitter2"></i></a></li>
                     <li><a href="#" aria-label="Instagram"><i class="icon-instagram"></i></a></li>
                     <li><a href="#" aria-label="LinkedIn"><i class="icon-linkedin2"></i></a></li>
                 </ul>
-                <a href="https://onedrive.live.com/:x:/g/personal/D9E2670E00DA7B49/EUl72gAOZ-IggNlaBgAAAAABlL7cQ4yqRsurxyq5kRFm6g?resid=D9E2670E00DA7B49!1626&ithint=file%2Cxlsx&e=y4ruAx&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy9kOWUyNjcwZTAwZGE3YjQ5L0VVbDcyZ0FPWi1JZ2dObGFCZ0FBQUFBQmxMN2NRNHlxUnN1cnh5cTVrUkZtNmc_ZT15NHJ1QXg"
-                    target="_blank" class="software-button">Software</a>
+                <a href="https://onedrive.live.com/Software" target="_blank" class="software-button">Software</a>
             </div>
         </aside>
         <div id="fh5co-main">
             <div class="fh5co-narrow-content support-section">
                 <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Destek Programları</h2>
-                <div class="animate-box" data-animate-effect="fadeInLeft">
-                    <p class="platform-title">Windows</p>
+                <p class="animate-box" data-animate-effect="fadeInLeft">
+                    Aşağıda, size daha iyi destek verebilmemiz için kullanabileceğiniz uzak masaüstü bağlantı programlarını bulabilirsiniz. Lütfen
+                    işletim sisteminize uygun olanı seçin ve indirin.
+                </p>
+
+                <div class="platform-card animate-box" data-animate-effect="fadeInLeft">
+                    <p class="platform-title">
+                        <i class="fab fa-windows platform-icon"></i> Windows
+                    </p>
                     <div class="support-buttons">
-                        <a href="https://www.alpemix.com/site/Alpemix.exe" class="support-button"><i
-                                class="icon-monitor"></i> Alpemix</a>
-                        <a href="https://download.anydesk.com/AnyDesk.exe" class="support-button"><i
-                                class="icon-share"></i> AnyDesk</a>
-                        <a href="https://my.microsoftpersonalcontent.com/personal/d9e2670e00da7b49/_layouts/15/download.aspx?UniqueId=748c0de8-0170-4df6-805e-27e919aacd95"
-                            class="support-button"><i class="icon-upload"></i> RustDesk</a>
+                        <a href="https://www.alpemix.com/site/Alpemix.exe" class="support-button alpemix-button"
+                            aria-label="Alpemix İndir">
+                            <i class="icon-monitor program-icon"></i> Alpemix
+                        </a>
+                    </div>
+                    <div class="support-buttons other-programs">
+                        <a href="https://download.anydesk.com/AnyDesk.exe" class="support-button" aria-label="AnyDesk İndir">
+                            <i class="icon-share program-icon"></i> AnyDesk
+                        </a>
+                        <a href="https://github.com/rustdesk/rustdesk/releases/download/1.2.3/rustdesk-1.2.3-x86_64.exe"
+                            class="support-button" aria-label="RustDesk İndir">
+                            <i class="icon-upload program-icon"></i> RustDesk
+                        </a>
+                        <a href="https://www.teamviewer.com/en/download/windows/" class="support-button"
+                            aria-label="TeamViewer İndir">
+                            <i class="icon-download program-icon"></i> TeamViewer
+                        </a>
+                        <a href="https://www.realvnc.com/en/connect/download/viewer/" class="support-button"
+                            aria-label="VNC Viewer İndir">
+                            <i class="icon-display program-icon"></i> VNC Viewer
+                        </a>
+                        <a href="https://www.zoho.com/assist/download/" class="support-button"
+                            aria-label="Zoho Assist İndir">
+                            <i class="icon-settings program-icon"></i> Zoho Assist
+                        </a>
                     </div>
                 </div>
 
-                <div class="animate-box" data-animate-effect="fadeInLeft" style="margin-top: 50px;">
-                    <p class="platform-title">macOS</p>
+                <div class="platform-card animate-box" data-animate-effect="fadeInLeft">
+                    <p class="platform-title">
+                        <i class="fab fa-apple platform-icon"></i> macOS
+                    </p>
                     <div class="support-buttons">
-                        <a href="https://www.alpemix.com/site/mac/arm/V2.4/AlpemixPro.zip" class="support-button"><i
-                                class="icon-monitor"></i> Alpemix</a>
-                        <a href="https://download.anydesk.com/anydesk.dmg" class="support-button"><i
-                                class="icon-share"></i> AnyDesk</a>
-                        <a href="https://my.microsoftpersonalcontent.com/personal/d9e2670e00da7b49/_layouts/15/download.aspx?UniqueId=701f8df8-0c69-448e-be9b-acd78a619afc"
-                            class="support-button"><i class="icon-upload"></i> RustDesk</a>
+                        <a href="https://www.alpemix.com/site/mac/arm/V2.4/AlpemixPro.zip"
+                            class="support-button alpemix-button" aria-label="Alpemix İndir">
+                            <i class="icon-monitor program-icon"></i> Alpemix
+                        </a>
+                    </div>
+                    <div class="support-buttons other-programs">
+                        <a href="https://download.anydesk.com/anydesk.dmg" class="support-button" aria-label="AnyDesk İndir">
+                            <i class="icon-share program-icon"></i> AnyDesk
+                        </a>
+                        <a href="https://github.com/rustdesk/rustdesk/releases/download/1.2.3/rustdesk-1.2.3-x86_64.dmg"
+                            class="support-button" aria-label="RustDesk İndir">
+                            <i class="icon-upload program-icon"></i> RustDesk
+                        </a>
+                        <a href="https://www.teamviewer.com/en/download/macos/" class="support-button"
+                            aria-label="TeamViewer İndir">
+                            <i class="icon-download program-icon"></i> TeamViewer
+                        </a>
+                        <a href="https://www.realvnc.com/en/connect/download/viewer/" class="support-button"
+                            aria-label="VNC Viewer İndir">
+                            <i class="icon-display program-icon"></i> VNC Viewer
+                        </a>
+                        <a href="https://www.zoho.com/assist/download/" class="support-button"
+                            aria-label="Zoho Assist İndir">
+                            <i class="icon-settings program-icon"></i> Zoho Assist
+                        </a>
                     </div>
                 </div>
             </div>
