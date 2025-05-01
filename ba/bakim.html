@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Veri Merkezi Sunucusu Girişi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        /* Genel Stiller */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a202c;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .login-container {
+            background-color: rgba(26, 32, 44, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            text-align: center;
+            width: 85%;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .texper-logo {
+            font-size: 2em;
+            color: #007bff;
+            margin-bottom: 30px;
+            font-weight: bold;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            color: #a0aec0;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: #2d3748;
+            color: #ffffff;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #4dc0b5, #56ccf2);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        button[type="submit"]:hover {
+            opacity: 0.8;
+        }
+
+        .maintenance-alert {
+            background-color: #f0ad4e;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.9em;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .error-message {
+            background-color: #e53e3e;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.9em;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .additional-info {
+            font-size: 0.9em;
+            color: #718096;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 30px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Arka plan animasyonu */
+        .bg-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.4;
+            animation: bgAnimation 20s linear infinite;
+        }
+
+        @keyframes bgAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/animate.js"></script>
+    <script>
+        window.onload = function() {
+            var form = document.querySelector('form');
+            var backButton = document.querySelector('.back-button');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                var errorMessageDiv = document.createElement('div');
+                errorMessageDiv.classList.add('error-message');
+                errorMessageDiv.textContent = 'Sunucu geçici olarak kullanılamıyor. Lütfen daha sonra tekrar deneyin.';
+                form.parentNode.insertBefore(errorMessageDiv, form.nextSibling);
+
+                form.style.display = 'none';
+                document.querySelector('.maintenance-alert').style.display = 'none';
+                document.querySelector('.additional-info').style.display = 'none';
+                backButton.style.display = 'block';
+            });
+        };
+    </script>
+</head>
+
+<body>
+    <div class="bg-animation" style="background: linear-gradient(-45deg, #444, #555, #444, #333);"></div>
+    <div class="login-container">
+        <div class="texper-logo">Texper DC</div>
+        <h1>Sunucu Girişi</h1>
+        <form>
+            <div class="form-group">
+                <label for="username">Kullanıcı Adı</label>
+                <input type="text" id="username" name="username" placeholder="Kullanıcı adınızı girin">
+            </div>
+            <div class="form-group">
+                <label for="password">Şifre</label>
+                <input type="password" id="password" name="password" placeholder="Şifrenizi girin">
+            </div>
+            <button type="submit">Giriş</button>
+        </form>
+        <div class="maintenance-alert">
+            <i class="icon-warning"></i> Dikkat: Planlı bakım nedeniyle bazı hizmetlerde yavaşlamalar olabilir.
+        </div>
+        <div class="additional-info">
+            <p>Son bakım tarihi: 2023-10-27</p>
+        </div>
+        <a href="index.html" class="back-button" style="display: block;">Anasayfaya Dön</a>
+    </div>
+</body>
+
+</html>

