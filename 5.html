@@ -174,15 +174,16 @@
             background-color: var(--border-color);
         }
         
-        /* YATAY İKİ GRAFİK KAPSAYICISI - YENİ BOYUTLAR */
+        /* DÖRT GRAFİK KAPSAYICISI - YENİ DÜZEN */
         .top-charts-container {
-            display: flex; 
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
             flex-shrink: 0;
-            height: 22%; 
+            height: 35%; 
             gap: 10px; 
         }
-        .chart-box-half {
-            flex: 1; 
+        .chart-box-quarter {
             background-color: var(--panel-bg); 
             border: 1px solid var(--border-color); 
             padding: 8px; 
@@ -191,7 +192,7 @@
             position: relative;
             overflow: hidden;
         }
-        .chart-box-half::after {
+        .chart-box-quarter::after {
             content: "";
             position: absolute;
             bottom: 0;
@@ -203,7 +204,7 @@
             transform-origin: left;
             transition: transform 0.5s;
         }
-        .chart-box-half:hover::after {
+        .chart-box-quarter:hover::after {
             transform: scaleX(1);
         }
         .chart-title {
@@ -251,7 +252,17 @@
             text-align: center;
         }
 
-        /* LOG VE ALT GRAFİK BÖLÜMLERİ */
+        /* LOG VE ALT GRAFİK BÖLÜMLERİ - DARALTILMIŞ */
+        .log-and-graphs-container {
+            display: flex;
+            flex-grow: 1;
+            gap: 10px;
+        }
+        .log-panel-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
         .log-and-graphs-panel { 
             flex-grow: 1; 
             display: flex; 
@@ -323,6 +334,50 @@
             color: var(--text-secondary); 
             text-align: center; 
             margin-bottom: 4px; 
+        }
+
+        /* YENİ EKLENEN ALARM PANELİ */
+        .alerts-panel {
+            flex: 0 0 30%;
+            display: flex;
+            flex-direction: column;
+        }
+        .alert-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            background-color: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            padding: 5px;
+        }
+        .alert-item {
+            padding: 6px;
+            margin-bottom: 5px;
+            border-radius: 3px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            border-left: 3px solid var(--accent-yellow);
+        }
+        .alert-item.critical {
+            border-left-color: var(--accent-red);
+            background-color: rgba(248, 81, 73, 0.1);
+        }
+        .alert-item.warning {
+            border-left-color: var(--accent-yellow);
+            background-color: rgba(210, 153, 34, 0.1);
+        }
+        .alert-item.info {
+            border-left-color: var(--accent-blue);
+            background-color: rgba(88, 166, 255, 0.1);
+        }
+        .alert-time {
+            font-size: 9px;
+            color: var(--text-secondary);
+            margin-right: 8px;
+            min-width: 40px;
+        }
+        .alert-content {
+            flex-grow: 1;
         }
 
         /* STATUS LISTESİ VE DİĞER STİLLER */
@@ -421,10 +476,11 @@
                 padding-top: 10px;
             }
             .top-charts-container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 1fr);
                 height: auto;
             }
-            .chart-box-half {
+            .chart-box-quarter {
                 height: 150px;
             }
             .header {
@@ -438,6 +494,13 @@
                 position: static;
                 transform: none;
                 align-self: flex-end;
+            }
+            .log-and-graphs-container {
+                flex-direction: column;
+            }
+            .alerts-panel {
+                flex: 0 0 auto;
+                height: 200px;
             }
         }
         
@@ -541,15 +604,25 @@
         <div class="main-content">
             
             <div class="top-charts-container">
-                <div class="chart-box-half">
+                <div class="chart-box-quarter">
                     <div class="refresh-indicator" id="traffic-refresh"></div>
-                    <div class="chart-title">AGGREGATED NETWORK TRAFFIC (RX/TX)</div>
-                    <canvas id="trafficChartAggregated"></canvas>
+                    <div class="chart-title">NETWORK TRAFFIC - TX (MB/S)</div>
+                    <canvas id="trafficChartTX"></canvas>
                 </div>
-                <div class="chart-box-half">
+                <div class="chart-box-quarter">
+                    <div class="refresh-indicator" id="traffic-refresh"></div>
+                    <div class="chart-title">NETWORK TRAFFIC - RX (MB/S)</div>
+                    <canvas id="trafficChartRX"></canvas>
+                </div>
+                <div class="chart-box-quarter">
                     <div class="refresh-indicator" id="latency-refresh"></div>
-                    <div class="chart-title">PRIMARY SERVER LATENCY TREND (MS)</div>
+                    <div class="chart-title">SERVER LATENCY TREND (MS)</div>
                     <canvas id="latencyTrendChart"></canvas>
+                </div>
+                <div class="chart-box-quarter">
+                    <div class="refresh-indicator" id="packet-refresh"></div>
+                    <div class="chart-title">PACKET LOSS RATE (%)</div>
+                    <canvas id="packetLossChart"></canvas>
                 </div>
             </div>
 
@@ -577,39 +650,70 @@
                 </div>
             </div>
 
-            <div class="panel">
-                <div class="title">
-                    REAL-TIME CONSOLE & PERFORMANCE TRENDS
-                    <span class="title-badge" id="log-count">0 logs</span>
-                </div>
-                <div class="log-and-graphs-panel">
-                    <div class="log-panel-header">
-                        <span>SYSTEM LOG STREAM</span>
-                        <div class="log-controls">
-                            <button id="clear-logs">Clear</button>
-                            <button id="pause-logs">Pause</button>
+            <div class="log-and-graphs-container">
+                <div class="log-panel-container">
+                    <div class="panel">
+                        <div class="title">
+                            REAL-TIME CONSOLE & PERFORMANCE TRENDS
+                            <span class="title-badge" id="log-count">0 logs</span>
                         </div>
-                    </div>
-                    
-                    <div class="log-panel" id="log-stream">
-                        <div style="font-size: 11px; color: var(--text-primary);">
-                            [SYSTEM] Console Active: Awaiting input<span class="cursor">_</span>
-                        </div>
-                    </div>
+                        <div class="log-and-graphs-panel">
+                            <div class="log-panel-header">
+                                <span>SYSTEM LOG STREAM</span>
+                                <div class="log-controls">
+                                    <button id="clear-logs">Clear</button>
+                                    <button id="pause-logs">Pause</button>
+                                </div>
+                            </div>
+                            
+                            <div class="log-panel" id="log-stream">
+                                <div style="font-size: 11px; color: var(--text-primary);">
+                                    [SYSTEM] Console Active: Awaiting input<span class="cursor">_</span>
+                                </div>
+                            </div>
 
-                    <div class="bottom-graphs">
-                        <div class="small-chart-container">
-                            <div class="refresh-indicator" id="disk-refresh"></div>
-                            <div class="small-chart-title">SERVER DISK LATENCY (MS)</div>
-                            <canvas id="latencyChart"></canvas>
-                        </div>
-                        <div class="small-chart-container">
-                            <div class="refresh-indicator" id="memory-refresh"></div>
-                            <div class="small-chart-title">VIRTUAL MEMORY POOL USAGE (%)</div>
-                            <canvas id="memoryChart"></canvas>
+                            <div class="bottom-graphs">
+                                <div class="small-chart-container">
+                                    <div class="refresh-indicator" id="disk-refresh"></div>
+                                    <div class="small-chart-title">SERVER DISK LATENCY (MS)</div>
+                                    <canvas id="latencyChart"></canvas>
+                                </div>
+                                <div class="small-chart-container">
+                                    <div class="refresh-indicator" id="memory-refresh"></div>
+                                    <div class="small-chart-title">VIRTUAL MEMORY POOL USAGE (%)</div>
+                                    <canvas id="memoryChart"></canvas>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
+                </div>
+                
+                <div class="alerts-panel">
+                    <div class="panel">
+                        <div class="title">ACTIVE SECURITY ALERTS</div>
+                        <div class="alert-list" id="alert-list">
+                            <div class="alert-item critical">
+                                <div class="alert-time">14:23</div>
+                                <div class="alert-content">Multiple failed login attempts from 192.168.1.105</div>
+                            </div>
+                            <div class="alert-item warning">
+                                <div class="alert-time">14:15</div>
+                                <div class="alert-content">Unusual traffic pattern detected on ETH2 interface</div>
+                            </div>
+                            <div class="alert-item info">
+                                <div class="alert-time">13:58</div>
+                                <div class="alert-content">Database backup completed successfully</div>
+                            </div>
+                            <div class="alert-item warning">
+                                <div class="alert-time">13:42</div>
+                                <div class="alert-content">CPU usage above threshold on DC-SERVER-02</div>
+                            </div>
+                            <div class="alert-item info">
+                                <div class="alert-time">13:30</div>
+                                <div class="alert-content">Security policy update applied</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -746,6 +850,18 @@
         let isPaused = false;
         let totalLogs = 0;
         
+        // Alert mesajları
+        const alertMessages = [
+            {type: 'critical', message: 'Multiple failed login attempts from '},
+            {type: 'warning', message: 'Unusual traffic pattern detected on '},
+            {type: 'info', message: 'Database backup completed successfully'},
+            {type: 'warning', message: 'CPU usage above threshold on '},
+            {type: 'info', message: 'Security policy update applied'},
+            {type: 'critical', message: 'Firewall policy violation detected from '},
+            {type: 'warning', message: 'High memory usage on '},
+            {type: 'info', message: 'Scheduled maintenance completed'}
+        ];
+        
         // Log mesajları
         const logMsgs = [
             "[INFO] Connection established (VoIP-Call): ", "[INFO] Database query executed (DC-SERVER-01): ", "[TASK] Initiating Cloud Sync on BACKUP-NAS-01: ", 
@@ -768,6 +884,7 @@
         // --- 2. Element Tanımlamaları ve Grafik Tanımlamaları ---
         const statusPanel = document.getElementById('status-panel');
         const logStream = document.getElementById('log-stream'); 
+        const alertList = document.getElementById('alert-list');
         const securityEventsEl = document.getElementById('securityEvents');
         const backupUsedEl = document.getElementById('backupUsed');
         const cloudUsedEl = document.getElementById('cloudUsed');
@@ -790,7 +907,7 @@
         const actionClearBtn = document.getElementById('action-clear');
         const actionRefreshBtn = document.getElementById('action-refresh');
         
-        const chartDataSize = 30;
+        const chartDataSize = 20;
         const chartLabels = Array.from({length: chartDataSize}, () => '');
         let initialLatency = 3;
         let initialMemory = 65;
@@ -809,8 +926,8 @@
             }
         };
 
-        // Grafikleri oluştur
-        const trafficChartAggregated = new Chart(document.getElementById('trafficChartAggregated').getContext('2d'), {
+        // Dört yeni grafik oluştur
+        const trafficChartTX = new Chart(document.getElementById('trafficChartTX').getContext('2d'), {
             type: 'line',
             data: {
                 labels: chartLabels,
@@ -822,7 +939,17 @@
                         backgroundColor: 'rgba(88, 166, 255, 0.1)', 
                         fill: true,
                         borderWidth: 1
-                    }, 
+                    }
+                ]
+            },
+            options: lineChartOptions
+        });
+
+        const trafficChartRX = new Chart(document.getElementById('trafficChartRX').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: chartLabels,
+                datasets: [
                     { 
                         label: 'RX (MB/s)', 
                         data: Array.from({length: chartDataSize}, () => Math.floor(Math.random() * 30) + 10), 
@@ -854,6 +981,28 @@
                 scales: { 
                     x: { display: false }, 
                     y: { display: false, beginAtZero: true, max: 60 } 
+                } 
+            }
+        });
+
+        const packetLossChart = new Chart(document.getElementById('packetLossChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: chartLabels,
+                datasets: [{ 
+                    label: 'Packet Loss (%)', 
+                    data: Array.from({length: chartDataSize}, () => Math.random() * 2), 
+                    borderColor: '#d29922', 
+                    backgroundColor: 'rgba(210, 153, 34, 0.1)', 
+                    fill: true,
+                    borderWidth: 1
+                }]
+            },
+            options: { 
+                ...lineChartOptions, 
+                scales: { 
+                    x: { display: false }, 
+                    y: { display: false, beginAtZero: true, max: 5 } 
                 } 
             }
         });
@@ -955,6 +1104,39 @@
             dataRequestsEl.textContent = Math.floor(Math.random() * 2000 + 4000).toLocaleString();
             dataConnectionsEl.textContent = Math.floor(Math.random() * 500 + 1000).toLocaleString();
             dataResponseEl.textContent = Math.floor(Math.random() * 20 + 30) + " ms";
+        }
+
+        // Alert ekleme fonksiyonu
+        function addRandomAlert() {
+            if (Math.random() < 0.3) { // %30 olasılıkla yeni alert ekle
+                const alert = getRandomItem(alertMessages);
+                const alertItem = document.createElement('div');
+                alertItem.className = `alert-item ${alert.type}`;
+                
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+                
+                let message = alert.message;
+                if (message.includes('from') && !message.includes('successfully') && !message.includes('applied')) {
+                    message += generateRandomIP();
+                } else if (message.includes('on') && !message.includes('interface')) {
+                    message += getRandomItem(['DC-SERVER-01', 'DC-SERVER-02', 'BACKUP-NAS-01', 'CLOUD-SYNC-GW']);
+                } else if (message.includes('on') && message.includes('interface')) {
+                    message += getRandomItem(['ETH0', 'ETH1', 'ETH2', 'ETH3']);
+                }
+                
+                alertItem.innerHTML = `
+                    <div class="alert-time">${timeString}</div>
+                    <div class="alert-content">${message}</div>
+                `;
+                
+                alertList.insertBefore(alertItem, alertList.firstChild);
+                
+                // En fazla 5 alert olsun
+                if (alertList.children.length > 5) {
+                    alertList.removeChild(alertList.lastChild);
+                }
+            }
         }
 
         // Log sonu çeşitlendirici fonksiyon
@@ -1121,16 +1303,23 @@
             const localBase = 1.2;
             localUsedEl.innerHTML = (localBase + (Math.random() * 0.02) - 0.01).toFixed(1) + ' <span class="unit">TB</span>';
 
-            trafficChartAggregated.data.datasets[0].data.shift(); 
-            trafficChartAggregated.data.datasets[0].data.push(Math.floor(Math.random() * 20) + 5);
-            trafficChartAggregated.data.datasets[1].data.shift(); 
-            trafficChartAggregated.data.datasets[1].data.push(Math.floor(Math.random() * 30) + 10);
+            // Dört grafiği güncelle
+            trafficChartTX.data.datasets[0].data.shift(); 
+            trafficChartTX.data.datasets[0].data.push(Math.floor(Math.random() * 20) + 5);
+            
+            trafficChartRX.data.datasets[0].data.shift(); 
+            trafficChartRX.data.datasets[0].data.push(Math.floor(Math.random() * 30) + 10);
             
             latencyTrendChart.data.datasets[0].data.shift(); 
             latencyTrendChart.data.datasets[0].data.push(Math.floor(Math.random() * 50) + 2);
+            
+            packetLossChart.data.datasets[0].data.shift(); 
+            packetLossChart.data.datasets[0].data.push(Math.random() * 2);
 
-            trafficChartAggregated.update('none'); 
+            trafficChartTX.update('none'); 
+            trafficChartRX.update('none');
             latencyTrendChart.update('none');
+            packetLossChart.update('none');
             
             let uptimeMinutes = (new Date() - new Date(Date.now() - (3600000 * 24 * 7))) / 60000;	
             const days = Math.floor(uptimeMinutes / (24 * 60));
@@ -1204,6 +1393,7 @@
         setInterval(updateFixedCharts, 3600000);
         setInterval(updateHeaderTime, 1000);
         setInterval(updateDataBoxes, 5000);
+        setInterval(addRandomAlert, 10000); // Her 10 saniyede bir yeni alert
     </script>
 </body>
 </html>
