@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEXPER CLOUD / OVERVIEW</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <style>
+        /* TEMEL STİL VE EFEKTLER */
+        :root {
+            --primary-bg: #0d1117;
+            --panel-bg: #161b22;
+            --border-color: #30363d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent-blue: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-red: #f85149;
+            --accent-yellow: #d29922;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--primary-bg); 
+            color: var(--text-primary); 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            line-height: 1.5;
+            position: relative; 
+        }
+
+        .scan-lines {
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            pointer-events: none;
+            background: 
+                linear-gradient(rgba(13, 17, 23, 0.1) 50%, rgba(13, 17, 23, 0.4) 50%),
+                linear-gradient(90deg, rgba(13, 17, 23, 0.02) 50%, rgba(13, 17, 23, 0.1) 50%);
+            background-size: 100% 2px, 2px 100%; 
+            opacity: 0.1; 
+            z-index: 1000;
+        }
+
+        /* YERLEŞİM STİLLERİ */
+        .header {
+            padding: 12px 20px; 
+            font-size: 22px; 
+            font-weight: 700; 
+            text-align: left; 
+            border-bottom: 1px solid var(--border-color); 
+            background-color: var(--panel-bg); 
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .header-time {
+            font-size: 14px;
+            color: var(--accent-blue);
+            font-weight: normal;
+        }
+        .header-status {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: var(--accent-green);
+            display: flex;
+            align-items: center;
+        }
+        .header-status::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--accent-green);
+            margin-right: 6px;
+            animation: status-pulse 2s infinite;
+        }
+        @keyframes status-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(63, 185, 80, 0.7); }
+            70% { box-shadow: 0 0 0 5px rgba(63, 185, 80, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(63, 185, 80, 0); }
+        }
+        .container {
+            display: flex; 
+            flex-grow: 1; 
+            padding: 15px; 
+            z-index: 10;
+            overflow: hidden;
+        }
+        .main-content {
+            width: 70%; 
+            margin-right: 15px; 
+            display: flex; 
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .sidebar {
+            width: 30%; 
+            border-left: 1px solid var(--border-color); 
+            padding-left: 15px;
+            overflow-y: auto;
+        }
+        
+        /* PANELLER */
+        .panel {
+            background-color: var(--panel-bg); 
+            border: 1px solid var(--border-color); 
+            padding: 15px; 
+            margin-bottom: 15px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+            display: flex; 
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .panel::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        .panel:hover::before {
+            left: 100%;
+        }
+        .panel:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.3);
+        }
+        .title {
+            font-size: 14px; 
+            font-weight: 600; 
+            margin-bottom: 10px; 
+            color: var(--accent-blue); 
+            border-bottom: 1px dashed var(--border-color); 
+            padding-bottom: 5px; 
+            text-transform: uppercase; 
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .title-badge {
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background-color: var(--border-color);
+        }
+        
+        /* YATAY İKİ GRAFİK KAPSAYICISI - YENİ BOYUTLAR */
+        .top-charts-container {
+            display: flex; 
+            flex-shrink: 0;
+            height: 30%; 
+            gap: 15px; 
+            margin-bottom: 15px;
+        }
+        .chart-box-half {
+            flex: 1; 
+            background-color: var(--panel-bg); 
+            border: 1px solid var(--border-color); 
+            padding: 10px; 
+            display: flex; 
+            flex-direction: column; 
+            position: relative;
+            overflow: hidden;
+        }
+        .chart-box-half::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s;
+        }
+        .chart-box-half:hover::after {
+            transform: scaleX(1);
+        }
+        .chart-title {
+            font-size: 13px; 
+            font-weight: 600; 
+            color: var(--accent-blue); 
+            margin-bottom: 5px; 
+            text-align: center;
+        }
+
+        /* YENİ EKLENEN PANEL */
+        .additional-panel {
+            flex-shrink: 0;
+            height: 20%;
+            margin-bottom: 15px;
+        }
+        .additional-panel .panel-content {
+            display: flex;
+            height: 100%;
+            gap: 15px;
+        }
+        .data-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(13, 17, 23, 0.5);
+            border-radius: 4px;
+            padding: 10px;
+            transition: all 0.3s;
+        }
+        .data-box:hover {
+            background-color: rgba(22, 27, 34, 0.8);
+            transform: translateY(-2px);
+        }
+        .data-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .data-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        /* LOG VE ALT GRAFİK BÖLÜMLERİ */
+        .log-and-graphs-panel { 
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        .log-panel { 
+            flex-grow: 1; 
+            overflow: hidden; 
+            position: relative; 
+            background-color: var(--primary-bg); 
+            font-size: 13px; 
+            padding: 5px 0; 
+            min-height: 200px; 
+            height: 100%; 
+            border: 1px solid var(--border-color);
+        }
+        .log-panel-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 10px;
+            background-color: var(--panel-bg);
+            border-bottom: 1px solid var(--border-color);
+            font-size: 12px;
+        }
+        .log-controls button {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 2px 8px;
+            margin-left: 5px;
+            cursor: pointer;
+            font-size: 10px;
+            transition: all 0.2s;
+        }
+        .log-controls button:hover {
+            background-color: var(--border-color);
+            color: var(--text-primary);
+        }
+        .bottom-graphs { 
+            flex-shrink: 0; 
+            height: 150px; 
+            margin-top: 15px; 
+            display: flex; 
+            gap: 15px; 
+        }
+        .small-chart-container { 
+            flex: 1; 
+            background-color: var(--primary-bg); 
+            padding: 10px; 
+            border: 1px solid var(--border-color); 
+            position: relative;
+            overflow: hidden;
+        }
+        .small-chart-container::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-yellow));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s;
+        }
+        .small-chart-container:hover::after {
+            transform: scaleX(1);
+        }
+        .small-chart-title { 
+            font-size: 11px; 
+            color: var(--text-secondary); 
+            text-align: center; 
+            margin-bottom: 5px; 
+        }
+
+        /* STATUS LISTESİ VE DİĞER STİLLER */
+        .device-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 6px 0; 
+            font-size: 14px; 
+            border-bottom: 1px dotted var(--border-color); 
+            transition: background-color 0.2s;
+        }
+        .device-item:hover {
+            background-color: rgba(48, 54, 61, 0.3);
+        }
+        .device-item:last-child { border-bottom: none; }
+        .status-container { font-weight: 600; }
+        .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; }
+        .status-text.ok { color: var(--accent-green); text-shadow: 0 0 5px rgba(63, 185, 80, 0.4); }
+        .status-text.waiting { color: var(--accent-yellow); text-shadow: 0 0 5px rgba(210, 153, 34, 0.4); }
+        .status-text.warn { color: var(--accent-yellow); text-shadow: 0 0 5px rgba(210, 153, 34, 0.4); }
+        .status-text.error { color: var(--accent-red); text-shadow: 0 0 5px rgba(248, 81, 73, 0.4); }
+        .status-dot { background-color: var(--text-secondary); }
+        .ok .status-dot { background-color: var(--accent-green); box-shadow: 0 0 5px var(--accent-green); } 
+        .waiting .status-dot { background-color: var(--accent-yellow); box-shadow: 0 0 7px var(--accent-yellow); animation: waiting-pulse 1s infinite alternate; } 
+        @keyframes waiting-pulse { from { opacity: 1; } to { opacity: 0.5; } }
+        
+        /* Kritik sistemler için özel animasyon */
+        .critical-pulse {
+            animation: critical-pulse 2s infinite;
+        }
+        @keyframes critical-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(248, 81, 73, 0.7); }
+            70% { box-shadow: 0 0 0 5px rgba(248, 81, 73, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(248, 81, 73, 0); }
+        }
+        
+        .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .metric-box {
+            position: relative;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: rgba(13, 17, 23, 0.5);
+            transition: all 0.3s;
+        }
+        .metric-box:hover {
+            background-color: rgba(22, 27, 34, 0.8);
+            transform: translateY(-2px);
+        }
+        .value { font-size: 20px; font-weight: 700; color: var(--text-primary); margin-top: 5px; display: block; }
+        .unit { font-size: 12px; color: var(--text-secondary); }
+        .audit-item { display: flex; justify-content: space-between; font-size: 13px; padding: 5px 0; border-bottom: 1px dotted var(--border-color); transition: background-color 0.2s; }
+        .audit-item:hover { background-color: rgba(48, 54, 61, 0.3); }
+        .log-line { position: absolute; width: 100%; white-space: pre; padding-left: 5px; transition: opacity 0.5s; }
+        .log-error { color: var(--accent-red); font-weight: bold; }
+        .log-warn { color: var(--accent-yellow); }
+        .log-waiting { color: var(--accent-yellow); font-weight: bold; }
+        .cursor { color: var(--text-primary); font-weight: bold; animation: blink 1s step-start infinite; margin-left: 3px; }
+        
+        /* Quick Actions Panel */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .action-btn {
+            background: linear-gradient(135deg, var(--panel-bg), var(--primary-bg));
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 5px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+        .action-btn:hover {
+            border-color: var(--accent-blue);
+            background: linear-gradient(135deg, #1c2129, #0f1319);
+            box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+        }
+        .action-btn:active {
+            transform: scale(0.98);
+        }
+        
+        /* Responsive iyileştirmeler */
+        @media (max-width: 1200px) {
+            .container {
+                flex-direction: column;
+            }
+            .main-content, .sidebar {
+                width: 100%;
+                margin-right: 0;
+            }
+            .sidebar {
+                border-left: none;
+                border-top: 1px solid var(--border-color);
+                padding-left: 0;
+                padding-top: 15px;
+            }
+            .top-charts-container {
+                flex-direction: column;
+                height: auto;
+            }
+            .chart-box-half {
+                height: 180px;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            .header-status {
+                position: static;
+                transform: none;
+                align-self: flex-end;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                font-size: 18px;
+                padding: 10px 15px;
+            }
+            .container {
+                padding: 10px;
+            }
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+            .additional-panel .panel-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .data-box {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 15px;
+            }
+            .data-value {
+                font-size: 20px;
+            }
+        }
+        
+        .footer {
+            padding: 8px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            background-color: var(--panel-bg);
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .footer-links {
+            display: flex;
+            gap: 15px;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 11px;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: var(--accent-blue);
+        }
+        
+        /* Sistem durumu animasyonları */
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        /* Data refresh indicator */
+        .refresh-indicator {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--accent-blue);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .refreshing .refresh-indicator {
+            opacity: 1;
+            animation: blink 1s infinite;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="scan-lines"></div>
+
+    <div class="header">
+        <div>TEXPER.NET DATA CONTROL CENTER</div>
+        <div class="header-time" id="header-time">--:--:--</div>
+        <div class="header-status" id="header-status">ALL SYSTEMS OPERATIONAL</div>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            
+            <div class="top-charts-container">
+                <div class="chart-box-half">
+                    <div class="refresh-indicator" id="traffic-refresh"></div>
+                    <div class="chart-title">AGGREGATED NETWORK TRAFFIC (RX/TX)</div>
+                    <canvas id="trafficChartAggregated"></canvas>
+                </div>
+                <div class="chart-box-half">
+                    <div class="refresh-indicator" id="latency-refresh"></div>
+                    <div class="chart-title">PRIMARY SERVER LATENCY TREND (MS)</div>
+                    <canvas id="latencyTrendChart"></canvas>
+                </div>
+            </div>
+
+            <div class="additional-panel">
+                <div class="panel">
+                    <div class="title">SYSTEM PERFORMANCE OVERVIEW</div>
+                    <div class="panel-content">
+                        <div class="data-box">
+                            <div class="data-value" id="data-throughput">1.24 Gbps</div>
+                            <div class="data-label">Network Throughput</div>
+                        </div>
+                        <div class="data-box">
+                            <div class="data-value" id="data-requests">4,582</div>
+                            <div class="data-label">Requests/Minute</div>
+                        </div>
+                        <div class="data-box">
+                            <div class="data-value" id="data-connections">1,247</div>
+                            <div class="data-label">Active Connections</div>
+                        </div>
+                        <div class="data-box">
+                            <div class="data-value" id="data-response">42 ms</div>
+                            <div class="data-label">Avg Response Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel" style="flex-grow: 1;">
+                <div class="title">
+                    REAL-TIME CONSOLE & PERFORMANCE TRENDS
+                    <span class="title-badge" id="log-count">0 logs</span>
+                </div>
+                <div class="log-and-graphs-panel">
+                    <div class="log-panel-header">
+                        <span>SYSTEM LOG STREAM</span>
+                        <div class="log-controls">
+                            <button id="clear-logs">Clear</button>
+                            <button id="pause-logs">Pause</button>
+                        </div>
+                    </div>
+                    
+                    <div class="log-panel" id="log-stream">
+                        <div style="font-size: 13px; color: var(--text-primary);">
+                            [SYSTEM] Console Active: Awaiting input<span class="cursor">_</span>
+                        </div>
+                    </div>
+
+                    <div class="bottom-graphs">
+                        <div class="small-chart-container">
+                            <div class="refresh-indicator" id="disk-refresh"></div>
+                            <div class="small-chart-title">SERVER DISK LATENCY (MS)</div>
+                            <canvas id="latencyChart"></canvas>
+                        </div>
+                        <div class="small-chart-container">
+                            <div class="refresh-indicator" id="memory-refresh"></div>
+                            <div class="small-chart-title">VIRTUAL MEMORY POOL USAGE (%)</div>
+                            <canvas id="memoryChart"></canvas>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="sidebar">
+            <div class="panel">
+                <div class="title">CORE SYSTEM RESOURCE UTILIZATION</div>
+                <div class="metric-grid">
+                    <div class="metric-box">
+                        <div class="unit">CPU Load</div>
+                        <div class="value" id="cpuLoad">12.5%</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="unit">Memory Usage</div>
+                        <div class="value" id="memUsage">45.2%</div>
+                    </div>
+                    <div class="metric-box" style="border-color: var(--accent-red);">
+                        <div class="unit" style="color: var(--accent-red);">Critical Security Events</div>
+                        <div class="value" id="securityEvents" style="color: var(--accent-red);">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="title">CLOUD & STORAGE METRICS</div>
+                <div class="metric-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    
+                    <div class="metric-box" style="grid-column: span 3;">
+                        <div class="unit">BACKUP POOL CAPACITY (8.0 TB Total)</div>
+                        <div class="value" id="backupUsed">3.1 <span class="unit">TB</span></div>
+                    </div>
+                    
+                    <div class="metric-box">
+                        <div class="unit">CLOUD VOLUME</div>
+                        <div class="value" id="cloudUsed">2.0 <span class="unit">TB</span></div>
+                    </div>
+                    
+                    <div class="metric-box">
+                        <div class="unit">LOCAL SERVER</div>
+                        <div class="value" id="localUsed">1.2 <span class="unit">TB</span></div>
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="unit">DISK I/O</div>
+                        <div class="value" id="diskIO">234 <span class="unit">MB/s</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="title">SYSTEM HEALTH SUMMARY</div>
+                <div class="device-list" id="status-panel">
+                </div>
+            </div>
+            
+            <div class="panel">
+                <div class="title">QUICK ACTIONS</div>
+                <div class="quick-actions">
+                    <button class="action-btn" id="action-scan">Run Security Scan</button>
+                    <button class="action-btn" id="action-backup">Initiate Backup</button>
+                    <button class="action-btn" id="action-clear">Clear Logs</button>
+                    <button class="action-btn" id="action-refresh">Refresh Data</button>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <div class="title">NETWORK & COMMUNICATION</div>
+                <div style="font-size: 13px;">
+                    <p>Internal Gateway: <strong>172.16.16.1</strong></p>
+                    <p>Primary DNS: <strong>1.1.1.1</strong></p>
+                    <p>DMZ Segment: <strong>177.177.177.0/28</strong></p>
+                    <p style="margin-top: 10px;">Router Latency: <strong id="latency">4ms</strong></p>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <div class="title">SECURITY AUDIT SUMMARY</div>
+                <div class="audit-summary">
+                    <div class="audit-item">
+                        <span>Last Full Scan</span>
+                        <span class="audit-value" style="color:var(--accent-green);">09/29 02:00</span>
+                    </div>
+                    <div class="audit-item">
+                        <span>Pending Patches</span>
+                        <span class="audit-value" style="color:var(--accent-yellow);">4 Critical</span>
+                    </div>
+                    <div class="audit-item">
+                        <span>Policy Compliance</span>
+                        <span class="audit-value" style="color:var(--accent-green);">100%</span>
+                    </div>
+                    <div class="audit-item">
+                        <span>Active VPN Sessions</span>
+                        <span class="audit-value">25</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="title">OPERATIONAL METRICS</div>
+                <div style="font-size: 13px;">
+                    <p>System Uptime: <strong id="uptime">0 Days, 0 Hrs</strong></p>
+                    <p>Current Timestamp: <strong id="timestamp">--</strong></p>
+                    <p style="margin-top: 10px;">Security Policy: <strong style="color:var(--accent-green);">ENFORCED</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div>Powered by <strong style="color: var(--text-primary);">Texper.Net</strong></div>
+        <div class="footer-links">
+            <a href="#">Dashboard</a>
+            <a href="#">Analytics</a>
+            <a href="#">Settings</a>
+            <a href="#">Help</a>
+        </div>
+    </div>
+
+    <script>
+        // JAVASCRIPT KODU
+        
+        // --- 1. Sabit Veriler ve Ayarlar ---
+        const CRITICAL_SYSTEMS = ['CORE-FIREWALL', 'DC-SERVER-01'];
+        const WAITING_PRONE_SYSTEMS = ['VOIP-SERVER', 'MAIN-SWITCH-A']; 
+        const systems = [
+            'DC-SERVER-01', 'CORE-FIREWALL', 'MAIN-SWITCH-A', 'VOIP-SERVER',
+            'BACKUP-NAS-01', 'CLOUD-SYNC-GW', 'VPN-CONCENTRATOR', 'WAP-CONTROLLER'
+        ];
+        const WAITING_LOG_FREQUENCY = 15; 
+        const LOG_UPDATE_INTERVAL = 500; 
+        let logCounter = 0; 
+        let criticalEvents = 18; 
+        let logIntervalHandle; // setInterval'ı tutmak için
+        let isPaused = false; // Log duraklatma durumu
+        let totalLogs = 0; // Toplam log sayısı
+        
+        // YENİ VE ÇEŞİTLENDİRİLMİŞ LOG MESAJLARI
+        const logMsgs = [
+            "[INFO] Connection established (VoIP-Call): ", "[INFO] Database query executed (DC-SERVER-01): ", "[TASK] Initiating Cloud Sync on BACKUP-NAS-01: ", 
+            "[WARN] High latency detected on interface ETH0: ", "[EVENT] VPN session initiated from: ", "[CRIT] Firewall policy violation attempt blocked: ", 
+            "[ALERT] Unexpected disk I/O spike on storage array: ", "[INFO] Standard DNS lookup resolved for: ", "[TASK] Policy check completed on WAP-CONTROLLER: ", 
+            "[INFO] Traffic routed successfully via GW: ", "[WARN] CPU usage peak detected on VM Pool: ", "[INFO] Successful authentication for user 'SysAdmin' from: ",
+            // YENİ EKLEMELER
+            "[INFO] File transfer complete: /var/log/backup_", "[TASK] System health probe initiated on ", "[INFO] New TCP session opened on port ", 
+            "[EVENT] Intrusion Detection System triggered by: ", "[INFO] Routine garbage collection executed (98ms) on ", "[TASK] Re-synchronizing time servers (NTP) with: "
+        ];
+        const waitingMsgs = [
+            "[_WAIT] Performing system self-check before next task batch...", "[_WAIT] Waiting for read-lock on shared memory segment...", "[_WAIT] Backup integrity check in progress. Pausing minor tasks...", 
+            "[_WAIT] Latency threshold breached. Retrying network request in 5s...",
+            // YENİ EKLEMELER
+            "[_WAIT] Pending patch deployment. Waiting for maintenance window...", "[_WAIT] Resource contention detected. Throttling non-critical processes..."
+        ];
+
+        // Rastgele son ekler için yeni listeler
+        const fileNames = ['user_data_01.dat', 'config.json', 'access.log', 'policy_v2.xml', 'temp_file.tmp'];
+        const userNames = ['JSmith', 'KGarcia', 'SysAdmin', 'Audit_User', 'DevOps'];
+        
+        // --- 2. Element Tanımlamaları ve Grafik Tanımlamaları ---
+        const statusPanel = document.getElementById('status-panel');
+        const logStream = document.getElementById('log-stream'); 
+        const securityEventsEl = document.getElementById('securityEvents');
+        const backupUsedEl = document.getElementById('backupUsed');
+        const cloudUsedEl = document.getElementById('cloudUsed');
+        const localUsedEl = document.getElementById('localUsed');
+        const headerTimeEl = document.getElementById('header-time');
+        const headerStatusEl = document.getElementById('header-status');
+        const logCountEl = document.getElementById('log-count');
+        const clearLogsBtn = document.getElementById('clear-logs');
+        const pauseLogsBtn = document.getElementById('pause-logs');
+        
+        // Yeni data kutuları
+        const dataThroughputEl = document.getElementById('data-throughput');
+        const dataRequestsEl = document.getElementById('data-requests');
+        const dataConnectionsEl = document.getElementById('data-connections');
+        const dataResponseEl = document.getElementById('data-response');
+        
+        // Hızlı aksiyon butonları
+        const actionScanBtn = document.getElementById('action-scan');
+        const actionBackupBtn = document.getElementById('action-backup');
+        const actionClearBtn = document.getElementById('action-clear');
+        const actionRefreshBtn = document.getElementById('action-refresh');
+        
+        const chartDataSize = 40;
+        const chartLabels = Array.from({length: chartDataSize}, () => '');
+        let initialLatency = 3;
+        let initialMemory = 65;
+        
+        const lineChartOptions = { 
+            responsive: true, 
+            maintainAspectRatio: false, 
+            plugins: { legend: { display: false } }, 
+            scales: { 
+                x: { display: false }, 
+                y: { display: false, beginAtZero: true } 
+            },
+            elements: { 
+                line: { tension: 0.4 }, 
+                point: { radius: 0 } 
+            }
+        };
+
+        const trafficChartAggregated = new Chart(document.getElementById('trafficChartAggregated').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: chartLabels,
+                datasets: [
+                    { 
+                        label: 'TX (MB/s)', 
+                        data: Array.from({length: chartDataSize}, () => Math.floor(Math.random() * 20) + 5), 
+                        borderColor: '#58a6ff', 
+                        backgroundColor: 'rgba(88, 166, 255, 0.1)', 
+                        fill: true 
+                    }, 
+                    { 
+                        label: 'RX (MB/s)', 
+                        data: Array.from({length: chartDataSize}, () => Math.floor(Math.random() * 30) + 10), 
+                        borderColor: '#3fb950', 
+                        backgroundColor: 'rgba(63, 185, 80, 0.1)', 
+                        fill: true 
+                    }
+                ]
+            },
+            options: lineChartOptions
+        });
+
+        const latencyTrendChart = new Chart(document.getElementById('latencyTrendChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: chartLabels,
+                datasets: [{ 
+                    label: 'Latency (ms)', 
+                    data: Array.from({length: chartDataSize}, () => Math.floor(Math.random() * 50) + 2), 
+                    borderColor: '#f85149', 
+                    backgroundColor: 'rgba(248, 81, 73, 0.1)', 
+                    fill: true 
+                }]
+            },
+            options: { 
+                ...lineChartOptions, 
+                scales: { 
+                    x: { display: false }, 
+                    y: { display: false, beginAtZero: true, max: 60 } 
+                } 
+            }
+        });
+
+        const latencyChart = new Chart(document.getElementById('latencyChart').getContext('2d'), {
+            type: 'bar',
+            data: { 
+                labels: ['Disk Latency'], 
+                datasets: [{ 
+                    data: [initialLatency], 
+                    backgroundColor: ['#f85149'], 
+                }] 
+            },
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: false, 
+                indexAxis: 'y', 
+                plugins: { legend: { display: false } }, 
+                scales: { 
+                    x: { 
+                        display: true, 
+                        beginAtZero: true, 
+                        max: 10, 
+                        ticks: { color: '#8b949e' }, 
+                        grid: { color: '#30363d' } 
+                    }, 
+                    y: { display: false } 
+                } 
+            }
+        });
+
+        const memoryChart = new Chart(document.getElementById('memoryChart').getContext('2d'), {
+            type: 'bar',
+            data: { 
+                labels: ['VM Usage'], 
+                datasets: [{ 
+                    data: [initialMemory], 
+                    backgroundColor: ['#d29922'], 
+                }] 
+            },
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: false, 
+                indexAxis: 'y', 
+                plugins: { legend: { display: false } }, 
+                scales: { 
+                    x: { 
+                        display: true, 
+                        beginAtZero: true, 
+                        max: 100, 
+                        ticks: { color: '#8b949e' }, 
+                        grid: { color: '#30363d' } 
+                    }, 
+                    y: { display: false } 
+                } 
+            }
+        });
+
+
+        // --- 3. Fonksiyonlar ---
+        
+        function getRandomItem(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function generateRandomIP() {
+            if (Math.random() < 0.7) {
+                return `172.16.16.${Math.floor(Math.random() * 255)}`;
+            } else {
+                return `177.177.177.${Math.floor(Math.random() * 28) + 1}`;
+            }
+        }
+
+        // Başlık zamanını güncelleme
+        function updateHeaderTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { hour12: false });
+            const dateString = now.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+            headerTimeEl.textContent = `${dateString} ${timeString}`;
+        }
+
+        // Sistem durumunu güncelleme
+        function updateSystemStatus() {
+            const errorCount = document.querySelectorAll('.error, .warn').length;
+            if (errorCount > 2) {
+                headerStatusEl.textContent = "SYSTEM DEGRADED";
+                headerStatusEl.style.color = "#d29922";
+            } else if (errorCount > 0) {
+                headerStatusEl.textContent = "MINOR ISSUES DETECTED";
+                headerStatusEl.style.color = "#d29922";
+            } else {
+                headerStatusEl.textContent = "ALL SYSTEMS OPERATIONAL";
+                headerStatusEl.style.color = "#3fb950";
+            }
+        }
+
+        // Yeni data kutularını güncelleme
+        function updateDataBoxes() {
+            dataThroughputEl.textContent = (Math.random() * 0.5 + 1.0).toFixed(2) + " Gbps";
+            dataRequestsEl.textContent = Math.floor(Math.random() * 2000 + 4000).toLocaleString();
+            dataConnectionsEl.textContent = Math.floor(Math.random() * 500 + 1000).toLocaleString();
+            dataResponseEl.textContent = Math.floor(Math.random() * 20 + 30) + " ms";
+        }
+
+        // Log sonu çeşitlendirici fonksiyon
+        function appendRandomData(logContent) {
+            if (logContent.includes('Connection established') || logContent.includes('DNS lookup resolved') || logContent.includes('Traffic routed')) {
+                return logContent + generateRandomIP();
+            } else if (logContent.includes('VPN session initiated') || logContent.includes('authentication for user')) {
+                return logContent + getRandomItem(userNames) + '@' + generateRandomIP();
+            } else if (logContent.includes('New TCP session opened')) {
+                return logContent + Math.floor(Math.random() * 50000 + 1024); // Rastgele port
+            } else if (logContent.includes('File transfer complete')) {
+                return logContent + getRandomItem(fileNames) + ` (${Math.floor(Math.random() * 100)}MB)`;
+            } else if (logContent.includes('System health probe initiated') || logContent.includes('Database query executed') || logContent.includes('garbage collection executed')) {
+                return logContent + getRandomItem(systems); 
+            }
+             // Eğer log içeriği özel bir son ek gerektirmiyorsa olduğu gibi bırak
+            return logContent; 
+        }
+
+        function createLogLine() {
+            if (isPaused) return;
+            
+            const message = document.createElement('div');
+            message.className = 'log-line';
+            let logContent;
+            
+            // Hata / Uyarı / Bekleme (Daha az sıklıkta olmasını sağlıyoruz)
+            if (logCounter % WAITING_LOG_FREQUENCY === 0 && Math.random() < 0.8) {
+                 logContent = getRandomItem(waitingMsgs);
+            } else {
+                 logContent = getRandomItem(logMsgs);
+                 // Log içeriğini çeşitlendiriyoruz
+                 logContent = appendRandomData(logContent);
+            }
+            logCounter++; 
+            totalLogs++;
+            logCountEl.textContent = `${totalLogs} logs`;
+            
+            if (logContent.includes('[CRIT]') || logContent.includes('[ALERT]')) {
+                message.classList.add('log-error');
+                 if (Math.random() < 0.5) { 
+                    criticalEvents++;
+                    securityEventsEl.textContent = criticalEvents.toString();
+                 }
+            } else if (logContent.includes('[WARN]')) {
+                message.classList.add('log-warn');
+            } else if (logContent.includes('[_WAIT]')) { 
+                message.classList.add('log-waiting');
+            }
+            
+            message.textContent = `[${new Date().toLocaleTimeString('en-US', { hour12: false })}] ${logContent}`;
+            logStream.appendChild(message);
+            
+            // Animasyon
+            const startY = logStream.clientHeight;
+            const duration = 8000; 
+            const startTime = Date.now();
+            function animateLog() {
+                const elapsed = Date.now() - startTime;
+                const progress = elapsed / duration;
+                if (progress < 1) {
+                    let currentTop = startY - (startY * progress * 1.5); 
+                    message.style.top = `${currentTop}px`;
+                    message.style.opacity = 1 - progress; 
+                    requestAnimationFrame(animateLog);
+                } else {
+                    if(logStream.contains(message)) {
+                       logStream.removeChild(message);
+                    }
+                }
+            }
+            requestAnimationFrame(animateLog);
+            
+            // Bir sonraki akış hızını rastgele ayarla
+            setRandomLogInterval();
+        }
+        
+        // Dinamik Log Akış Hızı
+        function setRandomLogInterval() {
+            clearInterval(logIntervalHandle); // Mevcut interval'ı durdur
+            // 300ms (Hızlı) ile 1000ms (Yavaş) arasında rastgele bir süre seç
+            const newInterval = Math.floor(Math.random() * 700) + 300; 
+            logIntervalHandle = setInterval(createLogLine, newInterval);
+        }
+        
+        // Logları temizleme fonksiyonu
+        function clearLogs() {
+            const logLines = document.querySelectorAll('.log-line');
+            logLines.forEach(line => line.remove());
+            totalLogs = 0;
+            logCountEl.textContent = '0 logs';
+        }
+        
+        // Log duraklatma/başlatma fonksiyonu
+        function togglePauseLogs() {
+            isPaused = !isPaused;
+            pauseLogsBtn.textContent = isPaused ? 'Resume' : 'Pause';
+        }
+        
+        // Yenileme animasyonu
+        function showRefreshAnimation(elementId) {
+            const element = document.getElementById(elementId);
+            element.parentElement.classList.add('refreshing');
+            setTimeout(() => {
+                element.parentElement.classList.remove('refreshing');
+            }, 1000);
+        }
+        
+        // Diğer Fonksiyonlar
+        function updateSystemStatuses() { 
+            if (statusPanel.children.length === 0) {
+                systems.forEach(system => {
+                    const div = document.createElement('div');
+                    div.className = 'device-item';
+                    div.innerHTML = `<span>${system}</span><span class="status-container"><span class="status-dot"></span> <span class="status-text"></span></span>`; 
+                    statusPanel.appendChild(div);
+                });
+            }
+            const items = statusPanel.querySelectorAll('.device-item');
+            items.forEach(item => {
+                const systemName = item.querySelector('span').textContent;
+                const container = item.querySelector('.status-container');
+                const text = item.querySelector('.status-text');
+                const dot = item.querySelector('.status-dot');
+                let status = 'ok';
+                
+                // Kritik sistemlere özel animasyon ekle
+                if (CRITICAL_SYSTEMS.includes(systemName)) {
+                    dot.classList.add('critical-pulse');
+                } else {
+                    dot.classList.remove('critical-pulse');
+                }
+                
+                if (CRITICAL_SYSTEMS.includes(systemName)) {
+                    status = 'ok';
+                } else if (WAITING_PRONE_SYSTEMS.includes(systemName)) {
+                    if (Math.random() < 0.15) { 
+                        status = 'waiting';
+                    } else {
+                        status = 'ok';
+                    }
+                } else {
+                    if (Math.random() < 0.95) { 
+                        status = 'ok';
+                    } else { 
+                        const rand = Math.floor(Math.random() * 3);
+                        status = (rand === 0) ? 'warn' : (rand === 1) ? 'error' : 'offline';
+                    }
+                }
+                container.className = 'status-container ' + status;
+                text.className = 'status-text ' + status; 
+                text.textContent = status.toUpperCase();
+            });
+            
+            // Sistem durumunu güncelle
+            updateSystemStatus();
+        }
+        
+        function updateCoreMetrics() {
+            document.getElementById('cpuLoad').textContent = (Math.random() * 40 + 5).toFixed(1) + '%';
+            document.getElementById('memUsage').textContent = (Math.random() * 50 + 20).toFixed(1) + '%';
+            document.getElementById('latency').textContent = `${Math.floor(Math.random() * 10) + 1}ms`;
+            document.getElementById('timestamp').textContent = new Date().toLocaleTimeString('en-US', { hour12: false });
+            document.getElementById('diskIO').innerHTML = (Math.random() * 500 + 100).toFixed(0) + ' <span class="unit">MB/s</span>'; 
+            securityEventsEl.textContent = criticalEvents.toString();
+            
+            const backupBase = 3.1;
+            backupUsedEl.innerHTML = (backupBase + (Math.random() * 0.1) - 0.05).toFixed(1) + ' <span class="unit">TB</span>';
+            const cloudBase = 2.0;
+            cloudUsedEl.innerHTML = (cloudBase + (Math.random() * 0.05) - 0.02).toFixed(1) + ' <span class="unit">TB</span>';
+            const localBase = 1.2;
+            localUsedEl.innerHTML = (localBase + (Math.random() * 0.02) - 0.01).toFixed(1) + ' <span class="unit">TB</span>';
+
+            trafficChartAggregated.data.datasets[0].data.shift(); 
+            trafficChartAggregated.data.datasets[0].data.push(Math.floor(Math.random() * 20) + 5);
+            trafficChartAggregated.data.datasets[1].data.shift(); 
+            trafficChartAggregated.data.datasets[1].data.push(Math.floor(Math.random() * 30) + 10);
+            
+            latencyTrendChart.data.datasets[0].data.shift(); 
+            latencyTrendChart.data.datasets[0].data.push(Math.floor(Math.random() * 50) + 2);
+
+            trafficChartAggregated.update('none'); 
+            latencyTrendChart.update('none');
+            
+            let uptimeMinutes = (new Date() - new Date(Date.now() - (3600000 * 24 * 7))) / 60000;	
+            const days = Math.floor(uptimeMinutes / (24 * 60));
+            const hours = Math.floor((uptimeMinutes % (24 * 60)) / 60);
+            document.getElementById('uptime').textContent = `${days} Days, ${hours} Hrs`;
+            
+            // Yeni data kutularını güncelle
+            updateDataBoxes();
+        }
+        
+        function updateFixedCharts() {
+            initialLatency = Math.floor(Math.random() * 5) + 1;
+            latencyChart.data.datasets[0].data = [initialLatency];
+            latencyChart.update();
+            
+            initialMemory = Math.floor(Math.random() * 30) + 50;
+            memoryChart.data.datasets[0].data = [initialMemory];
+            memoryChart.update();
+        }
+        
+        // --- 4. Başlatma ve Döngüler ---
+        
+        updateSystemStatuses();
+        updateCoreMetrics(); 
+        updateFixedCharts(); 
+        updateHeaderTime();
+        updateDataBoxes();
+
+        // Log akışını dinamik olarak başlat
+        setRandomLogInterval(); 
+        
+        // Event listener'lar
+        clearLogsBtn.addEventListener('click', clearLogs);
+        pauseLogsBtn.addEventListener('click', togglePauseLogs);
+        
+        actionScanBtn.addEventListener('click', function() {
+            createLogLine();
+            showRefreshAnimation('traffic-refresh');
+            this.textContent = "Scanning...";
+            setTimeout(() => {
+                this.textContent = "Run Security Scan";
+            }, 2000);
+        });
+        
+        actionBackupBtn.addEventListener('click', function() {
+            createLogLine();
+            showRefreshAnimation('disk-refresh');
+            this.textContent = "Backing Up...";
+            setTimeout(() => {
+                this.textContent = "Initiate Backup";
+            }, 3000);
+        });
+        
+        actionClearBtn.addEventListener('click', clearLogs);
+        
+        actionRefreshBtn.addEventListener('click', function() {
+            updateCoreMetrics();
+            updateSystemStatuses();
+            showRefreshAnimation('traffic-refresh');
+            showRefreshAnimation('latency-refresh');
+            showRefreshAnimation('disk-refresh');
+            showRefreshAnimation('memory-refresh');
+            this.textContent = "Refreshing...";
+            setTimeout(() => {
+                this.textContent = "Refresh Data";
+            }, 1000);
+        });
+        
+        // Diğer döngüler
+        setInterval(updateSystemStatuses, 3000);
+        setInterval(updateCoreMetrics, 1000); 
+        setInterval(updateFixedCharts, 3600000);
+        setInterval(updateHeaderTime, 1000);
+        setInterval(updateDataBoxes, 5000);
+    </script>
+</body>
+</html>
