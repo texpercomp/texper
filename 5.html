@@ -21,14 +21,14 @@
         
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
         
         body {
             background-color: var(--primary-bg); 
             color: var(--text-primary); 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
             overflow: hidden; 
             display: flex;
             flex-direction: column;
@@ -54,8 +54,8 @@
 
         /* YERLEŞİM STİLLERİ */
         .header {
-            padding: 12px 20px; 
-            font-size: 22px; 
+            padding: 10px 20px; 
+            font-size: 20px; 
             font-weight: 700; 
             text-align: left; 
             border-bottom: 1px solid var(--border-color); 
@@ -66,9 +66,10 @@
             align-items: center;
             position: relative;
             flex-shrink: 0;
+            height: 50px;
         }
         .header-time {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--accent-blue);
             font-weight: normal;
         }
@@ -76,7 +77,7 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 12px;
+            font-size: 11px;
             color: var(--accent-green);
             display: flex;
             align-items: center;
@@ -84,51 +85,57 @@
         .header-status::before {
             content: "";
             display: inline-block;
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background-color: var(--accent-green);
-            margin-right: 6px;
+            margin-right: 5px;
             animation: status-pulse 2s infinite;
         }
         @keyframes status-pulse {
             0% { box-shadow: 0 0 0 0 rgba(63, 185, 80, 0.7); }
-            70% { box-shadow: 0 0 0 5px rgba(63, 185, 80, 0); }
+            70% { box-shadow: 0 0 0 3px rgba(63, 185, 80, 0); }
             100% { box-shadow: 0 0 0 0 rgba(63, 185, 80, 0); }
         }
         .container {
             display: flex; 
             flex-grow: 1; 
-            padding: 15px; 
+            padding: 10px; 
             z-index: 10;
             overflow: hidden;
+            gap: 10px;
+            height: calc(100vh - 70px);
         }
         .main-content {
             width: 70%; 
-            margin-right: 15px; 
             display: flex; 
             flex-direction: column;
             overflow: hidden;
+            gap: 10px;
         }
         .sidebar {
             width: 30%; 
-            border-left: 1px solid var(--border-color); 
-            padding-left: 15px;
-            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            gap: 10px;
         }
         
         /* PANELLER */
         .panel {
             background-color: var(--panel-bg); 
             border: 1px solid var(--border-color); 
-            padding: 15px; 
-            margin-bottom: 15px; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+            padding: 10px; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); 
             display: flex; 
             flex-direction: column;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            flex: 1;
+        }
+        .panel.compact {
+            flex: 0 0 auto;
         }
         .panel::before {
             content: "";
@@ -145,15 +152,15 @@
         }
         .panel:hover {
             border-color: var(--accent-blue);
-            box-shadow: 0 0 15px rgba(88, 166, 255, 0.3);
+            box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
         }
         .title {
-            font-size: 14px; 
+            font-size: 12px; 
             font-weight: 600; 
-            margin-bottom: 10px; 
+            margin-bottom: 8px; 
             color: var(--accent-blue); 
             border-bottom: 1px dashed var(--border-color); 
-            padding-bottom: 5px; 
+            padding-bottom: 4px; 
             text-transform: uppercase; 
             flex-shrink: 0;
             display: flex;
@@ -161,9 +168,9 @@
             align-items: center;
         }
         .title-badge {
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 10px;
+            font-size: 9px;
+            padding: 1px 5px;
+            border-radius: 8px;
             background-color: var(--border-color);
         }
         
@@ -171,15 +178,14 @@
         .top-charts-container {
             display: flex; 
             flex-shrink: 0;
-            height: 30%; 
-            gap: 15px; 
-            margin-bottom: 15px;
+            height: 22%; 
+            gap: 10px; 
         }
         .chart-box-half {
             flex: 1; 
             background-color: var(--panel-bg); 
             border: 1px solid var(--border-color); 
-            padding: 10px; 
+            padding: 8px; 
             display: flex; 
             flex-direction: column; 
             position: relative;
@@ -191,7 +197,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 2px;
             background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
             transform: scaleX(0);
             transform-origin: left;
@@ -201,23 +207,22 @@
             transform: scaleX(1);
         }
         .chart-title {
-            font-size: 13px; 
+            font-size: 11px; 
             font-weight: 600; 
             color: var(--accent-blue); 
-            margin-bottom: 5px; 
+            margin-bottom: 4px; 
             text-align: center;
         }
 
         /* YENİ EKLENEN PANEL */
         .additional-panel {
             flex-shrink: 0;
-            height: 20%;
-            margin-bottom: 15px;
+            height: 15%;
         }
         .additional-panel .panel-content {
             display: flex;
             height: 100%;
-            gap: 15px;
+            gap: 10px;
         }
         .data-box {
             flex: 1;
@@ -226,8 +231,8 @@
             justify-content: center;
             align-items: center;
             background-color: rgba(13, 17, 23, 0.5);
-            border-radius: 4px;
-            padding: 10px;
+            border-radius: 3px;
+            padding: 8px;
             transition: all 0.3s;
         }
         .data-box:hover {
@@ -235,14 +240,14 @@
             transform: translateY(-2px);
         }
         .data-value {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--text-primary);
         }
         .data-label {
-            font-size: 12px;
+            font-size: 10px;
             color: var(--text-secondary);
-            margin-top: 5px;
+            margin-top: 3px;
             text-align: center;
         }
 
@@ -257,28 +262,26 @@
             overflow: hidden; 
             position: relative; 
             background-color: var(--primary-bg); 
-            font-size: 13px; 
-            padding: 5px 0; 
-            min-height: 200px; 
-            height: 100%; 
+            font-size: 11px; 
+            padding: 4px 0; 
             border: 1px solid var(--border-color);
         }
         .log-panel-header {
             display: flex;
             justify-content: space-between;
-            padding: 5px 10px;
+            padding: 4px 8px;
             background-color: var(--panel-bg);
             border-bottom: 1px solid var(--border-color);
-            font-size: 12px;
+            font-size: 10px;
         }
         .log-controls button {
             background: none;
             border: 1px solid var(--border-color);
             color: var(--text-secondary);
-            padding: 2px 8px;
-            margin-left: 5px;
+            padding: 1px 6px;
+            margin-left: 4px;
             cursor: pointer;
-            font-size: 10px;
+            font-size: 9px;
             transition: all 0.2s;
         }
         .log-controls button:hover {
@@ -287,15 +290,15 @@
         }
         .bottom-graphs { 
             flex-shrink: 0; 
-            height: 150px; 
-            margin-top: 15px; 
+            height: 120px; 
+            margin-top: 10px; 
             display: flex; 
-            gap: 15px; 
+            gap: 10px; 
         }
         .small-chart-container { 
             flex: 1; 
             background-color: var(--primary-bg); 
-            padding: 10px; 
+            padding: 8px; 
             border: 1px solid var(--border-color); 
             position: relative;
             overflow: hidden;
@@ -316,10 +319,10 @@
             transform: scaleX(1);
         }
         .small-chart-title { 
-            font-size: 11px; 
+            font-size: 10px; 
             color: var(--text-secondary); 
             text-align: center; 
-            margin-bottom: 5px; 
+            margin-bottom: 4px; 
         }
 
         /* STATUS LISTESİ VE DİĞER STİLLER */
@@ -327,8 +330,8 @@
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            padding: 6px 0; 
-            font-size: 14px; 
+            padding: 4px 0; 
+            font-size: 11px; 
             border-bottom: 1px dotted var(--border-color); 
             transition: background-color 0.2s;
         }
@@ -337,14 +340,14 @@
         }
         .device-item:last-child { border-bottom: none; }
         .status-container { font-weight: 600; }
-        .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 8px; }
-        .status-text.ok { color: var(--accent-green); text-shadow: 0 0 5px rgba(63, 185, 80, 0.4); }
-        .status-text.waiting { color: var(--accent-yellow); text-shadow: 0 0 5px rgba(210, 153, 34, 0.4); }
-        .status-text.warn { color: var(--accent-yellow); text-shadow: 0 0 5px rgba(210, 153, 34, 0.4); }
-        .status-text.error { color: var(--accent-red); text-shadow: 0 0 5px rgba(248, 81, 73, 0.4); }
+        .status-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; }
+        .status-text.ok { color: var(--accent-green); text-shadow: 0 0 3px rgba(63, 185, 80, 0.4); }
+        .status-text.waiting { color: var(--accent-yellow); text-shadow: 0 0 3px rgba(210, 153, 34, 0.4); }
+        .status-text.warn { color: var(--accent-yellow); text-shadow: 0 0 3px rgba(210, 153, 34, 0.4); }
+        .status-text.error { color: var(--accent-red); text-shadow: 0 0 3px rgba(248, 81, 73, 0.4); }
         .status-dot { background-color: var(--text-secondary); }
-        .ok .status-dot { background-color: var(--accent-green); box-shadow: 0 0 5px var(--accent-green); } 
-        .waiting .status-dot { background-color: var(--accent-yellow); box-shadow: 0 0 7px var(--accent-yellow); animation: waiting-pulse 1s infinite alternate; } 
+        .ok .status-dot { background-color: var(--accent-green); box-shadow: 0 0 3px var(--accent-green); } 
+        .waiting .status-dot { background-color: var(--accent-yellow); box-shadow: 0 0 5px var(--accent-yellow); animation: waiting-pulse 1s infinite alternate; } 
         @keyframes waiting-pulse { from { opacity: 1; } to { opacity: 0.5; } }
         
         /* Kritik sistemler için özel animasyon */
@@ -353,15 +356,15 @@
         }
         @keyframes critical-pulse {
             0% { box-shadow: 0 0 0 0 rgba(248, 81, 73, 0.7); }
-            70% { box-shadow: 0 0 0 5px rgba(248, 81, 73, 0); }
+            70% { box-shadow: 0 0 0 3px rgba(248, 81, 73, 0); }
             100% { box-shadow: 0 0 0 0 rgba(248, 81, 73, 0); }
         }
         
-        .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
         .metric-box {
             position: relative;
-            padding: 10px;
-            border-radius: 4px;
+            padding: 8px;
+            border-radius: 3px;
             background-color: rgba(13, 17, 23, 0.5);
             transition: all 0.3s;
         }
@@ -369,37 +372,37 @@
             background-color: rgba(22, 27, 34, 0.8);
             transform: translateY(-2px);
         }
-        .value { font-size: 20px; font-weight: 700; color: var(--text-primary); margin-top: 5px; display: block; }
-        .unit { font-size: 12px; color: var(--text-secondary); }
-        .audit-item { display: flex; justify-content: space-between; font-size: 13px; padding: 5px 0; border-bottom: 1px dotted var(--border-color); transition: background-color 0.2s; }
+        .value { font-size: 16px; font-weight: 700; color: var(--text-primary); margin-top: 3px; display: block; }
+        .unit { font-size: 10px; color: var(--text-secondary); }
+        .audit-item { display: flex; justify-content: space-between; font-size: 11px; padding: 3px 0; border-bottom: 1px dotted var(--border-color); transition: background-color 0.2s; }
         .audit-item:hover { background-color: rgba(48, 54, 61, 0.3); }
-        .log-line { position: absolute; width: 100%; white-space: pre; padding-left: 5px; transition: opacity 0.5s; }
+        .log-line { position: absolute; width: 100%; white-space: pre; padding-left: 4px; transition: opacity 0.5s; font-size: 10px; }
         .log-error { color: var(--accent-red); font-weight: bold; }
         .log-warn { color: var(--accent-yellow); }
         .log-waiting { color: var(--accent-yellow); font-weight: bold; }
-        .cursor { color: var(--text-primary); font-weight: bold; animation: blink 1s step-start infinite; margin-left: 3px; }
+        .cursor { color: var(--text-primary); font-weight: bold; animation: blink 1s step-start infinite; margin-left: 2px; }
         
         /* Quick Actions Panel */
         .quick-actions {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
+            margin-top: 8px;
         }
         .action-btn {
             background: linear-gradient(135deg, var(--panel-bg), var(--primary-bg));
             border: 1px solid var(--border-color);
             color: var(--text-primary);
-            padding: 8px 5px;
-            font-size: 12px;
+            padding: 6px 4px;
+            font-size: 10px;
             cursor: pointer;
             transition: all 0.3s;
-            border-radius: 4px;
+            border-radius: 3px;
         }
         .action-btn:hover {
             border-color: var(--accent-blue);
             background: linear-gradient(135deg, #1c2129, #0f1319);
-            box-shadow: 0 0 10px rgba(88, 166, 255, 0.3);
+            box-shadow: 0 0 8px rgba(88, 166, 255, 0.3);
         }
         .action-btn:active {
             transform: scale(0.98);
@@ -412,25 +415,24 @@
             }
             .main-content, .sidebar {
                 width: 100%;
-                margin-right: 0;
             }
             .sidebar {
-                border-left: none;
                 border-top: 1px solid var(--border-color);
-                padding-left: 0;
-                padding-top: 15px;
+                padding-top: 10px;
             }
             .top-charts-container {
                 flex-direction: column;
                 height: auto;
             }
             .chart-box-half {
-                height: 180px;
+                height: 150px;
             }
             .header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 5px;
+                gap: 4px;
+                height: auto;
+                padding: 8px 15px;
             }
             .header-status {
                 position: static;
@@ -441,11 +443,10 @@
         
         @media (max-width: 768px) {
             .header {
-                font-size: 18px;
-                padding: 10px 15px;
+                font-size: 16px;
             }
             .container {
-                padding: 10px;
+                padding: 8px;
             }
             .metric-grid {
                 grid-template-columns: 1fr;
@@ -455,37 +456,38 @@
             }
             .additional-panel .panel-content {
                 flex-direction: column;
-                gap: 10px;
+                gap: 8px;
             }
             .data-box {
                 flex-direction: row;
                 justify-content: space-between;
-                padding: 15px;
+                padding: 10px;
             }
             .data-value {
-                font-size: 20px;
+                font-size: 16px;
             }
         }
         
         .footer {
-            padding: 8px 20px;
+            padding: 6px 15px;
             text-align: center;
             border-top: 1px solid var(--border-color);
             background-color: var(--panel-bg);
-            font-size: 12px;
+            font-size: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-shrink: 0;
+            height: 20px;
         }
         .footer-links {
             display: flex;
-            gap: 15px;
+            gap: 12px;
         }
         .footer-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 11px;
+            font-size: 9px;
             transition: color 0.2s;
         }
         .footer-links a:hover {
@@ -501,10 +503,10 @@
         /* Data refresh indicator */
         .refresh-indicator {
             position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 8px;
-            height: 8px;
+            top: 4px;
+            right: 4px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background-color: var(--accent-blue);
             opacity: 0;
@@ -513,6 +515,15 @@
         .refreshing .refresh-indicator {
             opacity: 1;
             animation: blink 1s infinite;
+        }
+        
+        /* Sağ panel için compact stiller */
+        .sidebar .panel {
+            min-height: 0;
+        }
+        .compact-panel {
+            flex: 0 0 auto;
+            height: auto;
         }
     </style>
 </head>
@@ -543,7 +554,7 @@
             </div>
 
             <div class="additional-panel">
-                <div class="panel">
+                <div class="panel compact">
                     <div class="title">SYSTEM PERFORMANCE OVERVIEW</div>
                     <div class="panel-content">
                         <div class="data-box">
@@ -566,7 +577,7 @@
                 </div>
             </div>
 
-            <div class="panel" style="flex-grow: 1;">
+            <div class="panel">
                 <div class="title">
                     REAL-TIME CONSOLE & PERFORMANCE TRENDS
                     <span class="title-badge" id="log-count">0 logs</span>
@@ -581,7 +592,7 @@
                     </div>
                     
                     <div class="log-panel" id="log-stream">
-                        <div style="font-size: 13px; color: var(--text-primary);">
+                        <div style="font-size: 11px; color: var(--text-primary);">
                             [SYSTEM] Console Active: Awaiting input<span class="cursor">_</span>
                         </div>
                     </div>
@@ -605,7 +616,7 @@
         </div>
 
         <div class="sidebar">
-            <div class="panel">
+            <div class="panel compact-panel">
                 <div class="title">CORE SYSTEM RESOURCE UTILIZATION</div>
                 <div class="metric-grid">
                     <div class="metric-box">
@@ -623,7 +634,7 @@
                 </div>
             </div>
 
-            <div class="panel">
+            <div class="panel compact-panel">
                 <div class="title">CLOUD & STORAGE METRICS</div>
                 <div class="metric-grid" style="grid-template-columns: repeat(3, 1fr);">
                     
@@ -649,13 +660,13 @@
                 </div>
             </div>
 
-            <div class="panel">
+            <div class="panel compact-panel">
                 <div class="title">SYSTEM HEALTH SUMMARY</div>
                 <div class="device-list" id="status-panel">
                 </div>
             </div>
             
-            <div class="panel">
+            <div class="panel compact-panel">
                 <div class="title">QUICK ACTIONS</div>
                 <div class="quick-actions">
                     <button class="action-btn" id="action-scan">Run Security Scan</button>
@@ -665,17 +676,17 @@
                 </div>
             </div>
             
-            <div class="panel">
+            <div class="panel compact-panel">
                 <div class="title">NETWORK & COMMUNICATION</div>
-                <div style="font-size: 13px;">
+                <div style="font-size: 11px;">
                     <p>Internal Gateway: <strong>172.16.16.1</strong></p>
                     <p>Primary DNS: <strong>1.1.1.1</strong></p>
                     <p>DMZ Segment: <strong>177.177.177.0/28</strong></p>
-                    <p style="margin-top: 10px;">Router Latency: <strong id="latency">4ms</strong></p>
+                    <p style="margin-top: 5px;">Router Latency: <strong id="latency">4ms</strong></p>
                 </div>
             </div>
             
-            <div class="panel">
+            <div class="panel compact-panel">
                 <div class="title">SECURITY AUDIT SUMMARY</div>
                 <div class="audit-summary">
                     <div class="audit-item">
@@ -697,12 +708,12 @@
                 </div>
             </div>
 
-            <div class="panel">
+            <div class="panel compact-panel">
                 <div class="title">OPERATIONAL METRICS</div>
-                <div style="font-size: 13px;">
+                <div style="font-size: 11px;">
                     <p>System Uptime: <strong id="uptime">0 Days, 0 Hrs</strong></p>
                     <p>Current Timestamp: <strong id="timestamp">--</strong></p>
-                    <p style="margin-top: 10px;">Security Policy: <strong style="color:var(--accent-green);">ENFORCED</strong></p>
+                    <p style="margin-top: 5px;">Security Policy: <strong style="color:var(--accent-green);">ENFORCED</strong></p>
                 </div>
             </div>
         </div>
@@ -729,27 +740,24 @@
             'BACKUP-NAS-01', 'CLOUD-SYNC-GW', 'VPN-CONCENTRATOR', 'WAP-CONTROLLER'
         ];
         const WAITING_LOG_FREQUENCY = 15; 
-        const LOG_UPDATE_INTERVAL = 500; 
         let logCounter = 0; 
         let criticalEvents = 18; 
-        let logIntervalHandle; // setInterval'ı tutmak için
-        let isPaused = false; // Log duraklatma durumu
-        let totalLogs = 0; // Toplam log sayısı
+        let logIntervalHandle;
+        let isPaused = false;
+        let totalLogs = 0;
         
-        // YENİ VE ÇEŞİTLENDİRİLMİŞ LOG MESAJLARI
+        // Log mesajları
         const logMsgs = [
             "[INFO] Connection established (VoIP-Call): ", "[INFO] Database query executed (DC-SERVER-01): ", "[TASK] Initiating Cloud Sync on BACKUP-NAS-01: ", 
             "[WARN] High latency detected on interface ETH0: ", "[EVENT] VPN session initiated from: ", "[CRIT] Firewall policy violation attempt blocked: ", 
             "[ALERT] Unexpected disk I/O spike on storage array: ", "[INFO] Standard DNS lookup resolved for: ", "[TASK] Policy check completed on WAP-CONTROLLER: ", 
             "[INFO] Traffic routed successfully via GW: ", "[WARN] CPU usage peak detected on VM Pool: ", "[INFO] Successful authentication for user 'SysAdmin' from: ",
-            // YENİ EKLEMELER
             "[INFO] File transfer complete: /var/log/backup_", "[TASK] System health probe initiated on ", "[INFO] New TCP session opened on port ", 
             "[EVENT] Intrusion Detection System triggered by: ", "[INFO] Routine garbage collection executed (98ms) on ", "[TASK] Re-synchronizing time servers (NTP) with: "
         ];
         const waitingMsgs = [
             "[_WAIT] Performing system self-check before next task batch...", "[_WAIT] Waiting for read-lock on shared memory segment...", "[_WAIT] Backup integrity check in progress. Pausing minor tasks...", 
             "[_WAIT] Latency threshold breached. Retrying network request in 5s...",
-            // YENİ EKLEMELER
             "[_WAIT] Pending patch deployment. Waiting for maintenance window...", "[_WAIT] Resource contention detected. Throttling non-critical processes..."
         ];
 
@@ -782,7 +790,7 @@
         const actionClearBtn = document.getElementById('action-clear');
         const actionRefreshBtn = document.getElementById('action-refresh');
         
-        const chartDataSize = 40;
+        const chartDataSize = 30;
         const chartLabels = Array.from({length: chartDataSize}, () => '');
         let initialLatency = 3;
         let initialMemory = 65;
@@ -801,6 +809,7 @@
             }
         };
 
+        // Grafikleri oluştur
         const trafficChartAggregated = new Chart(document.getElementById('trafficChartAggregated').getContext('2d'), {
             type: 'line',
             data: {
@@ -811,14 +820,16 @@
                         data: Array.from({length: chartDataSize}, () => Math.floor(Math.random() * 20) + 5), 
                         borderColor: '#58a6ff', 
                         backgroundColor: 'rgba(88, 166, 255, 0.1)', 
-                        fill: true 
+                        fill: true,
+                        borderWidth: 1
                     }, 
                     { 
                         label: 'RX (MB/s)', 
                         data: Array.from({length: chartDataSize}, () => Math.floor(Math.random() * 30) + 10), 
                         borderColor: '#3fb950', 
                         backgroundColor: 'rgba(63, 185, 80, 0.1)', 
-                        fill: true 
+                        fill: true,
+                        borderWidth: 1
                     }
                 ]
             },
@@ -834,7 +845,8 @@
                     data: Array.from({length: chartDataSize}, () => Math.floor(Math.random() * 50) + 2), 
                     borderColor: '#f85149', 
                     backgroundColor: 'rgba(248, 81, 73, 0.1)', 
-                    fill: true 
+                    fill: true,
+                    borderWidth: 1
                 }]
             },
             options: { 
@@ -865,7 +877,7 @@
                         display: true, 
                         beginAtZero: true, 
                         max: 10, 
-                        ticks: { color: '#8b949e' }, 
+                        ticks: { color: '#8b949e', font: { size: 9 } }, 
                         grid: { color: '#30363d' } 
                     }, 
                     y: { display: false } 
@@ -892,14 +904,13 @@
                         display: true, 
                         beginAtZero: true, 
                         max: 100, 
-                        ticks: { color: '#8b949e' }, 
+                        ticks: { color: '#8b949e', font: { size: 9 } }, 
                         grid: { color: '#30363d' } 
                     }, 
                     y: { display: false } 
                 } 
             }
         });
-
 
         // --- 3. Fonksiyonlar ---
         
@@ -953,13 +964,12 @@
             } else if (logContent.includes('VPN session initiated') || logContent.includes('authentication for user')) {
                 return logContent + getRandomItem(userNames) + '@' + generateRandomIP();
             } else if (logContent.includes('New TCP session opened')) {
-                return logContent + Math.floor(Math.random() * 50000 + 1024); // Rastgele port
+                return logContent + Math.floor(Math.random() * 50000 + 1024);
             } else if (logContent.includes('File transfer complete')) {
                 return logContent + getRandomItem(fileNames) + ` (${Math.floor(Math.random() * 100)}MB)`;
             } else if (logContent.includes('System health probe initiated') || logContent.includes('Database query executed') || logContent.includes('garbage collection executed')) {
                 return logContent + getRandomItem(systems); 
             }
-             // Eğer log içeriği özel bir son ek gerektirmiyorsa olduğu gibi bırak
             return logContent; 
         }
 
@@ -970,12 +980,10 @@
             message.className = 'log-line';
             let logContent;
             
-            // Hata / Uyarı / Bekleme (Daha az sıklıkta olmasını sağlıyoruz)
             if (logCounter % WAITING_LOG_FREQUENCY === 0 && Math.random() < 0.8) {
                  logContent = getRandomItem(waitingMsgs);
             } else {
                  logContent = getRandomItem(logMsgs);
-                 // Log içeriğini çeşitlendiriyoruz
                  logContent = appendRandomData(logContent);
             }
             logCounter++; 
@@ -1017,14 +1025,12 @@
             }
             requestAnimationFrame(animateLog);
             
-            // Bir sonraki akış hızını rastgele ayarla
             setRandomLogInterval();
         }
         
         // Dinamik Log Akış Hızı
         function setRandomLogInterval() {
-            clearInterval(logIntervalHandle); // Mevcut interval'ı durdur
-            // 300ms (Hızlı) ile 1000ms (Yavaş) arasında rastgele bir süre seç
+            clearInterval(logIntervalHandle);
             const newInterval = Math.floor(Math.random() * 700) + 300; 
             logIntervalHandle = setInterval(createLogLine, newInterval);
         }
@@ -1052,7 +1058,7 @@
             }, 1000);
         }
         
-        // Diğer Fonksiyonlar
+        // Sistem durumlarını güncelle
         function updateSystemStatuses() { 
             if (statusPanel.children.length === 0) {
                 systems.forEach(system => {
@@ -1070,7 +1076,6 @@
                 const dot = item.querySelector('.status-dot');
                 let status = 'ok';
                 
-                // Kritik sistemlere özel animasyon ekle
                 if (CRITICAL_SYSTEMS.includes(systemName)) {
                     dot.classList.add('critical-pulse');
                 } else {
@@ -1098,7 +1103,6 @@
                 text.textContent = status.toUpperCase();
             });
             
-            // Sistem durumunu güncelle
             updateSystemStatus();
         }
         
@@ -1133,7 +1137,6 @@
             const hours = Math.floor((uptimeMinutes % (24 * 60)) / 60);
             document.getElementById('uptime').textContent = `${days} Days, ${hours} Hrs`;
             
-            // Yeni data kutularını güncelle
             updateDataBoxes();
         }
         
@@ -1155,7 +1158,7 @@
         updateHeaderTime();
         updateDataBoxes();
 
-        // Log akışını dinamik olarak başlat
+        // Log akışını başlat
         setRandomLogInterval(); 
         
         // Event listener'lar
@@ -1195,7 +1198,7 @@
             }, 1000);
         });
         
-        // Diğer döngüler
+        // Döngüler
         setInterval(updateSystemStatuses, 3000);
         setInterval(updateCoreMetrics, 1000); 
         setInterval(updateFixedCharts, 3600000);
