@@ -1,666 +1,259 @@
 <!DOCTYPE html>
-<html class="no-js" lang="tr">
+<html lang="tr">
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Programlar - Texper Bilişim</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description"
+        content="Texper Bilişim tarafından önerilen uzak destek, gerekli programlar, güvenlik ve sistem araçları indirme linkleri." />
+    <meta name="keywords"
+        content="programlar, uzak destek, TeamViewer, AnyDesk, Alpemix, WinRAR, Chrome, Antivirus, Texper Bilişim" />
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/flexslider.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="img/favicon.ico" rel="icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Ubuntu:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
 
     <style>
- .program2-button-container {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
-
-    .program2-button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #f8f9fa;
-        color: #495057;
-        border: 1px solid #ced4da;
-        border-radius: 8px;
-        text-decoration: none;
-        font-size: 1em;
-        transition: all 0.3s ease-in-out;
-        cursor: pointer;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-
-    .program2-button:hover {
-        background-color: #e9ecef;
-        border-color: #adb5bd;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        color: #007bff;
-    }
-        /* Programlar Sayfasına Özel Stiller */
-        #fh5co-main {
-            padding-top: 5em;
-        }
-
-        .programlar-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            grid-gap: 1.5em;
-            margin-top: 2em;
-        }
-
-        .program-button {
-            background-color: #fff;
-            color: #495057;
-            border: 1px solid #ced4da;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 1em;
-            transition: all 0.3s ease-in-out;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 120px;
-        }
-
-        .program-button:hover {
-            background-color: #f8f9fa;
-            border-color: #adb5bd;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            color: #007bff;
-        }
-
-        .program-title {
-            font-size: 1.1em;
+        .navbar-light .navbar-nav .nav-link {
+            color: var(--bs-primary) !important;
             font-weight: 500;
-            margin-bottom: 0.7em;
-            color: #212529;
         }
 
-        .program-icon {
-            font-size: 1.5em;
-            margin-bottom: 0.7em;
-            color: #007bff;
+        .navbar-light .navbar-nav .nav-link.active,
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: var(--bs-secondary) !important;
         }
 
-        .program-category {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-top: 1.5em;
-            margin-bottom: 0.8em;
-            color: #343a40;
-            text-align: center;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 0.3em;
+        .navbar-light .navbar-brand h1 {
+            color: var(--bs-primary) !important;
+        }
+
+        .navbar-light .navbar-brand h1 .text-primary {
+            color: var(--bs-secondary) !important;
+        }
+
+        .container-fluid.sticky-top {
+            background-color: #FFFFFF !important;
+        }
+
+        .navbar.navbar-expand-lg {
+            background-color: #FFFFFF !important;
+        }
+        
+        /* Navigasyon barı altından başlangıç için dikey boşluk ayarı */
+        .page-start-padding {
+            padding-top: 6rem !important;
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
 
 <body>
-    <div id="fh5co-page">
-        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-         <div class="program2-button-container">
-    <a href="https://1drv.ms/f/c/d9e2670e00da7b49/Er2Imf5OLiNIkOE2izrPC5YB8vlZrXabzwxQ9IpKHTtmGA?e=8gifC8" class="program2-button">|TeX|</a>
-</div>
-        <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
-
-            <h1 id="fh5co-logo"><a href="index.html" aria-label="Texper Bilişim Anasayfası">Texper</a></h1>
-           <nav id="fh5co-main-menu" role="navigation">
-    <ul>
-        <li><a href="index.html">Anasayfa</a></li>
-        <li><a href="cozum.html">Çözümlerimiz</a></li>
-        <li><a href="blog.html">Neler yapıyoruz</a></li>
-        <li><a href="portfolio.html">Referanslar</a></li>
-        <li><a href="about.html">Hakkımızda</a></li>
-        <li><a href="contact.html">Bize ulaşın</a></li>
-        <li class="fh5co-active"><a href="programlar.html" aria-current="page">Programlar</a></li>
-    </ul>
-</nav>
-
-            <div class="fh5co-footer">
-                <p><small>&copy; 2021 Texper Bilişim. Tüm Hakları Saklıdır.</span> <span>Texper tarafından kurulmuştur.</span></small></p>
-                <ul>
-                    <li><a href="#" aria-label="Facebook"><i class="icon-facebook2"></i></a></li>
-                    <li><a href="#" aria-label="Twitter"><i class="icon-twitter2"></i></a></li>
-                    <li><a href="#" aria-label="Instagram"><i class="icon-instagram"></i></a></li>
-                    <li><a href="#" aria-label="LinkedIn"><i class="icon-linkedin2"></i></a></li>
-                </ul>
-                <a href="https://onedrive.live.com/:x:/g/personal/D9E2670E00DA7B49/EUl72gAOZ-IggNlaBgAAAAABlL7cQ4yqRsurxyq5kRFm6g?resid=D9E2670E00DA7B49!1626&ithint=file%2Cxlsx&e=y4ruAx&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy9kOWUyNjcwZTAwZGE3YjQ5L0VVbDcyZ0FPWi1JZ2dObGFCZ0FBQUFBQmxMN2NRNHlxUnN1cnh5cTVrUkZtNmc_ZT15NHJ1QXg"
-    target="_blank" class="software-button">Software</a>
-            </div>
-
-        </aside>
-
-        <div id="fh5co-main">
-            <div class="fh5co-narrow-content">
-                <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Programlar</h2>
-
-                <div class="program-category">Uzak Destek</div>
-
-                <div class="programlar-container animate-box" data-animate-effect="fadeInLeft">
-
-                    <div class="program-button" onclick="window.open('https://www.teamviewer.com/tr/', '_blank')">
-                        <i class="fas fa-desktop program-icon"></i>
-                        <div class="program-title">TeamViewer</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.alpemix.com/tr/', '_blank')">
-                        <i class="fas fa-desktop program-icon"></i>
-                        <div class="program-title">Alpemix</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://anydesk.com/tr', '_blank')">
-                        <i class="fas fa-desktop program-icon"></i>
-                        <div class="program-title">AnyDesk</div>
-                        İndir
-                    </div>
-                </div>
-
-                <div class="program-category">Gerekli Programlar</div>
-
-                <div class="programlar-container animate-box" data-animate-effect="fadeInLeft">
-
-                    <div class="program-button" onclick="window.open('https://www.google.com/chrome/', '_blank')">
-                        <i class="fab fa-chrome program-icon"></i>
-                        <div class="program-title">Google Chrome</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.mozilla.org/tr/firefox/', '_blank')">
-                        <i class="fab fa-firefox program-icon"></i>
-                        <div class="program-title">Mozilla Firefox</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.opera.com/', '_blank')">
-                        <i class="fab fa-opera program-icon"></i>
-                        <div class="program-title">Opera</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.rarlab.com/download.htm', '_blank')">
-                        <i class="fas fa-file-archive program-icon"></i>
-                        <div class="program-title">WinRAR</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.7-zip.org/', '_blank')">
-                        <i class="fas fa-file-archive program-icon"></i>
-                        <div class="program-title">7-Zip</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.videolan.org/vlc/', '_blank')">
-                        <i class="fas fa-video program-icon"></i>
-                        <div class="program-title">VLC Media Player</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://get.adobe.com/reader/', '_blank')">
-                        <i class="far fa-file-pdf program-icon"></i>
-                        <div class="program-title">Adobe Acrobat Reader</div>
-                        İndir
-                    </div>
-                    <div class="program-button"
-                        onclick="window.open('https://www.libreoffice.org/download/download/', '_blank')">
-                        <i class="fas fa-file-alt program-icon"></i>
-                        <div class="program-title">LibreOffice</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.java.com/download/', '_blank')">
-                        <i class="fab fa-java program-icon"></i>
-                        <div class="program-title">Java</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://notepad-plus-plus.org/', '_blank')">
-                        <i class="fas fa-edit program-icon"></i>
-                        <div class="program-title">Notepad++</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.ccleaner.com/ccleaner', '_blank')">
-                        <i class="fas fa-broom program-icon"></i>
-                        <div class="program-title">CCleaner</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.malwarebytes.com/', '_blank')">
-                        <i class="fas fa-shield-alt program-icon"></i>
-                        <div class="program-title">Malwarebytes</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://filezilla-project.org/', '_blank')">
-                        <i class="fas fa-upload program-icon"></i>
-                        <div class="program-title">FileZilla</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.utorrent.com/', '_blank')">
-                        <i class="fas fa-download program-icon"></i>
-                        <div class="program-title">uTorrent</div>
-                        İndir
-                    </div>
-                    <div class="program-button"
-                        onclick="window.open('https://drive.google.com/open?id=1DekyH4zB1I2lYycMqm3ftBkGvmy514OD&usp=drive_fs', '_blank')">
-                        <i class="fas fa-file-excel program-icon"></i>
-                        <div class="program-title">Office 2019</div>
-                        İndir
-                    </div>
-                    <div class="program-button"
-                        onclick="window.open('https://drive.google.com/open?id=1A22XKe9nRmJFYj6Uzhx-D6knw7SCZIiH&usp=drive_fs', '_blank')">
-                        <i class="fas fa-file-excel program-icon"></i>
-                        <div class="program-title">Office 2016</div>
-                        İndir
-                    </div>
-                    <div class="program-button"
-                        onclick="window.open('https://drive.google.com/open?id=1LJsh0aWmJlvhgyv5aBr25uRFG3gMl0eF&usp=drive_fs', '_blank')">
-                        <i class="fab fa-windows program-icon"></i>
-                        <div class="program-title">Windows 10</div>
-                        İndir
-                    </div>
-                    <div class="program-button"
-                        onclick="window.open('https://drive.google.com/open?id=1RosYvQbajjJFyva1ja24OakvCOmyvkZU&usp=drive_fs', '_blank')">
-                        <i class="fab fa-windows program-icon"></i>
-                        <div class="program-title">Windows 11</div>
-                        İndir
-                    </div>
-                    <div class="program-button"
-                        onclick="window.open('https://drive.google.com/file/d/13hyR7N_dhlqX_iXh2iHliiWLcYw4OwuA/view?usp=sharing', '_blank')">
-                        <i class="fas fa-cogs program-icon"></i>
-                        <div class="program-title">Windows Update Kapatma</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.ubuntu.com/download/desktop', '_blank')">
-                        <i class="fab fa-linux program-icon"></i>
-                        <div class="program-title">Ubuntu</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="https://www.pardus.org.tr/indir/">
-                        <i class="fab fa-linux program-icon"></i>
-                        <div class="program-title">Pardus</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://linuxmint.com/download.php', '_blank')">
-                        <i class="fab fa-linux program-icon"></i>
-                        <div class="program-title">Linux Mint</div>
-                        İndir
-                    </div>
-                    <div class="program-button"
-                        onclick="window.open('https://openvpn.net/client-connect-vpn-download/', '_blank')">
-                        <i class="fas fa-lock program-icon"></i>
-                        <div class="program-title">OpenVPN Connect</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="https://sourceforge.net/projects/securepoint/files/">
-                        <i class="fas fa-lock program-icon"></i>
-                        <div class="program-title">Securepoint SSL VPN</div>
-                        İndir
-                    </div>
-                    <div class="program-button"
-                        onclick="window.open('https://drive.google.com/file/d/1LX3-fodDcuxx6CcC-cLQKm9s844JMl97/view?usp=sharing', '_blank')">
-                        <i class="fas fa-medkit program-icon"></i>
-                        <div class="program-title">Hiren's BootCD</div>
-                        İndir
-                    </div>
-                    <div class="program-button"
-                        onclick="window.open('https://drive.google.com/file/d/1CidZaQVlW6Pl7cSzyNF56p2fP5yMCC2C/view?usp=sharing', '_blank')">
-                        <i class="fas fa-medkit program-icon"></i>
-                        <div class="program-title">Hiren's BootCD PE</div>
-                        İndir
-                    </div>
-                    <div class="program-button"
-                        onclick="window.open('https://drive.google.com/drive/folders/1xsYLj8qjb4CPs0vljStRbGYioMALw_hK?usp=sharing', '_blank')">
-                        <i class="fas fa-wrench program-icon"></i>
-                        <div class="program-title">Tüm VCRedist (x86/x64)</div>
-                        İndir
-                    </div>
-
-                </div>
-
-                <div class="program-category">Güvenlik</div>
-
-                <div class="programlar-container animate-box" data-animate-effect="fadeInLeft">
-
-                    <div class="program-button" onclick="window.open('https://www.avg.com/tr-tr', '_blank')">
-                        <i class="fas fa-shield-alt program-icon"></i>
-                        <div class="program-title">AVG Antivirus</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.kaspersky.com.tr/free-antivirus', '_blank')">
-                        <i class="fas fa-shield-alt program-icon"></i>
-                        <div class="program-title">Kaspersky Free Antivirus</div>
-                        İndir
-                    </div>
-                </div>
-
-                <div class="program-category">Sistem Araçları</div>
-
-                <div class="programlar-container animate-box" data-animate-effect="fadeInLeft">
-
-                    <div class="program-button" onclick="window.open('https://www.revouninstaller.com/revo-uninstaller-free-download/', '_blank')">
-                        <i class="fas fa-trash-alt program-icon"></i>
-                        <div class="program-title">Revo Uninstaller</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.cpuid.com/softwares/cpu-z.html', '_blank')">
-                        <i class="fas fa-microchip program-icon"></i>
-                        <div class="program-title">CPU-Z</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.cpuid.com/softwares/hwmonitor.html', '_blank')">
-                        <i class="fas fa-thermometer-half program-icon"></i>
-                        <div class="program-title">HWMonitor</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://crystalmark.info/en/software/crystaldiskinfo/', '_blank')">
-                        <i class="fas fa-hdd program-icon"></i>
-                        <div class="program-title">CrystalDiskInfo</div>
-                        İndir
-                    </div>
-                </div>
-
-                <div class="program-category">İletişim</div>
-
-                <div class="programlar-container animate-box" data-animate-effect="fadeInLeft">
-                    <div class="program-button" onclick="window.open('https://www.thunderbird.net/tr/', '_blank')">
-                        <i class="far fa-envelope program-icon"></i>
-                        <div class="program-title">Thunderbird</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://zoom.us/download', '_blank')">
-                        <i class="fas fa-video program-icon"></i>
-                        <div class="program-title">Zoom</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://desktop.whatsapp.com/', '_blank')">
-                        <i class="fab fa-whatsapp program-icon"></i>
-                        <div class="program-title">WhatsApp Desktop</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://telegram.org/', '_blank')">
-                        <i class="fab fa-telegram program-icon"></i>
-                        <div class="program-title">Telegram Desktop</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.microsoft.com/tr-tr/microsoft-teams/download-app', '_blank')">
-                        <i class="fab fa-microsoft program-icon"></i>
-                        <div class="program-title">Microsoft Teams</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://meet.google.com/', '_blank')">
-                        <i class="fas fa-video program-icon"></i>
-                        <div class="program-title">Google Meet</div>
-                        İndir
-                    </div>
-                </div>
-<div class="program-category">Geliştirme Araçları</div>
-
-<div class="programlar-container animate-box" data-animate-effect="fadeInLeft">
-
-    <div class="program-button" onclick="window.open('https://code.visualstudio.com/', '_blank')">
-        <i class="fas fa-code program-icon"></i>
-        <div class="program-title">Visual Studio Code</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://git-scm.com/downloads', '_blank')">
-        <i class="fab fa-git-alt program-icon"></i>
-        <div class="program-title">Git</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.docker.com/products/personal', '_blank')">
-        <i class="fab fa-docker program-icon"></i>
-        <div class="program-title">Docker</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://nodejs.org/en/download/', '_blank')">
-        <i class="fab fa-node-js program-icon"></i>
-        <div class="program-title">Node.js</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.python.org/downloads/', '_blank')">
-        <i class="fab fa-python program-icon"></i>
-        <div class="program-title">Python</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.php.net/downloads.php', '_blank')">
-        <i class="fab fa-php program-icon"></i>
-        <div class="program-title">PHP</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.mysql.com/downloads/', '_blank')">
-        <i class="fas fa-database program-icon"></i>
-        <div class="program-title">MySQL</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.postgresql.org/download/', '_blank')">
-        <i class="fas fa-database program-icon"></i>
-        <div class="program-title">PostgreSQL</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://httpd.apache.org/download.cgi', '_blank')">
-        <i class="fas fa-server program-icon"></i>
-        <div class="program-title">Apache</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://nginx.org/en/download.html', '_blank')">
-        <i class="fas fa-server program-icon"></i>
-        <div class="program-title">Nginx</div>
-        İndir
-    </div>
-
-</div>
-
-<div class="program-category">Grafik ve Tasarım</div>
-
-<div class="programlar-container animate-box" data-animate-effect="fadeInLeft">
-
-    <div class="program-button" onclick="window.open('https://www.gimp.org/downloads/', '_blank')">
-        <i class="fas fa-paint-brush program-icon"></i>
-        <div class="program-title">GIMP</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://inkscape.org/release/', '_blank')">
-        <i class="fas fa-vector-square program-icon"></i>
-        <div class="program-title">Inkscape</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.blender.org/download/', '_blank')">
-        <i class="fas fa-cube program-icon"></i>
-        <div class="program-title">Blender</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.blackmagicdesign.com/products/davinciresolve/', '_blank')">
-        <i class="fas fa-video program-icon"></i>
-        <div class="program-title">DaVinci Resolve</div>
-        İndir
-    </div>
-
-</div>
-
-<div class="program-category">İnternet Araçları</div>
-
-<div class="programlar-container animate-box" data-animate-effect="fadeInLeft">
-
-    <div class="program-button" onclick="window.open('https://filezilla-project.org/', '_blank')">
-        <i class="fas fa-upload program-icon"></i>
-        <div class="program-title">FileZilla Client</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.chiark.greenend.org.uk/~sgtatham/putty/', '_blank')">
-        <i class="fas fa-terminal program-icon"></i>
-        <div class="program-title">PuTTY</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.wireshark.org/download.html', '_blank')">
-        <i class="fas fa-network-wired program-icon"></i>
-        <div class="program-title">Wireshark</div>
-        İndir
-    </div>
-
-</div>
-
-<div class="program-category">Sistem Araçları</div>
-
-<div class="programlar-container animate-box" data-animate-effect="fadeInLeft">
-
-    <div class="program-button" onclick="window.open('https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns', '_blank')">
-        <i class="fas fa-running program-icon"></i>
-        <div class="program-title">Autoruns</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer', '_blank')">
-        <i class="fas fa-tasks program-icon"></i>
-        <div class="program-title">Process Explorer</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.jam-software.com/treesize_free/', '_blank')">
-        <i class="fas fa-chart-pie program-icon"></i>
-        <div class="program-title">TreeSize Free</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.ccleaner.com/defraggler', '_blank')">
-        <i class="fas fa-compact-disc program-icon"></i>
-        <div class="program-title">Defraggler</div>
-        İndir
-    </div>
-
-</div>
-
-<div class="program-category">Güvenlik</div>
-
-<div class="programlar-container animate-box" data-animate-effect="fadeInLeft">
-
-    <div class="program-button" onclick="window.open('https://www.bitdefender.com/solutions/free.html', '_blank')">
-        <i class="fas fa-shield-alt program-icon"></i>
-        <div class="program-title">Bitdefender Free Antivirus</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.avast.com/en-us/free-antivirus-download', '_blank')">
-        <i class="fas fa-shield-alt program-icon"></i>
-        <div class="program-title">Avast Free Antivirus</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.glasswire.com/', '_blank')">
-        <i class="fas fa-firewall program-icon"></i>
-        <div class="program-title">GlassWire</div>
-        İndir
-    </div>
-
-</div>
-
-<div class="program-category">Medya</div>
-
-<div class="programlar-container animate-box" data-animate-effect="fadeInLeft">
-
-    <div class="program-button" onclick="window.open('https://www.foobar2000.org/', '_blank')">
-        <i class="fas fa-headphones program-icon"></i>
-        <div class="program-title">foobar2000</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://mpc-hc.org/', '_blank')">
-        <i class="fas fa-play-circle program-icon"></i>
-        <div class="program-title">Media Player Classic - HC</div>
-        İndir
-    </div>
-
-</div>
-
-<div class="program-category">Üretkenlik</div>
-
-<div class="programlar-container animate-box" data-animate-effect="fadeInLeft">
-
-    <div class="program-button" onclick="window.open('https://evernote.com/', '_blank')">
-        <i class="fas fa-sticky-note program-icon"></i>
-        <div class="program-title">Evernote</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://trello.com/', '_blank')">
-        <i class="fab fa-trello program-icon"></i>
-        <div class="program-title">Trello</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('https://www.notion.so/', '_blank')">
-        <i class="fas fa-tasks program-icon"></i>
-        <div class="program-title">Notion</div>
-        İndir
-    </div>
-
-    <div class="program-button" onclick="window.open('http://freemind.sourceforge.net/wiki/index.php/Download', '_blank')">
-        <i class="fas fa-sitemap program-icon"></i>
-        <div class="program-title">FreeMind</div>
-        İndir
-    </div>
-
-</div>
-                <div class="program-category">Diğer</div>
-
-                <div class="programlar-container animate-box" data-animate-effect="fadeInLeft">
-
-                    <div class="program-button" onclick="window.open('https://dotnet.microsoft.com/download', '_blank')">
-                        <i class="fab fa-microsoft program-icon"></i>
-                        <div class="program-title">.NET Framework (3.5 / 4.8)</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.codecguide.com/download.htm', '_blank')">
-                        <i class="fas fa-film program-icon"></i>
-                        <div class="program-title">K-Lite Codec Pack</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.google.com/drive/download/', '_blank')">
-                        <i class="fab fa-google-drive program-icon"></i>
-                        <div class="program-title">Google Drive</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.dropbox.com/download?lang=tr', '_blank')">
-                        <i class="fab fa-dropbox program-icon"></i>
-                        <div class="program-title">Dropbox</div>
-                        İndir
-                    </div>
-                    <div class="program-button" onclick="window.open('https://www.microsoft.com/tr-tr/microsoft-365/onedrive/download', '_blank')">
-                        <i class="fab fa-microsoft program-icon"></i>
-                        <div class="program-title">OneDrive</div>
-                        İndir
-                    </div>
-                </div>
-
-
-                </div>
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Yükleniyor...</span>
         </div>
     </div>
+    <div class="container-fluid sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="text-white mb-0">TEXPER<span class="text-primary"> BİLİŞİM</span></h1>
+                </a>
+                <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto">
+                        <a href="index.html" class="nav-item nav-link">Anasayfa</a>
+                        <a href="about.html" class="nav-item nav-link">Hakkımızda</a>
+                        <div class="nav-item dropdown">
+                            <a href="service.html" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Çözümlerimiz</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="ag-kurulumu.html" class="dropdown-item">Ağ Kurulum ve Yönetimi</a>
+                                <a href="cloud.html" class="dropdown-item">TexNexus Bulut Çözümleri</a>
+                                <a href="yazilim-gelistirme.html" class="dropdown-item">Yazılım Geliştirme</a>
+                                <a href="programlar.html" class="dropdown-item">Önerilen Programlar</a>
+                                <a href="cozum.html" class="dropdown-item">İş Ortaklıkları</a>
+                            </div>
+                        </div>
+                        <a href="destek.html" class="nav-item nav-link">Destek</a>
+                        <a href="blog.html" class="nav-item nav-link">Neler Yapıyoruz</a>
+                        <a href="contact.html" class="nav-item nav-link">Bize Ulaşın</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="container-fluid py-5 page-start-padding">
+        <div class="container py-5">
+            <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Gerekli Araçlar</div>
+                <h2 class="mb-4">Sisteminiz İçin Önerdiğimiz Temel Programlar</h2>
+                <p class="mb-0">
+                    İşletme sürekliliğini, güvenliğini ve verimliliğini desteklemek için uzmanlarımızın seçtiği, gerekli programların indirme bağlantılarını burada bulabilirsiniz.
+                </p>
+            </div>
+            
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <h3 class="mb-4 text-primary"><i class="fa fa-desktop me-3"></i> Uzak Bağlantı ve Destek</h3>
+                    <div class="list-group">
+                        <a href="destek.html" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            TeamViewer, AnyDesk, Alpemix ve Diğerleri
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                        <div class="p-3 bg-light">
+                            <small class="text-muted">Tüm uzak destek programlarının doğrudan indirme linkleri için **Destek** sayfamızı ziyaret edin.</small>
+                        </div>
+                    </div>
+                </div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.flexslider-min.js"></script>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                    <h3 class="mb-4 text-primary"><i class="fa fa-shield-alt me-3"></i> Güvenlik ve Antivirüs</h3>
+                    <div class="list-group">
+                        <a href="https://www.eset.com/tr/" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            ESET Güvenlik Çözümleri
+                            <i class="fa fa-external-link-alt"></i>
+                        </a>
+                        <a href="https://www.kaspersky.com.tr/" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            Kaspersky Endpoint Security
+                            <i class="fa fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h3 class="mb-4 text-primary"><i class="fa fa-archive me-3"></i> Dosya Sıkıştırma ve Yönetim</h3>
+                    <div class="list-group">
+                        <a href="https://www.win-rar.com/download.html?&L=24" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            WinRAR (Dosya Arşivleme)
+                            <i class="fa fa-external-link-alt"></i>
+                        </a>
+                        <a href="https://www.7-zip.org/download.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            7-Zip (Açık Kaynak Sıkıştırma)
+                            <i class="fa fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.7s">
+                    <h3 class="mb-4 text-primary"><i class="fa fa-globe me-3"></i> Tarayıcılar ve Verimlilik</h3>
+                    <div class="list-group">
+                        <a href="https://www.google.com/chrome/" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            Google Chrome
+                            <i class="fa fa-external-link-alt"></i>
+                        </a>
+                        <a href="https://www.mozilla.org/tr/firefox/new/" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            Mozilla Firefox
+                            <i class="fa fa-external-link-alt"></i>
+                        </a>
+                        <a href="https://www.libreoffice.org/download/download/" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                            LibreOffice (Ücretsiz Ofis Paketi)
+                            <i class="fa fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center pt-5 wow fadeIn" data-wow-delay="0.9s">
+                <h3 class="mb-4">İhtiyacınız Olanı Bulamadınız mı?</h3>
+                <a href="contact.html" class="btn btn-primary py-3 px-5">Bize Ulaşın</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid bg-dark text-white-50 footer pt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Texper Bilişim</h5>
+                    <p>İşletmenizin dijital dönüşümünde güvenilir ortağınız.</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square me-1" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-square me-1" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square me-1" href="#"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square me-1" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Adres ve İletişim</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i> İstanbul, Türkiye</p>
+                    <p><i class="fa fa-phone-alt me-3"></i> +90 531 401 73 75</p>
+                    <p><i class="fa fa-envelope me-3"></i> info@texper.com.tr</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Hızlı Bağlantılar</h5>
+                    <a class="btn-link" href="about.html">Hakkımızda</a>
+                    <a class="btn-link" href="contact.html">Bize Ulaşın</a>
+                    <a class="btn-link" href="service.html">Hizmetlerimiz</a>
+                    <a class="btn-link" href="destek.html">Teknik Destek</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Popüler Çözümler</h5>
+                    <a class="btn-link" href="ag-kurulumu.html">Ağ Kurulumu</a>
+                    <a class="btn-link" href="cloud.html">Bulut Sunucu</a>
+                    <a class="btn-link" href="yazilim-gelistirme.html">Özel Yazılım</a>
+                    <a class="btn-link" href="programlar.html">Programlar</a>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <span class="text-white"><a href="#"><i class="fas fa-copyright text-primary me-2"></i>Texper Bilişim 2023. Tüm hakları saklıdır.</a></span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="footer-menu">
+                            <a href="index.html">Anasayfa</a>
+                            <a href="contact.html">Bize Ulaşın</a>
+                            <a href="faq.html">SSS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="bi bi-arrow-up"></i></a>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <script>
+        $(window).on('load', function () {
+            // Yüklenme bittiğinde 0.1 saniye sonra spinner'ı kapat
+            setTimeout(function () {
+                var spinnerElement = $('#spinner');
+                if (spinnerElement.length) {
+                    spinnerElement.removeClass('show');
+                }
+            }, 100); 
+        });
+    </script>
     <script src="js/main.js"></script>
-
 </body>
 
 </html>
