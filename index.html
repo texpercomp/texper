@@ -28,11 +28,41 @@
     <link href="css/style.css" rel="stylesheet">
 
     <style>
+        /* Ana Navigasyon (Desktop) Renkleri - ORİJİNAL İSTENEN MAVİ */
         .navbar-light .navbar-nav .nav-link {
             color: var(--bs-primary) !important;
             font-weight: 500;
         }
 
+        /* MOBİL MENÜ RENK VE ARKA PLAN DÜZELTMESİ (Telefonda Açılınca) */
+        @media (max-width: 991.98px) {
+            /* Koyu arka plan ve beyaz text ayarı */
+            .navbar-collapse {
+                background-color: #212529 !important; /* Koyu Siyah Arka Plan */
+                padding: 10px 0;
+            }
+            
+            /* Tüm menü linklerini (Ana ve Dropdown) beyaz yapar */
+            #navbarCollapse .navbar-nav .nav-link, 
+            #navbarCollapse .dropdown-menu .dropdown-item {
+                color: #FFFFFF !important; /* Beyaz Metin */
+            }
+            
+            /* Dropdown menüsünün kendisinin arka planını da dark yapar (Çözümlerimiz altı) */
+            #navbarCollapse .dropdown-menu {
+                background-color: #343a40 !important;
+            }
+            
+            /* Mobil menüde hover/aktif renkler */
+            #navbarCollapse .navbar-nav .nav-link.active,
+            #navbarCollapse .navbar-nav .nav-link:hover,
+            #navbarCollapse .dropdown-menu .dropdown-item:hover {
+                 color: var(--bs-secondary) !important; /* İkincil renk (Sarımsı) */
+                 background-color: #343a40 !important;
+            }
+        }
+        
+        /* Masaüstünde linklerin üzerine gelince rengi */
         .navbar-light .navbar-nav .nav-link.active,
         .navbar-light .navbar-nav .nav-link:hover {
             color: var(--bs-secondary) !important;
@@ -79,6 +109,9 @@
             font-size: 2.5rem !important;
             line-height: 1.2 !important; 
             min-height: 3rem; 
+             /* TITREME DÜZELTMESİ */
+            transform: translateZ(0);
+            will-change: transform; 
         }
         .hero-header {
             padding-top: 8rem !important; 
@@ -128,7 +161,6 @@
              box-shadow: none; 
              position: relative; 
              min-height: 300px; 
-             /* Butonu yukarı çekmek için alttan boşluğu azalttım */
              padding-bottom: 0; 
         }
         .hero-cta-block h4 {
@@ -145,9 +177,8 @@
         /* DÖNEN KARTLAR İÇİN DÜZELTME */
         #cycling-wrapper {
             position: relative;
-            height: 100px; /* İçerik için sabit yükseklik (Daha dar hale geldi) */
+            height: 100px; 
             margin-top: 20px;
-            /* margin-bottom: 20px; Kaldırıldı, yerine butonun üstüne çıktı */
             overflow: hidden; 
         }
         #cycling-benefits li {
