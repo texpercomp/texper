@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Bulut Hizmetleri (TexNexus) - Texper Bilişim</title>
+  
+  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* INDEX TEMASI - %100 SADAKAT */
+    section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+    
+    .hero { 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      padding: 120px 0 80px 0; 
+      position: relative;
+    }
+
+    /* Detay Listesi Tasarımı */
+    .detail-list-container {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: flex-start;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+      transition: 0.4s ease;
+    }
+
+    .detail-row:hover {
+      background: rgba(13, 66, 255, 0.05);
+      border-left: 5px solid #ffc107;
+      transform: translateX(10px);
+    }
+
+    .detail-icon {
+      font-size: 2.2rem;
+      color: #ffc107;
+      min-width: 70px;
+    }
+
+    .detail-info h4 {
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .detail-info p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    .tech-specs {
+      display: flex;
+      gap: 12px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .spec-tag {
+      font-size: 0.7rem;
+      background: rgba(13, 66, 255, 0.15);
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: 600;
+      border: 1px solid rgba(13, 66, 255, 0.2);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+
+<body class="cloud-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Texper Bilişim</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Anasayfa</a></li>
+          <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="faq.html">S.S.S</a></li>
+              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="services.html" class="active"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="services.html">Tüm Hizmetler</a></li>
+              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="programlar.html">Faydalı Programlar</a></li>
+            </ul>
+          </li>
+          <li><a href="project.html">Projeler</a></li>
+          <li><a href="blog.html">Neler Yapıyoruz</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <section id="hero" class="hero section dark-background">
+      <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+      <div class="container">
+        
+        <div class="text-center mb-5">
+          <h2 style="font-size: 3.2rem; font-weight: 800;">TexNexus <span style="color: #ffc107;">Cloud.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem;">Verilerinizi yerel veri merkezlerinde, yüksek performanslı ve KVKK uyumlu altyapımızda barındırın.</p>
+        </div>
+
+        <div class="detail-list-container">
+          
+          <div class="detail-row">
+            <div class="detail-icon"><i class="bi bi-cloud-haze2"></i></div>
+            <div class="detail-info">
+              <h4>Yüksek Performanslı Sanal Sunucular (VDS)</h4>
+              <p>Tamamen NVMe SSD depolama ve yüksek saat hızlı işlemcilerle donatılmış TexNexus sunucuları ile iş uygulamalarınızı ışık hızında çalıştırın.</p>
+              <div class="tech-specs"><span class="spec-tag">NVMe SSD</span><span class="spec-tag">Xeon Gold</span><span class="spec-tag">1Gbps Uplink</span></div>
+            </div>
+          </div>
+
+          <div class="detail-row">
+            <div class="detail-icon"><i class="bi bi-shield-check"></i></div>
+            <div class="detail-info">
+              <h4>Yönetilebilir Yedekleme (BaaS)</h4>
+              <p>Veeam ve Acronis altyapısı ile sunucularınızı günlük, haftalık veya anlık olarak yedekliyoruz. Felaket senaryolarına karşı verileriniz her an geri dönülebilir halde.</p>
+              <div class="tech-specs"><span class="spec-tag">Veeam</span><span class="spec-tag">Disaster Recovery</span><span class="spec-tag">Encryption</span></div>
+            </div>
+          </div>
+
+          <div class="detail-row">
+            <div class="detail-icon"><i class="bi bi-lock"></i></div>
+            <div class="detail-info">
+              <h4>Veri Güvenliği ve KVKK Uyumu</h4>
+              <p>Bulut altyapımız Türkiye sınırları içerisinde barındırılmaktadır. Gelişmiş donanımsal firewall ve IPS sistemleri ile verileriniz siber tehditlere karşı %100 koruma altında.</p>
+              <div class="tech-specs"><span class="spec-tag">Tier 3+ Datacenter</span><span class="spec-tag">DDoS Protection</span><span class="spec-tag">Local Hosting</span></div>
+            </div>
+          </div>
+
+          <div class="detail-row">
+            <div class="detail-icon"><i class="bi bi-cpu"></i></div>
+            <div class="detail-info">
+              <h4>Hibrit Bulut ve Migrasyon</h4>
+              <p>Mevcut fiziksel sunucularınızı TexNexus bulut altyapısına kesintisiz taşıyoruz. Hibrit yapılar kurarak hem yerel hem bulut avantajlarını birleştiriyoruz.</p>
+              <div class="tech-specs"><span class="spec-tag">Migration</span><span class="spec-tag">Hyper-V</span><span class="spec-tag">VMware</span></div>
+            </div>
+          </div>
+
+          <div class="text-center mt-5">
+            <a href="contact.html" class="btn-getstarted" style="background: #ffc107; color: #000; border: none; padding: 15px 50px; border-radius: 50px; font-weight: 800;">BULUT ÇÖZÜMÜ İÇİN TEKLİF ALIN</a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container copyright text-center py-4">
+      <p>© 2025 <strong class="px-1 sitename">Texper Bilişim</strong> - TexNexus Cloud Services</p>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

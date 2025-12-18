@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Neler Yapıyoruz - Texper Bilişim</title>
+  
+  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* INDEX TEMASI - TAM KORUMA */
+    section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+    
+    .hero { 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      padding: 120px 0 80px 0; 
+      position: relative;
+    }
+
+    .blog-stream-list {
+      max-width: 1000px;
+      margin: 20px auto 0;
+      text-align: left;
+    }
+
+    .blog-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 25px;
+      padding: 25px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: 0.4s ease;
+      background: rgba(255, 255, 255, 0.03);
+      margin-bottom: 12px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+
+    .blog-item:hover {
+      background: rgba(255, 193, 7, 0.05);
+      border-left: 5px solid #ffc107;
+      transform: translateX(8px);
+    }
+
+    .blog-date {
+      min-width: 75px;
+      text-align: center;
+      padding-right: 15px;
+      border-right: 1px solid rgba(255, 193, 7, 0.3);
+    }
+
+    .blog-date .day { font-size: 1.6rem; font-weight: 800; color: #ffc107; display: block; line-height: 1; }
+    .blog-date .month { font-size: 0.75rem; text-transform: uppercase; color: #fff; opacity: 0.6; }
+
+    .blog-info h4 { color: #fff; font-weight: 700; margin-bottom: 8px; font-size: 1.25rem; }
+    .blog-info p { color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; line-height: 1.6; margin-bottom: 10px; }
+
+    .blog-meta { display: flex; gap: 12px; font-size: 0.75rem; color: #ffc107; font-weight: 600; text-transform: uppercase; margin-bottom: 5px; }
+
+    .read-btn { display: inline-flex; align-items: center; gap: 5px; color: #ffc107; text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: 0.3s; }
+    .read-btn:hover { color: #fff; }
+  </style>
+</head>
+
+<body class="blog-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Texper Bilişim</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Anasayfa</a></li>
+          <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="faq.html">S.S.S</a></li>
+              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="services.html">Tüm Hizmetler</a></li>
+              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
+              <li><a href="programlar.html">Faydalı Programlar</a></li>
+            </ul>
+          </li>
+          <li><a href="project.html">Projeler</a></li>
+          <li><a href="blog.html" class="active">Neler Yapıyoruz</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <section id="hero" class="hero section dark-background">
+      <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+      <div class="container">
+        
+        <div class="text-center mb-5">
+          <h2 style="font-size: 3.2rem; font-weight: 800;">Saha <span style="color: #ffc107;">Günlüğü.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; opacity: 0.8;">Operasyonlarımız, güncellemelerimiz ve teknoloji notlarımız.</p>
+        </div>
+
+        <div class="blog-stream-list">
+          
+          <div class="blog-item">
+            <div class="blog-date"><span class="day">18</span><span class="month">Ara</span></div>
+            <div class="blog-info">
+              <div class="blog-meta"><span>SAHA</span> • <span>NETWORK</span></div>
+              <h4>Yeni Lojistik Üssü Fiber Altyapısı Tamamlandı</h4>
+              <p>15.000 m² alana sahip depo projesinde tüm backbone fiber sonlandırmaları ve Wi-Fi 6 AP montajları başarıyla bitirildi.</p>
+              <a href="#" class="read-btn">RAPORU GÖR <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="blog-item">
+            <div class="blog-date"><span class="day">14</span><span class="month">Ara</span></div>
+            <div class="blog-info">
+              <div class="blog-meta"><span>GÜVENLİK</span> • <span>FIREWALL</span></div>
+              <h4>Sophos V20 Firmware Geçişleri Hakkında</h4>
+              <p>Tüm bakım anlaşmalı müşterilerimizin Firewall cihazları, planlanan takvime göre en güvenli kararlı sürüme güncellendi.</p>
+              <a href="#" class="read-btn">DETAYLAR <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="blog-item">
+            <div class="blog-date"><span class="day">09</span><span class="month">Ara</span></div>
+            <div class="blog-info">
+              <div class="blog-meta"><span>DONANIM</span> • <span>SERVER</span></div>
+              <h4>Dell PowerEdge Sunucu Kümesi Devreye Alındı</h4>
+              <p>Finans sektöründeki bir iş ortağımızın sanallaştırma altyapısı, yeni nesil Dell sunucularla %40 performans artışı sağlayacak şekilde yenilendi.</p>
+              <a href="#" class="read-btn">PROJE NOTLARI <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="blog-item">
+            <div class="blog-date"><span class="day">02</span><span class="month">Ara</span></div>
+            <div class="blog-info">
+              <div class="blog-meta"><span>SİSTEM</span> • <span>NAS</span></div>
+              <h4>Synology 40TB Yedekleme İstasyonu Kurulumu</h4>
+              <p>Mimarlık ofisi müşterimiz için yüksek hızlı NVMe cache destekli NAS ünitesi ve 3-2-1 kuralına uygun yedekleme sistemi kuruldu.</p>
+              <a href="#" class="read-btn">İNCELE <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="blog-item">
+            <div class="blog-date"><span class="day">28</span><span class="month">Kas</span></div>
+            <div class="blog-info">
+              <div class="blog-meta"><span>ALTYAPI</span> • <span>RACK</span></div>
+              <h4>Sistem Odası Kabin Revizyonu ve Etiketleme</h4>
+              <p>Karışık durumdaki 42U rack kabinleri, patch panel sonlandırmaları ve kablo etiketlemeleriyle standartlara uygun hale getirildi.</p>
+              <a href="#" class="read-btn">ÖNCESİ / SONRASI <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="blog-item">
+            <div class="blog-date"><span class="day">22</span><span class="month">Kas</span></div>
+            <div class="blog-info">
+              <div class="blog-meta"><span>TEXNEXUS</span> • <span>CLOUD</span></div>
+              <h4>Yeni Sanal Sunucu Paketleri Aktif!</h4>
+              <p>TexNexus Cloud altyapımıza eklenen yeni donanımlarla beraber daha yüksek RAM ve CPU seçenekli paketlerimiz satışa sunuldu.</p>
+              <a href="#" class="read-btn">PAKETLERİ GÖR <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container copyright text-center py-4">
+      <p>© 2024 <strong class="px-1 sitename">Texper Bilişim</strong> - Bilişimde Güvenilir Adres</p>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>İletişim - Texper Bilişim</title>
+  
+  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* INDEX TEMASI - TAM KORUMA */
+    section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+    
+    .hero { 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      padding: 100px 0; 
+      position: relative;
+    }
+
+    .contact-glass-box {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(15px);
+      padding: 40px;
+      border-radius: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      height: 100%;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .info-item i {
+      font-size: 1.5rem;
+      color: #ffc107;
+      background: rgba(255, 193, 7, 0.1);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .info-item h4 { font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0; }
+    .info-item p { margin: 0; color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; }
+
+    /* Hızlı İletişim Butonları */
+    .quick-contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 30px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      text-decoration: none;
+      transition: 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .quick-contact-btn i { font-size: 2rem; }
+    .quick-contact-btn .text-content { color: #fff; }
+    .quick-contact-btn .text-content span { display: block; font-size: 0.8rem; opacity: 0.6; }
+    .quick-contact-btn .text-content strong { display: block; font-size: 1.2rem; font-weight: 700; }
+
+    /* Özel Renkler */
+    .btn-whatsapp:hover { background: rgba(37, 211, 102, 0.2); border-color: #25d366; transform: translateX(10px); }
+    .btn-whatsapp i { color: #25d366; }
+
+    .btn-phone:hover { background: rgba(255, 193, 7, 0.2); border-color: #ffc107; transform: translateX(10px); }
+    .btn-phone i { color: #ffc107; }
+
+    .btn-mail:hover { background: rgba(13, 110, 253, 0.2); border-color: #0d6efd; transform: translateX(10px); }
+    .btn-mail i { color: #0d6efd; }
+  </style>
+</head>
+
+<body class="contact-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Texper Bilişim</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Anasayfa</a></li>
+          <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="faq.html">S.S.S</a></li>
+              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="services.html">Tüm Hizmetler</a></li>
+              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
+              <li><a href="programlar.html">Faydalı Programlar</a></li>
+            </ul>
+          </li>
+          <li><a href="project.html">Projeler</a></li>
+          <li><a href="blog.html">Neler Yapıyoruz</a></li>
+          <li><a href="contact.html" class="active">İletişim</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <section id="hero" class="hero section dark-background">
+      <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+      <div class="container">
+        
+        <div class="text-center mb-5">
+          <h2 style="font-size: 3.5rem; font-weight: 800;">Hızlı <span style="color: #ffc107;">İletişim.</span></h2>
+          <p style="max-width: 600px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem;">İstanbul merkezli profesyonel BT desteği için yanınızdayız.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          
+          <div class="col-lg-5">
+            <div class="contact-glass-box">
+              <div class="info-item">
+                <i class="bi bi-geo-alt"></i>
+                <div>
+                  <h4>Konum</h4>
+                  <p>İstanbul / Türkiye</p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <i class="bi bi-clock"></i>
+                <div>
+                  <h4>Mesai Saatleri</h4>
+                  <p>09:00 - 18:30 (Pazartesi - Cumartesi)</p>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <i class="bi bi-shield-check"></i>
+                <div>
+                  <h4>Teknik Destek</h4>
+                  <p>7/24 İzleme ve Acil Müdahale</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="contact-glass-box">
+              
+              <a href="https://wa.me/905000000000" class="quick-contact-btn btn-whatsapp" target="_blank">
+                <i class="bi bi-whatsapp"></i>
+                <div class="text-content">
+                  <span>WhatsApp Destek Hattı</span>
+                  <strong>Hemen Mesaj Gönder</strong>
+                </div>
+              </a>
+
+              <a href="tel:+902120000000" class="quick-contact-btn btn-phone">
+                <i class="bi bi-telephone-outbound"></i>
+                <div class="text-content">
+                  <span>Müşteri Hizmetleri</span>
+                  <strong>+90 (212) 000 00 00</strong>
+                </div>
+              </a>
+
+              <a href="mailto:info@texper.com.tr" class="quick-contact-btn btn-mail">
+                <i class="bi bi-envelope-at"></i>
+                <div class="text-content">
+                  <span>Kurumsal E-Posta</span>
+                  <strong>info@texper.com.tr</strong>
+                </div>
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container copyright text-center py-4">
+      <p>© 2025 <strong class="px-1 sitename">Texper Bilişim</strong> - İstanbul BT Çözümleri</p>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

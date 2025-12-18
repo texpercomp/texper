@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Kurumsal - Texper Bilişim</title>
+  
+  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* Senin Orijinal Teman */
+    section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+    
+    .hero { 
+      min-height: 85vh; 
+      display: flex; 
+      align-items: center; 
+      padding: 100px 0; 
+      position: relative;
+    }
+
+    /* Senin Buton Tasarımların */
+    .btn-explore { background: #0d42ff; color: #fff !important; padding: 12px 35px; border-radius: 50px; font-weight: 600; border: 2px solid #0d42ff; text-decoration: none; display: inline-block; transition: 0.3s; }
+    .btn-explore:hover { background: transparent; color: #fff !important; transform: scale(1.05); }
+    
+    .btn-support-yellow { background: #ffc107; color: #000 !important; padding: 12px 35px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
+    .btn-support-yellow:hover { background: #fff; transform: translateY(-3px); }
+
+    /* İçeriği Dolu Gösteren Cam Kutu */
+    .about-box {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 50px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 20px;
+      text-align: left; /* Okunabilirlik için metni sola yasladık ama kutu ortalı */
+    }
+
+    .highlight-text { color: #ffc107; font-weight: 600; }
+
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 2.2rem !important; }
+      .about-box { padding: 30px; }
+    }
+  </style>
+</head>
+
+<body class="about-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Texper Bilişim</h1>
+      </a>
+      
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Anasayfa</a></li>
+          
+          <li class="dropdown"><a href="#" class="active"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="faq.html">S.S.S</a></li>
+              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="services.html">Tüm Hizmetler</a></li>
+              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="programlar.html">Faydalı Programlar</a></li>
+            </ul>
+          </li>
+
+          <li><a href="project.html">Projeler</a></li>
+          <li><a href="blog.html">Neler Yapıyoruz</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      
+      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <section id="hero" class="hero section dark-background">
+      <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+      <div class="container">
+        <div class="text-center">
+          <h2 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 10px;">Geleceği Şekillendiren <span style="color: #ffc107;">Teknoloji.</span></h2>
+        </div>
+        
+        <div class="about-box mx-auto" style="max-width: 950px;">
+            <p style="font-size: 1.3rem; line-height: 1.8; margin-bottom: 25px;">
+              <span class="highlight-text">Texper Bilişim</span>, dijital dünyadaki karmaşık altyapı sorunlarına <span class="highlight-text">akılcı ve sürdürülebilir</span> çözümler üretmek amacıyla kuruldu. On yılı aşkın sektörel tecrübemizle, küçük işletmelerden büyük ölçekli kurumlara kadar geniş bir yelpazede BT danışmanlığı sunuyoruz.
+            </p>
+            
+            <div class=\"row\">
+              <div class=\"col-md-6\">
+                <p style=\"font-size: 1.1rem; opacity: 0.9;\">
+                  <i class=\"bi bi-check2-circle highlight-text\"></i> <strong>TexNexus Cloud:</strong> Verilerinizi güvenli, hızlı ve yerel altyapımızda barındırıyoruz.<br>
+                  <i class=\"bi bi-check2-circle highlight-text\"></i> <strong>Sistem Entegrasyonu:</strong> Donanım ve yazılım süreçlerinizi uçtan uca optimize ediyoruz.
+                </p>
+              </div>
+              <div class=\"col-md-6\">
+                <p style=\"font-size: 1.1rem; opacity: 0.9;\">
+                  <i class=\"bi bi-check2-circle highlight-text\"></i> <strong>7/24 Teknik Destek:</strong> Sorunlarınızı büyümeden çözüyor, iş sürekliliğinizi garanti altına alıyoruz.<br>
+                  <i class=\"bi bi-check2-circle highlight-text\"></i> <strong>Siber Güvenlik:</strong> Veri güvenliğinizi en güncel protokollerle koruyoruz.
+                </p>
+              </div>
+            </div>
+
+            <p style=\"margin-top: 20px; font-style: italic; opacity: 0.7; text-align: center;\">
+              \"Siz işinize odaklanın, teknolojiyi biz yönetelim.\"
+            </p>
+        </div>
+
+        <div class="d-flex justify-content-center gap-3 mt-5">
+          <a href="services.html" class="btn-explore shadow">Hizmetleri İncele</a>
+          <a href="contact.html" class="btn-support-yellow shadow">Teklif Al</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container copyright text-center py-4">
+      <p>© 2024 <strong class="px-1 sitename">Texper Bilişim</strong> - Güvenli BT Çözümleri.</p>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
