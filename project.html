@@ -2,270 +2,203 @@
 <html lang="tr">
 
 <head>
-    <meta charset="utf-8">
-    <title>Projelerimiz ve Referanslar - Texper Bilişim</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description"
-        content="Texper Bilişim'in başarıyla tamamladığı yazılım geliştirme, ağ kurulumu ve bulut çözümleri projelerini inceleyin. Müşteri memnuniyeti odaklı çalışmalarımız." />
-    <meta name="keywords"
-        content="projeler, referanslar, başarı hikayeleri, yazılım projesi, ağ projesi, bulut projesi, texper bilişim" />
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Projelerimiz - Texper Bilişim</title>
+  
+  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-    <link href="img/favicon.ico" rel="icon">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Ubuntu:wght@500;700&display=swap"
-        rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    /* INDEX TEMASI - %100 SADAKAT */
+    section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+    
+    .hero { 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      padding: 120px 0 80px 0; 
+      position: relative;
+    }
 
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    /* Proje Listesi - Services ile Senkronize */
+    .project-stream-list {
+      max-width: 1050px;
+      margin: 20px auto 0;
+      text-align: left;
+    }
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    .project-card {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding: 35px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: 0.4s ease;
+      background: rgba(255, 255, 255, 0.03);
+      margin-bottom: 15px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
 
-    <link href="css/style.css" rel="stylesheet">
+    .project-card:hover {
+      background: rgba(13, 66, 255, 0.08);
+      border-left: 6px solid #ffc107;
+      transform: scale(1.02);
+    }
 
-    <style>
-        .navbar-light .navbar-nav .nav-link {
-            color: var(--bs-primary) !important;
-            font-weight: 500;
-        }
+    .project-icon {
+      min-width: 70px;
+      height: 70px;
+      background: rgba(255, 193, 7, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #ffc107;
+    }
 
-        .navbar-light .navbar-nav .nav-link.active,
-        .navbar-light .navbar-nav .nav-link:hover {
-            color: var(--bs-secondary) !important;
-        }
+    .project-info h4 {
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 1.4rem;
+    }
 
-        .navbar-light .navbar-brand h1 {
-            color: var(--bs-primary) !important;
-        }
+    .project-info p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
 
-        .navbar-light .navbar-brand h1 .text-primary {
-            color: var(--bs-secondary) !important;
-        }
+    .project-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(13, 66, 255, 0.2);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
 
-        .container-fluid.sticky-top {
-            background-color: #FFFFFF !important;
-        }
-
-        .navbar.navbar-expand-lg {
-            background-color: #FFFFFF !important;
-        }
-
-        /* Proje filtreleme butonu için aktif renk */
-        .portfolio-filtr-btn.active {
-            background: var(--bs-primary);
-            color: #FFFFFF;
-        }
-        
-        /* Navigasyon barı altından başlangıç için dikey boşluk ayarı */
-        .page-start-padding {
-            padding-top: 6rem !important;
-        }
-    </style>
+    @media (max-width: 768px) {
+      .project-card { flex-direction: column; text-align: center; }
+      .project-icon { margin-bottom: 15px; }
+    }
+  </style>
 </head>
 
-<body>
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Yükleniyor...</span>
-        </div>
+<body class="project-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Texper Bilişim</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Anasayfa</a></li>
+          <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="faq.html">S.S.S</a></li>
+              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="services.html">Tüm Hizmetler</a></li>
+              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
+              <li><a href="programlar.html">Faydalı Programlar</a></li>
+            </ul>
+          </li>
+          <li><a href="project.html" class="active">Projeler</a></li>
+          <li><a href="blog.html">Neler Yapıyoruz</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
     </div>
-    <div class="container-fluid sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light p-0">
-                <a href="index.html" class="navbar-brand">
-                    <h1 class="text-white mb-0">TEXPER<span class="text-primary"> BİLİŞİM</span></h1>
-                </a>
-                <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto">
-                        <a href="index.html" class="nav-item nav-link">Anasayfa</a>
-                        <a href="about.html" class="nav-item nav-link">Hakkımızda</a>
-                        <div class="nav-item dropdown">
-                            <a href="service.html" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Çözümlerimiz</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="ag-kurulumu.html" class="dropdown-item">Ağ Kurulum ve Yönetimi</a>
-                                <a href="cloud.html" class="dropdown-item">TexNexus Bulut Çözümleri</a>
-                                <a href="yazilim-gelistirme.html" class="dropdown-item">Yazılım Geliştirme</a>
-                                <a href="programlar.html" class="dropdown-item">Önerilen Programlar</a>
-                                <a href="cozum.html" class="dropdown-item">İş Ortaklıkları</a>
-                            </div>
-                        </div>
-                        <a href="destek.html" class="nav-item nav-link">Destek</a>
-                        <a href="blog.html" class="nav-item nav-link">Neler Yapıyoruz</a>
-                        <a href="contact.html" class="nav-item nav-link">Bize Ulaşın</a>
-                    </div>
-                </div>
-            </nav>
+  </header>
+
+  <main class="main">
+    <section id="hero" class="hero section dark-background">
+      <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+      <div class="container">
+        
+        <div class="text-center mb-5">
+          <h2 style="font-size: 3.5rem; font-weight: 800;">Başarı <span style="color: #ffc107;">Hikayelerimiz.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9;">İş ortaklarımız için hayata geçirdiğimiz kritik BT operasyonları.</p>
         </div>
+
+        <div class="project-stream-list">
+          
+          <div class="project-card">
+            <div class="project-icon"><i class="bi bi-building"></i></div>
+            <div class="project-info">
+              <span class="project-badge">Anahtar Teslim</span>
+              <h4>Lojistik Merkezi Altyapı Entegrasyonu</h4>
+              <p>İstanbul merkezli global bir lojistik firmasının 20.000 m² depolama alanının tüm fiber optik, Wi-Fi ve sistem odası kurulumu 15 gün içerisinde tamamlanarak teslim edildi.</p>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-icon"><i class="bi bi-shield-check"></i></div>
+            <div class="project-info">
+              <span class="project-badge">Siber Güvenlik</span>
+              <h4>Uluslararası Tekstil Grubu Firewall Konsolidasyonu</h4>
+              <p>Farklı lokasyonlardaki 5 üretim tesisinin ağ güvenliği, Sophos Firewall sistemleri üzerinden merkezileştirildi ve VPN tünelleri ile güvenli veri akışı sağlandı.</p>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-icon"><i class="bi bi-cloud-arrow-up"></i></div>
+            <div class="project-info">
+              <span class="project-badge">TexNexus Cloud</span>
+              <h4>Kamu Tedarikçisi Veri Taşıma Operasyonu</h4>
+              <p>Fiziksel sunucularda çalışan ERP sistemleri, TexNexus Cloud altyapımıza sıfır veri kaybı ve minimum kesinti ile başarıyla migrate edildi.</p>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-icon"><i class="bi bi-server"></i></div>
+            <div class="project-info">
+              <span class="project-badge">Sistem Odası</span>
+              <h4>Holding Binası Sistem Odası Modernizasyonu</h4>
+              <p>Karışık durumdaki 42U rack kabinlerin yapısal kablolama revizyonu, etiketleme ve soğutma sistemleri optimizasyonu ile profesyonel standartlara taşınması.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="text-center mt-5">
+          <a href="contact.html" class="btn-getstarted" style="background: #ffc107; color: #000; border: none; padding: 15px 45px; border-radius: 50px; font-weight: 800;">PROJENİZ İÇİN TEKLİF ALIN</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container copyright text-center py-4">
+      <p>© 2025 <strong class="px-1 sitename">Texper Bilişim</strong> - İstanbul'dan Dünyaya Teknoloji</p>
     </div>
-    <div class="container-fluid portfolio py-5 page-start-padding">
-        <div class="container py-5">
-            <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Başarı Hikayeleri</div>
-                <h2 class="mb-4">Tamamladığımız Öne Çıkan BT Projeleri</h2>
-                <p class="mb-0">
-                    Müşterilerimizin dijitalleşme süreçlerine katkıda bulunduğumuz ve başarılı sonuçlar elde ettiğimiz projelerimizi inceleyin.
-                </p>
-            </div>
-            
-            <div class="row mt-5">
-                <div class="col-12 text-center">
-                    <ul class="list-inline pb-3 mb-5 wow fadeIn" data-wow-delay="0.1s">
-                        <li class="list-inline-item"><a class="btn btn-outline-primary border-2 p-3 portfolio-filtr-btn active" href="#" data-filter="*">Tümü</a></li>
-                        <li class="list-inline-item"><a class="btn btn-outline-primary border-2 p-3 portfolio-filtr-btn" href="#" data-filter=".yazilim">Yazılım Geliştirme</a></li>
-                        <li class="list-inline-item"><a class="btn btn-outline-primary border-2 p-3 portfolio-filtr-btn" href="#" data-filter=".ag">Ağ ve Altyapı</a></li>
-                        <li class="list-inline-item"><a class="btn btn-outline-primary border-2 p-3 portfolio-filtr-btn" href="#" data-filter=".bulut">Bulut Çözümleri</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row g-4 portfolio-container">
-                
-                <div class="col-lg-4 col-md-6 portfolio-item yazilim wow fadeIn" data-wow-delay="0.1s">
-                    <div class="portfolio-inner rounded overflow-hidden">
-                        <img class="img-fluid" src="img/project-1.jpg" alt="E-Ticaret Sitesi Projesi">
-                        <div class="portfolio-text">
-                            <h4 class="text-white mb-4">E-Ticaret Sistemi Geliştirme</h4>
-                            <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-3" href="img/project-1.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square rounded-circle mx-3" href=""><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  </footer>
 
-                <div class="col-lg-4 col-md-6 portfolio-item ag wow fadeIn" data-wow-delay="0.3s">
-                    <div class="portfolio-inner rounded overflow-hidden">
-                        <img class="img-fluid" src="img/project-2.jpg" alt="Kurumsal Ağ Kurulumu">
-                        <div class="portfolio-text">
-                            <h4 class="text-white mb-4">Yeni Ofis Ağ Altyapısı Kurulumu</h4>
-                            <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-3" href="img/project-2.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square rounded-circle mx-3" href=""><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item bulut wow fadeIn" data-wow-delay="0.5s">
-                    <div class="portfolio-inner rounded overflow-hidden">
-                        <img class="img-fluid" src="img/project-3.jpg" alt="Bulut Yedekleme Çözümü">
-                        <div class="portfolio-text">
-                            <h4 class="text-white mb-4">Kapsamlı Bulut Yedekleme Sistemi</h4>
-                            <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-3" href="img/project-3.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square rounded-circle mx-3" href=""><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 portfolio-item yazilim wow fadeIn" data-wow-delay="0.7s">
-                    <div class="portfolio-inner rounded overflow-hidden">
-                        <img class="img-fluid" src="img/project-4.jpg" alt="Kurumsal CRM Uygulaması">
-                        <div class="portfolio-text">
-                            <h4 class="text-white mb-4">Özel CRM Uygulaması</h4>
-                            <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-3" href="img/project-4.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square rounded-circle mx-3" href=""><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            
-            <div class="text-center pt-5 wow fadeIn" data-wow-delay="0.9s">
-                <h3 class="mb-4">Sizin Projeniz Sırada Olabilir</h3>
-                <a href="contact.html" class="btn btn-primary py-3 px-5">Hemen İletişime Geçin</a>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-dark text-white-50 footer pt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Texper Bilişim</h5>
-                    <p>İşletmenizin dijital dönüşümünde güvenilir ortağınız.</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Adres ve İletişim</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i> İstanbul, Türkiye</p>
-                    <p><i class="fa fa-phone-alt me-3"></i> +90 531 401 73 75</p>
-                    <p><i class="fa fa-envelope me-3"></i> info@texper.com.tr</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Hızlı Bağlantılar</h5>
-                    <a class="btn-link" href="about.html">Hakkımızda</a>
-                    <a class="btn-link" href="contact.html">Bize Ulaşın</a>
-                    <a class="btn-link" href="service.html">Hizmetlerimiz</a>
-                    <a class="btn-link" href="destek.html">Teknik Destek</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Popüler Çözümler</h5>
-                    <a class="btn-link" href="ag-kurulumu.html">Ağ Kurulumu</a>
-                    <a class="btn-link" href="cloud.html">Bulut Sunucu</a>
-                    <a class="btn-link" href="yazilim-gelistirme.html">Özel Yazılım</a>
-                    <a class="btn-link" href="programlar.html">Programlar</a>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-white"><a href="#"><i class="fas fa-copyright text-primary me-2"></i>Texper Bilişim 2023. Tüm hakları saklıdır.</a></span>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="index.html">Anasayfa</a>
-                            <a href="contact.html">Bize Ulaşın</a>
-                            <a href="faq.html">SSS</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="bi bi-arrow-up"></i></a>
-
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <script>
-        $(window).on('load', function () {
-            // Yüklenme bittiğinde 0.1 saniye sonra spinner'ı kapat
-            setTimeout(function () {
-                var spinnerElement = $('#spinner');
-                if (spinnerElement.length) {
-                    spinnerElement.removeClass('show');
-                }
-            }, 100); 
-        });
-    </script>
-    <script src="js/main.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

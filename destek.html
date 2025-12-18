@@ -2,274 +2,203 @@
 <html lang="tr">
 
 <head>
-    <meta charset="utf-8">
-    <title>Teknik Destek Programları - Texper Bilişim</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description"
-        content="Texper Bilişim Uzak Masaüstü Destek Programları: TeamViewer, AnyDesk, Alpemix, RustDesk ve daha fazlasını tek yerden indirin. Hızlı teknik destek alın." />
-    <meta name="keywords"
-        content="uzak destek, masaüstü bağlantısı, alpemix, anydesk, rustdesk, teamviewer, vnc, zoho assist, texper bilişim destek, teknik destek programları" />
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Destek Merkezi - Texper Bilişim</title>
+  
+  <link href="assets/img/favicon.png?v=fresh" rel="icon" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
 
-    <link href="img/favicon.ico" rel="icon">
+  <style>
+    section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+    
+    .hero { 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      padding: 100px 0; 
+      position: relative;
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Ubuntu:wght@500;700&display=swap"
-        rel="stylesheet">
+    .hero .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    /* Müşteri Odaklı Dev Butonlar */
+    .support-action-card {
+      background: rgba(255, 193, 7, 0.08);
+      backdrop-filter: blur(15px);
+      padding: 35px 15px;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 193, 7, 0.3);
+      text-align: center;
+      transition: 0.4s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-decoration: none !important;
+    }
 
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    .support-action-card:hover {
+      background: #ffc107;
+      border-color: #ffc107;
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(255, 193, 7, 0.2);
+    }
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    .support-action-card i { font-size: 50px; color: #ffc107; margin-bottom: 15px; transition: 0.3s; }
+    .support-action-card h3 { color: #fff; font-weight: 700; font-size: 1.4rem; margin-bottom: 8px; transition: 0.3s; }
+    .support-action-card p { color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; transition: 0.3s; }
 
-    <link href="css/style.css" rel="stylesheet">
+    .support-action-card:hover i, 
+    .support-action-card:hover h3, 
+    .support-action-card:hover p { color: #000; }
 
-    <style>
-        .navbar-light .navbar-nav .nav-link {
-            color: var(--bs-primary) !important;
-            font-weight: 500;
-        }
+    /* Hızlı İletişim Butonları */
+    .quick-contact-bar {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50px;
+      padding: 15px 30px;
+      display: inline-flex;
+      gap: 25px;
+      margin-top: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-        .navbar-light .navbar-nav .nav-link.active,
-        .navbar-light .navbar-nav .nav-link:hover {
-            color: var(--bs-secondary) !important;
-        }
+    .q-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+    }
+    .q-link i { font-size: 1.2rem; color: #ffc107; }
+    .q-link:hover { color: #ffc107; }
 
-        .navbar-light .navbar-brand h1 {
-            color: var(--bs-primary) !important;
-        }
+    .panel-entry {
+      display: inline-block;
+      margin-top: 30px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 5px 15px;
+      border-radius: 30px;
+    }
+    .panel-entry:hover { color: #fff; border-color: #fff; }
 
-        .navbar-light .navbar-brand h1 .text-primary {
-            color: var(--bs-secondary) !important;
-        }
-
-        .container-fluid.sticky-top {
-            background-color: #FFFFFF !important;
-        }
-
-        .navbar.navbar-expand-lg {
-            background-color: #FFFFFF !important;
-        }
-
-        /* Destek Butonları Stilleri */
-        .support-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .support-button {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem 1rem;
-            background-color: var(--bs-light);
-            border: 1px solid #dee2e6;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            color: var(--bs-dark);
-            transition: all 0.3s ease-in-out;
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .support-button:hover {
-            background-color: #e9ecef;
-            border-color: var(--bs-primary);
-            color: var(--bs-primary);
-        }
-
-        .program-icon {
-            font-size: 2.5rem;
-            color: var(--bs-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        /* İletişim Kutusu */
-        .contact-box {
-            padding: 30px;
-            border-radius: 8px;
-            background-color: var(--bs-primary);
-            color: #FFFFFF;
-            text-align: center;
-        }
-
-        .contact-box h4 {
-            color: #FFFFFF;
-            margin-bottom: 15px;
-        }
-
-        .contact-box a {
-            color: #FFFFFF;
-            font-weight: bold;
-            margin: 0 15px;
-            text-decoration: underline;
-        }
-    </style>
+    @media (max-width: 768px) {
+      .quick-contact-bar { flex-direction: column; border-radius: 20px; width: 100%; gap: 15px; }
+    }
+  </style>
 </head>
 
-<body>
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Yükleniyor...</span>
-        </div>
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Texper Bilişim</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Anasayfa</a></li>
+          <li><a href="about.html">Kurumsal</a></li>
+          <li><a href="services.html">Hizmetler</a></li>
+          <li><a href="project.html">Projeler</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="programlar.html">Programlar</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+      </nav>
+      <a class="btn-getstarted" href="destek.html">Destek</a>
     </div>
-    <div class="container-fluid sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light p-0">
-                <a href="index.html" class="navbar-brand">
-                    <h1 class="text-white mb-0">TEXPER<span class="text-primary"> BİLİŞİM</span></h1>
-                </a>
-                <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto">
-                        <a href="index.html" class="nav-item nav-link">Anasayfa</a>
-                        <a href="about.html" class="nav-item nav-link">Hakkımızda</a>
-                        <div class="nav-item dropdown">
-                            <a href="service.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Çözümlerimiz</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="ag-kurulumu.html" class="dropdown-item">Ağ Kurulum ve Yönetimi</a>
-                                <a href="cloud.html" class="dropdown-item">TexNexus Bulut Çözümleri</a>
-                                <a href="yazilim-gelistirme.html" class="dropdown-item">Yazılım Geliştirme</a>
-                                <a href="programlar.html" class="dropdown-item">Önerilen Programlar</a>
-                                <a href="cozum.html" class="dropdown-item">İş Ortaklıkları</a>
-                            </div>
-                        </div>
-                        <a href="destek.html" class="nav-item nav-link active">Destek</a>
-                        <a href="blog.html" class="nav-item nav-link">Neler Yapıyoruz</a>
-                        <a href="contact.html" class="nav-item nav-link">Bize Ulaşın</a>
-                    </div>
-                </div>
-            </nav>
+  </header>
+
+  <main class="main">
+    <section id="hero" class="hero section dark-background">
+      <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+      
+      <div class="container text-center" style="position: relative; z-index: 2;">
+        
+        <div class="mb-5">
+          <h2 style="font-size: 3rem; font-weight: 800; color: #ffc107;">Teknik Çözüm Merkezi</h2>
+          <p style="font-size: 1.2rem; opacity: 0.8; max-width: 700px; margin: 0 auto;">
+            Sistemlerinize hızlı ve güvenli erişim sağlamak için bir bağlantı aracı seçin.
+          </p>
         </div>
+
+        <div class="row g-4 justify-content-center">
+          <div class="col-lg-3 col-md-6">
+            <a href="https://anydesk.com/tr/downloads/windows" target="_blank" class="support-action-card">
+              <i class="fa-solid fa-headset"></i>
+              <h3>AnyDesk</h3>
+              <p>Hızlı Bağlantı Kur</p>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <a href="https://www.alpemix.com/site/Alpemix.exe" target="_blank" class="support-action-card">
+              <i class="fa-solid fa-desktop"></i>
+              <h3>Alpemix</h3>
+              <p>Hemen Başlat</p>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <a href="https://rustdesk.com/" target="_blank" class="support-action-card">
+              <i class="fa-solid fa-laptop-code"></i>
+              <h3>RustDesk</h3>
+              <p>Güvenli Erişim</p>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <a href="https://download.teamviewer.com/download/TeamViewerQS.exe" target="_blank" class="support-action-card">
+              <i class="fa-solid fa-users-viewfinder"></i>
+              <h3>TeamViewer</h3>
+              <p>Hızlı Destek (QS)</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="quick-contact-bar">
+          <a href="https://wa.me/90513017375" class="q-link" target="_blank">
+            <i class="bi bi-whatsapp"></i> WhatsApp Destek
+          </a>
+          <a href="tel:+905314017375" class="q-link">
+            <i class="bi bi-telephone"></i> Bizi Arayın
+          </a>
+          <a href="mailto:info@texper.com.tr" class="q-link">
+            <i class="bi bi-envelope-at"></i> E-posta Gönder
+          </a>
+        </div>
+
+        <br>
+        <a href="#" class="panel-entry">
+          <i class="bi bi-lock-fill"></i> Kurumsal Müşteri Paneli
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer dark-background" style="margin-top: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div class="container copyright text-center py-4">
+      <p>© 2024 <strong class="px-1 sitename">Texper Bilişim</strong> - Tüm Hakları Saklıdır.</p>
     </div>
-    
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-12 text-center wow fadeIn" data-wow-delay="0.1s">
-                    <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Hızlı Çözüm</div>
-                    <h2 class="mb-4">Anında Destek İçin Gerekli Programları İndirin</h2>
-                    <p class="lead mb-5">Teknik bir sorunla karşılaştığınızda, uzman ekibimiz size hızlıca yardımcı olmak için aşağıdaki uzak masaüstü bağlantı programlarını kullanmaktadır. Lütfen size uygun olanı indirip çalıştırın.</p>
-                </div>
+  </footer>
 
-                <div class="col-lg-12 wow fadeIn" data-wow-delay="0.3s">
-                    <h3 class="border-bottom pb-2 mb-4">Uzak Destek Programları (Windows / macOS)</h3>
-                    <div class="support-container">
-                        <a href="https://www.alpemix.com/site/Alpemix.exe" target="_blank" class="support-button">
-                            <i class="fas fa-desktop program-icon"></i>
-                            Alpemix
-                        </a>
-                        <a href="https://download.anydesk.com/AnyDesk.exe" target="_blank" class="support-button">
-                            <i class="fas fa-desktop program-icon"></i>
-                            AnyDesk
-                        </a>
-                        <a href="https://download.teamviewer.com/download/TeamViewerQS_x64.exe" target="_blank" class="support-button">
-                            <i class="fas fa-desktop program-icon"></i>
-                            TeamViewer
-                        </a>
-                        <a href="https://github.com/rustdesk/rustdesk/releases/download/1.4.3/rustdesk-1.4.3-x86_64.exe" target="_blank" class="support-button">
-                            <i class="fas fa-desktop program-icon"></i>
-                            RustDesk
-                        </a>
-                        <a href="https://www.realvnc.com/en/connect/download/viewer/" target="_blank" class="support-button">
-                            <i class="fas fa-tv program-icon"></i>
-                            VNC Viewer
-                        </a>
-                        <a href="https://www.zoho.com/assist/download/" target="_blank" class="support-button">
-                            <i class="fas fa-tools program-icon"></i>
-                            Zoho Assist
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-12 wow fadeIn" data-wow-delay="0.5s">
-                    <h3 class="border-bottom pb-2 mb-4">Alternatif İletişim Kanalları</h3>
-                    <div class="contact-box bg-dark">
-                        <h4>Destek Ekibimizle Hızlı İletişim</h4>
-                        <p>Yukarıdaki programlar aracılığıyla bağlantı kuramadıysanız, lütfen aşağıdaki kanallardan bize ulaşın:</p>
-                        <a href="tel:+905314017375"><i class="fa fa-phone me-2"></i> Telefon: +90 531 401 73 75</a>
-                        <a href="https://wa.me/905314017375" target="_blank"><i class="fab fa-whatsapp me-2"></i> WhatsApp Destek Hattı</a>
-                        <a href="mailto:info@texper.com.tr"><i class="far fa-envelope me-2"></i> E-posta: info@texper.com.tr</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid bg-dark text-white-50 footer pt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Texper Bilişim</h5>
-                    <p>İşletmenizin dijital dönüşümünde güvenilir ortağınız.</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Adres ve İletişim</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i> İstanbul, Türkiye</p>
-                    <p><i class="fa fa-phone-alt me-3"></i> +90 531 401 73 75</p>
-                    <p><i class="fa fa-envelope me-3"></i> info@texper.com.tr</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Hızlı Bağlantılar</h5>
-                    <a class="btn-link" href="about.html">Hakkımızda</a>
-                    <a class="btn-link" href="contact.html">Bize Ulaşın</a>
-                    <a class="btn-link" href="service.html">Hizmetlerimiz</a>
-                    <a class="btn-link" href="destek.html">Teknik Destek</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Popüler Çözümler</h5>
-                    <a class="btn-link" href="ag-kurulumu.html">Ağ Kurulumu</a>
-                    <a class="btn-link" href="cloud.html">Bulut Sunucu</a>
-                    <a class="btn-link" href="yazilim-gelistirme.html">Özel Yazılım</a>
-                    <a class="btn-link" href="programlar.html">Programlar</a>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-white"><a href="#"><i class="fas fa-copyright text-primary me-2"></i>Texper Bilişim 2023. Tüm hakları saklıdır.</a></span>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="index.html">Anasayfa</a>
-                            <a href="contact.html">Bize Ulaşın</a>
-                            <a href="faq.html">SSS</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="bi bi-arrow-up"></i></a>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <script src="js/main.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

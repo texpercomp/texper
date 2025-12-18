@@ -2,820 +2,157 @@
 <html lang="tr">
 
 <head>
-    <meta charset="utf-8">
-    <title>Texper Bilişim - Profesyonel BT Çözümleri ve Teknik Destek</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description"
-        content="Texper Bilişim, işletmelere profesyonel BT çözümleri, ağ kurulumu, bulut hizmetleri, teknik destek ve sunucu kurulumu gibi geniş bir yelpazede hizmet sunar. Dijitalleşme yolculuğunuzda güvenilir ortağınız." />
-    <meta name="keywords"
-        content="BT çözümleri, teknik destek, ağ kurulumu, bulut hizmetleri, sunucu kurulumu, donanım satışı, vpn, güvenlik duvarı, ağ optimizasyonu, veri güvenliği, sunucu, yedekleme, web uygulama, mobil uygulama" />
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Texper Bilişim - Profesyonel BT Çözümleri</title>
+  
+  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-    <link href="img/favicon.ico" rel="icon">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Ubuntu:wght@500;700&display=swap"
-        rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    /* Senin Özel Tasarımın - Görünürlük Garantisi */
+    section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+    
+    .hero { 
+      min-height: 85vh; 
+      display: flex; 
+      align-items: center; 
+      padding: 100px 0; 
+      position: relative;
+    }
 
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    /* Değişken Yazı Efekti */
+    .typed-text { color: #ffc107; font-weight: 700; border-right: 3px solid #ffc107; padding-right: 5px; animation: blink 0.7s infinite; }
+    @keyframes blink { 0% { border-color: transparent } 50% { border-color: #ffc107 } 100% { border-color: transparent } }
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    /* Buton Tasarımları */
+    .btn-explore { background: #0d42ff; color: #fff !important; padding: 12px 35px; border-radius: 50px; font-weight: 600; border: 2px solid #0d42ff; text-decoration: none; display: inline-block; transition: 0.3s; }
+    .btn-explore:hover { background: transparent; color: #fff !important; transform: scale(1.05); }
+    
+    .btn-support-yellow { background: #ffc107; color: #000 !important; padding: 12px 35px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
+    .btn-support-yellow:hover { background: #fff; transform: translateY(-3px); }
 
-    <link href="css/style.css" rel="stylesheet">
-
-    <style>
-        /* Ana Navigasyon (Desktop) Renkleri - ORİJİNAL */
-        .navbar-light .navbar-nav .nav-link {
-            color: var(--bs-primary) !important;
-            font-weight: 500;
-        }
-
-        /* MOBİL MENÜ RENK VE ARKA PLAN DÜZELTMESİ (Telefonda Açılınca) */
-        @media (max-width: 991.98px) {
-            /* Koyu arka plan ve beyaz text ayarı */
-            .navbar-collapse {
-                background-color: #212529 !important; /* Koyu Siyah Arka Plan */
-                padding: 10px 0;
-            }
-            
-            /* Tüm menü linklerini (Ana ve Dropdown) beyaz yapar */
-            #navbarCollapse .navbar-nav .nav-link, 
-            #navbarCollapse .dropdown-menu .dropdown-item {
-                color: #FFFFFF !important; /* Beyaz Metin */
-            }
-            
-            /* Dropdown menüsünün kendisinin arka planını da dark yapar (Çözümlerimiz altı) */
-            #navbarCollapse .dropdown-menu {
-                background-color: #343a40 !important;
-            }
-        }
-        
-        /* Masaüstünde linklerin üzerine gelince rengi */
-        .navbar-light .navbar-nav .nav-link.active,
-        .navbar-light .navbar-nav .nav-link:hover {
-            color: var(--bs-secondary) !important;
-        }
-
-        /* LOGO DÜZELTMESİ (TEXPER: Primary, BİLİŞİM: Secondary) */
-        .navbar-light .navbar-brand h1 {
-            color: var(--bs-primary) !important;
-        }
-        .navbar-light .navbar-brand h1 .text-secondary { /* Orijinal HTML'deki .text-primary yerine, logodaki text-secondary'e uyum sağlandı. */
-            color: var(--bs-secondary) !important;
-        }
-
-        .container-fluid.sticky-top {
-            background-color: #FFFFFF !important;
-        }
-
-        .navbar.navbar-expand-lg {
-            background-color: #FFFFFF !important;
-        }
-        
-        .btn-danger {
-            background-color: #dc3545 !important;
-            border-color: #dc3545 !important;
-        }
-        .btn-danger:hover {
-            background-color: #c82333 !important;
-            border-color: #bd2130 !important;
-        }
-        
-        /* BAŞLIK RENGİ TUTARLILIĞI (Hakkımızda/İş Ortaklıkları gibi başlıklar) */
-        .container-fluid h2 {
-            color: var(--bs-primary) !important;
-        }
-        
-        /* [GÜNCEL] Hero Header Arka Planı ve Sabitleme */
-        .container-fluid.hero-header {
-            background: url('img/bg-hero.png') no-repeat center top !important; 
-            background-size: cover !important;
-            background-attachment: fixed !important; /* Resim sabit kalır, içerik kayar */
-        }
-        
-        /* [GÜNCEL] Feature bölümünün aynı arka planı kullanması ve sabitlenmesi */
-        .container-fluid.feature {
-             background: url('img/bg-hero.png') no-repeat center top !important;
-             background-size: cover !important;
-             background-attachment: fixed !important; /* Resim sabit kalır, içerik kayar */
-             background-color: transparent !important; /* Arka plan rengini şeffaf yap */
-             padding-top: 3rem !important;
-             padding-bottom: 3rem !important; 
-        }
-        .container-fluid.feature > .container {
-             padding-top: 3rem !important;
-        }
-
-
-        /* Hero text geçiş efekti için stil */
-        #typed-text {
-            border-right: 3px solid var(--bs-secondary); 
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-            animation: blinking-cursor 0.75s step-end infinite;
-            font-weight: 700; 
-            color: var(--bs-primary) !important; /* TEXPER rengi (Koyu Mavi) yapıldı */
-        }
-        
-        /* Başlık düzeltme */
-        .hero-header .display-4 {
-            font-size: 2.5rem !important;
-            line-height: 1.2 !important; 
-            min-height: 3rem; 
-            /* Ziplama/Kayma Sorunu Çözümü */
-            min-width: 400px; 
-        }
-        .hero-header {
-            padding-top: 8rem !important; 
-            padding-bottom: 8rem !important; 
-        }
-        
-        @media (min-width: 992px) { 
-            .hero-header .display-4 {
-                font-size: 3rem !important; 
-            }
-        }
-        
-        @keyframes blinking-cursor {
-            from, to { border-color: transparent }
-            50% { border-color: var(--bs-secondary); }
-        }
-
-        /* YENİ NEXUS BUTONU STİLİ */
-        .nexus-footer-link {
-            display: inline-block;
-            font-weight: bold;
-            background-color: #1b1b1b; 
-            color: #ffffff !important; 
-            padding: 10px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s;
-            margin-top: 20px; 
-            margin-bottom: 20px; 
-        }
-        .nexus-footer-link:hover {
-            background-color: #007bff; 
-        }
-        
-        /* Arama kutusu için stil */
-        #hero-search-input {
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
-            /* Hafif grimsi bir arka plan */
-            background-color: #f8f9fa !important;
-        }
-        #hero-search-button {
-            color: #FFFFFF !important;
-        }
-        
-        /* [DÖNGÜ GERİ GETİRİLDİ] DÖNEN FAYDA KARTLARI DÜZELTMESİ */
-        .hero-cta-block {
-             background-color: transparent; 
-             border: none; 
-             padding: 30px;
-             box-shadow: none; 
-             position: relative; 
-             min-height: 250px; /* Döngü için min yükseklik */
-             padding-bottom: 30px; 
-        }
-        .hero-cta-block h4 {
-            color: var(--bs-primary);
-            border-bottom: 2px solid var(--bs-secondary);
-            padding-bottom: 10px;
-        }
-        .hero-cta-block li h6 {
-            color: var(--bs-primary) !important; /* Mavi Başlık */
-            font-weight: 600;
-        }
-        #cycling-wrapper {
-            position: relative; /* Mutlak konumu geri getir */
-            height: 100px; /* Sabit yüksekliği geri getir */
-            margin-top: 20px;
-            overflow: hidden; /* Gizlemeyi geri getir */
-        }
-        #cycling-benefits li {
-            position: absolute; /* Mutlak konumu geri getir */
-            width: 100%;
-            padding-top: 0; 
-            border-top: none; 
-        }
-        
-        .hero-cta-block .small-dark {
-            color: #000000 !important; 
-            font-size: 0.9rem;
-            display: block;
-            margin-top: 5px;
-        }
-        
-        /* ÖZELLİK KUTULARI DÜZELTMESİ (Daha Kompakt Görünüm) */
-        .feature-item {
-            margin-bottom: 24px; 
-            max-width: 250px; 
-            padding: 1rem !important; /* Kutu içi dolgu azaltıldı */
-        }
-        /* İSTEK: Kutu İçindeki Başlık, Simge ve Metinleri Büyütme */
-        .feature-item i.fa-3x {
-            font-size: 3.5rem !important; /* Simge Boyutunu Artır */
-            margin-bottom: 1rem !important;
-        }
-        .feature-item h5 {
-            font-size: 1.1rem; /* Başlık Boyutunu Artır */
-            margin-bottom: 0.5rem !important;
-        }
-        .feature-item p {
-            font-size: 0.9rem; /* Metin Boyutunu Artır */
-        }
-
-
-        /* CTA BUTONLARI */
-        .cta-analysis-final {
-            display: inline-block; 
-            max-width: none; 
-            padding: 10px 25px !important;
-        }
-        
-        /* DESTEK BUTONU (KUTU İÇİNDE İKİ SATIR) */
-        .support-info {
-            display: block;
-            font-size: 0.75rem; 
-            margin-top: 3px; 
-            color: #000000; /* SİYAH HARFLER */
-            font-weight: 500;
-            text-align: center;
-            width: 100%;
-            padding: 0; 
-            line-height: 1; 
-        }
-        .btn-flex-col .main-btn-text {
-             font-size: 1rem;
-             font-weight: 700;
-             color: #FFFFFF;
-        }
-        .btn-flex-col {
-            padding-top: 8px !important;
-            padding-bottom: 8px !important;
-            height: auto; 
-        }
-    </style>
+    /* Mobil Ayarlar */
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 2.2rem !important; }
+      .hero .d-flex.justify-content-center { flex-direction: column !important; gap: 15px !important; padding: 0 20px; }
+      .btn-explore, .btn-support-yellow { width: 100% !important; margin: 0 !important; text-align: center; justify-content: center; }
+    }
+  </style>
 </head>
 
-<body>
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Yükleniyor...</span>
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Texper Bilişim</h1>
+      </a>
+      
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" class="active">Anasayfa</a></li>
+          
+          <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="faq.html">S.S.S</a></li>
+              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="services.html">Tüm Hizmetler</a></li>
+              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
+              <li><a href="programlar.html">Faydalı Programlar</a></li> </ul>
+          </li>
+
+          <li><a href="project.html">Projeler</a></li>
+          <li><a href="blog.html">Neler Yapıyoruz</a></li> <li><a href="contact.html">İletişim</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      
+      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <section id="hero" class="hero section dark-background">
+      <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+      <div class="container text-center">
+        <h2 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 20px;">
+          BT Altyapınız <span id="changing-text" class="typed-text"></span>
+        </h2>
+        <p style="font-size: 1.25rem; opacity: 0.9; max-width: 800px; margin: 0 auto;">
+          TexNexus Cloud ve Profesyonel Teknik Destek Çözümleriyle İşletmenizi Geleceğe Taşıyın.
+        </p>
+        <div class="d-flex justify-content-center gap-3 mt-5">
+          <a href="services.html" class="btn-explore shadow">Hizmetleri Keşfet</a>
+          <a href="destek.html" class="btn-support-yellow shadow"><i class="bi bi-headset"></i> Destek Al</a>
         </div>
-    </div>
-    <div class="container-fluid sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light p-0">
-                <a href="index.html" class="navbar-brand">
-                    <h1 class="mb-0 text-primary">TEXPER<span class="text-secondary"> BİLİŞİM</span></h1>
-                </a>
-                <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto">
-                        <a href="index.html" class="nav-item nav-link active">Anasayfa</a>
-                        <a href="about.html" class="nav-item nav-link">Hakkımızda</a>
-                        <div class="nav-item dropdown">
-                            <a href="service.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Çözümlerimiz</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="ag-kurulumu.html" class="dropdown-item">Ağ Kurulum ve Yönetimi</a>
-                                <a href="cloud.html" class="dropdown-item">TexNexus Bulut Çözümleri</a>
-                                <a href="yazilim-gelistirme.html" class="dropdown-item">Yazılım Geliştirme</a>
-                                <a href="programlar.html" class="dropdown-item">Önerilen Programlar</a>
-                                <a href="cozum.html" class="dropdown-item">İş Ortaklıkları</a>
-                            </div>
-                        </div>
-                        <a href="destek.html" class="nav-item nav-link">Destek</a>
-                        <a href="blog.html" class="nav-item nav-link">Neler Yapıyoruz</a>
-                        <a href="contact.html" class="nav-item nav-link">Bize Ulaşın</a>
-                    </div>
-                </div>
-            </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container footer-top">
+      <div class="row gy-4 text-center text-md-start">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center justify-content-center justify-content-md-start">
+            <span class="sitename">Texper Bilişim</span>
+          </a>
+          <p>Güvenilir, hızlı ve ölçeklenebilir teknoloji çözümleri.</p>
         </div>
-    </div>
-    
-    <div class="container-fluid hero-header py-5">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                
-                <div class="col-lg-7 my-auto pt-lg-0 pt-5 text-lg-start"> 
-                    <h1 class="display-4 mb-3 animated slideInDown">
-                        <span id="typed-text">Profesyonel BT Çözümleri</span>
-                    </h1>
-                    <p class="mb-4 animated slideInDown">
-                        Texper Bilişim olarak, ağ kurulumundan bulut çözümlerine, sunucu sistemlerinden teknik desteğe kadar geniş bir yelpazede hizmet sunarak iş süreçlerinizi optimize ediyoruz.
-                    </p>
-                    
-                    <a href="service.html" class="btn btn-primary py-3 px-5 animated slideInDown">Hizmetlerimizi Keşfedin</a>
-                    
-                    <a href="destek.html" class="btn btn-danger btn-flex-col px-5 animated slideInDown ms-3 d-inline-flex flex-column justify-content-center align-items-center" style="text-decoration: none;">
-                        <span class="main-btn-text">DESTEK ALIN</span>
-                        <small class="support-info">Uzak Destek Programı</small>
-                    </a>
-                    
-                    <div class="input-group mt-4 animated slideInDown" data-wow-delay="0.9s" style="max-width: 500px;">
-                        <input type="text" class="form-control rounded-start-pill border-0 ps-4" id="hero-search-input" placeholder="Örn: Fortigate, Azure, Alpemix, VPN..." aria-label="Hızlı Site Araması">
-                        <button class="btn btn-secondary rounded-end-pill px-4" type="button" id="hero-search-button">
-                            <i class="fa fa-search"></i> Ara
-                        </button>
-                    </div>
-                    <small class="text-muted mt-2 d-block animated slideInDown" data-wow-delay="1.1s">Hizmetlerimiz ve programlarımızda hızlı arama yapın.</small>
-                </div>
-                
-                <div class="col-lg-5 my-auto animated zoomIn">
-                    <div class="hero-cta-block wow fadeIn" data-wow-delay="0.5s">
-                        <h4 class="mb-3"><i class="fa fa-chart-line me-2"></i> Operasyonel Başarınız İçin Anahtar Faydalar</h4>
-                        <p class="text-muted">Texper Bilişim ile iş süreçlerinizde elde edeceğiniz somut avantajlar:</p>
-                        
-                        <div id="cycling-wrapper">
-                            <ul class="list-unstyled" id="cycling-benefits">
-                                <li style="display: block;"> <h6 class="mb-1"><i class="fa fa-stopwatch text-secondary me-2"></i> %99.9 Kesintisiz Çalışma Garantisi</h6>
-                                    <small class="small-dark">Proaktif izleme, Dell sunucu ve Fortigate/Sophos güvenlik çözümleriyle sistem arızalarını önleyin.</small>
-                                </li>
-                                <li style="display: none;">
-                                    <h6 class="mb-1"><i class="fa fa-dollar-sign text-secondary me-2"></i> Maliyet Optimizasyonu ve Öngörülebilirlik</h6>
-                                    <small class="small-dark">Microsoft Azure tüketim maliyetlerini yönetme ve gereksiz BT harcamalarını elimine etme desteği.</small>
-                                </li>
-                                <li style="display: none;">
-                                    <h6 class="mb-1"><i class="fa fa-sync-alt text-secondary me-2"></i> Felaket Kurtarma ve Hızlı Veri Geri Dönüşün</h6>
-                                    <small class="small-dark">Bulut Yedekleme (DR) sistemleri ve QNAP/Synology ile veri kaybı riskini sıfırlama.</small>
-                                </li>
-                                <li style="display: none;">
-                                    <h6 class="mb-1"><i class="fa fa-shield-alt text-secondary me-2"></i> Uçtan Uca Siber Güvenlik</h6>
-                                    <small class="small-dark">Draytek ve BERQNET çözümleriyle ağınızı dış tehditlere karşı sürekli koruma altında tutun.</small>
-                                </li>
-                                 <li style="display: none;">
-                                    <h6 class="mb-1"><i class="fa fa-sitemap text-secondary me-2"></i> Merkezi Sunucu Yönetimi</h6>
-                                    <small class="small-dark">Windows Server ve Active Directory kurulumu ile tüm cihazlarınızı tek merkezden yöneterek idari yükü azaltın.</small>
-                                </li>
-                                 <li style="display: none;">
-                                    <h6 class="mb-1"><i class="fa fa-cogs text-secondary me-2"></i> Esnek Hibrit Bulut Çözümleri</h6>
-                                    <small class="small-dark">Yerel (on-premise) donanım ile Azure ve TexNexus bulut ortamlarını sorunsuz entegre edin.</small>
-                                </li>
-                                 <li style="display: none;">
-                                    <h6 class="mb-1"><i class="fa fa-wrench text-secondary me-2"></i> Kurumsal Donanım Tedariki</h6>
-                                    <small class="small-dark">Dell, Synology, Keenetic gibi lider markaların sunucu, PC, NAS ve çevre birimi ihtiyaçlarınızı rekabetçi fiyatlarla sağlayın.</small>
-                                </li>
-                                <li style="display: none;">
-                                    <h6 class="mb-1"><i class="fa fa-headset text-secondary me-2"></i> 7/24 Teknik Destek Erişimi</h6>
-                                    <small class="small-dark">Anında uzaktan bağlantı ve yerinde servis garantisiyle iş kesintisi riskini minimize edin.</small>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <a href="contact.html" class="btn btn-primary w-100 py-2 mt-2">Ücretsiz Çözüm Analizi İsteyin <i class="fa fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Kurumsal</h4>
+          <ul>
+            <li><a href="about.html">Hakkımızda</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+          </ul>
         </div>
-    </div>
-    
-    <div class="container-fluid feature py-3">
-        <div class="container pt-3">
-            <div class="row g-4">
-                
-                <div class="col-lg-3 col-md-6 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="feature-item border h-100 p-3"> <i class="fa fa-network-wired fa-3x text-primary mb-4"></i>
-                        <h5 class="mb-3">Ağ Kurulumu ve Yönetimi</h5>
-                        <p class="mb-0">Kesintisiz, hızlı ve güvenli bir ağ altyapısı kuruyor, VPN, Güvenlik Duvarı ve optimizasyon hizmetleri sunuyoruz.</p>
-                        <a href="ag-kurulumu.html" class="software-button-link">Detaylar <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 wow fadeIn" data-wow-delay="0.2s">
-                    <div class="feature-item border h-100 p-3">
-                        <i class="fa fa-cloud fa-3x text-primary mb-4"></i>
-                        <h5 class="mb-3">TexNexus Bulut Çözümleri</h5>
-                        <p class="mb-0">Linux/Windows Cloud, NAS Storage ve Global Server Hosting ile verilerinizi buluta taşıyoruz.</p>
-                        <a href="cloud.html" class="software-button-link">Detaylar <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="feature-item border h-100 p-3">
-                        <i class="fa fa-database fa-3x text-primary mb-4"></i>
-                        <h5 class="mb-3">Yedekleme ve Kurtarma</h5>
-                        <p class="mb-0">3-2-1 kuralına uygun Felaket Kurtarma (DR) ve otomatik bulut yedekleme sistemleri kurulumu.</p>
-                        <a href="cloud.html" class="software-button-link">Detaylar <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 wow fadeIn" data-wow-delay="0.4s">
-                    <div class="feature-item border h-100 p-3">
-                        <i class="fa fa-hdd fa-3x text-primary mb-4"></i>
-                        <h5 class="mb-3">Sunucu Sistem Kurulumu</h5>
-                        <p class="mb-0">Windows Server ve Linux sistemlerin sıfırdan kurulumu, konfigürasyonu ve Active Directory hizmetleri.</p>
-                        <a href="ag-kurulumu.html" class="software-button-link">Detaylar <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="feature-item border h-100 p-3">
-                        <i class="fa fa-code fa-3x text-primary mb-4"></i>
-                        <h5 class="mb-3">Özel Yazılım Geliştirme</h5>
-                        <p class="mb-0">İş süreçlerinize özel, web ve mobil tabanlı (CRM/ERP) yazılım çözümleri geliştirme.</p>
-                        <a href="yazilim-gelistirme.html" class="software-button-link">Detaylar <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 wow fadeIn" data-wow-delay="0.6s">
-                    <div class="feature-item border h-100 p-3">
-                        <i class="fa fa-desktop fa-3x text-primary mb-4"></i>
-                        <h5 class="mb-3">Kurumsal Donanım Tedariki</h5>
-                        <p class="mb-0">Dell, QNAP ve Synology gibi lider markaların sunucu, PC, NAS ve çevre birimi tedariki.</p>
-                        <a href="cozum.html" class="software-button-link">Detaylar <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 wow fadeIn" data-wow-delay="0.7s">
-                    <div class="feature-item border h-100 p-3">
-                        <i class="fa fa-laptop-code fa-3x text-primary mb-4"></i>
-                        <h5 class="mb-3">Önerilen Programlar</h5>
-                        <p class="mb-0">Uzak destek, güvenlik ve sistem araçları için önerdiğimiz tüm faydalı programlara ulaşın.</p>
-                        <a href="programlar.html" class="software-button-link">Programları Gör <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="col-lg-3 col-md-6 wow fadeIn" data-wow-delay="0.8s">
-                     <div class="feature-item border h-100 p-3 bg-light">
-                        <i class="fa fa-headset fa-3x text-primary mb-4"></i>
-                        <h5 class="mb-3">7/24 Uzak Teknik Destek</h5>
-                        <p class="mb-0">Uzak destek programları ve yerinde servis ile olası sorunlarınıza anında çözüm sunuyoruz.</p>
-                        <a href="destek.html" class="software-button-link">Destek Alın <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-            </div>
-            </div>
-    </div>
-    
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="about-img">
-                        <img class="img-fluid" src="img/about-img.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="text-end text-lg-start">
-                        <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Hakkımızda</div>
-                        <h2 class="mb-4">Dijital Dönüşümünüzde Yanınızdayız</h2> <p class="mb-4">2021 yılında kurulan Texper Bilişim, müşterilerinin iş hedeflerine ulaşmasını sağlayacak, yenilikçi ve sürdürülebilir teknoloji çözümleri sunmayı misyon edinmiştir. Teknoloji alanında öncü bir şirket olarak, müşterilerimizin dijital dönüşümünde lider rol oynamayı hedefliyoruz.</p>
-                        <p class="mb-4">Temel değerlerimiz: Güvenilirlik, Müşteri Odaklılık, Yenilikçilik ve Kalite.</p>
-                        <a class="btn btn-primary py-3 px-5" href="about.html">Daha Fazlasını Keşfet</a>
-                    </div>
-                </div>
-            </div>
+        <div class="col-lg-5 col-md-12 footer-contact">
+          <h4>İletişim</h4>
+          <p>İstanbul, Türkiye | info@texper.com.tr</p>
         </div>
+      </div>
     </div>
-    <div class="container-fluid bg-light py-5">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">İş Ortaklıkları</div>
-                    <h2 class="mb-4">Sektör Liderleriyle Güçlü Çözümler</h2> <p class="mb-4">Müşterilerimize en iyi çözümleri sunmak için sektörün önde gelen firmalarıyla stratejik iş ortaklıkları kurduk. Bu ortaklıklar, size özel entegre ve kapsamlı hizmetler sunmamızı sağlıyor.</p>
-                    <p class="mb-4"><i class="fa fa-check text-primary me-3"></i> **Vega Yazılım:** Kapsamlı Barkod ve Perakende Çözümleri.</p>
-                    <p class="mb-4"><i class="fa fa-check text-primary me-3"></i> **EMT Bilişim:** Ev ve İşletme Güvenliği Sistemleri (Kamera, Alarm vb.).</p>
-                    <a class="btn btn-primary py-3 px-5" href="cozum.html">Tüm Çözümler</a>
-                </div>
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="owl-carousel service-carousel">
-                        <a href="ag-kurulumu.html" class="service-item d-block text-center h-100 p-4">
-                            <img class="img-fluid mb-4" src="img/icon-1.png" alt="">
-                            <h5 class="mb-0">Ağ & Güvenlik</h5>
-                        </a>
-                        <a href="cloud.html" class="service-item d-block text-center h-100 p-4">
-                            <img class="img-fluid mb-4" src="img/icon-2.png" alt="">
-                            <h5 class="mb-0">Bulut Hizmetleri</h5>
-                        </a>
-                         <a href="ag-kurulumu.html" class="service-item d-block text-center h-100 p-4">
-                            <img class="img-fluid mb-4" src="img/icon-3.png" alt="">
-                            <h5 class="mb-0">Sunucu Kurulumları</h5>
-                        </a>
-                        <a href="destek.html" class="service-item d-block text-center h-100 p-4">
-                            <img class="img-fluid mb-4" src="img/icon-4.png" alt="">
-                            <h5 class="mb-0">Teknik Destek</h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container wow fadeIn" data-wow-delay="0.1s">
-        <a href="https://onedrive.live.com/:x:/g/personal/D9E2670E00DA7B49/EUl72gAOZ-IggNlaBgAAAAABlL7cQ4yqRsurxyq5kRFm6g?resid=D9E2670E00DA7B49!1626&ithint=file%2Cxlsx&e=y4ruAx&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy9kOWUyNjcwZGE3YjQ0L0VVbDcyZ0FPWi1JZ2dObGFCZ0FBQUFBQmxMN2NRNHlxUnN1cnh5cTVrUkZtNmc_ZT15NHJ1QXg" 
-           target="_blank" 
-           class="nexus-footer-link"
-           title="Yönetici Erişimi">
-            NEXUS
-        </a>
-    </div>
-    <div class="container-fluid bg-dark text-white-50 footer pt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Texper Bilişim</h5>
-                    <p>İşletmenizin dijital dönüşümünde güvenilir ortağınız.</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Adres ve İletişim</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i> İstanbul, Türkiye</p>
-                    <p><i class="fa fa-phone-alt me-3"></i> +90 531 401 73 75</p>
-                    <p><i class="fa fa-envelope me-3"></i> info@texper.com.tr</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Hızlı Bağlantılar</h5>
-                    <a class="btn-link" href="about.html">Hakkımızda</a>
-                    <a class="btn-link" href="contact.html">Bize Ulaşın</a>
-                    <a class="btn-link" href="service.html">Hizmetlerimiz</a>
-                    <a class="btn-link" href="destek.html">Teknik Destek</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Popüler Çözümler</h5>
-                    <a class="btn-link" href="ag-kurulumu.html">Ağ Kurulumu</a>
-                    <a class="btn-link" href="cloud.html">Bulut Sunucu</a>
-                    <a class="btn-link" href="yazilim-gelistirme.html">Özel Yazılım</a>
-                    <a class="btn-link" href="programlar.html">Programlar</a>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-white"><a href="#"><i class="fas fa-copyright text-primary me-2"></i>Texper Bilişim 2023. Tüm hakları saklıdır.</a></span>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="index.html">Anasayfa</a>
-                            <a href="contact.html">Bize Ulaşın</a>
-                            <a href="faq.html">SSS</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="bi bi-arrow-up"></i></a>
+  </footer>
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <script>
-        (function($) {
-            "use strict";
-            
-            // 1. SPINNER GECIKMESI
-            $(window).on('load', function () {
-                setTimeout(function () {
-                    $('#spinner').removeClass('show');
-                }, 2000); 
-            });
-
-
-            // 2. DÖNGÜSEL METİN EFEKTİ
-            var textArray = [
-                "Profesyonel BT Çözümleri",
-                "Dijital Dönüşüm Partneriniz",
-                "Hızlı Teknik Destek",
-                "Sunucu Sistemleri Kurulumu",
-                "Güvenli Ağ Altyapısı"
-            ];
-            
-            var element = $('#typed-text');
-            var textIndex = 0;
-            var charIndex = 0;
-            var isDeleting = false;
-            var typingSpeed = 100; 
-            var erasingSpeed = 50; 
-            var delayBeforeDelete = 1500; 
-            var delayBeforeType = 500; 
-
-            function typeWriterEffect() {
-                var currentWord = textArray[textIndex];
-                var currentSpeed = isDeleting ? erasingSpeed : typingSpeed;
-                
-                if (isDeleting) {
-                    element.text(currentWord.substring(0, charIndex - 1));
-                    charIndex--;
-                } else {
-                    element.text(currentWord.substring(0, charIndex + 1));
-                    charIndex++;
-                }
-
-                if (!isDeleting && charIndex === currentWord.length) {
-                    currentSpeed = delayBeforeDelete; 
-                    isDeleting = true;
-                } 
-                else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    textIndex++;
-                    if (textIndex === textArray.length) {
-                        textIndex = 0; 
-                    }
-                    currentSpeed = delayBeforeType;
-                }
-
-                setTimeout(typeWriterEffect, currentSpeed);
-            }
-            
-            // 3. [DÖNGÜ GERİ GETİRİLDİ] DÖNEN FAYDA KARTLARI FONKSİYONU
-            function cycleBenefits() {
-                var items = $('#cycling-benefits li');
-                var totalItems = items.length;
-                var currentIndex = 0;
-
-                // Başlangıçta tüm ögeleri gizle, sadece ilkini göster
-                items.hide();
-                // İlk ögenin görünür olduğundan emin ol
-                items.eq(currentIndex).show();
-
-                setInterval(function() {
-                    // Mevcut ögeyi gizle
-                    items.eq(currentIndex).fadeOut(500, function() {
-                        // Bir sonraki ögeye geç
-                        currentIndex = (currentIndex + 1) % totalItems;
-                        // Yeni ögeyi göster
-                        items.eq(currentIndex).fadeIn(500);
-                    });
-                }, 4000); // Her 4 saniyede bir değiştir
-            }
-
-            // GELİŞTİRİLMİŞ ARAMA FONKSİYONU
-            function performSearch() {
-                const query = $('#hero-search-input').val().toLowerCase().trim();
-                let targetPage = null;
-
-                const keywordMap = {
-                    // PROGRAMLAR, DESTEK VE GÜVENLİK YAZILIMLARI
-                    'alpemix': 'programlar.html',
-                    'anydesk': 'programlar.html',
-                    'teamviewer': 'programlar.html',
-                    'rustdesk': 'programlar.html',
-                    'vnc': 'programlar.html',
-                    'zoho': 'programlar.html',
-                    'chrome': 'programlar.html',
-                    'winrar': 'programlar.html',
-                    '7-zip': 'programlar.html',
-                    'vlc': 'programlar.html',
-                    'office': 'programlar.html',
-                    'windows': 'programlar.html',
-                    'antivirus': 'programlar.html',
-                    'kaspersky': 'programlar.html',
-                    'bitdefender': 'programlar.html',
-                    'malwarebytes': 'programlar.html',
-                    'programlar': 'programlar.html',
-                    'indir': 'programlar.html',
-                    'team': 'programlar.html',
-
-                    // BULUT HİZMETLERİ VE DEPOLAMA
-                    'cloud': 'cloud.html',
-                    'bulut': 'cloud.html',
-                    'azure': 'cloud.html',
-                    'microsoft': 'cloud.html', 
-                    'yedekleme': 'cloud.html',
-                    'texnexus': 'cloud.html',
-                    'nas': 'cloud.html',
-                    'synology': 'cloud.html', 
-                    'qnap': 'cloud.html', 
-                    'hosting': 'cloud.html',
-                    'storage': 'cloud.html',
-
-                    // AĞ KURULUMU VE GÜVENLİK DONANIMI & SUNUCU KURULUMU
-                    'ağ': 'ag-kurulumu.html',
-                    'vpn': 'ag-kurulumu.html',
-                    'firewall': 'ag-kurulumu.html',
-                    'güvenlik duvarı': 'ag-kurulumu.html',
-                    'kurulum': 'ag-kurulumu.html',
-                    'server': 'ag-kurulumu.html',
-                    'sunucu': 'ag-kurulumu.html',
-                    'kablosuz': 'ag-kurulumu.html',
-                    'kamera': 'ag-kurulumu.html',
-                    'kablolama': 'ag-kurulumu.html',
-                    'berqnet': 'ag-kurulumu.html',
-                    'sophos': 'ag-kurulumu.html',
-                    'fortigate': 'ag-kurulumu.html',
-                    'draytek': 'ag-kurulumu.html',
-                    'keenetic': 'ag-kurulumu.html',
-                    'dell': 'ag-kurulumu.html',
-                    'lan': 'ag-kurulumu.html',
-                    'wan': 'ag-kurulumu.html',
-                    'active directory': 'ag-kurulumu.html',
-
-                    // YAZILIM GELİŞTİRME (Hala ayrı bir sayfa olduğu için tutuluyor)
-                    'yazılım': 'yazilim-gelistirme.html',
-                    'web': 'yazilim-gelistirme.html',
-                    'mobil': 'yazilim-gelistirme.html',
-                    'crm': 'yazilim-gelistirme.html',
-                    'erp': 'yazilim-gelistirme.html',
-                    'geliştirme': 'yazilim-gelistirme.html',
-                    'kodlama': 'yazilim-gelistirme.html',
-                    'özel yazılım': 'yazilim-gelistirme.html',
-
-                    // İŞ ORTAKLIKLARI VE ÇÖZÜMLER
-                    'ortaklık': 'cozum.html',
-                    'çözüm': 'cozum.html',
-                    'vega': 'cozum.html',
-                    'emt': 'cozum.html',
-                    'lisans': 'cozum.html',
-                    'perakende': 'cozum.html',
-                    
-                    // DESTEK
-                    'destek': 'destek.html',
-                    'yardım': 'destek.html',
-                    'sözleşme': 'destek.html',
-                    'teknik': 'destek.html',
-                    
-                    // KURUMSAL VE İÇERİK SAYFALARI
-                    'hakkımızda': 'about.html',
-                    'misyon': 'about.html',
-                    'vizyon': 'about.html',
-                    'ekibimiz': 'about.html', 
-                    'blog': 'blog.html',
-                    'makale': 'blog.html',
-                    'referans': 'blog.html',
-                    'iletişim': 'contact.html',
-                    'adres': 'contact.html',
-                    'sss': 'faq.html',
-                    'sorular': 'faq.html',
-                    'proje': 'project.html',
-                    'projeler': 'project.html',
-                    'hizmet': 'service.html',
-                };
-
-                // Önce tam kelime ve kelime öbeği eşleşmesi kontrolü
-                for (const keyword in keywordMap) {
-                    if (query.includes(keyword)) {
-                        targetPage = keywordMap[keyword];
-                        break;
-                    }
-                }
-                
-                // Tam eşleşme bulunamazsa, kelime parçacığı veya tek kelime kontrolü
-                if (!targetPage) {
-                    const queryParts = query.split(' ');
-                    for (const part of queryParts) {
-                        if (part.length < 3) continue; 
-
-                        for (const keyword in keywordMap) {
-                            if (part === keyword || keyword.includes(part)) {
-                                targetPage = keywordMap[keyword];
-                                break;
-                            }
-                        }
-                        if (targetPage) break;
-                    }
-                }
-                
-                if (targetPage) {
-                    window.location.href = targetPage;
-                } else {
-                    alert(`"${query}" kelimesi/terimi ile ilgili bir sayfa bulunamadı. Lütfen farklı bir terim deneyin veya Hizmetlerimizi inceleyin.`);
-                }
-            }
-
-
-            $(document).ready(function() {
-                typeWriterEffect();
-                cycleBenefits(); 
-                
-                $('#hero-search-button').on('click', performSearch);
-                
-                $('#hero-search-input').on('keypress', function(e) {
-                    if (e.which === 13) { 
-                        e.preventDefault(); 
-                        performSearch();
-                    }
-                });
-            });
-
-        })(jQuery);
-    </script>
-    <script src="js/main.js"></script>
+  <script>
+    const textElement = document.getElementById('changing-text');
+    const texts = ["Bize Emanet.", "Güvende.", "Hızlı ve Stabil.", "Bizimle.", "Optimize Edildi."];
+    let index = 0; let charIndex = 0; let isDeleting = false;
+    function type() {
+      const currentText = texts[index];
+      if (isDeleting) {
+        textElement.textContent = currentText.substring(0, charIndex - 1); charIndex--;
+      } else {
+        textElement.textContent = currentText.substring(0, charIndex + 1); charIndex++;
+      }
+      let typeSpeed = isDeleting ? 50 : 100;
+      if (!isDeleting && charIndex === currentText.length) {
+        isDeleting = true; typeSpeed = 2000;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false; index = (index + 1) % texts.length; typeSpeed = 500;
+      }
+      setTimeout(type, typeSpeed);
+    }
+    document.addEventListener('DOMContentLoaded', type);
+  </script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
-
-
 </html>

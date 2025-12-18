@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Referanslarımız - Texper Bilişim</title>
+  
+  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* INDEX TEMASI - TAM KORUMA */
+    section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+    
+    .hero { 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      padding: 120px 0 80px 0; 
+      position: relative;
+    }
+
+    /* Referans Logo Kutuları */
+    .ref-box {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: 0.3s;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .ref-box:hover {
+      background: rgba(13, 66, 255, 0.1);
+      border-color: #ffc107;
+      transform: translateY(-5px);
+    }
+
+    .ref-box span {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .ref-box img {
+      max-width: 100%;
+      max-height: 80px;
+      filter: grayscale(100%) brightness(200%); /* Logoları kurumsal beyaz yapar */
+      transition: 0.3s;
+    }
+
+    .ref-box:hover img {
+      filter: grayscale(0%) brightness(100%); /* Üstüne gelince orijinal renk */
+    }
+  </style>
+</head>
+
+<body class="referans-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Texper Bilişim</h1>
+      </a>
+      
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Anasayfa</a></li>
+          <li class="dropdown"><a href="#" class="active"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="faq.html">S.S.S</a></li>
+              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="services.html">Tüm Hizmetler</a></li>
+              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
+              <li><a href="programlar.html">Faydalı Programlar</a></li>
+            </ul>
+          </li>
+          <li><a href="project.html">Projeler</a></li>
+          <li><a href="blog.html">Neler Yapıyoruz</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      
+      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <section id="hero" class="hero section dark-background">
+      <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+      <div class="container">
+        
+        <div class="text-center mb-5">
+          <h2 style="font-size: 3.5rem; font-weight: 800;">Bize <span style="color: #ffc107;">Güvenenler.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; opacity: 0.8; font-size: 1.1rem;">Farklı sektörlerden 500'den fazla işletmeye teknoloji partnerliği yapıyoruz.</p>
+        </div>
+
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center">
+          
+          <div class="col">
+            <div class="ref-box">
+              <span>LOGO 1</span> </div>
+          </div>
+
+          <div class="col">
+            <div class="ref-box">
+              <span>LOGO 2</span>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="ref-box">
+              <span>LOGO 3</span>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="ref-box">
+              <span>LOGO 4</span>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="ref-box">
+              <span>LOGO 5</span>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="ref-box">
+              <span>LOGO 6</span>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="ref-box">
+              <span>LOGO 7</span>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="ref-box">
+              <span>LOGO 8</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="text-center mt-5">
+          <p style="opacity: 0.6;">Ve daha yüzlerce mutlu iş ortağı...</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container copyright text-center py-4">
+      <p>© 2025 <strong class="px-1 sitename">Texper Bilişim</strong> - Birlikte Daha Güçlüyüz.</p>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

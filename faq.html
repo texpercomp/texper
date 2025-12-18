@@ -2,280 +2,194 @@
 <html lang="tr">
 
 <head>
-    <meta charset="utf-8">
-    <title>SSS - Sıkça Sorulan Sorular - Texper Bilişim</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description"
-        content="Texper Bilişim hizmetleri, teknik destek ve çözümleri hakkında sıkça sorulan sorulara yanıtlar." />
-    <meta name="keywords"
-        content="sss, sıkça sorulan sorular, teknik destek, ağ kurulumu, bulut çözümleri, yazılım geliştirme, garanti, texper bilişim" />
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>S.S.S - Texper Bilişim</title>
+  
+  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-    <link href="img/favicon.ico" rel="icon">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Ubuntu:wght@500;700&display=swap"
-        rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    /* INDEX TEMASI - TAM KORUMA */
+    section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+    
+    .hero { 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      padding: 120px 0 80px 0; 
+      position: relative;
+    }
 
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    /* FAQ Akordeon Tasarımı */
+    .faq-list {
+      max-width: 900px;
+      margin: 20px auto 0;
+    }
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    .accordion-item {
+      background: rgba(255, 255, 255, 0.03) !important;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-radius: 15px !important;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
 
-    <link href="css/style.css" rel="stylesheet">
+    .accordion-button {
+      background: transparent !important;
+      color: #fff !important;
+      font-weight: 600;
+      padding: 20px 25px;
+      box-shadow: none !important;
+    }
 
-    <style>
-        .navbar-light .navbar-nav .nav-link {
-            color: var(--bs-primary) !important;
-            font-weight: 500;
-        }
+    .accordion-button:not(.collapsed) {
+      color: #ffc107 !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-        .navbar-light .navbar-nav .nav-link.active,
-        .navbar-light .navbar-nav .nav-link:hover {
-            color: var(--bs-secondary) !important;
-        }
+    .accordion-button::after {
+      filter: invert(1); /* İkonu beyaz yapar */
+    }
 
-        .navbar-light .navbar-brand h1 {
-            color: var(--bs-primary) !important;
-        }
+    .accordion-body {
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.7;
+      padding: 25px;
+      font-size: 0.95rem;
+    }
 
-        .navbar-light .navbar-brand h1 .text-primary {
-            color: var(--bs-secondary) !important;
-        }
-
-        .container-fluid.sticky-top {
-            background-color: #FFFFFF !important;
-        }
-
-        .navbar.navbar-expand-lg {
-            background-color: #FFFFFF !important;
-        }
-        
-        /* Navigasyon barı altından başlangıç için dikey boşluk ayarı */
-        .page-start-padding {
-            padding-top: 6rem !important;
-        }
-    </style>
+    .faq-highlight { color: #ffc107; font-weight: 700; }
+  </style>
 </head>
 
-<body>
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Yükleniyor...</span>
-        </div>
+<body class="faq-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Texper Bilişim</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Anasayfa</a></li>
+          <li class="dropdown"><a href="#" class="active"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="faq.html">S.S.S</a></li>
+              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="services.html">Tüm Hizmetler</a></li>
+              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
+              <li><a href="programlar.html">Faydalı Programlar</a></li>
+            </ul>
+          </li>
+          <li><a href="project.html">Projeler</a></li>
+          <li><a href="blog.html">Neler Yapıyoruz</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
     </div>
-    <div class="container-fluid sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light p-0">
-                <a href="index.html" class="navbar-brand">
-                    <h1 class="text-white mb-0">TEXPER<span class="text-primary"> BİLİŞİM</span></h1>
-                </a>
-                <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
+  </header>
+
+  <main class="main">
+    <section id="hero" class="hero section dark-background">
+      <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+      <div class="container">
+        
+        <div class="text-center mb-5">
+          <h2 style="font-size: 3.2rem; font-weight: 800;">Sıkça Sorulan <span style="color: #ffc107;">Sorular.</span></h2>
+          <p style="max-width: 700px; margin: 0 auto; opacity: 0.8;">Hizmetlerimiz ve süreçlerimiz hakkında merak ettiğiniz temel bilgiler.</p>
+        </div>
+
+        <div class="faq-list">
+          <div class="accordion" id="faqAccordion">
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  7/24 Teknik Destek hizmetiniz neleri kapsıyor?
                 </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto">
-                        <a href="index.html" class="nav-item nav-link">Anasayfa</a>
-                        <a href="about.html" class="nav-item nav-link">Hakkımızda</a>
-                        <div class="nav-item dropdown">
-                            <a href="service.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Çözümlerimiz</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="ag-kurulumu.html" class="dropdown-item">Ağ Kurulum ve Yönetimi</a>
-                                <a href="cloud.html" class="dropdown-item">TexNexus Bulut Çözümleri</a>
-                                <a href="yazilim-gelistirme.html" class="dropdown-item">Yazılım Geliştirme</a>
-                                <a href="programlar.html" class="dropdown-item">Önerilen Programlar</a>
-                                <a href="cozum.html" class="dropdown-item">İş Ortaklıkları</a>
-                            </div>
-                        </div>
-                        <a href="destek.html" class="nav-item nav-link">Destek</a>
-                        <a href="blog.html" class="nav-item nav-link">Neler Yapıyoruz</a>
-                        <a href="contact.html" class="nav-item nav-link">Bize Ulaşın</a>
-                    </div>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Anlaşmalı müşterilerimiz için <span class="faq-highlight">7/24 izleme (monitoring)</span> ve kritik sistem arızalarında anında müdahale sağlıyoruz. Mesai saatleri dışında telefon ve uzak bağlantı yoluyla, acil durumlarda ise yerinde destek ile iş sürekliliğinizi garanti altına alıyoruz.
                 </div>
-            </nav>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  TexNexus Cloud verileri nerede barındırılıyor?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Tüm bulut altyapımız <span class="faq-highlight">Türkiye lokasyonlu</span> yüksek güvenlikli veri merkezlerinde (Tier 3+) barındırılmaktadır. Bu sayede hem KVKK uyumluluğu sağlıyor hem de en düşük gecikme süreleriyle verilerinize erişim imkanı sunuyoruz.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  Sistem odası kurulumu ve revizyonu yapıyor musunuz?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Evet, anahtar teslim <span class="faq-highlight">sistem odası kurulumu</span>, rack kabin düzenleme, etiketleme ve yapısal kablolama en güçlü olduğumuz alanlardan biridir. Mevcut karışık yapıdaki sistem odalarınızı profesyonel bir görünüme ve standartlara kavuşturuyoruz.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                  Firewall (Güvenlik Duvarı) kiralama modeliniz var mı?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Evet, donanım maliyetine katlanmak istemeyen işletmeler için <span class="faq-highlight">Firewall kiralama ve yönetim</span> modellerimiz mevcuttur. Cihazın kurulumu, kural yönetimi ve siber güvenlik takibi tamamen Texper ekibi tarafından yürütülür.
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
+
+        <div class="text-center mt-5">
+          <p style="opacity: 0.6;">Aradığınız cevabı bulamadınız mı?</p>
+          <a href="contact.html" class="btn-getstarted" style="background: #ffc107; color: #000; border: none; padding: 12px 35px; border-radius: 50px; font-weight: 700;">Bizimle İletişime Geçin</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container copyright text-center py-4">
+      <p>© 2025 <strong class="px-1 sitename">Texper Bilişim</strong> - Profesyonel BT Destek</p>
     </div>
-    <div class="container-fluid py-5 page-start-padding">
-        <div class="container py-5">
-            <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">SSS</div>
-                <h2 class="mb-4">Sıkça Sorulan Sorular</h2>
-                <p class="mb-0">
-                    Hizmetlerimiz, süreçlerimiz ve genel BT çözümleri hakkında müşterilerimizden gelen en yaygın sorulara yanıtlarımızı burada bulabilirsiniz.
-                </p>
-            </div>
-            
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="accordion" id="accordionFAQ1">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Texper Bilişim hangi hizmetleri sunar?
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionFAQ1">
-                                <div class="accordion-body">
-                                    Ağ kurulumu ve yönetimi, TexNexus Bulut Çözümleri, özel yazılım geliştirme, 7/24 teknik destek ve donanım tedariki gibi kapsamlı BT çözümleri sunuyoruz.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Teknik destek hizmetini nasıl alabilirim?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionFAQ1">
-                                <div class="accordion-body">
-                                    Telefon veya WhatsApp hattımız üzerinden bize ulaşabilir, Uzak Destek sayfamızdaki programlardan birini indirerek anında bağlantı kurabiliriz. Gerekli durumlarda yerinde servis hizmeti de sunulmaktadır.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Yazılım geliştirme süreci nasıl işliyor?
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFAQ1">
-                                <div class="accordion-body">
-                                    İhtiyaç analizi, tasarım, çevik (Agile) geliştirme, test ve dağıtım aşamalarını içeren şeffaf bir süreç takip ediyoruz. Proje boyunca sizinle sürekli iletişimde kalırız.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  </footer>
 
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="accordion" id="accordionFAQ2">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                    Bulut çözümleriniz ne kadar güvenli?
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionFAQ2">
-                                <div class="accordion-body">
-                                    TexNexus Bulut Çözümleri, güncel güvenlik protokolleri, düzenli yedeklemeler ve gelişmiş firewall sistemleriyle korunmaktadır. Veri gizliliği ve güvenliği en büyük önceliğimizdir.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFive">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    Fiyatlandırma modeliniz nedir?
-                                </button>
-                            </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionFAQ2">
-                                <div class="accordion-body">
-                                    Hizmet türüne göre farklı fiyatlandırma modellerimiz mevcuttur: Abonelik bazlı destek paketleri, saatlik danışmanlık ücretleri ve proje bazlı sabit fiyat teklifleri sunuyoruz. Detaylı bilgi için bize ulaşın.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingSix">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                    İşletmem için hangi çözümü seçmeliyim?
-                                </button>
-                            </h2>
-                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionFAQ2">
-                                <div class="accordion-body">
-                                    İşletmenizin mevcut altyapısını, hedeflerini ve bütçesini ücretsiz olarak analiz ederek size en uygun çözümü öneriyoruz. Bir danışmanlık randevusu oluşturmak için lütfen iletişim sayfamızı kullanın.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center pt-5 wow fadeIn" data-wow-delay="0.7s">
-                <h3 class="mb-4">Sorunuz mu var? Bize Ulaşın</h3>
-                <a href="contact.html" class="btn btn-primary py-3 px-5">İletişim Formu</a>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container-fluid bg-dark text-white-50 footer pt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Texper Bilişim</h5>
-                    <p>İşletmenizin dijital dönüşümünde güvenilir ortağınız.</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Adres ve İletişim</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i> İstanbul, Türkiye</p>
-                    <p><i class="fa fa-phone-alt me-3"></i> +90 531 401 73 75</p>
-                    <p><i class="fa fa-envelope me-3"></i> info@texper.com.tr</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Hızlı Bağlantılar</h5>
-                    <a class="btn-link" href="about.html">Hakkımızda</a>
-                    <a class="btn-link" href="contact.html">Bize Ulaşın</a>
-                    <a class="btn-link" href="service.html">Hizmetlerimiz</a>
-                    <a class="btn-link" href="destek.html">Teknik Destek</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Popüler Çözümler</h5>
-                    <a class="btn-link" href="ag-kurulumu.html">Ağ Kurulumu</a>
-                    <a class="btn-link" href="cloud.html">Bulut Sunucu</a>
-                    <a class="btn-link" href="yazilim-gelistirme.html">Özel Yazılım</a>
-                    <a class="btn-link" href="programlar.html">Programlar</a>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-white"><a href="#"><i class="fas fa-copyright text-primary me-2"></i>Texper Bilişim 2023. Tüm hakları saklıdır.</a></span>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="index.html">Anasayfa</a>
-                            <a href="contact.html">Bize Ulaşın</a>
-                            <a href="faq.html">SSS</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="bi bi-arrow-up"></i></a>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <script>
-        $(window).on('load', function () {
-            // Yüklenme bittiğinde 0.1 saniye sonra spinner'ı kapat
-            setTimeout(function () {
-                var spinnerElement = $('#spinner');
-                if (spinnerElement.length) {
-                    spinnerElement.removeClass('show');
-                }
-            }, 100); 
-        });
-    </script>
-    <script src="js/main.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

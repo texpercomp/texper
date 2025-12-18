@@ -2,297 +2,232 @@
 <html lang="tr">
 
 <head>
-    <meta charset="utf-8">
-    <title>Programlar - Texper Bilişim</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta name="description"
-        content="Texper Bilişim tarafından önerilen uzak destek, gerekli programlar, güvenlik ve sistem araçları indirme linkleri." />
-    <meta name="keywords"
-        content="programlar, uzak destek, IPSCANNER, Port Kontrol, NVMe Driver, Script, ISO, TeamViewer, AnyDesk, Alpemix, WinRAR, Chrome, Antivirus, Texper Bilişim" />
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Programlar - Texper Bilişim</title>
+  
+  <link href="assets/img/favicon.png?v=fresh" rel="icon" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
 
-    <link href="img/favicon.ico" rel="icon">
+  <style>
+    section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+    
+    .hero { 
+      min-height: 100vh; 
+      display: flex; 
+      align-items: center; 
+      padding: 120px 0 60px 0; 
+      position: relative;
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Ubuntu:wght@500;700&display=swap"
-        rel="stylesheet">
+    .hero .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    /* ÜST KISIM: Büyük Destek Butonları */
+    .support-card {
+      background: rgba(255, 193, 7, 0.1);
+      backdrop-filter: blur(15px);
+      padding: 30px;
+      border-radius: 15px;
+      border: 2px solid #ffc107;
+      text-align: center;
+      transition: 0.3s;
+      height: 100%;
+    }
+    .support-card:hover {
+      background: rgba(255, 193, 7, 0.2);
+      transform: translateY(-5px);
+    }
+    .support-card i { font-size: 40px; color: #ffc107; margin-bottom: 15px; }
+    .support-card h4 { color: #fff; font-weight: 700; margin-bottom: 15px; }
+    
+    /* ALT KISIM: Teknik Araçlar (Kompakt) */
+    .tech-tool-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: 0.2s;
+    }
+    .tech-tool-box:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #ffc107;
+    }
+    .tech-tool-info { display: flex; align-items: center; gap: 12px; }
+    .tech-tool-info i { color: #ffc107; font-size: 18px; }
+    .tech-tool-info span { color: #eee; font-weight: 500; font-size: 0.9rem; }
 
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    .btn-sm-download {
+      background: #ffc107;
+      color: #000;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="css/style.css" rel="stylesheet">
-
-    <style>
-        .navbar-light .navbar-nav .nav-link {
-            color: var(--bs-primary) !important;
-            font-weight: 500;
-        }
-
-        .navbar-light .navbar-nav .nav-link.active,
-        .navbar-light .navbar-nav .nav-link:hover {
-            color: var(--bs-secondary) !important;
-        }
-
-        .navbar-light .navbar-brand h1 {
-            color: var(--bs-primary) !important;
-        }
-
-        .navbar-light .navbar-brand h1 .text-primary {
-            color: var(--bs-secondary) !important;
-        }
-
-        .container-fluid.sticky-top {
-            background-color: #FFFFFF !important;
-        }
-
-        .navbar.navbar-expand-lg {
-            background-color: #FFFFFF !important;
-        }
-        
-        /* Navigasyon barı altından başlangıç için dikey boşluk ayarı */
-        .page-start-padding {
-            padding-top: 6rem !important;
-        }
-    </style>
+    .section-divider {
+      color: #ffc107;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 40px 0 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .section-divider::after { content: ""; flex: 1; height: 1px; background: rgba(255,193,7,0.3); }
+  </style>
 </head>
 
-<body>
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Yükleniyor...</span>
-        </div>
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Texper Bilişim</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Anasayfa</a></li>
+          <li><a href="about.html">Kurumsal</a></li>
+          <li><a href="services.html">Hizmetler</a></li>
+          <li><a href="project.html">Projeler</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="programlar.html" class="active">Programlar</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <a class="btn-getstarted" href="destek.html">Destek</a>
     </div>
-    <div class="container-fluid sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light p-0">
-                <a href="index.html" class="navbar-brand">
-                    <h1 class="text-white mb-0">TEXPER<span class="text-primary"> BİLİŞİM</span></h1>
-                </a>
-                <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto">
-                        <a href="index.html" class="nav-item nav-link">Anasayfa</a>
-                        <a href="about.html" class="nav-item nav-link">Hakkımızda</a>
-                        <div class="nav-item dropdown">
-                            <a href="service.html" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Çözümlerimiz</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="ag-kurulumu.html" class="dropdown-item">Ağ Kurulum ve Yönetimi</a>
-                                <a href="cloud.html" class="dropdown-item">TexNexus Bulut Çözümleri</a>
-                                <a href="yazilim-gelistirme.html" class="dropdown-item">Yazılım Geliştirme</a>
-                                <a href="programlar.html" class="dropdown-item">Önerilen Programlar</a>
-                                <a href="cozum.html" class="dropdown-item">İş Ortaklıkları</a>
-                            </div>
-                        </div>
-                        <a href="destek.html" class="nav-item nav-link">Destek</a>
-                        <a href="blog.html" class="nav-item nav-link">Neler Yapıyoruz</a>
-                        <a href="contact.html" class="nav-item nav-link">Bize Ulaşın</a>
-                    </div>
-                </div>
-            </nav>
+  </header>
+
+  <main class="main">
+    <section id="hero" class="hero section dark-background">
+      <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+      
+      <div class="container" style="position: relative; z-index: 2;">
+        
+        <div class="text-center mb-4">
+          <h2 style="font-size: 2.5rem; font-weight: 800; color: #ffc107;">Uzak Destek Araçları</h2>
+          <p class="opacity-75">Hızlı teknik destek için lütfen aşağıdaki araçlardan birini indirin.</p>
         </div>
+
+        <div class="row g-4 mb-5">
+          <div class="col-lg-3 col-md-6">
+            <div class="support-card">
+              <i class="fa-solid fa-headset"></i>
+              <h4>AnyDesk</h4>
+              <a href="https://download.anydesk.com/AnyDesk.exe" target="_blank" class="btn btn-warning w-100 fw-bold">İNDİR</a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="support-card">
+              <i class="fa-solid fa-desktop"></i>
+              <h4>Alpemix</h4>
+              <a href="https://www.alpemix.com/site/Alpemix.exe" target="_blank" class="btn btn-warning w-100 fw-bold">İNDİR</a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="support-card">
+              <i class="fa-solid fa-laptop-code"></i>
+              <h4>RustDesk</h4>
+              <a href="https://github.com/rustdesk/rustdesk/releases/download/1.4.4/rustdesk-1.4.4-x86_64.exe" target="_blank" class="btn btn-warning w-100 fw-bold">İNDİR</a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="support-card">
+              <i class="fa-solid fa-users-viewfinder"></i>
+              <h4>TeamViewer</h4>
+              <a href="https://download.teamviewer.com/download/TeamViewerQS.exe" target="_blank" class="btn btn-warning w-100 fw-bold">İNDİR</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-divider">Sistem ve Altyapı Araçları</div>
+        
+        <div class="row g-3">
+          <div class="col-lg-4 col-md-6">
+            <div class="tech-tool-box">
+              <div class="tech-tool-info"><i class="fa-solid fa-network-wired"></i><span>IPSCANNER</span></div>
+              <a href="https://my.microsoftpersonalcontent.com/personal/d9e2670e00da7b49/_layouts/15/download.aspx?UniqueId=a0e6bc45-dde8-4fc1-a7cc-2e3f4ec049d5" class="btn-sm-download">İNDİR</a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="tech-tool-box">
+              <div class="tech-tool-info"><i class="fa-solid fa-door-open"></i><span>Port Kontrol</span></div>
+              <a href="https://my.microsoftpersonalcontent.com/personal/d9e2670e00da7b49/_layouts/15/download.aspx?UniqueId=362ba70d-0a33-4d9a-8dd0-969d4ea67f88" class="btn-sm-download">İNDİR</a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="tech-tool-box" style="border-color: #ffc107;">
+              <div class="tech-tool-info"><i class="fa-solid fa-compact-disc"></i><span>ISO (TEX) Kurulum</span></div>
+              <a href="https://1drv.ms/f/c/d9e2670e00da7b49/EqsXybNpCc1AueU6nmjFECcB_Lu4XsY4bcJtjfSV7jP3yQ" class="btn-sm-download">GİT</a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="tech-tool-box">
+              <div class="tech-tool-info"><i class="fa-solid fa-gears"></i><span>Özel Scriptler</span></div>
+              <a href="https://1drv.ms/f/c/d9e2670e00da7b49/Etjup3QINMxFryvuYY8F4NoBJ8D3sUcwi1fkqZxOXey_BQ" class="btn-sm-download">GİT</a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="tech-tool-box">
+              <div class="tech-tool-info"><i class="fa-solid fa-microchip"></i><span>NVMe Drivers</span></div>
+              <a href="https://1drv.ms/f/c/d9e2670e00da7b49/Eqp9k7FgMt5DmJoHS29JDYUBkOgAO-7GyckTCfdWr6oSEw" class="btn-sm-download">GİT</a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="tech-tool-box">
+              <div class="tech-tool-info"><i class="fa-solid fa-stop-circle"></i><span>Hizmet Durdurma</span></div>
+              <a href="https://1drv.ms/f/c/d9e2670e00da7b49/EhDsge_teT5BnRAsGrkGgxYB-Pp3txMyzTvY_43az-nTSg" class="btn-sm-download">GİT</a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="tech-tool-box">
+              <div class="tech-tool-info"><i class="fa-solid fa-file-zipper"></i><span>WinRAR 64-bit</span></div>
+              <a href="https://www.win-rar.com/download.html" class="btn-sm-download">İNDİR</a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="tech-tool-box">
+              <div class="tech-tool-info"><i class="fa-brands fa-java"></i><span>Java JRE</span></div>
+              <a href="https://www.java.com/tr/download/" class="btn-sm-download">İNDİR</a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="tech-tool-box">
+              <div class="tech-tool-info"><i class="fa-brands fa-chrome"></i><span>Google Chrome</span></div>
+              <a href="https://www.google.com/chrome/" class="btn-sm-download">İNDİR</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer dark-background" style="margin-top: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div class="container copyright text-center py-4">
+      <p>© 2024 <strong class="px-1 sitename">Texper Bilişim</strong> - Tüm Hakları Saklıdır.</p>
     </div>
-    <div class="container-fluid py-5 page-start-padding">
-        <div class="container py-5">
-            <div class="mx-auto text-center mb-5 wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
-                <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Gerekli Araçlar</div>
-                <h2 class="mb-4">Sisteminiz İçin Önerdiğimiz Temel Programlar</h2>
-                <p class="mb-0">
-                    İşletme sürekliliğini, güvenliğini ve verimliliğini desteklemek için uzmanlarımızın seçtiği, gerekli programların indirme bağlantılarını burada bulabilirsiniz.
-                </p>
-            </div>
-            
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <h3 class="mb-4 text-primary"><i class="fa fa-desktop me-3"></i> Uzak Bağlantı ve Destek</h3>
-                    <div class="list-group">
-                        <a href="destek.html" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            TeamViewer, AnyDesk, Alpemix ve Diğerleri
-                            <i class="fa fa-arrow-right"></i>
-                        </a>
-                        <div class="p-3 bg-light">
-                            <small class="text-muted">Tüm uzak destek programlarının doğrudan indirme linkleri için **Destek** sayfamızı ziyaret edin.</small>
-                        </div>
-                    </div>
-                </div>
+  </footer>
 
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
-                    <h3 class="mb-4 text-primary"><i class="fa fa-shield-alt me-3"></i> Güvenlik ve Antivirüs</h3>
-                    <div class="list-group">
-                        <a href="https://www.eset.com/tr/" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            ESET Güvenlik Çözümleri
-                            <i class="fa fa-external-link-alt"></i>
-                        </a>
-                        <a href="https://www.kaspersky.com.tr/" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Kaspersky Endpoint Security
-                            <i class="fa fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <h3 class="mb-4 text-primary"><i class="fa fa-tools me-3"></i> Sistem Araçları ve Scriptler</h3>
-                    <div class="list-group">
-                        <a href="https://my.microsoftpersonalcontent.com/personal/d9e2670e00da7b49/_layouts/15/download.aspx?UniqueId=a0e6bc45-dde8-4fc1-a7cc-2e3f4ec049d5&Translate=false&tempauth=v1e.eyJzaXRlaWQiOiJiZWQ5ZTg0ZC1jMGFiLTQ0YmItOWVmZC1hODc2ZjU2OGI5MWIiLCJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbXkubWljcm9zb2Z0cGVyc29uYWxjb250ZW50LmNvbUA5MTg4MDQwZC02YzY3LTRjNWItYjExMi0zNmEzMDRiNjZkYWQiLCJleHAiOiIxNzYyMDMwNjk4In0.VMaZPHzrvLbRvN1atp6UXTcG6oxhs6ijkGRzWRU9Ai7KYvLSIF6qOgbVMemeK1F7P-gUhMyA36UfMJvN0OqhALSfoxT4MeLbQdkgGFswjDWTTWp8tyGLqBBU0ub_jUNGx057eYs5K815A5JfnaNJ4C99WTOFPTt4ouGfWWX6hOkSZuqnKMZFfrX8mNxVQML_W1-1uduOYeH_hsP5PpMQgQyPopk4IFcgkhSnMnpyaW4uB1aq2qm-DSbzWfL1R3kQigLO4yW90BWODhc_2OVvBJveo7vJemyFanwW0R0BsnQr5x6y-Na5eF-nWLWxMK0MNKdj-jjG_JnV9wrEjowH1CPdEdm-OMequPPNI7j72KwwZj8RcG_x_kkISumjZerhrdKdsLU8w6YmBnU37x6zrCRU2zbAfxSDa5rWt2XFKzp2ZVq1IQTWL1cyFQSUO5pmCWnMGtLpzwp3jTADfi_dYdmen3MawFc3km7LvQMUzw0-QtWPh8pssd0HjrlY7n05z6YKr-gh_Njm8F-OdOmzIw.yvuBf3L521vjpEd6_5p4BPgj6mon1V6dSs6XhIlK3hk&ApiVersion=2.0" 
-                           target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            IPSCANNER (Ağ Tarama Programı)
-                            <i class="fa fa-download"></i>
-                        </a>
-                        <a href="https://my.microsoftpersonalcontent.com/personal/d9e2670e00da7b49/_layouts/15/download.aspx?UniqueId=362ba70d-0a33-4d9a-8dd0-969d4ea67f88&Translate=false&tempauth=v1e.eyJzaXRlaWQiOiJiZWQ5ZTg0ZC1jMGFiLTQ0YmItOWVmZC1hODc2ZjU2OGI5MWIiLCJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbXkubWljcm9zb2Z0cGVyc29uYWxjb250ZW50LmNvbUA5MTg4MDQwZC02YzY3LTRjNWItYjExMi0zNmEzMDRiNjZkYWQiLCJleHAiOiIxNzYyMDMwMzUzIn0.I0vRh2eVod3PGA_ozxeCq4lkgWnwD868L2BOttG4d9zFU60FQ5g0m-zJT0PqxrOD15GFFX05YZYoxkP-D6Z2JvIMd5WvmmGODQLAf-vymSEjso4NYQ4U5zMtkhgCPyPO_TEB57FsoFx6BGXaTCybt1e0ugVXwnRZdB856ASDgv8751GD-K_oQ1v-mA3G9eDwaoVIeeFgp8W2y69EJ9Dc498xpfa9YMkn424T7svNPGS1GQB6u2ZuG8xGSsn4agM1lN2hUKez4IRdQw7GBWUfIPLydBZRqwQnE_0V0aeWASeftLZt5weSSF7XXP_vBSZhYV1Qt8I4aNjIE8HM_OHDlzLFdW2Kg89nlSJ5Dlc69wdmefdw5dpRe1ddef2ICfXdN1RdOEdgHHD_8HsbWmKK26mLRst0pqBUYZQkyahaI-fhC9rPCo3Vqdiof3PDkwFIG7OFgqrY_ZebNRhYPFZs5icdaOu-2Bc-GSv0pJYCDadhkDnDdvljiWHNM0TTx5hMAHKsydD93h6zHUi2my2_Dw.WmzGfVcaXWp0ajEILEwdA6vyK2DBBx19DTG4TJaGtx0&ApiVersion=2.0" 
-                           target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Port Kontrol Programı (Hizmet Port Kontrolü)
-                            <i class="fa fa-download"></i>
-                        </a>
-                        <a href="https://1drv.ms/f/c/d9e2670e00da7b49/EhDsge_teT5BnRAsGrkGgxYB-Pp3txMyzTvY_43az-nTSg?e=qMSA9K" 
-                           target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Windows İzleme Durdur (Hizmet Durdurma Scripti)
-                            <i class="fa fa-download"></i>
-                        </a>
-                        <a href="https://1drv.ms/f/c/d9e2670e00da7b49/Eqp9k7FgMt5DmJoHS29JDYUBkOgAO-7GyckTCfdWr6oSEw?e=TmJoYO" 
-                           target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            NVMe Disk Driverları (Gerekli Sürücüler)
-                            <i class="fa fa-download"></i>
-                        </a>
-                        <a href="https://1drv.ms/f/c/d9e2670e00da7b49/Etjup3QINMxFryvuYY8F4NoBJ8D3sUcwi1fkqZxOXey_BQ" 
-                           target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Script'ler (Çeşitli Otomasyon Scriptleri)
-                            <i class="fa fa-download"></i>
-                        </a>
-                         <a href="https://1drv.ms/f/c/d9e2670e00da7b49/EqsXybNpCc1AueU6nmjFECcB_Lu4XsY4bcJtjfSV7jP3yQ" 
-                           target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center list-group-item-warning">
-                            ISO (TEX) - KURULUM İMAJI
-                            <i class="fa fa-hdd"></i>
-                        </a>
-                        <div class="p-3 bg-light border-top">
-                            <small class="text-muted">Bu araçlar, deneyimli teknik personelimiz tarafından altyapı yönetimi ve hızlı problem çözme amacıyla kullanılır.</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.7s">
-                    <h3 class="mb-4 text-primary"><i class="fa fa-archive me-3"></i> Dosya Sıkıştırma ve Yönetim</h3>
-                    <div class="list-group">
-                        <a href="https://www.win-rar.com/download.html?&L=24" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            WinRAR (Dosya Arşivleme)
-                            <i class="fa fa-external-link-alt"></i>
-                        </a>
-                        <a href="https://www.7-zip.org/download.html" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            7-Zip (Açık Kaynak Sıkıştırma)
-                            <i class="fa fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.9s">
-                    <h3 class="mb-4 text-primary"><i class="fa fa-globe me-3"></i> Tarayıcılar ve Verimlilik</h3>
-                    <div class="list-group">
-                        <a href="https://www.google.com/chrome/" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Google Chrome
-                            <i class="fa fa-external-link-alt"></i>
-                        </a>
-                        <a href="https://www.mozilla.org/tr/firefox/new/" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Mozilla Firefox
-                            <i class="fa fa-external-link-alt"></i>
-                        </a>
-                        <a href="https://www.libreoffice.org/download/download/" target="_blank" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            LibreOffice (Ücretsiz Ofis Paketi)
-                            <i class="fa fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-                
-            </div>
-
-            <div class="text-center pt-5 wow fadeIn" data-wow-delay="1.1s">
-                <h3 class="mb-4">İhtiyacınız Olanı Bulamadınız mı?</h3>
-                <a href="contact.html" class="btn btn-primary py-3 px-5">Bize Ulaşın</a>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container-fluid bg-dark text-white-50 footer pt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Texper Bilişim</h5>
-                    <p>İşletmenizin dijital dönüşümünde güvenilir ortağınız.</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square me-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Adres ve İletişim</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i> İstanbul, Türkiye</p>
-                    <p><i class="fa fa-phone-alt me-3"></i> +90 531 401 73 75</p>
-                    <p><i class="fa fa-envelope me-3"></i> info@texper.com.tr</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Hızlı Bağlantılar</h5>
-                    <a class="btn-link" href="about.html">Hakkımızda</a>
-                    <a class="btn-link" href="contact.html">Bize Ulaşın</a>
-                    <a class="btn-link" href="service.html">Hizmetlerimiz</a>
-                    <a class="btn-link" href="destek.html">Teknik Destek</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-light mb-4">Popüler Çözümler</h5>
-                    <a class="btn-link" href="ag-kurulumu.html">Ağ Kurulumu</a>
-                    <a class="btn-link" href="cloud.html">Bulut Sunucu</a>
-                    <a class="btn-link" href="yazilim-gelistirme.html">Özel Yazılım</a>
-                    <a class="btn-link" href="programlar.html">Programlar</a>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-white"><a href="#"><i class="fas fa-copyright text-primary me-2"></i>Texper Bilişim 2023. Tüm hakları saklıdır.</a></span>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="index.html">Anasayfa</a>
-                            <a href="contact.html">Bize Ulaşın</a>
-                            <a href="faq.html">SSS</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i class="bi bi-arrow-up"></i></a>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <script>
-        $(window).on('load', function () {
-            // Yüklenme bittiğinde 0.1 saniye sonra spinner'ı kapat
-            setTimeout(function () {
-                var spinnerElement = $('#spinner');
-                if (spinnerElement.length) {
-                    spinnerElement.removeClass('show');
-                }
-            }, 100); 
-        });
-    </script>
-    <script src="js/main.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
