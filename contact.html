@@ -17,7 +17,6 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* INDEX TEMASI - TAM KORUMA */
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
     
     .hero { 
@@ -37,29 +36,22 @@
       height: 100%;
     }
 
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 30px;
+    /* Form Giriş Alanları */
+    .form-control-texper {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      color: white !important;
+      border-radius: 12px !important;
+      padding: 12px 20px !important;
+      margin-bottom: 15px;
     }
 
-    .info-item i {
-      font-size: 1.5rem;
-      color: #ffc107;
-      background: rgba(255, 193, 7, 0.1);
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
+    .form-control-texper:focus {
+      background: rgba(255, 255, 255, 0.1) !important;
+      border-color: #ffc107 !important;
+      box-shadow: none !important;
     }
 
-    .info-item h4 { font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0; }
-    .info-item p { margin: 0; color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; }
-
-    /* Hızlı İletişim Butonları */
     .quick-contact-btn {
       display: flex;
       align-items: center;
@@ -73,20 +65,26 @@
       background: rgba(255, 255, 255, 0.05);
     }
 
-    .quick-contact-btn i { font-size: 2rem; }
-    .quick-contact-btn .text-content { color: #fff; }
-    .quick-contact-btn .text-content span { display: block; font-size: 0.8rem; opacity: 0.6; }
-    .quick-contact-btn .text-content strong { display: block; font-size: 1.2rem; font-weight: 700; }
+    .info-item { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+    .info-item i { font-size: 1.5rem; color: #ffc107; background: rgba(255, 193, 7, 0.1); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+    .info-item h4 { font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0; }
+    .info-item p { margin: 0; color: rgba(255, 255, 255, 0.8); }
 
-    /* Özel Renkler */
-    .btn-whatsapp:hover { background: rgba(37, 211, 102, 0.2); border-color: #25d366; transform: translateX(10px); }
-    .btn-whatsapp i { color: #25d366; }
+    .btn-submit {
+      background: #0d42ff;
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      width: 100%;
+      transition: 0.3s;
+    }
 
-    .btn-phone:hover { background: rgba(255, 193, 7, 0.2); border-color: #ffc107; transform: translateX(10px); }
-    .btn-phone i { color: #ffc107; }
-
-    .btn-mail:hover { background: rgba(13, 110, 253, 0.2); border-color: #0d6efd; transform: translateX(10px); }
-    .btn-mail i { color: #0d6efd; }
+    .btn-submit:hover {
+      background: #1a51ff;
+      transform: scale(1.02);
+    }
   </style>
 </head>
 
@@ -100,27 +98,8 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
-          <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="about.html">Hakkımızda</a></li>
-              <li><a href="referanslar.html">Referanslar</a></li>
-              <li><a href="faq.html">S.S.S</a></li>
-              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="services.html">Tüm Hizmetler</a></li>
-              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
-              <li><a href="programlar.html">Faydalı Programlar</a></li>
-            </ul>
-          </li>
-          <li><a href="project.html">Projeler</a></li>
-          <li><a href="blog.html">Neler Yapıyoruz</a></li>
           <li><a href="contact.html" class="active">İletişim</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
     </div>
@@ -132,66 +111,58 @@
       <div class="container">
         
         <div class="text-center mb-5">
-          <h2 style="font-size: 3.5rem; font-weight: 800;">Hızlı <span style="color: #ffc107;">İletişim.</span></h2>
-          <p style="max-width: 600px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem;">İstanbul merkezli profesyonel BT desteği için yanınızdayız.</p>
+          <h2 style="font-size: 3rem; font-weight: 800;">Bizimle <span style="color: #ffc107;">Konuşun.</span></h2>
         </div>
 
-        <div class="row g-4 justify-content-center">
-          
-          <div class="col-lg-5">
+        <div class="row g-4">
+          <div class="col-lg-4">
             <div class="contact-glass-box">
               <div class="info-item">
                 <i class="bi bi-geo-alt"></i>
-                <div>
-                  <h4>Konum</h4>
-                  <p>İstanbul / Türkiye</p>
-                </div>
+                <div><h4>Konum</h4><p>İstanbul / Türkiye</p></div>
               </div>
-
+              <div class="info-item">
+                <i class="bi bi-envelope"></i>
+                <div><h4>E-Posta</h4><p>info@texper.com.tr</p></div>
+              </div>
               <div class="info-item">
                 <i class="bi bi-clock"></i>
-                <div>
-                  <h4>Mesai Saatleri</h4>
-                  <p>09:00 - 18:30 (Pazartesi - Cumartesi)</p>
-                </div>
+                <div><h4>Mesai</h4><p>09:00 - 18:30</p></div>
               </div>
-
-              <div class="info-item">
-                <i class="bi bi-shield-check"></i>
-                <div>
-                  <h4>Teknik Destek</h4>
-                  <p>7/24 İzleme ve Acil Müdahale</p>
-                </div>
-              </div>
+              
+              <hr style="border-color: rgba(255,255,255,0.1);">
+              
+              <a href="https://wa.me/905000000000" class="quick-contact-btn" style="padding: 15px;">
+                <i class="bi bi-whatsapp" style="color:#25d366"></i>
+                <div class="text-content"><strong>WhatsApp</strong></div>
+              </a>
             </div>
           </div>
 
-          <div class="col-lg-6">
+          <div class="col-lg-8">
             <div class="contact-glass-box">
+              <h4 class="mb-4" style="font-weight: 700;">Hızlı Mesaj Formu</h4>
               
-              <a href="https://wa.me/905000000000" class="quick-contact-btn btn-whatsapp" target="_blank">
-                <i class="bi bi-whatsapp"></i>
-                <div class="text-content">
-                  <span>WhatsApp Destek Hattı</span>
-                  <strong>Hemen Mesaj Gönder</strong>
+              <form id="contact-form" action="https://formspree.io/f/xqapdovq" method="POST">
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="text" name="name" class="form-control form-control-texper" placeholder="Adınız" required>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="email" name="email" class="form-control form-control-texper" placeholder="E-Posta Adresiniz" required>
+                  </div>
+                  <div class="col-md-12">
+                    <input type="text" name="subject" class="form-control form-control-texper" placeholder="Konu" required>
+                  </div>
+                  <div class="col-md-12">
+                    <textarea name="message" rows="5" class="form-control form-control-texper" placeholder="Mesajınız" required></textarea>
+                  </div>
+                  <div class="col-md-12">
+                    <button type="submit" id="submit-btn" class="btn-submit">MESAJI GÖNDER</button>
+                  </div>
                 </div>
-              </a>
-
-              <a href="tel:+902120000000" class="quick-contact-btn btn-phone">
-                <i class="bi bi-telephone-outbound"></i>
-                <div class="text-content">
-                  <span>Müşteri Hizmetleri</span>
-                  <strong>+90 (212) 000 00 00</strong>
-                </div>
-              </a>
-
-              <a href="mailto:info@texper.com.tr" class="quick-contact-btn btn-mail">
-                <i class="bi bi-envelope-at"></i>
-                <div class="text-content">
-                  <span>Kurumsal E-Posta</span>
-                  <strong>info@texper.com.tr</strong>
-                </div>
-              </a>
+                <div id="form-status" class="mt-3 text-center" style="display:none;"></div>
+              </form>
 
             </div>
           </div>
@@ -203,10 +174,38 @@
 
   <footer id="footer" class="footer dark-background">
     <div class="container copyright text-center py-4">
-      <p>© 2025 <strong class="px-1 sitename">Texper Bilişim</strong> - İstanbul BT Çözümleri</p>
+      <p>© 2025 <strong class="px-1 sitename">Texper Bilişim</strong></p>
     </div>
   </footer>
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+    const btn = document.getElementById("submit-btn");
+
+    async function handleSubmit(event) {
+      event.preventDefault();
+      btn.innerText = "Gönderiliyor...";
+      const data = new FormData(event.target);
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          status.innerHTML = "<span style='color:#25d366'>Teşekkürler! Mesajınız başarıyla iletildi.</span>";
+          status.style.display = "block";
+          form.reset();
+          btn.innerText = "MESAJI GÖNDER";
+        } else {
+          status.innerHTML = "<span style='color:#ff4d4d'>Hata oluştu, lütfen tekrar deneyin.</span>";
+          status.style.display = "block";
+          btn.innerText = "MESAJI GÖNDER";
+        }
+      });
+    }
+    form.addEventListener("submit", handleSubmit)
+  </script>
+
 </body>
 </html>
