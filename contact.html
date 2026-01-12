@@ -17,7 +17,6 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* Tasarımı Koruyan ve Görünürlüğü Zorlayan Ayarlar */
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
     
     .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 0; position: relative; }
@@ -31,7 +30,6 @@
       height: 100%;
     }
 
-    /* FORM ALANLARI - Register.html'deki başarılı stilin aynısı */
     .form-control-texper {
       background: rgba(0, 0, 0, 0.4) !important;
       border: 1px solid rgba(255, 255, 255, 0.2) !important;
@@ -49,8 +47,6 @@
       color: #ffffff !important;
     }
 
-    .form-control-texper::placeholder { color: rgba(255, 255, 255, 0.5) !important; }
-
     .btn-submit-texper {
       background: #0d42ff !important;
       color: #fff !important;
@@ -61,8 +57,7 @@
       width: 100% !important;
       transition: 0.3s !important;
     }
-    .btn-submit-texper:hover { background: #1a51ff !important; transform: translateY(-3px); }
-    .btn-submit-texper:disabled { background: #444 !important; cursor: not-allowed; }
+    .btn-submit-texper:disabled { background: #444 !important; }
 
     #status-msg { margin-top: 15px; font-size: 1rem; font-weight: 600; display: none; text-align: center; }
 
@@ -84,8 +79,27 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
+          <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="faq.html">S.S.S</a></li>
+              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="services.html">Tüm Hizmetler</a></li>
+              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
+              <li><a href="programlar.html">Faydalı Programlar</a></li>
+            </ul>
+          </li>
+          <li><a href="project.html">Projeler</a></li>
+          <li><a href="blog.html">Neler Yapıyoruz</a></li>
           <li><a href="contact.html" class="active">İletişim</a></li>
         </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
     </div>
@@ -95,7 +109,6 @@
     <section id="hero" class="hero section dark-background">
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
       <div class="container">
-        
         <div class="text-center mb-5">
           <h2 style="font-size: 3.5rem; font-weight: 800;">Hızlı <span style="color: #ffc107;">İletişim.</span></h2>
         </div>
@@ -111,6 +124,10 @@
                 <i class="bi bi-envelope-at" style="color:#ffc107; font-size: 2rem;"></i>
                 <div style="color:white"><span>E-Posta</span><br><strong>info@texper.com.tr</strong></div>
               </a>
+              <div class="mt-4 px-3" style="color: rgba(255,255,255,0.7);">
+                <p><i class="bi bi-geo-alt me-2"></i> İstanbul, Türkiye</p>
+                <p><i class="bi bi-clock me-2"></i> 09:00 - 18:30 (Pzt-Cmt)</p>
+              </div>
             </div>
           </div>
 
@@ -132,16 +149,13 @@
 
   <script>
     var form = document.getElementById("contact-form");
-    
     async function handleSubmit(event) {
       event.preventDefault();
       var status = document.getElementById("status-msg");
       var btn = document.getElementById("submit-btn");
       var data = new FormData(event.target);
-      
       btn.disabled = true;
       btn.innerText = "Gönderiliyor...";
-
       fetch(event.target.action, {
         method: form.method,
         body: data,
@@ -154,7 +168,7 @@
           form.reset();
           btn.innerText = "MESAJ GÖNDERİLDİ";
         } else {
-          status.innerHTML = "Hata oluştu, lütfen tekrar deneyin.";
+          status.innerHTML = "Hata oluştu, tekrar deneyin.";
           status.style.color = "#ff4d4d";
           status.style.display = "block";
           btn.disabled = false;
@@ -168,6 +182,6 @@
     }
     form.addEventListener("submit", handleSubmit)
   </script>
-
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
