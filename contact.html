@@ -17,15 +17,10 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
+    /* Tasarımı Koruyan ve Görünürlüğü Zorlayan Ayarlar */
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
     
-    .hero { 
-      min-height: 100vh; 
-      display: flex; 
-      align-items: center; 
-      padding: 100px 0; 
-      position: relative;
-    }
+    .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 0; position: relative; }
 
     .contact-glass-box {
       background: rgba(255, 255, 255, 0.03);
@@ -36,71 +31,45 @@
       height: 100%;
     }
 
-    /* FORM OKUNURLUK DÜZENLEMESİ */
+    /* FORM ALANLARI - Register.html Mantığıyla Sıfırdan Düzenleme */
     .form-control-texper {
-      background: rgba(0, 0, 0, 0.3) !important; /* Koyu şeffaf arka plan */
+      background: rgba(0, 0, 0, 0.4) !important; /* Arka planı koyulaştırdık ki beyazlık olmasın */
       border: 1px solid rgba(255, 255, 255, 0.2) !important;
-      color: #ffffff !important; /* Yazı rengi zorla beyaz */
+      color: #ffffff !important; /* Yazı kesinlikle beyaz */
       border-radius: 12px !important;
-      padding: 12px 20px !important;
-      margin-bottom: 15px;
+      padding: 15px !important;
+      margin-bottom: 20px;
+      width: 100% !important;
       outline: none !important;
     }
 
-    .form-control-texper::placeholder {
-      color: rgba(255, 255, 255, 0.5) !important;
-    }
-
-    /* Yazarken veya seçildiğinde (Focus) */
+    /* Yazarken oluşabilecek beyazlamayı engelle */
     .form-control-texper:focus {
-      background: rgba(0, 0, 0, 0.6) !important;
+      background: rgba(0, 0, 0, 0.7) !important;
       border-color: #ffc107 !important;
       color: #ffffff !important;
-      box-shadow: 0 0 10px rgba(255, 193, 7, 0.2) !important;
     }
 
-    /* Tarayıcının beyaz kutu dayatmasını engeller */
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover, 
-    input:-webkit-autofill:focus,
-    textarea:-webkit-autofill,
-    textarea:-webkit-autofill:hover,
-    textarea:-webkit-autofill:focus {
-      -webkit-text-fill-color: white !important;
-      -webkit-box-shadow: 0 0 0px 1000px #1a1d2d inset !important;
-      transition: background-color 5000s ease-in-out 0s;
-    }
+    /* Placeholder rengi */
+    .form-control-texper::placeholder { color: rgba(255, 255, 255, 0.5) !important; }
 
-    .btn-submit {
-      background: #0d42ff;
-      color: white;
-      border: none;
-      padding: 15px 40px;
-      border-radius: 50px;
-      font-weight: 600;
-      width: 100%;
-      transition: 0.3s;
-      margin-top: 10px;
+    /* Buton Ayarı */
+    .btn-submit-texper {
+      background: #0d42ff !important;
+      color: #fff !important;
+      padding: 14px 30px !important;
+      border-radius: 50px !important;
+      border: none !important;
+      font-weight: 600 !important;
+      width: 100% !important;
+      transition: 0.3s !important;
     }
-
-    .btn-submit:hover {
-      background: #1a51ff;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(13, 66, 255, 0.4);
-    }
+    .btn-submit-texper:hover { background: #1a51ff !important; transform: translateY(-3px); }
 
     .quick-contact-btn {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 15px 25px;
-      border-radius: 15px;
-      margin-bottom: 15px;
-      text-decoration: none;
-      transition: 0.4s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.05);
-      color: white;
+      display: flex; align-items: center; gap: 20px; padding: 20px 30px;
+      border-radius: 15px; margin-bottom: 20px; text-decoration: none;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
     }
   </style>
 </head>
@@ -117,7 +86,6 @@
           <li><a href="index.html">Anasayfa</a></li>
           <li><a href="contact.html" class="active">İletişim</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
     </div>
@@ -129,53 +97,30 @@
       <div class="container">
         
         <div class="text-center mb-5">
-          <h2 style="font-size: 3rem; font-weight: 800;">Bize <span style="color: #ffc107;">Ulaşın.</span></h2>
-          <p style="opacity: 0.8;">BT sorunlarınız için profesyonel çözümler.</p>
+          <h2 style="font-size: 3.5rem; font-weight: 800;">Hızlı <span style="color: #ffc107;">İletişim.</span></h2>
         </div>
 
         <div class="row g-4">
-          <div class="col-lg-4">
+          <div class="col-lg-5">
             <div class="contact-glass-box">
-              <h5 class="mb-4" style="font-weight: 700;">Hızlı Erişim</h5>
-              
               <a href="https://wa.me/905000000000" class="quick-contact-btn">
-                <i class="bi bi-whatsapp" style="color:#25d366; font-size: 1.5rem;"></i>
-                <strong>WhatsApp Destek</strong>
+                <i class="bi bi-whatsapp" style="color:#25d366; font-size: 2rem;"></i>
+                <div style="color:white"><span>WhatsApp</span><br><strong>Hemen Yazın</strong></div>
               </a>
-
               <a href="mailto:info@texper.com.tr" class="quick-contact-btn">
-                <i class="bi bi-envelope-at" style="color:#0d6efd; font-size: 1.5rem;"></i>
-                <strong>info@texper.com.tr</strong>
+                <i class="bi bi-envelope-at" style="color:#ffc107; font-size: 2rem;"></i>
+                <div style="color:white"><span>E-Posta</span><br><strong>info@texper.com.tr</strong></div>
               </a>
-
-              <div class="mt-4 px-2" style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-                <p><i class="bi bi-geo-alt me-2"></i> İstanbul, Türkiye</p>
-                <p><i class="bi bi-clock me-2"></i> Pzt - Cmt: 09:00 - 18:30</p>
-              </div>
             </div>
           </div>
 
-          <div class="col-lg-8">
+          <div class="col-lg-7">
             <div class="contact-glass-box">
-              <form id="contact-form" action="https://formspree.io/f/xqapdovq" method="POST">
-                <div class="row">
-                  <div class="col-md-6">
-                    <input type="text" name="name" class="form-control form-control-texper" placeholder="Adınız Soyadınız" required>
-                  </div>
-                  <div class="col-md-6">
-                    <input type="email" name="email" class="form-control form-control-texper" placeholder="E-Posta Adresiniz" required>
-                  </div>
-                  <div class="col-md-12">
-                    <input type="text" name="subject" class="form-control form-control-texper" placeholder="Mesaj Konusu" required>
-                  </div>
-                  <div class="col-md-12">
-                    <textarea name="message" rows="5" class="form-control form-control-texper" placeholder="Size nasıl yardımcı olabiliriz?" required></textarea>
-                  </div>
-                  <div class="col-md-12">
-                    <button type="submit" id="submit-btn" class="btn-submit">BAŞVURUYU GÖNDER</button>
-                    <div id="form-status" class="mt-3 text-center" style="display:none; font-weight: 600;"></div>
-                  </div>
-                </div>
+              <form action="https://formspree.io/f/xqapdovq" method="POST">
+                <input type="text" name="name" class="form-control-texper" placeholder="Adınız Soyadınız" required>
+                <input type="email" name="email" class="form-control-texper" placeholder="E-posta Adresiniz" required>
+                <textarea name="message" rows="5" class="form-control-texper" placeholder="Mesajınız..." required></textarea>
+                <button type="submit" class="btn-submit-texper">MESAJI GÖNDER</button>
               </form>
             </div>
           </div>
@@ -184,38 +129,6 @@
       </div>
     </section>
   </main>
-
-  <script>
-    const form = document.getElementById("contact-form");
-    const status = document.getElementById("form-status");
-    const btn = document.getElementById("submit-btn");
-
-    form.addEventListener("submit", async function(event) {
-      event.preventDefault();
-      btn.innerText = "Gönderiliyor...";
-      btn.disabled = true;
-      
-      const data = new FormData(event.target);
-      fetch(event.target.action, {
-        method: form.method,
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          status.innerHTML = "✓ Mesajınız iletildi. En kısa sürede döneceğiz.";
-          status.style.color = "#25d366";
-          status.style.display = "block";
-          form.reset();
-        } else {
-          status.innerHTML = "⚠ Bir hata oluştu, lütfen tekrar deneyin.";
-          status.style.color = "#ff4d4d";
-          status.style.display = "block";
-        }
-        btn.innerText = "BAŞVURUYU GÖNDER";
-        btn.disabled = false;
-      });
-    });
-  </script>
 
 </body>
 </html>
