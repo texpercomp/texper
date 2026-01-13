@@ -17,58 +17,132 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* Senin Özel Tasarımın - Görünürlük Garantisi */
+    /* ORİJİNAL CSS'E MÜDAHALE ETMİYORUZ, SADECE YENİLERİ EKLİYORUZ */
+    :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
+
+    /* Görünürlük Garantisi */
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
-    
+
+    /* HERO ALANI AYARLARI */
     .hero { 
-      min-height: 85vh; 
-      display: flex; 
-      align-items: center; 
-      padding: 100px 0; 
-      position: relative;
+      min-height: 100vh; /* Tam ekran */
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; padding-top: 100px; padding-bottom: 50px;
+      /* Arka plan rengi vermiyoruz, main.css'den gelecek */
     }
 
-    /* Değişken Yazı Efekti */
-    .typed-text { color: #ffc107; font-weight: 700; border-right: 3px solid #ffc107; padding-right: 5px; animation: blink 0.7s infinite; }
-    @keyframes blink { 0% { border-color: transparent } 50% { border-color: #ffc107 } 100% { border-color: transparent } }
-
-    /* Buton Tasarımları */
-    .btn-explore { background: #0d42ff; color: #fff !important; padding: 12px 35px; border-radius: 50px; font-weight: 600; border: 2px solid #0d42ff; text-decoration: none; display: inline-block; transition: 0.3s; }
-    .btn-explore:hover { background: transparent; color: #fff !important; transform: scale(1.05); }
+    /* HARİTA - Kaybolmasın ve arkada dursun */
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none;
+    }
     
-    .btn-support-yellow { background: #ffc107; color: #000 !important; padding: 12px 35px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
-    .btn-support-yellow:hover { background: #fff; transform: translateY(-3px); }
+    /* İçeriği öne çekiyoruz */
+    .hero .container { position: relative; z-index: 2; }
+
+    /* YAZI EFEKTİ */
+    .typed-text { color: var(--primary) !important; border-right: 3px solid var(--primary); padding-right: 5px; }
+
+    /* --- 1. MENÜDEKİ İLETİŞİM BUTONU --- */
+    /* Normal linklerden farklı, Müşteri Panelinden de farklı */
+    .nav-contact-btn {
+      border: 1px solid rgba(255, 255, 255, 0.5) !important;
+      border-radius: 20px;
+      padding: 5px 20px !important;
+      margin-left: 10px;
+      transition: 0.3s;
+    }
+    .nav-contact-btn:hover {
+      background: #fff;
+      color: #000 !important;
+      border-color: #fff !important;
+    }
+
+    /* --- 2. YENİ BUTONLAR (Action Grid) --- */
+    .action-grid {
+      display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; margin-top: 30px;
+    }
+
+    /* Hizmetler Butonu (Şeffaf) */
+    .action-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      padding: 15px 35px; border-radius: 50px;
+      text-decoration: none; color: #fff;
+      display: flex; align-items: center; gap: 10px;
+      transition: 0.3s; backdrop-filter: blur(5px);
+    }
+    .action-card:hover {
+      background: rgba(255, 255, 255, 0.15); color: #fff; transform: translateY(-3px);
+    }
+
+    /* DESTEK BUTONU (Vurgulu - Sarı Dolgulu) */
+    .card-highlight {
+      background: var(--primary); /* Sarı Dolgu */
+      color: #000 !important; /* Siyah Yazı */
+      border: 1px solid var(--primary);
+      box-shadow: 0 0 20px rgba(255, 193, 7, 0.4); /* Parlama */
+      font-weight: 700;
+      padding: 15px 45px; /* Biraz daha geniş */
+    }
+    .card-highlight:hover {
+      background: #fff; border-color: #fff; transform: scale(1.05); color: #000 !important;
+    }
+    .card-highlight i { color: #000; }
+
+    /* --- 3. 3'LÜ KART YAPISI --- */
+    .feature-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .feature-item {
+      background: rgba(255, 255, 255, 0.03); /* Çok hafif şeffaf */
+      border: 1px solid var(--glass-border);
+      padding: 25px; border-radius: 16px;
+      text-align: left; display: flex; align-items: flex-start; gap: 15px;
+      transition: 0.3s; backdrop-filter: blur(5px);
+    }
+    .feature-item:hover {
+      border-color: var(--primary); transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .feature-item i { font-size: 2rem; color: var(--primary); line-height: 1; }
+    .feature-item h4 { font-size: 1.1rem; color: #fff; margin: 0 0 5px 0; font-weight: 600; }
+    .feature-item p { font-size: 0.9rem; color: #ccc; margin: 0; line-height: 1.5; }
+
+    /* --- 4. ALT DURUM ÇUBUĞU & IP ADRESİ --- */
+    .stats-bar {
+      border-top: 1px solid var(--glass-border);
+      background: rgba(0, 0, 0, 0.3); /* Hafif koyuluk */
+      padding: 15px 0;
+      width: 100%;
+      position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 40px;
+      z-index: 10;
+      flex-wrap: wrap;
+    }
+    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; letter-spacing: 0.5px; }
+    .stat-text i { color: #22c55e; }
+    /* IP Adresi Özel Renk */
+    .ip-highlight { color: #fff; font-weight: bold; text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
 
     /* SAĞ ÜST PANEL BUTONU */
     .btn-panel-header {
-      background: #ffc107;
-      color: #000 !important;
-      padding: 8px 20px;
-      margin-left: 15px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 14px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-      border: 2px solid #ffc107;
-      white-space: nowrap;
+      background: transparent; color: var(--primary) !important;
+      padding: 8px 25px; margin-left: 20px;
+      border-radius: 50px; font-weight: 700; font-size: 14px;
+      border: 2px solid var(--primary);
+      text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s;
     }
+    .btn-panel-header:hover { background: var(--primary); color: #000 !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
 
-    .btn-panel-header:hover {
-      background: transparent;
-      color: #ffc107 !important;
-      box-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
-    }
-
-    /* Mobil Ayarlar */
-    @media (max-width: 768px) {
-      .hero h2 { font-size: 2.2rem !important; }
-      .hero .d-flex.justify-content-center { flex-direction: column !important; gap: 15px !important; padding: 0 20px; }
-      .btn-explore, .btn-support-yellow { width: 100% !important; margin: 0 !important; text-align: center; justify-content: center; }
-      .btn-panel-header { margin: 10px 0; width: 100%; justify-content: center; }
+    /* MOBİL AYARLAR */
+    @media (max-width: 991px) {
+      .hero { padding-top: 120px; height: auto; padding-bottom: 80px; }
+      .feature-grid { grid-template-columns: 1fr; gap: 15px; }
+      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
+      .btn-panel-header { display: none; }
+      .nav-contact-btn { border: none !important; padding: 0 !important; margin: 0 !important; } /* Mobilde normale dönsün */
     }
   </style>
 </head>
@@ -104,15 +178,17 @@
           </li>
 
           <li><a href="project.html">Projeler</a></li>
-          <li><a href="blog.html">Neler Yapıyoruz</a></li> 
-          <li><a href="contact.html">İletişim</a></li>
+          <li><a href="blog.html">Neler Yapıyoruz</a></li>
+          
+          <li><a href="contact.html" class="nav-contact-btn">İletişim</a></li>
+          
           <li class="d-md-none"><a href="destek.html">Destek Al</a></li>
           <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       
-      <a class="btn-panel-header" href="https://texper.xyz">
+      <a class="btn-panel-header d-none d-lg-flex" href="https://texper.xyz">
         <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
       </a>
     </div>
@@ -120,46 +196,73 @@
 
   <main class="main">
     <section id="hero" class="hero section dark-background">
+      
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+
       <div class="container text-center">
-        <h2 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 20px;">
+        <h2 class="mb-3">
           BT Altyapınız <span id="changing-text" class="typed-text"></span>
         </h2>
-        <p style="font-size: 1.25rem; opacity: 0.9; max-width: 800px; margin: 0 auto;">
-          TexNexus Cloud ve Profesyonel Teknik Destek Çözümleriyle İşletmenizi Geleceğe Taşıyın.
+        
+        <p>
+          Uçtan uca donanım kurulumlarından, TexNexus bulut mimarisine; fiziksel ve dijital altyapınızı tek merkezden profesyonelce yönetiyoruz.
         </p>
-        <div class="d-flex justify-content-center gap-3 mt-5">
-          <a href="services.html" class="btn-explore shadow">Hizmetleri Keşfet</a>
-          <a href="destek.html" class="btn-support-yellow shadow"><i class="bi bi-headset"></i> Destek Al</a>
+        
+        <div class="action-grid">
+          <a href="services.html" class="action-card">
+            <i class="bi bi-hdd-network"></i>
+            <span>Hizmetleri İncele</span>
+          </a>
+
+          <a href="destek.html" class="action-card card-highlight">
+            <i class="bi bi-headset"></i>
+            <span>TEKNİK DESTEK AL</span>
+          </a>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-item">
+            <i class="bi bi-shield-check"></i>
+            <div>
+              <h4>Güvenlik Çemberi</h4>
+              <p>Firewall ve siber güvenlik çözümleriyle uçtan uca koruma.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-cloud-arrow-up"></i>
+            <div>
+              <h4>Hibrit Yedekleme</h4>
+              <p>NAS ve Bulut entegrasyonu ile verileriniz her an güvende.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-cpu"></i>
+            <div>
+              <h4>7/24 Sistem İzleme</h4>
+              <p>MeshCentral altyapısıyla anlık takip ve hızlı müdahale.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-text">
+          <i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong>
+        </div>
+        <div class="stat-text">
+          <i class="bi bi-shield-lock"></i> AGENTS: <strong style="color:#fff;">312 ACTIVE</strong>
+        </div>
+        <div class="stat-text">
+          <i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong>
         </div>
       </div>
+
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background">
-    <div class="container footer-top">
-      <div class="row gy-4 text-center text-md-start">
-        <div class="col-lg-5 col-md-12 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center justify-content-center justify-content-md-start">
-            <span class="sitename">Texper Bilişim</span>
-          </a>
-          <p>Güvenilir, hızlı ve ölçeklenebilir teknoloji çözümleri.</p>
-        </div>
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Kurumsal</h4>
-          <ul>
-            <li><a href="about.html">Hakkımızda</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">İletişim</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-5 col-md-12 footer-contact">
-          <h4>İletişim</h4>
-          <p>İstanbul, Türkiye | info@texper.com.tr</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <footer id="footer" class="footer dark-background" style="padding: 0; height: 0; overflow: hidden; visibility: hidden;">
+    </footer>
 
   <script>
     const textElement = document.getElementById('changing-text');
@@ -181,7 +284,18 @@
       setTimeout(type, typeSpeed);
     }
     document.addEventListener('DOMContentLoaded', type);
+
+    // IP ADRESİNİ ÇEKEN BASİT SCRIPT
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('user-ip').innerText = data.ip;
+      })
+      .catch(error => {
+        document.getElementById('user-ip').innerText = "Gizli";
+      });
   </script>
+
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
