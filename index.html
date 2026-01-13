@@ -39,11 +39,36 @@
     .btn-support-yellow { background: #ffc107; color: #000 !important; padding: 12px 35px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
     .btn-support-yellow:hover { background: #fff; transform: translateY(-3px); }
 
+    /* SAĞ ÜST PANEL BUTONU */
+    .btn-panel-header {
+      background: #ffc107;
+      color: #000 !important;
+      padding: 8px 20px;
+      margin-left: 15px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+      border: 2px solid #ffc107;
+      white-space: nowrap;
+    }
+
+    .btn-panel-header:hover {
+      background: transparent;
+      color: #ffc107 !important;
+      box-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
+    }
+
     /* Mobil Ayarlar */
     @media (max-width: 768px) {
       .hero h2 { font-size: 2.2rem !important; }
       .hero .d-flex.justify-content-center { flex-direction: column !important; gap: 15px !important; padding: 0 20px; }
       .btn-explore, .btn-support-yellow { width: 100% !important; margin: 0 !important; text-align: center; justify-content: center; }
+      .btn-panel-header { margin: 10px 0; width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -79,12 +104,17 @@
           </li>
 
           <li><a href="project.html">Projeler</a></li>
-          <li><a href="blog.html">Neler Yapıyoruz</a></li> <li><a href="contact.html">İletişim</a></li>
+          <li><a href="blog.html">Neler Yapıyoruz</a></li> 
+          <li><a href="contact.html">İletişim</a></li>
+          <li class="d-md-none"><a href="destek.html">Destek Al</a></li>
+          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       
-      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
+      <a class="btn-panel-header" href="https://texper.xyz">
+        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
+      </a>
     </div>
   </header>
 
