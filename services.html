@@ -94,6 +94,34 @@
       text-transform: uppercase;
       font-weight: 600;
     }
+
+    /* SAĞ ÜST PANEL BUTONU (NAVBAR) */
+    .btn-panel-header {
+      background: #ffc107;
+      color: #000 !important;
+      padding: 8px 22px;
+      margin-left: 15px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+      border: 2px solid #ffc107;
+      white-space: nowrap;
+    }
+
+    .btn-panel-header:hover {
+      background: transparent;
+      color: #ffc107 !important;
+      box-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
+    }
+
+    @media (max-width: 1200px) {
+      .btn-panel-header { display: none; } /* Mobilde sadece menü içinde görünsün */
+    }
   </style>
 </head>
 
@@ -127,11 +155,14 @@
           <li><a href="project.html">Projeler</a></li>
           <li><a href="blog.html">Neler Yapıyoruz</a></li>
           <li><a href="contact.html">İletişim</a></li>
+          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       
-      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
+      <a class="btn-panel-header" href="https://texper.xyz">
+        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
+      </a>
     </div>
   </header>
 
@@ -141,8 +172,8 @@
       <div class="container">
         
         <div class="text-center mb-4">
-          <h2 style="font-size: 3rem; font-weight: 800;">Uçtan Uca <span style="color: #ffc107;">BT Mühendisliği.</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; opacity: 0.8;">Sadece servis değil, anahtar teslim teknoloji altyapıları kuruyoruz.</p>
+          <h2 style="font-size: 3rem; font-weight: 800;">TexNexus <span style="color: #ffc107;">Hibrit BT Çözümleri.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; opacity: 0.8;">Veri depolama, uzak yönetim ve uçtan uca altyapı mühendisliğiyle sistemleriniz her an güvende.</p>
         </div>
 
         <div class="corporate-service-list">
@@ -150,27 +181,27 @@
           <div class="service-row-item">
             <div class="service-num">01</div>
             <div class="service-info">
-              <h4>Komple Sistem Devreye Alma</h4>
-              <p>Yeni ofis veya tesislerin tüm IT altyapısını; kablolamadan server kurulumuna, internet erişiminden son kullanıcı bilgisayarlarına kadar anahtar teslim hazırlıyoruz.</p>
-              <div class="service-tags"><span class="tag-sm">Anahtar Teslim</span><span class="tag-sm">Setup</span><span class="tag-sm">Entegrasyon</span></div>
+              <h4>Uzak Yönetim & TexNexus Panel</h4>
+              <p>MeshCentral tabanlı altyapımız ile tüm cihazlarınıza dünyanın her yerinden anında erişiyor, teknik sorunlara saniyeler içinde müdahale ediyoruz.</p>
+              <div class="service-tags"><span class="tag-sm">TexNexus</span><span class="tag-sm">Remote Support</span><span class="tag-sm">300+ Agent</span></div>
             </div>
           </div>
 
           <div class="service-row-item">
             <div class="service-num">02</div>
             <div class="service-info">
-              <h4>Firewall & Siber Güvenlik</h4>
-              <p>Sophos, Fortinet ve pfSense tabanlı UTM/Firewall çözümleri ile ağ trafiğinizi filtreliyor, sızma testleri ve VPN kurulumlarıyla verilerinizi zırhlıyoruz.</p>
-              <div class="service-tags"><span class="tag-sm">Cyber Security</span><span class="tag-sm">VPN</span><span class="tag-sm">UTM</span></div>
+              <h4>Kurumsal NAS & SQL Yedekleme</h4>
+              <p>QNAP ve Synology sistemleri üzerine kurulan WebDAV ve Docker altyapılarıyla SQL veritabanlarınızı ve kritik dosyalarınızı otomatik yedekliyoruz.</p>
+              <div class="service-tags"><span class="tag-sm">SQL Backup</span><span class="tag-sm">QNAP</span><span class="tag-sm">Cloud Storage</span></div>
             </div>
           </div>
 
           <div class="service-row-item">
             <div class="service-num">03</div>
             <div class="service-info">
-              <h4>NAS Depolama ve Veri Yedekleme</h4>
-              <p>Synology ve QNAP çözümleriyle yerel ağda güvenli depolama (NAS) alanları kuruyor, 3-2-1 kuralına uygun otomatik yedekleme senaryoları oluşturuyoruz.</p>
-              <div class="service-tags"><span class="tag-sm">NAS</span><span class="tag-sm">Backup</span><span class="tag-sm">Synology</span></div>
+              <h4>Firewall & Siber Güvenlik Zırhı</h4>
+              <p>Sophos, Fortinet ve pfSense tabanlı çözümlerle ağ trafiğinizi filtreliyor, sızma testleri ve VPN kurulumlarıyla verilerinizi koruyoruz.</p>
+              <div class="service-tags"><span class="tag-sm">Cyber Security</span><span class="tag-sm">VPN</span><span class="tag-sm">UTM</span></div>
             </div>
           </div>
 
@@ -178,17 +209,17 @@
             <div class="service-num">04</div>
             <div class="service-info">
               <h4>Server Yönetimi ve Sanallaştırma</h4>
-              <p>Dell ve HP sunucu donanımları üzerinde VMware veya Hyper-V sanallaştırma, Active Directory (DC) kurulumu ve merkezi yönetim sistemleri.</p>
-              <div class="service-tags"><span class="tag-sm">VMware</span><span class="tag-sm">Hyper-V</span><span class="tag-sm">Windows Server</span></div>
+              <p>VMware veya Hyper-V sanallaştırma, Active Directory (DC) kurulumu ve merkezi yönetim sistemleri ile sunucu maliyetlerinizi düşürüyoruz.</p>
+              <div class="service-tags"><span class="tag-sm">VMware</span><span class="tag-sm">Active Directory</span><span class="tag-sm">Virtualization</span></div>
             </div>
           </div>
 
           <div class="service-row-item">
             <div class="service-num">05</div>
             <div class="service-info">
-              <h4>Sistem Odası ve Kabin Kurulumu</h4>
-              <p>Rack kabin montajı, patch panel sonlandırma, kablo etiketleme ve UPS (Güç Kaynağı) entegrasyonu ile standartlara uygun sistem odaları dizayn ediyoruz.</p>
-              <div class="service-tags"><span class="tag-sm">Rack Cabinet</span><span class="tag-sm">Patch Panel</span><span class="tag-sm">UPS</span></div>
+              <h4>Komple Sistem Devreye Alma</h4>
+              <p>Yeni ofislerin tüm IT altyapısını; kablolamadan server kurulumuna, ağ güvenliğinden son kullanıcıya kadar anahtar teslim hazırlıyoruz.</p>
+              <div class="service-tags"><span class="tag-sm">End-to-End</span><span class="tag-sm">Integration</span><span class="tag-sm">Setup</span></div>
             </div>
           </div>
 
@@ -196,13 +227,13 @@
             <div class="service-num">06</div>
             <div class="service-info">
               <h4>Bilgisayar Bakım ve Kurumsal Destek</h4>
-              <p>Şirket bünyesindeki tüm PC, Laptop ve çevre birimlerinin periyodik bakımı, donanım yükseltmeleri ve anlık teknik arıza müdahaleleri.</p>
-              <div class="service-tags"><span class="tag-sm">Maintenance</span><span class="tag-sm">Hardware</span><span class="tag-sm">On-Site Support</span></div>
+              <p>Şirket bünyesindeki tüm PC, Laptop ve çevre birimlerinin periyodik bakımı ve anlık teknik arıza müdahaleleriyle işinizi kesintiye uğratmıyoruz.</p>
+              <div class="service-tags"><span class="tag-sm">Maintenance</span><span class="tag-sm">Hardware</span><span class="tag-sm">On-Site</span></div>
             </div>
           </div>
 
           <div class="text-center mt-5 mb-4">
-            <a href="contact.html" class="btn-getstarted" style="background: #ffc107; color: #000; border: none; padding: 15px 50px; border-radius: 50px; font-weight: 700;">Hemen Teknik Keşif İste</a>
+            <a href="https://texper.xyz" class="btn-getstarted" style="background: #ffc107; color: #000; border: none; padding: 15px 50px; border-radius: 50px; font-weight: 700;">Müşteri Paneline Giriş Yap</a>
           </div>
 
         </div>
@@ -212,7 +243,7 @@
 
   <footer id="footer" class="footer dark-background">
     <div class="container copyright text-center py-4">
-      <p>© 2024 <strong class="px-1 sitename">Texper Bilişim</strong> - Uçtan Uca Bilişim Teknolojileri</p>
+      <p>© 2024 <strong class="px-1 sitename">Texper Bilişim</strong> - Profesyonel BT Altyapı Yönetimi</p>
     </div>
   </footer>
 
