@@ -88,20 +88,40 @@
     .q-link i { font-size: 1.2rem; color: #ffc107; }
     .q-link:hover { color: #ffc107; }
 
+    /* Yeni Parlayan Kurumsal Panel Butonu */
     .panel-entry {
-      display: inline-block;
-      margin-top: 30px;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffc107;
       text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 5px 15px;
-      border-radius: 30px;
+      border: 2px solid #ffc107;
+      padding: 14px 40px;
+      border-radius: 50px;
+      background: rgba(255, 193, 7, 0.05);
+      transition: 0.4s all;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
-    .panel-entry:hover { color: #fff; border-color: #fff; }
+
+    .panel-entry:hover {
+      background: #ffc107;
+      color: #000 !important;
+      box-shadow: 0 0 30px rgba(255, 193, 7, 0.6);
+      transform: translateY(-5px);
+    }
+
+    .panel-entry i {
+      font-size: 1.3rem;
+    }
 
     @media (max-width: 768px) {
       .quick-contact-bar { flex-direction: column; border-radius: 20px; width: 100%; gap: 15px; }
+      .panel-entry { width: 100%; justify-content: center; }
     }
   </style>
 </head>
@@ -135,8 +155,8 @@
       <div class="container text-center" style="position: relative; z-index: 2;">
         
         <div class="mb-5">
-          <h2 style="font-size: 3rem; font-weight: 800; color: #ffc107;">Teknik Çözüm Merkezi</h2>
-          <p style="font-size: 1.2rem; opacity: 0.8; max-width: 700px; margin: 0 auto;">
+          <h2 style="font-size: 3.5rem; font-weight: 800; color: #ffc107; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">Teknik Çözüm Merkezi</h2>
+          <p style="font-size: 1.3rem; opacity: 0.9; max-width: 800px; margin: 0 auto; color: #fff;">
             Sistemlerinize hızlı ve güvenli erişim sağlamak için bir bağlantı aracı seçin.
           </p>
         </div>
@@ -173,7 +193,7 @@
         </div>
 
         <div class="quick-contact-bar">
-          <a href="https://wa.me/90513017375" class="q-link" target="_blank">
+          <a href="https://wa.me/905314017375" class="q-link" target="_blank">
             <i class="bi bi-whatsapp"></i> WhatsApp Destek
           </a>
           <a href="tel:+905314017375" class="q-link">
@@ -185,8 +205,8 @@
         </div>
 
         <br>
-        <a href="#" class="panel-entry">
-          <i class="bi bi-lock-fill"></i> Kurumsal Müşteri Paneli
+        <a href="https://texper.xyz" class="panel-entry">
+          <i class="bi bi-shield-lock-fill"></i> KURUMSAL MÜŞTERİ PANELİ
         </a>
 
       </div>
