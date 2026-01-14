@@ -17,23 +17,41 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* Senin Orijinal Teman */
+    /* GARANTİ: Arka plan her zaman siyah (Beyaz şeridi önler) */
+    html, body {
+      background-color: #000000 !important;
+      height: 100%;
+    }
+
+    /* Senin Orijinal Ayarların */
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
     
     .hero { 
-      min-height: 85vh; 
+      /* TASARIMI BOZMADAN RESMİ AŞAĞI İNDİRMEK İÇİN: 100vh */
+      min-height: 100vh; 
       display: flex; 
       align-items: center; 
       padding: 100px 0; 
       position: relative;
     }
 
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5; /* Görünürlüğü artırdım (0.3 az gelmiş olabilir) */
+      z-index: 0;
+    }
+
     /* Senin Buton Tasarımların */
-    .btn-explore { background: #0d42ff; color: #fff !important; padding: 12px 35px; border-radius: 50px; font-weight: 600; border: 2px solid #0d42ff; text-decoration: none; display: inline-block; transition: 0.3s; }
-    .btn-explore:hover { background: transparent; color: #fff !important; transform: scale(1.05); }
+    .btn-explore { background: transparent; color: #fff !important; padding: 12px 35px; border-radius: 50px; font-weight: 600; border: 2px solid #fff; text-decoration: none; display: inline-block; transition: 0.3s; }
+    .btn-explore:hover { background: #fff; color: #000 !important; transform: scale(1.05); }
     
-    .btn-support-yellow { background: #ffc107; color: #000 !important; padding: 12px 35px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
-    .btn-support-yellow:hover { background: #fff; transform: translateY(-3px); }
+    .btn-support-yellow { background: #ffc107; color: #000 !important; padding: 12px 35px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; border: 2px solid #ffc107; }
+    .btn-support-yellow:hover { background: #fff; border-color: #fff; transform: translateY(-3px); }
 
     /* İçeriği Dolu Gösteren Cam Kutu */
     .about-box {
@@ -43,8 +61,12 @@
       border-radius: 20px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       margin-top: 20px;
-      text-align: left; /* Okunabilirlik için metni sola yasladık ama kutu ortalı */
+      text-align: left;
+      position: relative; 
+      z-index: 2;
     }
+    
+    .container { position: relative; z-index: 2; }
 
     .highlight-text { color: #ffc107; font-weight: 600; }
 
@@ -58,9 +80,9 @@
 <body class="about-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <div class="container-fluid container-xl position-relative d-flex align-items-center">
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <h1 class="sitename">Texper Bilişim</h1>
+        <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
       </a>
       
       <nav id="navmenu" class="navmenu">
@@ -98,7 +120,9 @@
 
   <main class="main">
     <section id="hero" class="hero section dark-background">
+      
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+      
       <div class="container">
         <div class="text-center">
           <h2 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 10px;">Geleceği Şekillendiren <span style="color: #ffc107;">Teknoloji.</span></h2>
@@ -109,23 +133,23 @@
               <span class="highlight-text">Texper Bilişim</span>, dijital dünyadaki karmaşık altyapı sorunlarına <span class="highlight-text">akılcı ve sürdürülebilir</span> çözümler üretmek amacıyla kuruldu. On yılı aşkın sektörel tecrübemizle, küçük işletmelerden büyük ölçekli kurumlara kadar geniş bir yelpazede BT danışmanlığı sunuyoruz.
             </p>
             
-            <div class=\"row\">
-              <div class=\"col-md-6\">
-                <p style=\"font-size: 1.1rem; opacity: 0.9;\">
-                  <i class=\"bi bi-check2-circle highlight-text\"></i> <strong>TexNexus Cloud:</strong> Verilerinizi güvenli, hızlı ve yerel altyapımızda barındırıyoruz.<br>
-                  <i class=\"bi bi-check2-circle highlight-text\"></i> <strong>Sistem Entegrasyonu:</strong> Donanım ve yazılım süreçlerinizi uçtan uca optimize ediyoruz.
+            <div class="row">
+              <div class="col-md-6">
+                <p style="font-size: 1.1rem; opacity: 0.9;">
+                  <i class="bi bi-check2-circle highlight-text"></i> <strong>TexNexus Cloud:</strong> Verilerinizi güvenli, hızlı ve yerel altyapımızda barındırıyoruz.<br>
+                  <i class="bi bi-check2-circle highlight-text"></i> <strong>Sistem Entegrasyonu:</strong> Donanım ve yazılım süreçlerinizi uçtan uca optimize ediyoruz.
                 </p>
               </div>
-              <div class=\"col-md-6\">
-                <p style=\"font-size: 1.1rem; opacity: 0.9;\">
-                  <i class=\"bi bi-check2-circle highlight-text\"></i> <strong>7/24 Teknik Destek:</strong> Sorunlarınızı büyümeden çözüyor, iş sürekliliğinizi garanti altına alıyoruz.<br>
-                  <i class=\"bi bi-check2-circle highlight-text\"></i> <strong>Siber Güvenlik:</strong> Veri güvenliğinizi en güncel protokollerle koruyoruz.
+              <div class="col-md-6">
+                <p style="font-size: 1.1rem; opacity: 0.9;">
+                  <i class="bi bi-check2-circle highlight-text"></i> <strong>7/24 Teknik Destek:</strong> Sorunlarınızı büyümeden çözüyor, iş sürekliliğinizi garanti altına alıyoruz.<br>
+                  <i class="bi bi-check2-circle highlight-text"></i> <strong>Siber Güvenlik:</strong> Veri güvenliğinizi en güncel protokollerle koruyoruz.
                 </p>
               </div>
             </div>
 
-            <p style=\"margin-top: 20px; font-style: italic; opacity: 0.7; text-align: center;\">
-              \"Siz işinize odaklanın, teknolojiyi biz yönetelim.\"
+            <p style="margin-top: 20px; font-style: italic; opacity: 0.7; text-align: center;">
+              "Siz işinize odaklanın, teknolojiyi biz yönetelim."
             </p>
         </div>
 
