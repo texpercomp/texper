@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BATIBAY // TEXPER STRATEGIC COMMAND</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #010204;
+            --panel: rgba(13, 17, 23, 0.96);
+            --accent: #ffc107;
+            --border: rgba(255, 193, 7, 0.2);
+            --text: #e6edf3;
+            --dim: #7d8590;
+            --green: #2ecc71;
+            --red: #e74c3c;
+            --blue: #3498db;
+        }
+
+        /* FULL EKRAN KİLİDİ - ASLA KAYMAZ */
+        * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
+        html, body { 
+            width: 100%; height: 100vh; overflow: hidden; 
+            background: var(--bg) url('assets/img/world-dotted-map.png') no-repeat center center fixed;
+            background-size: cover; color: var(--text); font-family: 'Poppins', sans-serif;
+            display: flex;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 250px; height: 100vh; background: rgba(5, 7, 10, 0.98);
+            border-right: 2px solid var(--border); padding: 20px;
+            display: flex; flex-direction: column; z-index: 101; flex-shrink: 0;
+        }
+        .logo-area { text-align: center; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+        .logo-area img { max-width: 130px; }
+
+        /* VIEWPORT - ORANSAL DÜZEN */
+        .viewport {
+            flex: 1; height: 100vh; padding: 15px;
+            display: grid; 
+            grid-template-rows: 40px 140px 1fr 180px; /* Her satırın yüksekliği sabitlendi */
+            gap: 12px;
+        }
+
+        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+
+        /* PANELLER */
+        .panel {
+            background: var(--panel); border: 1px solid var(--border); border-radius: 4px;
+            padding: 12px; position: relative; backdrop-filter: blur(15px);
+            display: flex; flex-direction: column; overflow: hidden;
+        }
+        .panel-header {
+            font-family: 'Orbitron', sans-serif; font-size: 0.55rem; color: var(--accent);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;
+        }
+
+        /* ÜST STATLAR */
+        .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .val { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: #fff; }
+        .mini-stream { font-family: 'Courier New', monospace; font-size: 0.5rem; color: var(--dim); margin-top: 4px; flex: 1; overflow: hidden; display: flex; flex-direction: column-reverse; }
+
+        /* BATIBAY CİHAZ TABLOSU (RESİMDEKİ GİBİ) */
+        .device-table { width: 100%; border-collapse: collapse; font-size: 0.65rem; color: var(--text); }
+        .device-table th { text-align: left; color: var(--accent); font-size: 0.5rem; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+        .device-table td { padding: 8px 4px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        
+        .os-icon { width: 14px; vertical-align: middle; margin-right: 8px; opacity: 0.8; }
+        .status-pill { padding: 2px 6px; border-radius: 3px; font-size: 0.55rem; font-weight: bold; }
+        .status-on { background: rgba(46, 204, 113, 0.2); color: var(--green); }
+        
+        /* ALT GRİD */
+        .bottom-grid { display: grid; grid-template-columns: 2fr 1.2fr 0.8fr; gap: 12px; }
+        .console { background: rgba(0,0,0,0.6); font-family: 'Courier New', monospace; font-size: 0.65rem; color: var(--green); padding: 8px; overflow: hidden; }
+
+        /* LOGO PARÇALI HARFLER */
+        .char-t { position: relative; display: inline-block; }
+        .char-t::after { content: "T"; position: absolute; left: 0; top: 0; width: 100%; height: 35%; color: var(--accent); overflow: hidden; }
+        .char-l { position: relative; display: inline-block; }
+        .char-l::after { content: "L"; position: absolute; left: 0; top: 0; width: 100%; height: 100%; color: var(--accent); clip-path: inset(75% 0 0 0); }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo-area"><img src="assets/img/1.png" alt="Logo"></div>
+        <nav style="display: flex; flex-direction: column; gap: 5px;">
+            <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--accent); padding:10px;">BATIBAY GROUP</div>
+            <div style="font-size: 0.7rem; color: var(--dim); padding:10px; background:rgba(255,193,7,0.05); border-left:2px solid var(--accent);">DASHBOARD</div>
+            <div style="font-size: 0.7rem; color: var(--dim); padding:10px;">NETWORK MESH</div>
+            <div style="font-size: 0.7rem; color: var(--dim); padding:10px;">SENTRY LOGS</div>
+        </nav>
+        <div style="margin-top: auto; font-family:'Orbitron'; font-size:0.5rem; color:var(--dim);">
+            SYS: TEXPER_CORE_V9<br>CLIENT: BATIBAY_OPERATIONS
+        </div>
+    </aside>
+
+    <div class="viewport">
+        <header>
+            <h2 style="font-family:'Orbitron'; letter-spacing:4px; font-size:0.8rem;">
+                <span class="char-t">T</span>EX C<span class="char-l">L</span>OUD // <span style="color:var(--accent)">BATIBAY STRATEGIC UNIT</span>
+            </h2>
+            <div id="clock" style="font-family:'Orbitron'; color:var(--accent); font-size:0.9rem;">00:00:00</div>
+        </header>
+
+        <section class="stat-row">
+            <div class="panel">
+                <div class="panel-header">BATIBAY_SRV_LOAD</div>
+                <div class="val" id="cpu-val">24.2<span style="font-size:0.6rem; color:var(--dim)">%</span></div>
+                <div class="mini-stream" id="stream-cpu"></div>
+            </div>
+            <div class="panel">
+                <div class="panel-header">BATIBAY_MEM_USAGE</div>
+                <div class="val" id="mem-val">32.4<span style="font-size:0.6rem; color:var(--dim)">GB</span></div>
+                <div class="mini-stream" id="stream-mem"></div>
+            </div>
+            <div class="panel">
+                <div class="panel-header">ACTIVE_TUNNELS</div>
+                <div class="val">08<span style="font-size:0.6rem; color:var(--dim)">/12</span></div>
+                <div class="mini-stream" id="stream-user"></div>
+            </div>
+            <div class="panel">
+                <div class="panel-header">THROUGHPUT</div>
+                <div class="val">1.42<span style="font-size:0.6rem; color:var(--dim)">Gbps</span></div>
+                <div class="mini-stream" id="stream-net"></div>
+            </div>
+        </section>
+
+        <section class="panel" style="flex:1; min-height:0;">
+            <div class="panel-header">BATIBAY MESH CENTRAL // DEVICE INVENTORY</div>
+            <div style="overflow-y: auto; flex:1;">
+                <table class="device-table">
+                    <thead>
+                        <tr>
+                            <th>DEVICE NAME</th>
+                            <th>OS / SYSTEM</th>
+                            <th>FIREWALL</th>
+                            <th>AGENT</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>BATIBAY-B1-SRV</td>
+                            <td><span class="os-tag">WIN</span> Windows Server 2022</td>
+                            <td style="color:var(--green)">ENABLED</td>
+                            <td>v9.4.2</td>
+                            <td><span class="status-pill status-on">CONNECTED</span></td>
+                        </tr>
+                        <tr>
+                            <td>BATIBAY-B2-GW</td>
+                            <td><span class="os-tag">WIN</span> Windows 11 Pro</td>
+                            <td style="color:var(--green)">ENABLED</td>
+                            <td>v9.4.2</td>
+                            <td><span class="status-pill status-on">CONNECTED</span></td>
+                        </tr>
+                        <tr>
+                            <td>BATIBAY-I2-NODE</td>
+                            <td><span class="os-tag" style="color:var(--accent)">LIN</span> Ubuntu 24.04</td>
+                            <td style="color:var(--accent)">UFW-ACTIVE</td>
+                            <td>v9.3.0</td>
+                            <td><span class="status-pill status-on">CONNECTED</span></td>
+                        </tr>
+                        <tr>
+                            <td>BATIBAY-I3-CLIENT</td>
+                            <td><span class="os-tag">WIN</span> Windows 10 Enterprise</td>
+                            <td style="color:var(--red)">OFFLINE</td>
+                            <td>v9.4.1</td>
+                            <td><span class="status-pill status-on" style="background:rgba(210,153,34,0.2); color:var(--accent)">IDLE</span></td>
+                        </tr>
+                        <tr>
+                            <td>BATIBAY-M21-WORK</td>
+                            <td><span class="os-tag">WIN</span> Windows 11 Pro</td>
+                            <td style="color:var(--green)">ENABLED</td>
+                            <td>v9.4.2</td>
+                            <td><span class="status-pill status-on">CONNECTED</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="bottom-grid">
+            <div class="panel console"><div id="logContent"></div></div>
+            <div class="panel">
+                <div class="panel-header">PACKET_STABILITY</div>
+                <div style="flex:1"><canvas id="cPacket"></canvas></div>
+            </div>
+            <div class="panel">
+                <div class="panel-header">THREAT_LEVEL</div>
+                <div style="text-align:center; padding-top:10px;">
+                    <div style="font-family:'Orbitron'; font-size:1.1rem; color:var(--green);" id="threat">MINIMAL</div>
+                    <div style="font-size:0.5rem; color:var(--dim);">ENCRYPTED_LINK: ACTIVE</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        setInterval(() => { document.getElementById('clock').innerText = new Date().toLocaleTimeString('tr-TR'); }, 1000);
+
+        const cPacket = new Chart(document.getElementById('cPacket'), {
+            type: 'bar',
+            data: { labels: Array(10).fill(''), datasets: [{ data: Array(10).fill(20), backgroundColor: '#ffc107', borderRadius: 2 }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false, beginAtZero: true, max: 100 } } }
+        });
+
+        function addMiniLine(id, text) {
+            const el = document.getElementById(id);
+            const line = document.createElement('div');
+            line.innerText = `> ${text}`; el.prepend(line);
+            if(el.childNodes.length > 3) el.removeChild(el.lastChild);
+        }
+
+        setInterval(() => {
+            cPacket.data.datasets[0].data = cPacket.data.datasets[0].data.map(() => Math.random() * 70 + 10);
+            cPacket.update('none');
+
+            addMiniLine('stream-cpu', `B1_CORE_SYNC: 0x${Math.random().toString(16).substr(2,2).toUpperCase()} OK`);
+            addMiniLine('stream-mem', `I2_SWAP_ALLOC: ${Math.floor(Math.random()*100)}MB`);
+            addMiniLine('stream-user', `AUTH: BATIBAY_ADMIN_0${Math.floor(Math.random()*9)}`);
+            addMiniLine('stream-net', `ROUTE: PKT_${Math.floor(Math.random()*999)} -> GW`);
+
+            document.getElementById('cpu-val').innerHTML = (Math.random() * 5 + 20).toFixed(1) + "<span style='font-size:0.6rem; color:var(--dim)'>%</span>";
+
+            const log = document.getElementById('logContent');
+            const line = document.createElement('div');
+            line.innerText = `> [${new Date().toLocaleTimeString()}] HEARTBEAT: BATIBAY_B1_SRV // STATUS: SECURE`;
+            log.prepend(line);
+            if(log.childNodes.length > 7) log.removeChild(log.lastChild);
+        }, 4000); 
+    </script>
+</body>
+</html>

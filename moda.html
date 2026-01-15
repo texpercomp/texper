@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODA // TEXPER COMMAND CENTER</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #010204;
+            --panel: rgba(13, 17, 23, 0.96);
+            --accent: #ffc107;
+            --border: rgba(255, 193, 7, 0.2);
+            --text: #e6edf3;
+            --dim: #7d8590;
+            --green: #2ecc71;
+            --red: #e74c3c;
+            --blue: #3498db;
+        }
+
+        /* EKRAN KİLİDİ - ANA SAYFA ASLA KAYMAZ */
+        * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
+        html, body { 
+            width: 100%; height: 100vh; overflow: hidden; 
+            background: var(--bg) url('assets/img/world-dotted-map.png') no-repeat center center fixed;
+            background-size: cover; color: var(--text); font-family: 'Poppins', sans-serif;
+            display: flex;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 260px; height: 100vh; background: rgba(5, 7, 10, 0.98);
+            border-right: 2px solid var(--border); padding: 20px;
+            display: flex; flex-direction: column; z-index: 101; flex-shrink: 0;
+        }
+        .logo-area { text-align: center; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+        .logo-area img { max-width: 140px; }
+
+        .nav-link { font-family: 'Orbitron', sans-serif; font-size: 0.65rem; color: var(--dim); padding: 12px; border-left: 2px solid transparent; transition: 0.3s; }
+        .nav-link.active { color: var(--accent); background: rgba(255,193,7,0.03); border-left-color: var(--accent); }
+
+        /* VIEWPORT - ORANSAL YERLEŞİM */
+        .viewport {
+            flex: 1; height: 100vh; padding: 15px;
+            display: grid; 
+            grid-template-rows: 40px 145px 1fr 180px; 
+            gap: 12px;
+            overflow: hidden;
+        }
+
+        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+
+        .panel {
+            background: var(--panel); border: 1px solid var(--border); border-radius: 4px;
+            padding: 12px; position: relative; backdrop-filter: blur(15px);
+            display: flex; flex-direction: column; overflow: hidden;
+        }
+        .panel-header {
+            font-family: 'Orbitron', sans-serif; font-size: 0.55rem; color: var(--accent);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;
+        }
+
+        /* ÜST STATLAR */
+        .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .val { font-family: 'Orbitron', sans-serif; font-size: 1.2rem; color: #fff; line-height: 1; }
+        .unit { font-size: 0.6rem; color: var(--dim); margin-left: 4px; }
+        .mini-stream { font-family: 'Courier New', monospace; font-size: 0.45rem; color: var(--dim); margin-top: 5px; flex: 1; overflow: hidden; display: flex; flex-direction: column-reverse; }
+
+        /* MERKEZ TABLO (MODA GENİŞ VM LİSTESİ) */
+        .scroll-container { flex: 1; overflow-y: auto; padding-right: 5px; }
+        .scroll-container::-webkit-scrollbar { width: 4px; }
+        .scroll-container::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+        .main-table { width: 100%; border-collapse: collapse; font-size: 0.65rem; color: var(--text); }
+        .main-table th { text-align: left; color: var(--accent); font-size: 0.5rem; padding-bottom: 8px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--panel); z-index: 2; }
+        .main-table td { padding: 6px 4px; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        
+        .os-tag { padding: 1px 3px; border-radius: 2px; font-size: 0.5rem; background: rgba(255,255,255,0.05); color: var(--blue); margin-right: 5px; }
+        .status-on { color: var(--green); font-weight: bold; }
+
+        /* ALT GRİD */
+        .bottom-grid { display: grid; grid-template-columns: 2fr 1.2fr 1fr; gap: 12px; }
+        .console { background: rgba(0,0,0,0.6); font-family: 'Courier New', monospace; font-size: 0.65rem; color: var(--green); padding: 8px; overflow: hidden; border: 1px solid var(--border); }
+
+        .char-t { position: relative; display: inline-block; }
+        .char-t::after { content: "T"; position: absolute; left: 0; top: 0; width: 100%; height: 35%; color: var(--accent); overflow: hidden; }
+        .char-l { position: relative; display: inline-block; }
+        .char-l::after { content: "L"; position: absolute; left: 0; top: 0; width: 100%; height: 100%; color: var(--accent); clip-path: inset(75% 0 0 0); }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo-area"><img src="assets/img/1.png" alt="Texper Logo"></div>
+        <nav>
+            <div class="nav-link active">MODA_HYPERV_MGMT</div>
+            <div class="nav-link">AKIT_DEPO_SYSC <span style="color:var(--blue)">ONLINE</span></div>
+            <div class="nav-link">VPN_TUNNELS <span style="color:var(--green)">SECURE</span></div>
+            <div class="nav-link">BACKUP_SENTRY <span style="color:var(--accent)">ACTIVE</span></div>
+        </nav>
+        <div style="margin-top: auto; font-family:'Orbitron'; font-size:0.5rem; color:var(--dim);">
+            ID: MODA_OPERATIONS_01<br>DOMAIN: MODATERM.LOCAL
+        </div>
+    </aside>
+
+    <div class="viewport">
+        <header>
+            <h2 style="font-family:'Orbitron'; letter-spacing:4px; font-size:0.85rem;">
+                <span class="char-t">T</span>EX C<span class="char-l">L</span>OUD // <span style="color:var(--accent)">MODA MASTER UNIT</span>
+            </h2>
+            <div id="clock" style="font-family:'Orbitron'; color:var(--accent); font-size:1rem;">00:00:00</div>
+        </header>
+
+        <section class="stat-row">
+            <div class="panel">
+                <div class="panel-header">RESOURCE_POOL_LOAD</div>
+                <div class="val" id="cpu-val">38.4<span class="unit">%</span></div>
+                <div class="mini-stream" id="stream-cpu"></div>
+            </div>
+            <div class="panel">
+                <div class="panel-header">TOTAL_ASSIGNED_RAM</div>
+                <div class="val">192.0<span class="unit">GB</span></div>
+                <div class="mini-stream" id="stream-mem"></div>
+            </div>
+            <div class="panel">
+                <div class="panel-header">ACTIVE_VPN_SESSIONS</div>
+                <div class="val">32<span style="font-size:0.6rem; color:var(--green)"> / ENCRYPTED</span></div>
+                <div class="mini-stream" id="stream-user"></div>
+            </div>
+            <div class="panel">
+                <div class="panel-header">FW_REJECTS / DROPS</div>
+                <div class="val" id="drop-val">245<span style="font-size:0.6rem; color:var(--red)"> / SEC</span></div>
+                <div class="mini-stream" id="stream-net"></div>
+            </div>
+        </section>
+
+        <section class="panel" style="flex:1; min-height:0;">
+            <div class="panel-header">MODA INFRASTRUCTURE // VIRTUAL MACHINE INVENTORY</div>
+            <div class="scroll-container">
+                <table class="main-table">
+                    <thead>
+                        <tr>
+                            <th>VM NAME</th>
+                            <th>STATUS</th>
+                            <th>RAM (MB)</th>
+                            <th>EST. GB</th>
+                            <th>NETWORK</th>
+                            <th>OS TYPE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Levent</td><td class="status-on">Running</td><td>20.000 MB</td><td>20 GB</td><td style="color:var(--green)">10Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Vatan_Win10</td><td class="status-on">Running</td><td>16.000 MB</td><td>16 GB</td><td style="color:var(--green)">10Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Yasin_Win10</td><td class="status-on">Running</td><td>16.000 MB</td><td>16 GB</td><td style="color:var(--green)">10Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Hikmet</td><td class="status-on">Running</td><td>15.000 MB</td><td>15 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Suzan_Win10</td><td class="status-on">Running</td><td>15.000 MB</td><td>15 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Gamze-Win10</td><td class="status-on">Running</td><td>12.000 MB</td><td>12 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Erhan</td><td class="status-on">Running</td><td>10.000 MB</td><td>10 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Fatma_Win10</td><td class="status-on">Running</td><td>10.000 MB</td><td>10 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Mustafa</td><td class="status-on">Running</td><td>10.000 MB</td><td>10 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Emre_Win10</td><td class="status-on">Running</td><td>8.000 MB</td><td>8 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Ferhan</td><td class="status-on">Running</td><td>8.000 MB</td><td>8 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>inan</td><td class="status-on">Running</td><td>8.000 MB</td><td>8 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Neslihan_Win10</td><td class="status-on">Running</td><td>8.000 MB</td><td>8 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>NURDOGAN</td><td class="status-on">Running</td><td>8.000 MB</td><td>8 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Sertan</td><td class="status-on">Running</td><td>8.000 MB</td><td>8 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Kerim_Win10</td><td class="status-on">Running</td><td>7.000 MB</td><td>7 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>BARKOD</td><td class="status-on">Running</td><td>6.144 MB</td><td>6 GB</td><td style="color:var(--accent)">500Mbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Berkay_Win10</td><td class="status-on">Running</td><td>6.144 MB</td><td>6 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>Murat_Win10</td><td class="status-on">Running</td><td>6.144 MB</td><td>6 GB</td><td style="color:var(--green)">1Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                        <tr><td>ORTAK</td><td class="status-on">Running</td><td>4.000 MB</td><td>4 GB</td><td style="color:var(--blue)">2.5Gbps</td><td><span class="os-tag">WIN</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="bottom-grid">
+            <div class="panel console"><div id="logContent"></div></div>
+            <div class="panel">
+                <div class="panel-header">AKIT_DEPO_STABILITY</div>
+                <div style="flex:1"><canvas id="cPacket"></canvas></div>
+            </div>
+            <div class="panel">
+                <div class="panel-header">SECURITY_STATUS</div>
+                <div style="text-align:center; padding-top:10px;">
+                    <div style="font-family:'Orbitron'; font-size:1.1rem; color:var(--green);">SHIELD_ACTIVE</div>
+                    <div style="font-size:0.5rem; color:var(--dim);">TEXPER SENTRY PROTECTED</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        setInterval(() => { document.getElementById('clock').innerText = new Date().toLocaleTimeString('tr-TR'); }, 1000);
+
+        const cPacket = new Chart(document.getElementById('cPacket'), {
+            type: 'bar',
+            data: { labels: Array(10).fill(''), datasets: [{ data: Array(10).fill(20), backgroundColor: '#ffc107', borderRadius: 2 }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false, beginAtZero: true } } }
+        });
+
+        function addMiniLine(id, text) {
+            const el = document.getElementById(id);
+            const line = document.createElement('div');
+            line.innerText = `> ${text}`; el.prepend(line);
+            if(el.childNodes.length > 3) el.removeChild(el.lastChild);
+        }
+
+        setInterval(() => {
+            cPacket.data.datasets[0].data = cPacket.data.datasets[0].data.map(() => Math.random() * 70 + 10);
+            cPacket.update('none');
+
+            // MODA Spesifik Mini Loglar
+            addMiniLine('stream-cpu', `HYPERV_SYNC: CLUSTER_01 OK`);
+            addMiniLine('stream-mem', `AKIT_VAULT: ${Math.floor(Math.random()*100)}MB CACHE_SYNC`);
+            addMiniLine('stream-user', `VPN_AUTH: MODA_USR_${Math.floor(Math.random()*99)} IN`);
+            addMiniLine('stream-net', `FW_DROP: IP_${Math.floor(Math.random()*255)}.12.x.x REJ`);
+
+            document.getElementById('drop-val').innerText = Math.floor(Math.random()*50 + 220);
+            document.getElementById('cpu-val').innerHTML = (Math.random() * 5 + 38).toFixed(1) + "<span class='unit'>%</span>";
+
+            const log = document.getElementById('logContent');
+            const line = document.createElement('div');
+            line.innerText = `> [${new Date().toLocaleTimeString()}] MODA_INFRA: HEARTBEAT_SYNC // OK`;
+            log.prepend(line);
+            if(log.childNodes.length > 7) log.removeChild(log.lastChild);
+        }, 4000); 
+    </script>
+</body>
+</html>
