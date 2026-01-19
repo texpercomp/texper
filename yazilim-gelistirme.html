@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Gizlilik & Şartlar - Texper Bilişim</title>
+  <title>Yazılım Geliştirme - Texper Bilişim</title>
   
   <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
   <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
@@ -56,34 +56,32 @@
     }
     .btn-panel-header:hover { background: var(--primary); color: #000 !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
 
-    /* POLİTİKA KUTUSU (INDEX STİLİNDE) */
-    .policy-container {
+    /* YAZILIM KARTLARI (INDEX STİLİNDE) */
+    .dev-box {
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 20px;
       border: 1px solid var(--glass-border);
-      max-width: 950px;
-      margin: 0 auto;
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: 0.4s ease;
+      height: 100%;
     }
+    .dev-box:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--primary);
+      transform: translateY(-10px);
+    }
+    
+    .dev-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; display: block; }
+    .dev-box h4 { color: #fff; font-weight: 700; margin-bottom: 15px; }
+    .dev-box p { color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; line-height: 1.6; }
 
-    .policy-item { margin-bottom: 30px; }
-    .policy-item h4 { 
-      color: var(--primary); 
-      font-weight: 700; 
-      margin-bottom: 15px; 
-      display: flex; 
-      align-items: center; 
-      gap: 10px;
-      font-size: 1.25rem;
+    .tech-stack { margin-top: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .stack-item { 
+      font-size: 0.7rem; background: rgba(255, 255, 255, 0.1); 
+      color: #fff; padding: 4px 10px; border-radius: 5px; border: 1px solid var(--glass-border);
     }
-    .policy-item p, .policy-item li { 
-      color: rgba(255, 255, 255, 0.8); 
-      line-height: 1.8; 
-      font-size: 0.95rem;
-    }
-    .policy-item ul { padding-left: 20px; list-style-type: square; }
-    .policy-item li { margin-bottom: 10px; }
 
     /* STATS BAR */
     .stats-bar {
@@ -102,7 +100,6 @@
       .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
       .btn-panel-header { display: none; }
       .nav-contact-btn { border: none !important; padding: 0 !important; margin: 0 !important; }
-      .policy-container { padding: 25px; }
     }
   </style>
 </head>
@@ -118,7 +115,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
-          <li class="dropdown"><a href="#" class="active"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="about.html">Hakkımızda</a></li>
               <li><a href="referanslar.html">Referanslar</a></li>
@@ -126,20 +123,18 @@
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="services.html" class="active"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
-              <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
+              <li><a href="yazilim-gelistirme.html" class="active">Yazılım Geliştirme</a></li>
               <li><a href="programlar.html">Faydalı Programlar</a></li>
             </ul>
           </li>
           <li><a href="project.html">Projeler</a></li>
           <li><a href="blog.html">Neler Yapıyoruz</a></li>
           <li><a href="contact.html" class="nav-contact-btn">İletişim</a></li>
-          <li class="d-md-none"><a href="destek.html">Destek Al</a></li>
-          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -156,43 +151,64 @@
 
       <div class="container">
         <div class="text-center mb-5">
-          <h2 style="font-size: 3.2rem; font-weight: 800;">Gizlilik & <span style="color: #ffc107;">Şartlar.</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; color: #ccc;">Veri güvenliğiniz ve hizmet kullanım standartlarımız hakkında detaylı bilgilendirme.</p>
+          <h2 style="font-size: 3.2rem; font-weight: 800;">Kodla <span style="color: #ffc107;">İnşa Ediyoruz.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; color: #ccc;">İşletmenizin ihtiyaçlarına özel, hızlı, güvenli ve ölçeklenebilir yazılım çözümleri sunuyoruz.</p>
         </div>
 
-        <div class="policy-container">
-          
-          <div class="policy-item">
-            <h4><i class="bi bi-shield-check"></i> KVKK Uyumluluğu ve Veri Güvenliği</h4>
-            <p>Texper Bilişim olarak, müşterilerimize ait verilerin gizliliğini en ön planda tutuyoruz. 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında:</p>
-            <ul>
-              <li>Sunucularımızda barındırılan tüm veriler uçtan uca şifrelenmektedir.</li>
-              <li>Müşteri panelimize yapılan girişler 2FA (Çift Faktörlü Doğrulama) ile korunabilir.</li>
-              <li>Verilerinizin üçüncü taraflarla paylaşımı sadece yasal zorunluluklar çerçevesinde gerçekleşir.</li>
-            </ul>
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="dev-box">
+              <i class="bi bi-laptop dev-icon"></i>
+              <h4>Kurumsal Web Tasarım</h4>
+              <p>Modern, SEO uyumlu ve tüm cihazlarda kusursuz çalışan web projeleri üretiyoruz.</p>
+              <div class="tech-stack">
+                <span class="stack-item">HTML5</span>
+                <span class="stack-item">CSS3</span>
+                <span class="stack-item">React</span>
+                <span class="stack-item">Next.js</span>
+              </div>
+            </div>
           </div>
 
-          <div class="policy-item">
-            <h4><i class="bi bi-hdd-network"></i> BT Destek ve Altyapı Şartları</h4>
-            <p>Donanım kurulumu, ağ yapılandırması ve sunucu yönetimi süreçlerinde Texper Bilişim, sağlanan hizmetlerin sürekliliğini (Uptime) en üst seviyede tutmayı taahhüt eder. Uzak bağlantı ile verilen desteklerde, müşteri onayı olmadan hiçbir sisteme müdahale edilmez.</p>
+          <div class="col-lg-4">
+            <div class="dev-box">
+              <i class="bi bi-phone dev-icon"></i>
+              <h4>Mobil Uygulama</h4>
+              <p>iOS ve Android platformları için yüksek performanslı yerel veya hibrit uygulamalar geliştiriyoruz.</p>
+              <div class="tech-stack">
+                <span class="stack-item">Flutter</span>
+                <span class="stack-item">React Native</span>
+                <span class="stack-item">Dart</span>
+              </div>
+            </div>
           </div>
 
-          <div class="policy-item">
-            <h4><i class="bi bi-cloud-check"></i> TexNexus Cloud Kullanım İlkeleri</h4>
-            <p>Bulut hizmetlerimizde yedekleme sorumluluğu, aksi yazılı olarak belirtilmedikçe "Paylaşımlı Sorumluluk" modeline tabidir. Verileriniz donanımsal arızalara karşı RAID yapıları ve günlük imaj yedekleri ile korunur.</p>
+          <div class="col-lg-4">
+            <div class="dev-box">
+              <i class="bi bi-code-square dev-icon"></i>
+              <h4>Özel Yazılım & CRM</h4>
+              <p>İş süreçlerinizi dijitalleştiren, verimliliği artıran özel otomasyon ve ERP çözümleri.</p>
+              <div class="tech-stack">
+                <span class="stack-item">Node.js</span>
+                <span class="stack-item">Python</span>
+                <span class="stack-item">MongoDB</span>
+                <span class="stack-item">API</span>
+              </div>
+            </div>
           </div>
-
-          <div class="policy-item">
-            <h4><i class="bi bi-info-circle"></i> Çerez (Cookie) Kullanımı</h4>
-            <p>Web sitemiz, kullanıcı deneyimini analiz etmek ve sistem performansını ölçmek amacıyla anonim çerezler kullanmaktadır. Bu veriler hiçbir şekilde kimlik tanımlayıcı bilgi içermez.</p>
-          </div>
-
         </div>
+
+        <div class="text-center mt-5">
+          <a href="contact.html" style="background: var(--primary); color: #000; padding: 15px 45px; border-radius: 50px; text-decoration: none; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);">
+            <i class="bi bi-rocket-takeoff-fill"></i> PROJENİZİ BAŞLATIN
+          </a>
+        </div>
+
       </div>
 
       <div class="stats-bar">
         <div class="stat-text"><i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong></div>
-        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <strong style="color:#fff;">312 ACTIVE</strong></div>
+        <div class="stat-text"><i class="bi bi-code-slash"></i> SCRIPTS: <strong style="color:#fff;">OPTIMIZED</strong></div>
         <div class="stat-text"><i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong></div>
       </div>
     </section>

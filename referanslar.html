@@ -17,66 +17,88 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* INDEX TEMASI - TAM KORUMA */
+    /* MASTER INDEX CSS SADAKATİ */
+    :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
+
+    html, body { background-color: #000000 !important; }
+
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
-    
+
     .hero { 
       min-height: 100vh; 
-      display: flex; 
-      align-items: center; 
-      padding: 120px 0 80px 0; 
-      position: relative;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; padding-top: 100px; padding-bottom: 50px;
     }
 
-    /* Referans Logo Kutuları */
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none;
+    }
+    
+    .hero .container { position: relative; z-index: 2; }
+
+    /* REFERANS KUTULARI (AKILLI BOYUTLANDIRMA) */
     .ref-box {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: 0.3s;
-      height: 180px;
+      border: 1px solid var(--glass-border);
+      border-radius: 15px;
+      padding: 15px;
+      text-align: center;
+      transition: 0.4s ease;
+      height: 120px;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
+      overflow: hidden;
     }
-    
+
     .ref-box:hover {
-      background: rgba(13, 66, 255, 0.1);
-      border-color: #ffc107;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--primary);
       transform: translateY(-5px);
     }
-
-    .ref-box span {
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.6);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
+    
     .ref-box img {
       max-width: 100%;
-      max-height: 80px;
-      filter: grayscale(100%) brightness(200%); /* Logoları kurumsal beyaz yapar */
-      transition: 0.3s;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain; 
+      filter: grayscale(1) brightness(1.5);
+      transition: 0.4s;
     }
 
     .ref-box:hover img {
-      filter: grayscale(0%) brightness(100%); /* Üstüne gelince orijinal renk */
+      filter: grayscale(0) brightness(1);
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      border-top: 1px solid var(--glass-border);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px 0; width: 100%;
+      position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 40px;
+      z-index: 10; flex-wrap: wrap;
+    }
+    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; }
+    .ip-highlight { color: #fff; font-weight: bold; }
+
+    @media (max-width: 991px) {
+      .hero { padding-top: 120px; height: auto; padding-bottom: 80px; }
+      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
     }
   </style>
 </head>
 
-<body class="referans-page">
+<body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-      <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-  <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
-</a>
+        <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
+      </a>
       
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -84,7 +106,7 @@
           <li class="dropdown"><a href="#" class="active"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="about.html">Hakkımızda</a></li>
-              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="referanslar.html" class="active">Referanslar</a></li>
               <li><a href="faq.html">S.S.S</a></li>
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
@@ -94,6 +116,7 @@
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
               <li><a href="cloud.html">Bulut Hizmetleri</a></li>
+              <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
               <li><a href="programlar.html">Faydalı Programlar</a></li>
             </ul>
           </li>
@@ -104,85 +127,58 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       
-      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
+      <a class="btn-getstarted" href="https://texper.xyz" style="background: transparent; border: 2px solid #ffc107; color: #ffc107; font-weight: 700; border-radius: 50px; padding: 8px 25px; margin-left: 20px;">Müşteri Paneli</a>
     </div>
   </header>
 
   <main class="main">
     <section id="hero" class="hero section dark-background">
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+
       <div class="container">
-        
         <div class="text-center mb-5">
-          <h2 style="font-size: 3.5rem; font-weight: 800;">Bize <span style="color: #ffc107;">Güvenenler.</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; opacity: 0.8; font-size: 1.1rem;">Farklı sektörlerden 500'den fazla işletmeye teknoloji partnerliği yapıyoruz.</p>
+          <h2 style="font-size: 3.2rem; font-weight: 800;">Mutlu <span style="color: #ffc107;">İş Ortaklarımız.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; color: #ccc;">Güven ve teknolojiyle değer kattığımız referanslarımız.</p>
         </div>
 
-        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center">
-          
-          <div class="col">
-            <div class="ref-box">
-              <span>LOGO 1</span> </div>
-          </div>
-
-          <div class="col">
-            <div class="ref-box">
-              <span>LOGO 2</span>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="ref-box">
-              <span>LOGO 3</span>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="ref-box">
-              <span>LOGO 4</span>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="ref-box">
-              <span>LOGO 5</span>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="ref-box">
-              <span>LOGO 6</span>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="ref-box">
-              <span>LOGO 7</span>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="ref-box">
-              <span>LOGO 8</span>
-            </div>
-          </div>
-
+        <div class="row g-3 row-cols-2 row-cols-md-4 row-cols-lg-5 justify-content-center">
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref1.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref2.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref3.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref4.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref5.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref6.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref7.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref8.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref9.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref10.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref11.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref12.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref13.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref14.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref15.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref16.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref17.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref18.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref19.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref20.jpg" alt=""></div></div>
         </div>
+      </div>
 
-        <div class="text-center mt-5">
-          <p style="opacity: 0.6;">Ve daha yüzlerce mutlu iş ortağı...</p>
-        </div>
-
+      <div class="stats-bar">
+        <div class="stat-text"><i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong></div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background">
-    <div class="container copyright text-center py-4">
-      <p>© 2025 <strong class="px-1 sitename">Texper Bilişim</strong> - Birlikte Daha Güçlüyüz.</p>
-    </div>
-  </footer>
+  <script>
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => { document.getElementById('user-ip').innerText = data.ip; });
+  </script>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

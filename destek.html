@@ -6,122 +6,139 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Destek Merkezi - Texper Bilişim</title>
   
-  <link href="assets/img/favicon.png?v=fresh" rel="icon" type="image/png">
+  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
+    /* MASTER INDEX CSS SADAKATİ */
+    :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
+
+    html, body { background-color: #000000 !important; }
+
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
-    
+
     .hero { 
       min-height: 100vh; 
-      display: flex; 
-      align-items: center; 
-      padding: 100px 0; 
-      position: relative;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; padding-top: 100px; padding-bottom: 50px;
     }
 
-    .hero .hero-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 1;
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none;
     }
+    
+    .hero .container { position: relative; z-index: 2; }
 
-    /* Müşteri Odaklı Dev Butonlar */
-    .support-action-card {
-      background: rgba(255, 193, 7, 0.08);
-      backdrop-filter: blur(15px);
-      padding: 35px 15px;
+    /* INDEX MENÜ & BUTON STİLLERİ */
+    .nav-contact-btn {
+      border: 1px solid rgba(255, 255, 255, 0.5) !important;
       border-radius: 20px;
-      border: 2px solid rgba(255, 193, 7, 0.3);
+      padding: 5px 20px !important;
+      margin-left: 10px;
+      transition: 0.3s;
+    }
+    .nav-contact-btn:hover { background: #fff; color: #000 !important; border-color: #fff !important; }
+
+    .btn-panel-header {
+      background: transparent; color: var(--primary) !important;
+      padding: 8px 25px; margin-left: 20px;
+      border-radius: 50px; font-weight: 700; font-size: 14px;
+      border: 2px solid var(--primary);
+      text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s;
+    }
+    .btn-panel-header:hover { background: var(--primary); color: #000 !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
+
+    /* DESTEK KARTLARI */
+    .support-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
       text-align: center;
       transition: 0.4s;
       height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-decoration: none !important;
+      text-decoration: none;
+      display: block;
     }
-
-    .support-action-card:hover {
-      background: #ffc107;
-      border-color: #ffc107;
+    .support-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--primary);
       transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(255, 193, 7, 0.2);
     }
+    .support-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; display: block; }
+    .support-card h3 { color: #fff; font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
+    .support-card p { color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 0; }
 
-    .support-action-card i { font-size: 50px; color: #ffc107; margin-bottom: 15px; transition: 0.3s; }
-    .support-action-card h3 { color: #fff; font-weight: 700; font-size: 1.4rem; margin-bottom: 8px; transition: 0.3s; }
-    .support-action-card p { color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; transition: 0.3s; }
-
-    .support-action-card:hover i, 
-    .support-action-card:hover h3, 
-    .support-action-card:hover p { color: #000; }
-
-    /* Hızlı İletişim Butonları */
+    /* HIZLI İLETİŞİM ÇUBUĞU */
     .quick-contact-bar {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 193, 7, 0.1);
+      border: 1px solid rgba(255, 193, 7, 0.2);
+      padding: 20px;
       border-radius: 50px;
-      padding: 15px 30px;
-      display: inline-flex;
-      gap: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
       margin-top: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      flex-wrap: wrap;
     }
-
     .q-link {
       color: #fff;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.9rem;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       transition: 0.3s;
     }
-    .q-link i { font-size: 1.2rem; color: #ffc107; }
-    .q-link:hover { color: #ffc107; }
+    .q-link:hover { color: var(--primary); }
+    .q-link i { font-size: 1.2rem; color: var(--primary); }
 
-    /* Yeni Parlayan Kurumsal Panel Butonu */
-    .panel-entry {
+    /* PANEL BUTONU (MASTER STYLE) */
+    .btn-action-master {
+      background: var(--primary);
+      color: #000 !important;
+      border: 1px solid var(--primary);
+      padding: 18px 45px;
+      border-radius: 50px;
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      margin-top: 50px;
-      font-size: 1rem;
-      font-weight: 700;
-      color: #ffc107;
-      text-decoration: none;
-      border: 2px solid #ffc107;
-      padding: 14px 40px;
-      border-radius: 50px;
-      background: rgba(255, 193, 7, 0.05);
-      transition: 0.4s all;
+      transition: 0.3s;
+      font-weight: 800;
+      margin-top: 30px;
+      box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
+    .btn-action-master:hover { background: #fff; border-color: #fff; transform: scale(1.05); }
 
-    .panel-entry:hover {
-      background: #ffc107;
-      color: #000 !important;
-      box-shadow: 0 0 30px rgba(255, 193, 7, 0.6);
-      transform: translateY(-5px);
+    /* STATS BAR */
+    .stats-bar {
+      border-top: 1px solid var(--glass-border);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px 0; width: 100%;
+      position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 40px;
+      z-index: 10; flex-wrap: wrap;
     }
+    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; }
+    .ip-highlight { color: #fff; font-weight: bold; }
 
-    .panel-entry i {
-      font-size: 1.3rem;
-    }
-
-    @media (max-width: 768px) {
-      .quick-contact-bar { flex-direction: column; border-radius: 20px; width: 100%; gap: 15px; }
-      .panel-entry { width: 100%; justify-content: center; }
+    @media (max-width: 991px) {
+      .hero { padding-top: 120px; height: auto; padding-bottom: 80px; }
+      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
+      .btn-panel-header { display: none; }
+      .nav-contact-btn { border: none !important; padding: 0 !important; margin: 0 !important; }
+      .quick-contact-bar { border-radius: 20px; gap: 15px; }
     }
   </style>
 </head>
@@ -129,99 +146,124 @@
 <body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-       <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-  <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
-</a>
+        <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
+      </a>
+      
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
-          <li><a href="about.html">Kurumsal</a></li>
-          <li><a href="services.html">Hizmetler</a></li>
+          <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="faq.html">S.S.S</a></li>
+              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="services.html">Tüm Hizmetler</a></li>
+              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
+              <li><a href="programlar.html">Faydalı Programlar</a></li>
+            </ul>
+          </li>
           <li><a href="project.html">Projeler</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="programlar.html">Programlar</a></li>
-          <li><a href="contact.html">İletişim</a></li>
+          <li><a href="blog.html">Neler Yapıyoruz</a></li>
+          <li><a href="contact.html" class="nav-contact-btn">İletişim</a></li>
+          <li class="d-md-none"><a href="destek.html" class="active">Destek Al</a></li>
+          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
         </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-      <a class="btn-getstarted" href="destek.html">Destek</a>
+      
+      <a class="btn-panel-header d-none d-lg-flex" href="https://texper.xyz">
+        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
+      </a>
     </div>
   </header>
 
   <main class="main">
     <section id="hero" class="hero section dark-background">
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
-      
-      <div class="container text-center" style="position: relative; z-index: 2;">
-        
+
+      <div class="container text-center">
         <div class="mb-5">
-          <h2 style="font-size: 3.5rem; font-weight: 800; color: #ffc107; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">Teknik Çözüm Merkezi</h2>
-          <p style="font-size: 1.3rem; opacity: 0.9; max-width: 800px; margin: 0 auto; color: #fff;">
-            Sistemlerinize hızlı ve güvenli erişim sağlamak için bir bağlantı aracı seçin.
-          </p>
+          <h2 style="font-size: 3.2rem; font-weight: 800;">Destek <span style="color: #ffc107;">Merkezi.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; color: #ccc;">Uzak bağlantı araçları ve hızlı iletişim kanalları ile sorunlarınıza anında çözüm üretiyoruz.</p>
         </div>
 
         <div class="row g-4 justify-content-center">
           <div class="col-lg-3 col-md-6">
-            <a href="https://download.anydesk.com/AnyDesk.exe" target="_blank" class="support-action-card">
-              <i class="fa-solid fa-headset"></i>
-              <h3>AnyDesk</h3>
-              <p>Hızlı Bağlantı Kur</p>
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <a href="https://www.alpemix.com/site/Alpemix.exe" target="_blank" class="support-action-card">
+            <a href="https://download.anydesk.com/AnyDesk.exe" class="support-card">
               <i class="fa-solid fa-desktop"></i>
+              <h3>AnyDesk</h3>
+              <p>Hızlı ve Güvenli Uzak Masaüstü Erişimi</p>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <a href="https://www.alpemix.com/site/Alpemix.exe" class="support-card">
+              <i class="fa-solid fa-rocket"></i>
               <h3>Alpemix</h3>
-              <p>Hemen Başlat</p>
+              <p>Yerli ve Hızlı Bağlantı Çözümü</p>
             </a>
           </div>
           <div class="col-lg-3 col-md-6">
-            <a href="https://my.microsoftpersonalcontent.com/personal/d9e2670e00da7b49/_layouts/15/download.aspx?UniqueId=41528895-d3fe-4d65-814e-9fe511aef086&Translate=false&tempauth=v1e.eyJzaXRlaWQiOiJiZWQ5ZTg0ZC1jMGFiLTQ0YmItOWVmZC1hODc2ZjU2OGI5MWIiLCJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbXkubWljcm9zb2Z0cGVyc29uYWxjb250ZW50LmNvbUA5MTg4MDQwZC02YzY3LTRjNWItYjExMi0zNmEzMDRiNjZkYWQiLCJleHAiOiIxNzY4ODI3MTYxIn0.PHoz2C2M_mPXZhGPEWsjRqojrZR4tBz-NRVnMBUpxRf8UohaU9STS7kSPGXnw8i-HMW4HX4b7GOigxyKJq2IjKcgMeHmdo7MlmSduEEs2z4AOrkgPWXIz5pX6FJESxHFWNj25kIBge7PiIiXGcDg__0Ij_YX3Ljnw46DhpeUDz0pzZ5qlWscSR8Gaq2q_v0Ih3t1FFNSRS7MS9SPWyG8jlcUFaSpQvcuN2ho3OT2EfPwZYxLsgd4YqoABlqY08kSvO7Zue3uGf9o1wSgE5PXe7g2RLKhlKnIGcSUH7Hx7Al57Qc4VdVIVxnMIwLOiZX2chz86aCcer9EekG-RFTarouavBo84XBt3wmsNkuBKG5bp0MlAFIJrzibSze0cStyYaU68V6dY_HllFMdgjLGuj8q3TZZGAWnxg8kPe3VWy5c14uRLjm4tNxGOgSDm5JRjTGvd2zsqMyyS9UPhH82e7yIbL-GG21dujcK9yK5YzO1VbLl_U6lLjhXiEnMDl6CIaRIYUvu1Em4BfvcLOAviw.oot9NM82G_o8QGRxaK3lck1uNwAqrLH8CaNKJAPL2Kg&ApiVersion=2.0" target="_blank" class="support-action-card">
-              <i class="fa-solid fa-laptop-code"></i>
+            <a href="https://github.com/rustdesk/rustdesk/releases/download/1.4.5/rustdesk-1.4.5-x86_64.exe" class="support-card">
+              <i class="fa-solid fa-shield-halved"></i>
               <h3>RustDesk</h3>
-              <p>Güvenli Erişim</p>
+              <p>Açık Kaynaklı Güvenli Bağlantı</p>
             </a>
           </div>
           <div class="col-lg-3 col-md-6">
-            <a href="https://download.teamviewer.com/download/TeamViewerQS.exe" target="_blank" class="support-action-card">
+            <a href="https://download.teamviewer.com/download/TeamViewerQS.exe" class="support-card">
               <i class="fa-solid fa-users-viewfinder"></i>
               <h3>TeamViewer</h3>
-              <p>Hızlı Destek (QS)</p>
+              <p>QuickSupport (Hızlı Destek)</p>
             </a>
           </div>
         </div>
 
         <div class="quick-contact-bar">
           <a href="https://wa.me/905314017375" class="q-link" target="_blank">
-            <i class="bi bi-whatsapp"></i> WhatsApp Destek
+            <i class="bi bi-whatsapp"></i> WhatsApp Destek Hattı
           </a>
           <a href="tel:+905314017375" class="q-link">
-            <i class="bi bi-telephone"></i> Bizi Arayın
+            <i class="bi bi-telephone-fill"></i> 0531 401 73 75
           </a>
           <a href="mailto:info@texper.com.tr" class="q-link">
-            <i class="bi bi-envelope-at"></i> E-posta Gönder
+            <i class="bi bi-envelope-at-fill"></i> info@texper.com.tr
           </a>
         </div>
 
-        <br>
-        <a href="https://texper.xyz" class="panel-entry">
-          <i class="bi bi-shield-lock-fill"></i> KURUMSAL MÜŞTERİ PANELİ
-        </a>
+        <div class="mt-4">
+          <a href="https://texper.xyz" class="btn-action-master">
+            <i class="bi bi-shield-lock-fill"></i> KURUMSAL MÜŞTERİ PANELİ GİRİŞİ
+          </a>
+        </div>
+      </div>
 
+      <div class="stats-bar">
+        <div class="stat-text"><i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <strong style="color:#fff;">312 ACTIVE</strong></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong></div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background" style="margin-top: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-    <div class="container copyright text-center py-4">
-      <p>© 2024 <strong class="px-1 sitename">Texper Bilişim</strong> - Tüm Hakları Saklıdır.</p>
-    </div>
-  </footer>
+  <footer id="footer" class="footer dark-background" style="padding: 0; height: 0; overflow: hidden; visibility: hidden;"></footer>
+
+  <script>
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => { document.getElementById('user-ip').innerText = data.ip; })
+      .catch(error => { document.getElementById('user-ip').innerText = "Gizli"; });
+  </script>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
-
-
 </html>
-

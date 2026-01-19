@@ -17,95 +17,118 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* INDEX TEMASI - %100 SADAKAT */
+    /* MASTER INDEX CSS SADAKATİ */
+    :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
+
+    html, body { background-color: #000000 !important; }
+
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
-    
+
     .hero { 
       min-height: 100vh; 
-      display: flex; 
-      align-items: center; 
-      padding: 120px 0 80px 0; 
-      position: relative;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; padding-top: 100px; padding-bottom: 50px;
     }
 
-    /* Proje Listesi - Services ile Senkronize */
-    .project-stream-list {
-      max-width: 1050px;
-      margin: 20px auto 0;
-      text-align: left;
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none;
     }
+    
+    .hero .container { position: relative; z-index: 2; }
 
+    /* INDEX MENÜ & BUTON STİLLERİ */
+    .nav-contact-btn {
+      border: 1px solid rgba(255, 255, 255, 0.5) !important;
+      border-radius: 20px;
+      padding: 5px 20px !important;
+      margin-left: 10px;
+      transition: 0.3s;
+    }
+    .nav-contact-btn:hover { background: #fff; color: #000 !important; border-color: #fff !important; }
+
+    .btn-panel-header {
+      background: transparent; color: var(--primary) !important;
+      padding: 8px 25px; margin-left: 20px;
+      border-radius: 50px; font-weight: 700; font-size: 14px;
+      border: 2px solid var(--primary);
+      text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s;
+    }
+    .btn-panel-header:hover { background: var(--primary); color: #000 !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
+
+    /* PROJE KARTLARI (INDEX STİLİNDE) */
     .project-card {
       display: flex;
-      align-items: center;
-      gap: 30px;
-      padding: 35px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      transition: 0.4s ease;
+      align-items: flex-start;
       background: rgba(255, 255, 255, 0.03);
-      margin-bottom: 15px;
-      border-radius: 20px;
       backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      margin-bottom: 20px;
+      transition: 0.4s ease;
     }
-
     .project-card:hover {
-      background: rgba(13, 66, 255, 0.08);
-      border-left: 6px solid #ffc107;
-      transform: scale(1.02);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--primary);
+      transform: translateX(10px);
     }
-
-    .project-icon {
-      min-width: 70px;
-      height: 70px;
-      background: rgba(255, 193, 7, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: #ffc107;
-    }
-
-    .project-info h4 {
-      color: #fff;
-      font-weight: 700;
-      margin-bottom: 8px;
-      font-size: 1.4rem;
-    }
-
-    .project-info p {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 0;
-    }
+    .project-icon { font-size: 2.2rem; color: var(--primary); min-width: 70px; }
+    .project-info h4 { color: #fff; font-weight: 700; margin-bottom: 8px; font-size: 1.3rem; }
+    .project-info p { color: rgba(255, 255, 255, 0.8); font-size: 1rem; line-height: 1.7; margin-bottom: 0; }
 
     .project-badge {
-      display: inline-block;
-      padding: 4px 12px;
-      background: rgba(13, 66, 255, 0.2);
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      border-radius: 5px;
-      margin-bottom: 10px;
+      font-size: 0.75rem; background: rgba(255, 193, 7, 0.1);
+      padding: 4px 12px; border-radius: 5px; color: var(--primary);
+      font-weight: 600; border: 1px solid rgba(255, 193, 7, 0.2);
+      margin-bottom: 10px; display: inline-block;
+      text-transform: uppercase; letter-spacing: 1px;
     }
 
-    @media (max-width: 768px) {
+    /* ANA AKSİYON BUTONU */
+    .btn-action-master {
+      background: var(--primary);
+      color: #000 !important;
+      border: 1px solid var(--primary);
+      padding: 15px 45px; border-radius: 50px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+      transition: 0.3s; font-weight: 800;
+      box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+      text-transform: uppercase;
+    }
+    .btn-action-master:hover { background: #fff; border-color: #fff; transform: scale(1.05); }
+
+    /* STATS BAR */
+    .stats-bar {
+      border-top: 1px solid var(--glass-border);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px 0; width: 100%;
+      position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 40px;
+      z-index: 10; flex-wrap: wrap;
+    }
+    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; }
+    .ip-highlight { color: #fff; font-weight: bold; }
+
+    @media (max-width: 991px) {
+      .hero { padding-top: 120px; height: auto; padding-bottom: 80px; }
+      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
+      .btn-panel-header { display: none; }
+      .nav-contact-btn { border: none !important; padding: 0 !important; margin: 0 !important; }
       .project-card { flex-direction: column; text-align: center; }
-      .project-icon { margin-bottom: 15px; }
+      .project-icon { margin-bottom: 15px; width: 100%; }
     }
   </style>
 </head>
 
-<body class="project-page">
+<body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-    <   <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-  <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
-</a>
+        <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
+      </a>
+      
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
@@ -121,84 +144,101 @@
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
               <li><a href="programlar.html">Faydalı Programlar</a></li>
             </ul>
           </li>
           <li><a href="project.html" class="active">Projeler</a></li>
           <li><a href="blog.html">Neler Yapıyoruz</a></li>
-          <li><a href="contact.html">İletişim</a></li>
+          <li><a href="contact.html" class="nav-contact-btn">İletişim</a></li>
+          <li class="d-md-none"><a href="destek.html">Destek Al</a></li>
+          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
+      
+      <a class="btn-panel-header d-none d-lg-flex" href="https://texper.xyz">
+        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
+      </a>
     </div>
   </header>
 
   <main class="main">
     <section id="hero" class="hero section dark-background">
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+
       <div class="container">
-        
         <div class="text-center mb-5">
-          <h2 style="font-size: 3.5rem; font-weight: 800;">Başarı <span style="color: #ffc107;">Hikayelerimiz.</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9;">İş ortaklarımız için hayata geçirdiğimiz kritik BT operasyonları.</p>
+          <h2 style="font-size: 3.2rem; font-weight: 800;">Başarı <span style="color: #ffc107;">Hikayelerimiz.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; color: #ccc;">Karmaşık BT sorunlarını profesyonel mühendislik ve sürdürülebilir altyapı projeleriyle çözüyoruz.</p>
         </div>
 
-        <div class="project-stream-list">
+        <div class="mx-auto" style="max-width: 950px;">
           
           <div class="project-card">
-            <div class="project-icon"><i class="bi bi-building"></i></div>
+            <div class="project-icon"><i class="bi bi-diagram-3-fill"></i></div>
             <div class="project-info">
-              <span class="project-badge">Anahtar Teslim</span>
-              <h4>Lojistik Merkezi Altyapı Entegrasyonu</h4>
-              <p>İstanbul merkezli global bir lojistik firmasının 20.000 m² depolama alanının tüm fiber optik, Wi-Fi ve sistem odası kurulumu 15 gün içerisinde tamamlanarak teslim edildi.</p>
+              <span class="project-badge">AĞ ALTYAPISI</span>
+              <h4>Uluslararası Lojistik Merkezi Network Revizyonu</h4>
+              <p>Mevcut karmaşık ağ yapısı, 10Gbps omurga üzerinden Fiber ve Cat7 kablolama ile yeniden tasarlandı. VLAN yapılandırmasıyla ofis ve depo ağları izole edilerek tam güvenlik sağlandı.</p>
             </div>
           </div>
 
           <div class="project-card">
-            <div class="project-icon"><i class="bi bi-shield-check"></i></div>
-            <div class="project-info">
-              <span class="project-badge">Siber Güvenlik</span>
-              <h4>Uluslararası Tekstil Grubu Firewall Konsolidasyonu</h4>
-              <p>Farklı lokasyonlardaki 5 üretim tesisinin ağ güvenliği, Sophos Firewall sistemleri üzerinden merkezileştirildi ve VPN tünelleri ile güvenli veri akışı sağlandı.</p>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-icon"><i class="bi bi-cloud-arrow-up"></i></div>
+            <div class="project-icon"><i class="bi bi-cloud-arrow-up-fill"></i></div>
             <div class="project-info">
               <span class="project-badge">TexNexus Cloud</span>
               <h4>Kamu Tedarikçisi Veri Taşıma Operasyonu</h4>
-              <p>Fiziksel sunucularda çalışan ERP sistemleri, TexNexus Cloud altyapımıza sıfır veri kaybı ve minimum kesinti ile başarıyla migrate edildi.</p>
+              <p>Fiziksel sunucularda çalışan ERP sistemleri, TexNexus Cloud altyapımıza sıfır veri kaybı ve minimum kesinti ile başarıyla migrate edildi. Hibrit bulut çözümüyle veri yedekliliği sağlandı.</p>
             </div>
           </div>
 
           <div class="project-card">
-            <div class="project-icon"><i class="bi bi-server"></i></div>
+            <div class="project-icon"><i class="bi bi-hdd-rack-fill"></i></div>
             <div class="project-info">
               <span class="project-badge">Sistem Odası</span>
               <h4>Holding Binası Sistem Odası Modernizasyonu</h4>
-              <p>Karışık durumdaki 42U rack kabinlerin yapısal kablolama revizyonu, etiketleme ve soğutma sistemleri optimizasyonu ile profesyonel standartlara taşınması.</p>
+              <p>Karışık durumdaki 42U rack kabinlerin yapısal kablolama revizyonu, etiketleme ve soğutma sistemleri optimizasyonu ile profesyonel standartlara taşınması operasyonu tamamlandı.</p>
             </div>
           </div>
 
-        </div>
+          <div class="project-card">
+            <div class="project-icon"><i class="bi bi-shield-lock-fill"></i></div>
+            <div class="project-info">
+              <span class="project-badge">Cyber Security</span>
+              <h4>Endüstriyel Üretim Hattı Firewall Entegrasyonu</h4>
+              <p>Üretim bantlarındaki IoT cihazlarının güvenliği için katmanlı Firewall (Güvenlik Duvarı) mimarisi kuruldu. Dış tehditlere karşı %99.9 oranında koruma bariyeri oluşturuldu.</p>
+            </div>
+          </div>
 
-        <div class="text-center mt-5">
-          <a href="contact.html" class="btn-getstarted" style="background: #ffc107; color: #000; border: none; padding: 15px 45px; border-radius: 50px; font-weight: 800;">PROJENİZ İÇİN TEKLİF ALIN</a>
-        </div>
+          <div class="text-center mt-5">
+            <a href="contact.html" class="btn-action-master">
+              <i class="bi bi-lightning-charge-fill"></i> PROJENİZ İÇİN TEKLİF ALIN
+            </a>
+          </div>
 
+        </div>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-text"><i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <strong style="color:#fff;">312 ACTIVE</strong></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong></div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background">
-    <div class="container copyright text-center py-4">
-      <p>© 2025 <strong class="px-1 sitename">Texper Bilişim</strong> - İstanbul'dan Dünyaya Teknoloji</p>
-    </div>
-  </footer>
+  <footer id="footer" class="footer dark-background" style="padding: 0; height: 0; overflow: hidden; visibility: hidden;"></footer>
+
+  <script>
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => { document.getElementById('user-ip').innerText = data.ip; })
+      .catch(error => { document.getElementById('user-ip').innerText = "Gizli"; });
+  </script>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -17,100 +17,173 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* INDEX TEMASI - %100 SADAKAT */
+    /* MASTER INDEX CSS SADAKATİ */
+    :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
+
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
-    
+
     .hero { 
       min-height: 100vh; 
-      display: flex; 
-      align-items: center; 
-      padding: 100px 0; 
-      position: relative;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; padding-top: 100px; padding-bottom: 50px;
     }
 
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none;
+    }
+    
+    .hero .container { position: relative; z-index: 2; }
+
+    /* 404 ÖZEL TASARIM - INDEX STİLİNDE */
     .error-container {
-      text-align: center;
       background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(15px);
-      padding: 60px 40px;
-      border-radius: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      max-width: 600px;
+      backdrop-filter: blur(10px);
+      padding: 50px;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      max-width: 700px;
       margin: 0 auto;
     }
 
     .error-code {
-      font-size: 8rem;
-      font-weight: 900;
-      color: #ffc107;
-      line-height: 1;
-      margin-bottom: 20px;
-      text-shadow: 0 10px 30px rgba(255, 193, 7, 0.2);
-    }
-
-    .error-msg {
-      font-size: 1.5rem;
-      color: #fff;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .error-desc {
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 35px;
-    }
-
-    .btn-home {
-      background: #ffc107;
-      color: #000;
-      padding: 12px 40px;
-      border-radius: 50px;
+      font-size: 7rem;
       font-weight: 800;
-      text-decoration: none;
-      transition: 0.3s;
-      display: inline-block;
+      color: var(--primary);
+      margin-bottom: 10px;
+      line-height: 1;
     }
 
-    .btn-home:hover {
-      background: #fff;
-      transform: scale(1.05);
+    /* INDEX BUTON STİLLERİ */
+    .nav-contact-btn {
+      border: 1px solid rgba(255, 255, 255, 0.5) !important;
+      border-radius: 20px;
+      padding: 5px 20px !important;
+      margin-left: 10px;
+      transition: 0.3s;
+    }
+    .nav-contact-btn:hover { background: #fff; color: #000 !important; border-color: #fff !important; }
+
+    .btn-panel-header {
+      background: transparent; color: var(--primary) !important;
+      padding: 8px 25px; margin-left: 20px;
+      border-radius: 50px; font-weight: 700; font-size: 14px;
+      border: 2px solid var(--primary);
+      text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s;
+    }
+    .btn-panel-header:hover { background: var(--primary); color: #000 !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
+
+    .action-card {
+      background: var(--primary);
+      color: #000 !important;
+      border: 1px solid var(--primary);
+      padding: 15px 45px; border-radius: 50px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+      transition: 0.3s; font-weight: 700;
+      box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+    }
+    .action-card:hover { background: #fff; border-color: #fff; transform: scale(1.05); color: #000 !important; }
+
+    /* STATS BAR */
+    .stats-bar {
+      border-top: 1px solid var(--glass-border);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px 0; width: 100%;
+      position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 40px;
+      z-index: 10; flex-wrap: wrap;
+    }
+    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; }
+    .ip-highlight { color: #fff; font-weight: bold; }
+
+    @media (max-width: 991px) {
+      .hero { padding-top: 120px; height: auto; padding-bottom: 80px; }
+      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
+      .btn-panel-header { display: none; }
+      .nav-contact-btn { border: none !important; padding: 0 !important; margin: 0 !important; }
     }
   </style>
 </head>
 
-<body class="error-page">
+<body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-       <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-  <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
-</a>
-      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
+        <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
+      </a>
+      
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Anasayfa</a></li>
+          <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="faq.html">S.S.S</a></li>
+              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="services.html">Tüm Hizmetler</a></li>
+              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
+              <li><a href="programlar.html">Faydalı Programlar</a></li>
+            </ul>
+          </li>
+          <li><a href="project.html">Projeler</a></li>
+          <li><a href="blog.html">Neler Yapıyoruz</a></li>
+          <li><a href="contact.html" class="nav-contact-btn">İletişim</a></li>
+          <li class="d-md-none"><a href="destek.html">Destek Al</a></li>
+          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      
+      <a class="btn-panel-header d-none d-lg-flex" href="https://texper.xyz">
+        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
+      </a>
     </div>
   </header>
 
   <main class="main">
     <section id="hero" class="hero section dark-background">
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
-      <div class="container">
-        
+
+      <div class="container text-center">
         <div class="error-container">
           <div class="error-code">404</div>
-          <div class="error-msg">Bağlantı Hatası!</div>
-          <p class="error-desc">Aradığınız sayfa bir sistem güncellemesi nedeniyle taşınmış veya silinmiş olabilir.</p>
-          <a href="index.html" class="btn-home">ANA SAYFAYA DÖN</a>
+          <h2 class="mb-3" style="color: #fff; font-weight: 700;">BAĞLANTI HATASI</h2>
+          <p class="mb-4" style="color: #ccc;">Aradığınız sayfa bir sistem güncellemesi nedeniyle taşınmış veya silinmiş olabilir. BT altyapımızda bu adrese ulaşılamıyor.</p>
+          
+          <a href="index.html" class="action-card">
+            <i class="bi bi-house-door"></i>
+            <span>ANA SAYFAYA DÖN</span>
+          </a>
         </div>
+      </div>
 
+      <div class="stats-bar">
+        <div class="stat-text"><i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <strong style="color:#fff;">312 ACTIVE</strong></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong></div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background">
-    <div class="container copyright text-center py-4">
-      <p>© 2025 <strong class="px-1 sitename">Texper Bilişim</strong> - Sistem Devrede.</p>
-    </div>
-  </footer>
+  <footer id="footer" class="footer dark-background" style="padding: 0; height: 0; overflow: hidden; visibility: hidden;"></footer>
+
+  <script>
+    // IP ADRESİNİ ÇEKEN SCRIPT (INDEX ILE AYNI)
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => { document.getElementById('user-ip').innerText = data.ip; })
+      .catch(error => { document.getElementById('user-ip').innerText = "Gizli"; });
+  </script>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

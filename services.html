@@ -17,122 +17,47 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* INDEX TEMASI - TAM KORUMA */
+    /* MASTER INDEX CSS SADAKATİ */
+    :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
+    html, body { background-color: #000000 !important; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
-    
-    .hero { 
-      min-height: 100vh; 
-      display: flex; 
-      align-items: center; 
-      padding: 120px 0 60px 0; 
-      position: relative;
-    }
 
-    /* Kurumsal Liste Tasarımı */
-    .corporate-service-list {
-      max-width: 1000px;
-      margin: 20px auto 0;
-      text-align: left;
-    }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding-top: 100px; padding-bottom: 50px; }
+    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; z-index: 0; pointer-events: none; }
+    .hero .container { position: relative; z-index: 2; }
 
-    .service-row-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 25px;
-      padding: 25px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      transition: 0.4s ease;
-      background: rgba(255, 255, 255, 0.02);
-      margin-bottom: 8px;
-      border-radius: 12px;
+    .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 40px; }
+    .service-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+      padding: 35px; border-radius: 20px;
+      backdrop-filter: blur(10px); transition: 0.3s; height: 100%;
     }
+    .service-item:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(255, 193, 7, 0.03); }
+    .service-item i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; display: block; }
+    .service-item h4 { font-size: 1.4rem; color: #fff; font-weight: 700; margin-bottom: 15px; }
+    .service-item p { color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0; }
+    .service-tags { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    .tag-sm { background: rgba(255, 255, 255, 0.05); color: #fff; font-size: 0.7rem; padding: 4px 12px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); }
 
-    .service-row-item:hover {
-      background: rgba(13, 66, 255, 0.08);
-      border-left: 5px solid #ffc107;
-      padding-left: 35px;
-      transform: scale(1.01);
+    .btn-action-master {
+      background: var(--primary); color: #000 !important; padding: 15px 40px; border-radius: 50px;
+      font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; transition: 0.3s;
     }
+    .btn-action-master:hover { background: #fff; transform: scale(1.05); }
 
-    .service-num {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: rgba(255, 193, 7, 0.25);
-      line-height: 1;
-      min-width: 45px;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .service-info h4 {
-      color: #ffc107;
-      font-weight: 700;
-      margin-bottom: 8px;
-      font-size: 1.25rem;
-    }
-
-    .service-info p {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .service-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .tag-sm {
-      font-size: 0.65rem;
-      padding: 2px 8px;
-      background: rgba(13, 66, 255, 0.15);
-      border: 1px solid rgba(13, 66, 255, 0.2);
-      border-radius: 4px;
-      color: #fff;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    /* SAĞ ÜST PANEL BUTONU (NAVBAR) */
-    .btn-panel-header {
-      background: #ffc107;
-      color: #000 !important;
-      padding: 8px 22px;
-      margin-left: 15px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 14px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-      border: 2px solid #ffc107;
-      white-space: nowrap;
-    }
-
-    .btn-panel-header:hover {
-      background: transparent;
-      color: #ffc107 !important;
-      box-shadow: 0 0 15px rgba(255, 193, 7, 0.4);
-    }
-
-    @media (max-width: 1200px) {
-      .btn-panel-header { display: none; } /* Mobilde sadece menü içinde görünsün */
-    }
+    @media (max-width: 991px) { .service-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 
-<body class="services-page">
+<body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-      <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-  <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
-</a>
-      
+        <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
+      </a>
+
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
@@ -146,105 +71,75 @@
           </li>
           <li class="dropdown"><a href="services.html" class="active"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="services.html">Tüm Hizmetler</a></li>
+              <li><a href="services.html" class="active">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
-              <li><a href="programlar.html">Faydalı Programlar</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
+              <li><a href="programlar.html">BT Programlar</a></li>
             </ul>
           </li>
           <li><a href="project.html">Projeler</a></li>
           <li><a href="blog.html">Neler Yapıyoruz</a></li>
           <li><a href="contact.html">İletişim</a></li>
-          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-      
-      <a class="btn-panel-header" href="https://texper.xyz">
-        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
-      </a>
+
+      <a class="btn-getstarted" href="https://texper.xyz" style="background: transparent; border: 2px solid #ffc107; color: #ffc107; font-weight: 700; border-radius: 50px; padding: 8px 25px; margin-left: 20px;">Müşteri Paneli</a>
     </div>
   </header>
 
   <main class="main">
     <section id="hero" class="hero section dark-background">
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+
       <div class="container">
-        
-        <div class="text-center mb-4">
-          <h2 style="font-size: 3rem; font-weight: 800;">TexNexus <span style="color: #ffc107;">Hibrit BT Çözümleri.</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; opacity: 0.8;">Veri depolama, uzak yönetim ve uçtan uca altyapı mühendisliğiyle sistemleriniz her an güvende.</p>
+        <div class="text-center mb-5">
+          <h2 style="font-size: 3rem; font-weight: 800;">Uzmanlık <span style="color:var(--primary);">Alanlarımız</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; color: #ccc;">İşletmenizin dijital ve fiziksel altyapısını stabilize eden profesyonel BT operasyonları.</p>
         </div>
 
-        <div class="corporate-service-list">
-          
-          <div class="service-row-item">
-            <div class="service-num">01</div>
-            <div class="service-info">
-              <h4>Uzak Yönetim & TexNexus Panel</h4>
-              <p>MeshCentral tabanlı altyapımız ile tüm cihazlarınıza dünyanın her yerinden anında erişiyor, teknik sorunlara saniyeler içinde müdahale ediyoruz.</p>
-              <div class="service-tags"><span class="tag-sm">TexNexus</span><span class="tag-sm">Remote Support</span><span class="tag-sm">300+ Agent</span></div>
-            </div>
+        <div class="service-grid">
+          <div class="service-item">
+            <i class="bi bi-diagram-3-fill"></i>
+            <h4>Ağ & Altyapı Çözümleri</h4>
+            <p>Fiber optik sonlandırma, yapısal kablolama ve Keenetic IKEv2 VPN şube birleştirme projeleriyle kesintisiz network sağlıyoruz.</p>
+            <div class="service-tags"><span class="tag-sm">Networking</span><span class="tag-sm">VPN</span><span class="tag-sm">Fiber</span></div>
           </div>
 
-          <div class="service-row-item">
-            <div class="service-num">02</div>
-            <div class="service-info">
-              <h4>Kurumsal NAS & SQL Yedekleme</h4>
-              <p>QNAP ve Synology sistemleri üzerine kurulan WebDAV ve Docker altyapılarıyla SQL veritabanlarınızı ve kritik dosyalarınızı otomatik yedekliyoruz.</p>
-              <div class="service-tags"><span class="tag-sm">SQL Backup</span><span class="tag-sm">QNAP</span><span class="tag-sm">Cloud Storage</span></div>
-            </div>
+          <div class="service-item">
+            <i class="bi bi-server"></i>
+            <h4>Sistem & Sanallaştırma</h4>
+            <p>Hyper-V mimarileri, HP/Dell sunucu kurulumları ve P2V taşıma işlemleriyle sistemlerinizi konsolide ediyoruz.</p>
+            <div class="service-tags"><span class="tag-sm">Hyper-V</span><span class="tag-sm">Server</span><span class="tag-sm">P2V</span></div>
           </div>
 
-          <div class="service-row-item">
-            <div class="service-num">03</div>
-            <div class="service-info">
-              <h4>Firewall & Siber Güvenlik Zırhı</h4>
-              <p>Sophos, Fortinet ve pfSense tabanlı çözümlerle ağ trafiğinizi filtreliyor, sızma testleri ve VPN kurulumlarıyla verilerinizi koruyoruz.</p>
-              <div class="service-tags"><span class="tag-sm">Cyber Security</span><span class="tag-sm">VPN</span><span class="tag-sm">UTM</span></div>
-            </div>
+          <div class="service-item">
+            <i class="bi bi-cloud-check-fill"></i>
+            <h4>TexNexus Cloud & Backup</h4>
+            <p>QNAP NAS entegrasyonu ve TexNexus hibrit bulut üzerinden verilerinizin 3-2-1 kuralına göre güvenli yedeklenmesi.</p>
+            <div class="service-tags"><span class="tag-sm">TexNexus</span><span class="tag-sm">Backup</span><span class="tag-sm">Recovery</span></div>
           </div>
 
-          <div class="service-row-item">
-            <div class="service-num">04</div>
-            <div class="service-info">
-              <h4>Server Yönetimi ve Sanallaştırma</h4>
-              <p>VMware veya Hyper-V sanallaştırma, Active Directory (DC) kurulumu ve merkezi yönetim sistemleri ile sunucu maliyetlerinizi düşürüyoruz.</p>
-              <div class="service-tags"><span class="tag-sm">VMware</span><span class="tag-sm">Active Directory</span><span class="tag-sm">Virtualization</span></div>
-            </div>
+          <div class="service-item">
+            <i class="bi bi-shield-lock-fill"></i>
+            <h4>Teknik Destek & Bakım</h4>
+            <p>MeshCentral ve yerinde müdahale ile 7/24 proaktif izleme ve hızlı teknik destek süreçleri.</p>
+            <div class="service-tags"><span class="tag-sm">Remote</span><span class="tag-sm">MeshCentral</span><span class="tag-sm">SLA</span></div>
           </div>
+        </div>
 
-          <div class="service-row-item">
-            <div class="service-num">05</div>
-            <div class="service-info">
-              <h4>Komple Sistem Devreye Alma</h4>
-              <p>Yeni ofislerin tüm IT altyapısını; kablolamadan server kurulumuna, ağ güvenliğinden son kullanıcıya kadar anahtar teslim hazırlıyoruz.</p>
-              <div class="service-tags"><span class="tag-sm">End-to-End</span><span class="tag-sm">Integration</span><span class="tag-sm">Setup</span></div>
-            </div>
-          </div>
-
-          <div class="service-row-item">
-            <div class="service-num">06</div>
-            <div class="service-info">
-              <h4>Bilgisayar Bakım ve Kurumsal Destek</h4>
-              <p>Şirket bünyesindeki tüm PC, Laptop ve çevre birimlerinin periyodik bakımı ve anlık teknik arıza müdahaleleriyle işinizi kesintiye uğratmıyoruz.</p>
-              <div class="service-tags"><span class="tag-sm">Maintenance</span><span class="tag-sm">Hardware</span><span class="tag-sm">On-Site</span></div>
-            </div>
-          </div>
-
-          <div class="text-center mt-5 mb-4">
-            <a href="https://texper.xyz" class="btn-getstarted" style="background: #ffc107; color: #000; border: none; padding: 15px 50px; border-radius: 50px; font-weight: 700;">Müşteri Paneline Giriş Yap</a>
-          </div>
-
+        <div class="text-center mt-5">
+          <a href="https://texper.xyz" class="btn-action-master">
+            <i class="bi bi-shield-lock-fill"></i> Müşteri Paneline Giriş Yap
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background">
-    <div class="container copyright text-center py-4">
-      <p>© 2024 <strong class="px-1 sitename">Texper Bilişim</strong> - Profesyonel BT Altyapı Yönetimi</p>
-    </div>
+  <footer id="footer" class="footer dark-background" style="padding: 20px 0; border-top: 1px solid var(--glass-border); text-align: center;">
+      <p style="margin: 0; opacity: 0.5; font-size: 0.8rem;">© 2026 Texper Bilişim. Tüm Hakları Saklıdır.</p>
   </footer>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

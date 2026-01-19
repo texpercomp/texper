@@ -17,27 +17,55 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* INDEX TEMASI - TAM KORUMA */
+    /* MASTER INDEX CSS SADAKATİ */
+    :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
+
+    html, body { background-color: #000000 !important; }
+
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
-    
+
     .hero { 
       min-height: 100vh; 
-      display: flex; 
-      align-items: center; 
-      padding: 120px 0 80px 0; 
-      position: relative;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; padding-top: 100px; padding-bottom: 50px;
     }
 
-    /* FAQ Akordeon Tasarımı */
-    .faq-list {
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none;
+    }
+    
+    .hero .container { position: relative; z-index: 2; }
+
+    /* INDEX MENÜ & BUTON STİLLERİ */
+    .nav-contact-btn {
+      border: 1px solid rgba(255, 255, 255, 0.5) !important;
+      border-radius: 20px;
+      padding: 5px 20px !important;
+      margin-left: 10px;
+      transition: 0.3s;
+    }
+    .nav-contact-btn:hover { background: #fff; color: #000 !important; border-color: #fff !important; }
+
+    .btn-panel-header {
+      background: transparent; color: var(--primary) !important;
+      padding: 8px 25px; margin-left: 20px;
+      border-radius: 50px; font-weight: 700; font-size: 14px;
+      border: 2px solid var(--primary);
+      text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s;
+    }
+    .btn-panel-header:hover { background: var(--primary); color: #000 !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
+
+    /* ACCORDION ÖZEL TASARIM (INDEX STİLİNDE) */
+    .faq-container {
       max-width: 900px;
-      margin: 20px auto 0;
+      margin: 0 auto;
     }
 
     .accordion-item {
       background: rgba(255, 255, 255, 0.03) !important;
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border: 1px solid var(--glass-border) !important;
       border-radius: 15px !important;
       margin-bottom: 15px;
       overflow: hidden;
@@ -52,32 +80,65 @@
     }
 
     .accordion-button:not(.collapsed) {
-      color: #ffc107 !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--primary) !important;
+      border-bottom: 1px solid var(--glass-border);
     }
 
     .accordion-button::after {
-      filter: invert(1); /* İkonu beyaz yapar */
+      filter: invert(1);
     }
 
     .accordion-body {
       color: rgba(255, 255, 255, 0.8);
       line-height: 1.7;
+      background: rgba(255, 255, 255, 0.01);
       padding: 25px;
-      font-size: 0.95rem;
     }
 
-    .faq-highlight { color: #ffc107; font-weight: 700; }
+    .faq-highlight { color: var(--primary); font-weight: 600; }
+
+    /* ANA AKSİYON BUTONU */
+    .btn-action-master {
+      background: var(--primary);
+      color: #000 !important;
+      border: 1px solid var(--primary);
+      padding: 15px 45px; border-radius: 50px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+      transition: 0.3s; font-weight: 800;
+      box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+      text-transform: uppercase;
+    }
+    .btn-action-master:hover { background: #fff; border-color: #fff; transform: scale(1.05); }
+
+    /* STATS BAR */
+    .stats-bar {
+      border-top: 1px solid var(--glass-border);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px 0; width: 100%;
+      position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 40px;
+      z-index: 10; flex-wrap: wrap;
+    }
+    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; }
+    .ip-highlight { color: #fff; font-weight: bold; }
+
+    @media (max-width: 991px) {
+      .hero { padding-top: 120px; height: auto; padding-bottom: 80px; }
+      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
+      .btn-panel-header { display: none; }
+      .nav-contact-btn { border: none !important; padding: 0 !important; margin: 0 !important; }
+    }
   </style>
 </head>
 
-<body class="faq-page">
+<body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-    <   <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-  <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
-</a>
+        <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
+      </a>
+      
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
@@ -93,42 +154,48 @@
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
               <li><a href="programlar.html">Faydalı Programlar</a></li>
             </ul>
           </li>
           <li><a href="project.html">Projeler</a></li>
           <li><a href="blog.html">Neler Yapıyoruz</a></li>
-          <li><a href="contact.html">İletişim</a></li>
+          <li><a href="contact.html" class="nav-contact-btn">İletişim</a></li>
+          <li class="d-md-none"><a href="destek.html">Destek Al</a></li>
+          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
+      
+      <a class="btn-panel-header d-none d-lg-flex" href="https://texper.xyz">
+        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
+      </a>
     </div>
   </header>
 
   <main class="main">
     <section id="hero" class="hero section dark-background">
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+
       <div class="container">
-        
         <div class="text-center mb-5">
           <h2 style="font-size: 3.2rem; font-weight: 800;">Sıkça Sorulan <span style="color: #ffc107;">Sorular.</span></h2>
-          <p style="max-width: 700px; margin: 0 auto; opacity: 0.8;">Hizmetlerimiz ve süreçlerimiz hakkında merak ettiğiniz temel bilgiler.</p>
+          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; color: #ccc;">Hizmetlerimiz, süreçlerimiz ve teknik detaylar hakkında merak ettiğiniz her şey.</p>
         </div>
 
-        <div class="faq-list">
+        <div class="faq-container">
           <div class="accordion" id="faqAccordion">
 
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                  7/24 Teknik Destek hizmetiniz neleri kapsıyor?
+                  Hangi bölgelere yerinde teknik destek sağlıyorsunuz?
                 </button>
               </h2>
               <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  Anlaşmalı müşterilerimiz için <span class="faq-highlight">7/24 izleme (monitoring)</span> ve kritik sistem arızalarında anında müdahale sağlıyoruz. Mesai saatleri dışında telefon ve uzak bağlantı yoluyla, acil durumlarda ise yerinde destek ile iş sürekliliğinizi garanti altına alıyoruz.
+                  Başta <span class="faq-highlight">İstanbul</span> olmak üzere çevre illere yerinde teknik destek, ağ kurulumu ve sistem odası düzenleme hizmeti veriyoruz. Diğer bölgeler için uzak bağlantı ve proje bazlı saha çalışması yapmaktayız.
                 </div>
               </div>
             </div>
@@ -136,12 +203,12 @@
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                  TexNexus Cloud verileri nerede barındırılıyor?
+                  TexNexus Cloud verileri nerede saklanıyor?
                 </button>
               </h2>
               <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  Tüm bulut altyapımız <span class="faq-highlight">Türkiye lokasyonlu</span> yüksek güvenlikli veri merkezlerinde (Tier 3+) barındırılmaktadır. Bu sayede hem KVKK uyumluluğu sağlıyor hem de en düşük gecikme süreleriyle verilerinize erişim imkanı sunuyoruz.
+                  Verileriniz Türkiye lokasyonlu, <span class="faq-highlight">Tier 3+</span> standartlarına sahip güvenli veri merkezlerimizde barındırılmaktadır. KVKK uyumlu ve yüksek hızlı erişim garantisi sunuyoruz.
                 </div>
               </div>
             </div>
@@ -149,12 +216,12 @@
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                  Sistem odası kurulumu ve revizyonu yapıyor musunuz?
+                  Sistem odası düzenlemesi (Rack Kabin) için keşif ücretli mi?
                 </button>
               </h2>
               <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  Evet, anahtar teslim <span class="faq-highlight">sistem odası kurulumu</span>, rack kabin düzenleme, etiketleme ve yapısal kablolama en güçlü olduğumuz alanlardan biridir. Mevcut karışık yapıdaki sistem odalarınızı profesyonel bir görünüme ve standartlara kavuşturuyoruz.
+                  Hayır, ağ ve sistem altyapı projeleriniz için gerçekleştirdiğimiz <span class="faq-highlight">ilk keşif hizmeti tamamen ücretsizdir</span>. İhtiyaçlarınızı yerinde analiz edip en uygun projeyi raporluyoruz.
                 </div>
               </div>
             </div>
@@ -167,29 +234,40 @@
               </h2>
               <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  Evet, donanım maliyetine katlanmak istemeyen işletmeler için <span class="faq-highlight">Firewall kiralama ve yönetim</span> modellerimiz mevcuttur. Cihazın kurulumu, kural yönetimi ve siber güvenlik takibi tamamen Texper ekibi tarafından yürütülür.
+                  Evet, donanım maliyetine katlanmak istemeyen işletmeler için <span class="faq-highlight">Firewall kiralama ve yönetim</span> modellerimiz mevcuttur. Kurulum ve kural yönetimi Texper uzman ekibi tarafından yapılır.
                 </div>
               </div>
             </div>
 
           </div>
-        </div>
 
-        <div class="text-center mt-5">
-          <p style="opacity: 0.6;">Aradığınız cevabı bulamadınız mı?</p>
-          <a href="contact.html" class="btn-getstarted" style="background: #ffc107; color: #000; border: none; padding: 12px 35px; border-radius: 50px; font-weight: 700;">Bizimle İletişime Geçin</a>
+          <div class="text-center mt-5">
+            <p style="opacity: 0.6; margin-bottom: 20px;">Aradığınız cevabı bulamadınız mı?</p>
+            <a href="contact.html" class="btn-action-master">
+              <i class="bi bi-chat-dots"></i> BİZE SORUN
+            </a>
+          </div>
         </div>
+      </div>
 
+      <div class="stats-bar">
+        <div class="stat-text"><i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <strong style="color:#fff;">312 ACTIVE</strong></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong></div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background">
-    <div class="container copyright text-center py-4">
-      <p>© 2025 <strong class="px-1 sitename">Texper Bilişim</strong> - Profesyonel BT Destek</p>
-    </div>
-  </footer>
+  <footer id="footer" class="footer dark-background" style="padding: 0; height: 0; overflow: hidden; visibility: hidden;"></footer>
+
+  <script>
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => { document.getElementById('user-ip').innerText = data.ip; })
+      .catch(error => { document.getElementById('user-ip').innerText = "Gizli"; });
+  </script>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

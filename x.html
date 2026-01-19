@@ -1,271 +1,250 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEXPER // ULTIMATE STRATEGIC COMMAND</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #010204;
-            --panel: rgba(10, 14, 20, 0.94);
-            --accent: #ffc107;
-            --accent-glow: rgba(255, 193, 7, 0.4);
-            --border: rgba(255, 193, 7, 0.18);
-            --text: #e6edf3;
-            --dim: #7d8590;
-            --green: #3fb950;
-            --red: #f85149;
-        }
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Texper // Strategic Command Center</title>
+  
+  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-        * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
-        
-        body {
-            background: var(--bg) url('assets/img/world-dotted-map.png') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--text);
-            font-family: 'Poppins', sans-serif;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-        }
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
-        /* DIGITAL HUD OVERLAY */
-        body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.08) 50%),
-                        radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
-            background-size: 100% 3px, cover;
-            pointer-events: none; z-index: 1000;
-        }
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
 
-        /* SIDEBAR */
-        .sidebar {
-            width: 280px;
-            background: rgba(5, 7, 10, 0.98);
-            border-right: 1px solid var(--border);
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            z-index: 101;
-        }
+  <style>
+    /* MASTER INDEX CSS SADAKATİ */
+    :root { 
+        --primary: #ffc107; 
+        --glass-border: rgba(255, 193, 7, 0.2);
+        --panel-bg: rgba(10, 14, 20, 0.94);
+    }
 
-        .logo-area { text-align: center; margin-bottom: 35px; padding-bottom: 25px; border-bottom: 2px solid var(--border); }
-        .logo-area img { max-width: 160px; filter: drop-shadow(0 0 10px var(--accent-glow)); }
+    html, body { background-color: #000000 !important; overflow-x: hidden; font-family: 'Poppins', sans-serif; }
 
-        .nav-link {
-            font-family: 'Orbitron', sans-serif; font-size: 0.7rem; letter-spacing: 2px;
-            color: var(--dim); padding: 15px; margin-bottom: 8px; border: 1px solid transparent;
-            transition: 0.3s; display: flex; justify-content: space-between;
-        }
-        .nav-link.active { color: var(--accent); background: rgba(255,193,7,0.05); border-color: var(--border); }
+    /* DASHBOARD ÖZEL STİLLERİ (MASTER TASARIMA UYARLANDI) */
+    .dashboard-container {
+      padding-top: 110px;
+      padding-bottom: 80px;
+      min-height: 100vh;
+      position: relative;
+      z-index: 2;
+    }
 
-        /* VIEWPORT */
-        .viewport { flex: 1; padding: 20px; display: grid; grid-template-rows: auto 1fr auto; gap: 15px; z-index: 10; }
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.3; z-index: 0; pointer-events: none;
+    }
 
-        header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+    /* GLASS KUTULAR */
+    .glass-panel {
+      background: var(--panel-bg);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: 0.3s ease;
+    }
+    .glass-panel:hover { border-color: var(--primary); box-shadow: 0 0 15px rgba(255, 193, 7, 0.1); }
 
-        /* STAT BOXES */
-        .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    /* INDEX MENÜ & BUTON STİLLERİ */
+    .nav-contact-btn {
+      border: 1px solid rgba(255, 255, 255, 0.5) !important;
+      border-radius: 20px;
+      padding: 5px 20px !important;
+      margin-left: 10px;
+      transition: 0.3s;
+    }
+    .nav-contact-btn:hover { background: #fff; color: #000 !important; border-color: #fff !important; }
 
-        .panel {
-            background: var(--panel); border: 1px solid var(--border); border-radius: 4px;
-            padding: 15px; position: relative; backdrop-filter: blur(15px);
-            display: flex; flex-direction: column; min-height: 150px;
-        }
+    .btn-panel-header {
+      background: transparent; color: var(--primary) !important;
+      padding: 8px 25px; margin-left: 20px;
+      border-radius: 50px; font-weight: 700; font-size: 14px;
+      border: 2px solid var(--primary);
+      text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s;
+    }
+    .btn-panel-header:hover { background: var(--primary); color: #000 !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
 
-        .panel-header {
-            font-family: 'Orbitron', sans-serif; font-size: 0.6rem; color: var(--accent);
-            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; opacity: 0.9;
-        }
+    /* TEKNİK GÖRÜNÜM */
+    .tech-val { font-family: 'Orbitron', sans-serif; color: var(--primary); font-weight: 700; font-size: 1.5rem; }
+    .tech-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #7d8590; margin-bottom: 5px; display: block; }
+    
+    .mini-flow { height: 40px; overflow: hidden; font-size: 0.7rem; font-family: monospace; color: var(--primary); opacity: 0.7; }
 
-        .val { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; color: #fff; text-shadow: 0 0 10px var(--accent-glow); }
-        .unit { font-size: 0.7rem; color: var(--dim); margin-left: 5px; }
+    /* STATS BAR */
+    .stats-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px 0; width: 100%;
+      position: fixed; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 40px;
+      z-index: 100; flex-wrap: wrap;
+    }
+    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; }
+    .ip-highlight { color: #fff; font-weight: bold; }
 
-        /* MINI LOG FLOW (BOX INTERNALS) */
-        .mini-flow {
-            font-family: 'Courier New', monospace;
-            font-size: 0.58rem;
-            color: var(--dim);
-            margin-top: 10px;
-            padding-top: 8px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            flex: 1;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column-reverse;
-        }
-
-        /* CENTER GRIDS */
-        .center-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 15px; flex: 1; }
-        .chart-box { padding: 10px; min-height: 0; }
-
-        /* BOTTOM LAYOUT */
-        .bottom-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px; height: 180px; }
-
-        .console {
-            background: rgba(0,0,0,0.7); font-family: 'Courier New', monospace; font-size: 0.7rem;
-            color: var(--green); padding: 10px; overflow: hidden; border: 1px solid var(--border);
-        }
-
-        /* LOGO T/L */
-        .char-t { position: relative; display: inline-block; }
-        .char-t::after { content: "T"; position: absolute; left: 0; top: 0; width: 100%; height: 35%; color: var(--accent); overflow: hidden; }
-        .char-l { position: relative; display: inline-block; }
-        .char-l::after { content: "L"; position: absolute; left: 0; top: 0; width: 100%; height: 100%; color: var(--accent); clip-path: inset(75% 0 0 0); }
-    </style>
+    @media (max-width: 991px) {
+      .dashboard-container { padding-top: 120px; }
+      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; }
+      .btn-panel-header { display: none; }
+    }
+  </style>
 </head>
-<body>
 
-    <aside class="sidebar">
-        <div class="logo-area"><img src="assets/img/1.png" alt="Texper Logo"></div>
-        <nav>
-            <div class="nav-link active">MAIN_COMMAND_UNIT <span>[01]</span></div>
-            <div class="nav-link">MESH_NET_STATUS <span>ONLINE</span></div>
-            <div class="nav-link">CLOUD_VOL_TX9 <span>84%</span></div>
-            <div class="nav-link">SECURITY_GATE <span>SECURE</span></div>
-        </nav>
-        <div style="margin-top: auto; font-family: 'Orbitron'; font-size: 0.55rem; color: var(--dim);">
-            ID: TEXPER_MASTER_CONSOLE<br>LOC: GLOBAL_BACKBONE
-        </div>
-    </aside>
+<body class="index-page">
 
-    <div class="viewport">
-        <header>
-            <h2 style="font-family:'Orbitron'; letter-spacing:5px; font-size:1rem;">
-                <span class="char-t">T</span>EX C<span class="char-l">L</span>OUD // <span style="color:var(--accent)">MASTER_PLAN</span>
-            </h2>
-            <div id="clock" style="font-family:'Orbitron'; color:var(--accent); font-size:1.1rem; text-shadow: 0 0 10px var(--accent-glow);">00:00:00</div>
-        </header>
-
-        <section class="stat-row">
-            <div class="panel">
-                <div class="panel-header">TOTAL_SYSTEM_LOAD</div>
-                <div class="val" id="cpu-val">24.2<span class="unit">%</span></div>
-                <div style="font-family:'Courier New'; font-size:0.6rem; color:var(--dim);">> SEQ: 0xEC / SYNC: OK</div>
-                <div class="mini-flow" id="flow-cpu"></div>
-            </div>
-            <div class="panel">
-                <div class="panel-header">MEMORY_POOL_USAGE</div>
-                <div class="val" id="mem-val">32.4<span class="unit">GB</span></div>
-                <div style="font-family:'Courier New'; font-size:0.6rem; color:var(--dim);">> ADDR: 00EF:12A / BUFF: OK</div>
-                <div class="mini-flow" id="flow-mem"></div>
-            </div>
-            <div class="panel">
-                <div class="panel-header">ACTIVE_SESSIONS</div>
-                <div class="val" id="user-val">18<span class="unit">USERS</span></div>
-                <div style="font-family:'Courier New'; font-size:0.6rem; color:var(--dim);">> PROTOCOL: TLS_1.3</div>
-                <div class="mini-flow" id="flow-user"></div>
-            </div>
-            <div class="panel">
-                <div class="panel-header">GLOBAL_THROUGHPUT</div>
-                <div class="val" id="net-val">1.42<span class="unit">Gbps</span></div>
-                <div style="font-family:'Courier New'; font-size:0.6rem; color:var(--dim);">> GATEWAY: 172.16.1.1</div>
-                <div class="mini-flow" id="flow-net"></div>
-            </div>
-        </section>
-
-        <section class="center-grid">
-            <div class="panel chart-box">
-                <div class="panel-header">NETWORK_OUTBOUND // TX</div>
-                <div style="flex:1"><canvas id="cTX"></canvas></div>
-            </div>
-            <div class="panel chart-box">
-                <div class="panel-header">NETWORK_INBOUND // RX</div>
-                <div style="flex:1"><canvas id="cRX"></canvas></div>
-            </div>
-            <div class="panel chart-box">
-                <div class="panel-header">LATENCY_CORE_TREND // MS</div>
-                <div style="flex:1"><canvas id="cLat"></canvas></div>
-            </div>
-            <div class="panel chart-box">
-                <div class="panel-header">PACKET_INTEGRITY // ERROR_RATE</div>
-                <div style="flex:1"><canvas id="cPacket"></canvas></div>
-            </div>
-        </section>
-
-        <section class="bottom-grid">
-            <div class="panel console">
-                <div id="logContent"></div>
-            </div>
-            <div class="panel">
-                <div class="panel-header">NODE_TOPOLOGY</div>
-                <div style="font-size:0.65rem; line-height:2.2">
-                    ● MAIN_UNIT_TR <span style="float:right; color:var(--green)">ONLINE</span><br>
-                    ● GW_MESH_HUB <span style="float:right; color:var(--green)">ONLINE</span><br>
-                    ● TEX_STORAGE_X <span style="float:right; color:var(--accent)">BUSY</span><br>
-                    ● FIREWALL_CORE <span style="float:right; color:var(--green)">SECURE</span>
-                </div>
-            </div>
-            <div class="panel">
-                <div class="panel-header">SECURITY_THREAT</div>
-                <div style="text-align:center; padding-top:10px;">
-                    <div style="font-family:'Orbitron'; font-size:1.4rem; color:var(--green);" id="threat">MINIMAL</div>
-                    <div style="font-size:0.5rem; color:var(--dim);">ALL PROTOCOLS VERIFIED</div>
-                </div>
-            </div>
-        </section>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
+      </a>
+      
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Anasayfa</a></li>
+          <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="faq.html">S.S.S</a></li>
+              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="services.html">Tüm Hizmetler</a></li>
+              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
+              <li><a href="programlar.html">Faydalı Programlar</a></li>
+            </ul>
+          </li>
+          <li><a href="project.html">Projeler</a></li>
+          <li><a href="blog.html">Neler Yapıyoruz</a></li>
+          <li><a href="contact.html" class="nav-contact-btn">İletişim</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      
+      <a class="btn-panel-header d-none d-lg-flex" href="https://texper.xyz">
+        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
+      </a>
     </div>
+  </header>
 
-    <script>
-        setInterval(() => { document.getElementById('clock').innerText = new Date().toLocaleTimeString('tr-TR'); }, 1000);
+  <main class="dashboard-container">
+    <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+    
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-3">
+          <div class="glass-panel text-center">
+            <span class="tech-label">CPU LOAD</span>
+            <div class="tech-val" id="cpu-val">24.8<span style="font-size: 0.8rem;">%</span></div>
+            <div id="flow-cpu" class="mini-flow mt-2"></div>
+          </div>
+          <div class="glass-panel text-center">
+            <span class="tech-label">ACTIVE SESSIONS</span>
+            <div class="tech-val" id="user-val">19<span style="font-size: 0.8rem;"> USERS</span></div>
+            <div id="flow-user" class="mini-flow mt-2"></div>
+          </div>
+          <div class="glass-panel text-center">
+            <span class="tech-label">NETWORK TRAFFIC</span>
+            <div class="tech-val" id="net-val">1.42<span style="font-size: 0.8rem;"> Gbps</span></div>
+            <div id="flow-net" class="mini-flow mt-2"></div>
+          </div>
+        </div>
 
-        const lineConfig = (color) => ({
-            type: 'line',
-            data: { labels: Array(25).fill(''), datasets: [{ data: Array(25).fill(20), borderColor: color, borderWidth: 1.5, fill: true, backgroundColor: color+'05', tension: 0.4, pointRadius: 0 }] },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } } }
-        });
+        <div class="col-lg-6">
+          <div class="glass-panel h-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="tech-label">GLOBAL INFRASTRUCTURE STATUS</span>
+              <span class="badge bg-success" style="font-size: 0.6rem;">SYSTEM OPTIMIZED</span>
+            </div>
+            <div style="height: 300px; background: rgba(0,0,0,0.4); border-radius: 10px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                <i class="bi bi-broadcast" style="font-size: 5rem; color: var(--primary); opacity: 0.2;"></i>
+                <div style="position: absolute; top: 10px; left: 10px; font-family: monospace; font-size: 0.7rem; color: #aaa;">
+                    NODE_TR_DZC_01: ONLINE<br>NODE_DE_FRA_02: ONLINE<br>NODE_US_NYC_01: ONLINE
+                </div>
+            </div>
+            <div class="mt-4">
+                <canvas id="mainChart" style="max-height: 150px;"></canvas>
+            </div>
+          </div>
+        </div>
 
-        // SARI BAR GRAFİK KONFİGÜRASYONU
-        const barConfig = (color) => ({
-            type: 'bar',
-            data: { labels: Array(12).fill(''), datasets: [{ data: Array(12).fill(20), backgroundColor: color, borderRadius: 2 }] },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false, beginAtZero: true, max: 100 } } }
-        });
+        <div class="col-lg-3">
+          <div class="glass-panel h-100" style="max-height: 600px; overflow: hidden;">
+            <span class="tech-label">SYSTEM KERNEL LOGS</span>
+            <div id="logContent" style="font-family: monospace; font-size: 0.65rem; color: #a5d6ff; line-height: 1.4; overflow-y: auto;">
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
-        const cTX = new Chart(document.getElementById('cTX'), lineConfig('#ffc107'));
-        const cRX = new Chart(document.getElementById('cRX'), lineConfig('#3fb950'));
-        const cLat = new Chart(document.getElementById('cLat'), lineConfig('#f85149'));
-        const cPacket = new Chart(document.getElementById('cPacket'), barConfig('#ffc107'));
+  <div class="stats-bar">
+    <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <strong style="color:var(--primary);">ACTIVE COMMAND</strong></div>
+    <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <strong style="color:#fff;">312 ACTIVE</strong></div>
+    <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <strong id="user-ip" class="ip-highlight">Loading...</strong></div>
+  </div>
 
-        // Mini Log Ekleme
-        function addMiniLog(id, msg) {
-            const container = document.getElementById(id);
-            const line = document.createElement('div');
-            line.style.opacity = '0.5';
-            line.innerText = `> ${msg}`;
-            container.prepend(line);
-            if(container.childNodes.length > 3) container.removeChild(container.lastChild);
-        }
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Dinamik Veri Akışı Scriptleri (Orijinal Mantık Korundu)
+    function addMiniLog(id, msg) {
+        const el = document.getElementById(id);
+        const div = document.createElement('div');
+        div.textContent = msg;
+        el.prepend(div);
+        if (el.children.length > 5) el.lastChild.remove();
+    }
 
-        // ASKERİ DİSİPLİN: 4 Saniyede bir stabil güncelleme
-        setInterval(() => {
-            [cTX, cRX, cLat].forEach(c => {
-                c.data.datasets[0].data.shift();
-                c.data.datasets[0].data.push(Math.random() * 40 + 20);
-                c.update();
-            });
-            cPacket.data.datasets[0].data = cPacket.data.datasets[0].data.map(() => Math.random() * 70 + 10);
-            cPacket.update();
+    setInterval(() => {
+        document.getElementById('cpu-val').innerHTML = (Math.random() * 10 + 20).toFixed(1) + \"<span style='font-size:0.8rem'>%</span>\";
+        document.getElementById('net-val').innerHTML = (Math.random() * 0.5 + 1.2).toFixed(2) + \"<span style='font-size:0.8rem'> Gbps</span>\";
+        
+        addMiniLog('flow-cpu', `CORE_${Math.floor(Math.random()*8)}: ${Math.floor(Math.random()*100)}% LOAD`);
+        addMiniLog('flow-net', `PACKET_IN: 0x${Math.random().toString(16).substr(2,2).toUpperCase()} OK`);
+        
+        const log = document.getElementById('logContent');
+        const entry = document.createElement('div');
+        entry.innerHTML = `<span style=\"color:#7d8590\">[${new Date().toLocaleTimeString()}]</span> <span style=\"color:#ffc107\">CMD:</span> AUTH_REQUEST_FROM_IP_${Math.floor(Math.random()*255)}.x`;
+        log.prepend(entry);
+        if (log.children.length > 25) log.lastChild.remove();
+    }, 2000);
 
-            // Üst Kutu Mini Akışları
-            addMiniLog('flow-cpu', `CORE_${Math.floor(Math.random()*8)}: ${Math.floor(Math.random()*100)}% LOAD`);
-            addMiniLog('flow-mem', `PAGE_IN: 0x${Math.random().toString(16).substr(2,2).toUpperCase()} OK`);
-            addMiniLog('flow-user', `AUTH: USR_${Math.floor(Math.random()*99)} GRANTED`);
-            addMiniLog('flow-net', `HOP: ${Math.floor(Math.random()*255)}.x -> 10.0.1`);
+    // IP Çekme
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => { document.getElementById('user-ip').innerText = data.ip; });
 
-            // Rakamlar
-            document.getElementById('cpu-val').innerHTML = (Math.random() * 5 + 20).toFixed(1) + "<span class='unit'>%</span>";
-            document.getElementById('user-val').innerHTML = Math.floor(Math.random() * 3 + 18) + "<span class='unit'>USERS</span>";
-            document.getElementById('net-val').innerHTML = (Math.random() * 0.4 + 1.2).toFixed(2) + "<span class='unit'>Gbps</span>";
+    // Chart.js Başlatma
+    const ctx = document.getElementById('mainChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['', '', '', '', '', ''],
+            datasets: [{
+                label: 'Global Traffic',
+                data: [12, 19, 3, 5, 2, 3],
+                borderColor: '#ffc107',
+                borderWidth: 2,
+                tension: 0.4,
+                pointRadius: 0
+            }]
+        },
+        options: { plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { display: false } } }
+    });
+  </script>
 
-            const log = document.getElementById('logContent');
-            const line = document.createElement('div');
-            line.innerText = `> [${new Date().toLocaleTimeString()}] HEARTBEAT_SYNC: NODE_ALPHA_${Math.floor(Math.random()*9)} // STATUS: OK`;
-            log.prepend(line);
-            if(log.childNodes.length > 7) log.removeChild(log.lastChild);
-        }, 4000); 
-    </script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

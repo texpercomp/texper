@@ -17,23 +17,46 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* INDEX TEMASI - %100 SADAKAT */
+    /* MASTER INDEX CSS SADAKATİ */
+    :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
+
+    html, body { background-color: #000000 !important; }
+
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
-    
+
     .hero { 
       min-height: 100vh; 
-      display: flex; 
-      align-items: center; 
-      padding: 120px 0 80px 0; 
-      position: relative;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; padding-top: 100px; padding-bottom: 50px;
     }
 
-    /* Hizmet Detay Akış Tasarımı */
-    .detail-list-container {
-      max-width: 950px;
-      margin: 0 auto;
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none;
     }
+    
+    .hero .container { position: relative; z-index: 2; }
 
+    /* INDEX MENÜ & BUTON STİLLERİ */
+    .nav-contact-btn {
+      border: 1px solid rgba(255, 255, 255, 0.5) !important;
+      border-radius: 20px;
+      padding: 5px 20px !important;
+      margin-left: 10px;
+      transition: 0.3s;
+    }
+    .nav-contact-btn:hover { background: #fff; color: #000 !important; border-color: #fff !important; }
+
+    .btn-panel-header {
+      background: transparent; color: var(--primary) !important;
+      padding: 8px 25px; margin-left: 20px;
+      border-radius: 50px; font-weight: 700; font-size: 14px;
+      border: 2px solid var(--primary);
+      text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s;
+    }
+    .btn-panel-header:hover { background: var(--primary); color: #000 !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
+
+    /* HİZMET SATIRLARI (INDEX STİLİNDE) */
     .detail-row {
       display: flex;
       align-items: flex-start;
@@ -41,62 +64,70 @@
       backdrop-filter: blur(10px);
       padding: 30px;
       border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--glass-border);
       margin-bottom: 20px;
       transition: 0.4s ease;
     }
-
     .detail-row:hover {
-      background: rgba(255, 193, 7, 0.05);
-      border-left: 5px solid #ffc107;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--primary);
       transform: translateX(10px);
     }
-
-    .detail-icon {
-      font-size: 2.2rem;
-      color: #ffc107;
-      min-width: 70px;
-    }
-
-    .detail-info h4 {
-      color: #fff;
-      font-weight: 700;
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-    }
-
-    .detail-info p {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 0;
-    }
-
-    .tech-specs {
-      display: flex;
-      gap: 15px;
-      margin-top: 15px;
-    }
+    .detail-icon { font-size: 2.2rem; color: var(--primary); min-width: 70px; }
+    .detail-info h4 { color: #fff; font-weight: 700; margin-bottom: 10px; font-size: 1.3rem; }
+    .detail-info p { color: rgba(255, 255, 255, 0.8); font-size: 1rem; line-height: 1.7; margin-bottom: 0; }
 
     .spec-tag {
-      font-size: 0.75rem;
-      background: rgba(13, 66, 255, 0.2);
-      padding: 4px 12px;
-      border-radius: 5px;
-      color: #fff;
-      font-weight: 600;
-      border: 1px solid rgba(13, 66, 255, 0.3);
+      font-size: 0.75rem; background: rgba(255, 193, 7, 0.1);
+      padding: 4px 12px; border-radius: 5px; color: var(--primary);
+      font-weight: 600; border: 1px solid rgba(255, 193, 7, 0.2);
+      margin-right: 10px; margin-top: 10px; display: inline-block;
+    }
+
+    /* ANA AKSİYON BUTONU */
+    .btn-action-master {
+      background: var(--primary);
+      color: #000 !important;
+      border: 1px solid var(--primary);
+      padding: 15px 45px; border-radius: 50px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+      transition: 0.3s; font-weight: 800;
+      box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+      text-transform: uppercase;
+    }
+    .btn-action-master:hover { background: #fff; border-color: #fff; transform: scale(1.05); color: #000 !important; }
+
+    /* STATS BAR */
+    .stats-bar {
+      border-top: 1px solid var(--glass-border);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px 0; width: 100%;
+      position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 40px;
+      z-index: 10; flex-wrap: wrap;
+    }
+    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; }
+    .ip-highlight { color: #fff; font-weight: bold; }
+
+    @media (max-width: 991px) {
+      .hero { padding-top: 120px; height: auto; padding-bottom: 80px; }
+      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
+      .btn-panel-header { display: none; }
+      .nav-contact-btn { border: none !important; padding: 0 !important; margin: 0 !important; }
+      .detail-row { flex-direction: column; text-align: center; }
+      .detail-icon { margin-bottom: 15px; width: 100%; }
     }
   </style>
 </head>
 
-<body class="service-details-page">
+<body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-       <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-  <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
-</a>
+        <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
+      </a>
+      
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
@@ -113,37 +144,46 @@
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
               <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
               <li><a href="programlar.html">Faydalı Programlar</a></li>
             </ul>
           </li>
           <li><a href="project.html">Projeler</a></li>
           <li><a href="blog.html">Neler Yapıyoruz</a></li>
-          <li><a href="contact.html">İletişim</a></li>
+          <li><a href="contact.html" class="nav-contact-btn">İletişim</a></li>
+          <li class="d-md-none"><a href="destek.html">Destek Al</a></li>
+          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-      <a class="btn-getstarted" href="destek.html">Destek Paneli</a>
+      
+      <a class="btn-panel-header d-none d-lg-flex" href="https://texper.xyz">
+        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
+      </a>
     </div>
   </header>
 
   <main class="main">
     <section id="hero" class="hero section dark-background">
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+
       <div class="container">
-        
         <div class="text-center mb-5">
           <h2 style="font-size: 3.2rem; font-weight: 800;">Ağ ve <span style="color: #ffc107;">Altyapı.</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem;">Kesintisiz iletişim için mühendislik harikası ağ tasarımları ve profesyonel işçilik.</p>
+          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; color: #ccc;">Kesintisiz iletişim için mühendislik harikası ağ tasarımları ve profesyonel işçilik.</p>
         </div>
 
-        <div class="detail-list-container">
-          
+        <div class="mx-auto" style="max-width: 950px;">
           <div class="detail-row">
             <div class="detail-icon"><i class="bi bi-diagram-3"></i></div>
             <div class="detail-info">
               <h4>Yapısal Kablolama & Sonlandırma</h4>
               <p>Cat6, Cat7 ve Fiber Optik kablolama projelerinizde en yüksek iletim hızını garanti ediyoruz. Patch panel düzenleme ve profesyonel etiketleme ile karmaşaya son veriyoruz.</p>
-              <div class="tech-specs"><span class="spec-tag">CAT6A / CAT7</span><span class="spec-tag">FIBER OPTIC</span><span class="spec-tag">TIA/EIA-568</span></div>
+              <div class="tech-specs">
+                <span class="spec-tag">CAT6A / CAT7</span>
+                <span class="spec-tag">FIBER OPTIC</span>
+                <span class="spec-tag">TIA/EIA-568</span>
+              </div>
             </div>
           </div>
 
@@ -152,7 +192,11 @@
             <div class="detail-info">
               <h4>Aktif Cihaz Yapılandırması</h4>
               <p>Manageable (yönetilebilir) switch, router ve core switch kurulumları. VLAN yapılandırmaları ile ağ trafiğinizi optimize ediyor ve güvenli bölümlere ayırıyoruz.</p>
-              <div class="tech-specs"><span class="spec-tag">VLAN</span><span class="spec-tag">L2/L3 SWITCHING</span><span class="spec-tag">STP/RSTP</span></div>
+              <div class="tech-specs">
+                <span class="spec-tag">VLAN</span>
+                <span class="spec-tag">L2/L3 SWITCHING</span>
+                <span class="spec-tag">STP/RSTP</span>
+              </div>
             </div>
           </div>
 
@@ -161,7 +205,11 @@
             <div class="detail-info">
               <h4>Endüstriyel Wi-Fi Çözümleri</h4>
               <p>Geniş alanlarda kesintisiz roaming (dolaşım) sağlayan Access Point kurulumları. Sinyal kirliliğini önleyen ve yük dengeleyen profesyonel Wi-Fi ağları.</p>
-              <div class="tech-specs"><span class="spec-tag">WI-FI 6E</span><span class="spec-tag">ROAMING</span><span class="spec-tag">WIRELESS CONTROLLER</span></div>
+              <div class="tech-specs">
+                <span class="spec-tag">WI-FI 6E</span>
+                <span class="spec-tag">ROAMING</span>
+                <span class="spec-tag">WIRELESS CONTROLLER</span>
+              </div>
             </div>
           </div>
 
@@ -170,26 +218,40 @@
             <div class="detail-info">
               <h4>Kabin Düzenleme & Modernizasyon</h4>
               <p>Mevcut sistem odalarınızdaki karmaşayı gideriyoruz. Kabin içi havalandırma, UPS entegrasyonu ve kablo yönetimi ile standartlara uygun sistem merkezleri.</p>
-              <div class="tech-specs"><span class="spec-tag">42U RACK</span><span class="spec-tag">UPS SETUP</span><span class="spec-tag">COOLING</span></div>
+              <div class="tech-specs">
+                <span class="spec-tag">42U RACK</span>
+                <span class="spec-tag">UPS SETUP</span>
+                <span class="spec-tag">COOLING</span>
+              </div>
             </div>
           </div>
 
           <div class="text-center mt-5">
-            <a href="contact.html" class="btn-getstarted" style="background: #ffc107; color: #000; border: none; padding: 15px 50px; border-radius: 50px; font-weight: 800;">ÜCRETSİZ KEŞİF İSTEYİN</a>
+            <a href="contact.html" class="btn-action-master">
+              <i class="bi bi-calendar-check"></i> ÜCRETSİZ KEŞİF İSTEYİN
+            </a>
           </div>
-
         </div>
+      </div>
 
+      <div class="stats-bar">
+        <div class="stat-text"><i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <strong style="color:#fff;">312 ACTIVE</strong></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong></div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background">
-    <div class="container copyright text-center py-4">
-      <p>© 2025 <strong class="px-1 sitename">Texper Bilişim</strong> - Altyapı Uzmanınız.</p>
-    </div>
-  </footer>
+  <footer id="footer" class="footer dark-background" style="padding: 0; height: 0; overflow: hidden; visibility: hidden;"></footer>
+
+  <script>
+    fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => { document.getElementById('user-ip').innerText = data.ip; })
+      .catch(error => { document.getElementById('user-ip').innerText = "Gizli"; });
+  </script>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -17,132 +17,92 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* ORİJİNAL CSS'E MÜDAHALE ETMİYORUZ, SADECE YENİLERİ EKLİYORUZ */
+    /* MASTER CSS SADAKATİ */
     :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
 
-    /* Görünürlük Garantisi */
+    html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
-    /* HERO ALANI AYARLARI */
     .hero { 
-      min-height: 100vh; /* Tam ekran */
+      min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
       position: relative; padding-top: 100px; padding-bottom: 50px;
-      /* Arka plan rengi vermiyoruz, main.css'den gelecek */
     }
 
-    /* HARİTA - Kaybolmasın ve arkada dursun */
     .hero-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none;
+      object-fit: cover; opacity: 0.4; z-index: 0; pointer-events: none;
     }
     
-    /* İçeriği öne çekiyoruz */
     .hero .container { position: relative; z-index: 2; }
-
-    /* YAZI EFEKTİ */
     .typed-text { color: var(--primary) !important; border-right: 3px solid var(--primary); padding-right: 5px; }
 
-    /* --- 1. MENÜDEKİ İLETİŞİM BUTONU --- */
-    /* Normal linklerden farklı, Müşteri Panelinden de farklı */
-    .nav-contact-btn {
-      border: 1px solid rgba(255, 255, 255, 0.5) !important;
-      border-radius: 20px;
-      padding: 5px 20px !important;
-      margin-left: 10px;
+    /* --- GÜNCEL İLETİŞİM BUTONU (KARARINDA BELİRGİN) --- */
+    .nav-contact-texper {
+      color: var(--primary) !important;
+      border: 1px solid rgba(255, 193, 7, 0.4) !important;
+      border-radius: 50px;
+      padding: 6px 22px !important;
+      margin-left: 15px;
       transition: 0.3s;
+      font-weight: 500;
     }
-    .nav-contact-btn:hover {
-      background: #fff;
+    .nav-contact-texper:hover {
+      background: var(--primary);
       color: #000 !important;
-      border-color: #fff !important;
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 15px rgba(255, 193, 7, 0.2);
     }
 
-    /* --- 2. YENİ BUTONLAR (Action Grid) --- */
-    .action-grid {
-      display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; margin-top: 30px;
-    }
-
-    /* Hizmetler Butonu (Şeffaf) */
+    /* ACTION BUTTONS */
+    .action-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; margin-top: 30px; }
     .action-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--glass-border);
-      padding: 15px 35px; border-radius: 50px;
-      text-decoration: none; color: #fff;
-      display: flex; align-items: center; gap: 10px;
-      transition: 0.3s; backdrop-filter: blur(5px);
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
+      padding: 15px 35px; border-radius: 50px; text-decoration: none; color: #fff;
+      display: flex; align-items: center; gap: 10px; transition: 0.3s; backdrop-filter: blur(5px);
     }
-    .action-card:hover {
-      background: rgba(255, 255, 255, 0.15); color: #fff; transform: translateY(-3px);
-    }
+    .action-card:hover { background: rgba(255, 255, 255, 0.15); color: #fff; transform: translateY(-3px); }
+    .card-highlight { background: var(--primary); color: #000 !important; border: 1px solid var(--primary); font-weight: 700; padding: 15px 45px; }
 
-    /* DESTEK BUTONU (Vurgulu - Sarı Dolgulu) */
-    .card-highlight {
-      background: var(--primary); /* Sarı Dolgu */
-      color: #000 !important; /* Siyah Yazı */
-      border: 1px solid var(--primary);
-      box-shadow: 0 0 20px rgba(255, 193, 7, 0.4); /* Parlama */
-      font-weight: 700;
-      padding: 15px 45px; /* Biraz daha geniş */
-    }
-    .card-highlight:hover {
-      background: #fff; border-color: #fff; transform: scale(1.05); color: #000 !important;
-    }
-    .card-highlight i { color: #000; }
-
-    /* --- 3. 3'LÜ KART YAPISI --- */
-    .feature-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-      max-width: 1100px; margin: 0 auto;
-    }
+    /* FEATURES */
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
     .feature-item {
-      background: rgba(255, 255, 255, 0.03); /* Çok hafif şeffaf */
-      border: 1px solid var(--glass-border);
-      padding: 25px; border-radius: 16px;
-      text-align: left; display: flex; align-items: flex-start; gap: 15px;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border);
+      padding: 25px; border-radius: 16px; text-align: left; display: flex; align-items: flex-start; gap: 15px;
       transition: 0.3s; backdrop-filter: blur(5px);
     }
-    .feature-item:hover {
-      border-color: var(--primary); transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.08);
-    }
-    .feature-item i { font-size: 2rem; color: var(--primary); line-height: 1; }
-    .feature-item h4 { font-size: 1.1rem; color: #fff; margin: 0 0 5px 0; font-weight: 600; }
-    .feature-item p { font-size: 0.9rem; color: #ccc; margin: 0; line-height: 1.5; }
+    .feature-item i { font-size: 2rem; color: var(--primary); }
+    .feature-item h4 { font-size: 1.1rem; color: #fff; margin: 0 0 5px 0; }
+    .feature-item p { font-size: 0.9rem; color: #ccc; margin: 0; }
 
-    /* --- 4. ALT DURUM ÇUBUĞU & IP ADRESİ --- */
+    /* TEKNİK ALT BAR */
     .stats-bar {
-      border-top: 1px solid var(--glass-border);
-      background: rgba(0, 0, 0, 0.3); /* Hafif koyuluk */
-      padding: 15px 0;
+      border: none !important;
+      background: transparent !important;
+      padding: 25px 0;
       width: 100%;
       position: absolute; bottom: 0; left: 0;
       display: flex; justify-content: center; gap: 40px;
       z-index: 10;
-      flex-wrap: wrap;
     }
-    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; letter-spacing: 0.5px; }
-    .stat-text i { color: #22c55e; }
-    /* IP Adresi Özel Renk */
-    .ip-highlight { color: #fff; font-weight: bold; text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+    .stat-text { 
+      display: flex; align-items: center; gap: 8px; 
+      color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; font-family: 'Courier New', monospace; 
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+    .stat-text i { color: var(--primary); } 
+    .stat-val { color: #fff; font-weight: bold; border-bottom: 1px solid rgba(255,193,7,0.3); }
 
-    /* SAĞ ÜST PANEL BUTONU */
     .btn-panel-header {
       background: transparent; color: var(--primary) !important;
-      padding: 8px 25px; margin-left: 20px;
-      border-radius: 50px; font-weight: 700; font-size: 14px;
-      border: 2px solid var(--primary);
-      text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s;
+      padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700;
+      border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
     }
-    .btn-panel-header:hover { background: var(--primary); color: #000 !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
 
-    /* MOBİL AYARLAR */
     @media (max-width: 991px) {
-      .hero { padding-top: 120px; height: auto; padding-bottom: 80px; }
-      .feature-grid { grid-template-columns: 1fr; gap: 15px; }
-      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
-      .btn-panel-header { display: none; }
-      .nav-contact-btn { border: none !important; padding: 0 !important; margin: 0 !important; } /* Mobilde normale dönsün */
+      .feature-grid { grid-template-columns: 1fr; }
+      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; }
+      .nav-contact-texper { margin-left: 0; margin-top: 10px; display: inline-block; }
     }
   </style>
 </head>
@@ -152,8 +112,8 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-  <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
-</a>
+        <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
+      </a>
       
       <nav id="navmenu" class="navmenu">
         <ul>
@@ -162,28 +122,30 @@
           <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="about.html">Hakkımızda</a></li>
-              <li><a href="referanslar.html">Referanslar</a></li>
               <li><a href="faq.html">S.S.S</a></li>
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
 
-          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="#"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
-              <li><a href="programlar.html">Faydalı Programlar</a></li> </ul>
+            </ul>
           </li>
 
-          <li><a href="project.html">Projeler</a></li>
-          <li><a href="blog.html">Neler Yapıyoruz</a></li>
-          
-          <li><a href="contact.html" class="nav-contact-btn">İletişim</a></li>
-          
-          <li class="d-md-none"><a href="destek.html">Destek Al</a></li>
-          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
+          <li class="dropdown"><a href="#"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="blog.html">Neler Yapıyoruz</a></li>
+              <li><a href="project.html">Projelerimiz</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="programlar.html">BT Programlar</a></li>
+            </ul>
+          </li>
+
+          <li><a href="contact.html" class="nav-contact-texper">İletişim</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -196,78 +158,37 @@
 
   <main class="main">
     <section id="hero" class="hero section dark-background">
-      
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
 
       <div class="container text-center">
-        <h2 class="mb-3">
-          BT Altyapınız <span id="changing-text" class="typed-text"></span>
-        </h2>
-        
-        <p>
-          Uçtan uca donanım kurulumlarından, TexNexus bulut mimarisine; fiziksel ve dijital altyapınızı tek merkezden profesyonelce yönetiyoruz.
-        </p>
+        <h2 class="mb-3">Dijital Altyapınız <span id="changing-text" class="typed-text"></span></h2>
+        <p>Uçtan uca donanım çözümleri, TexNexus bulut mimarisi ve profesyonel ağ yönetimi ile kurumsal süreçlerinizi tek merkezden modernize ediyoruz.</p>
         
         <div class="action-grid">
-          <a href="services.html" class="action-card">
-            <i class="bi bi-hdd-network"></i>
-            <span>Hizmetleri İncele</span>
-          </a>
-
-          <a href="destek.html" class="action-card card-highlight">
-            <i class="bi bi-headset"></i>
-            <span>TEKNİK DESTEK AL</span>
-          </a>
+          <a href="services.html" class="action-card"><i class="bi bi-hdd-network"></i><span>Çözümlerimiz</span></a>
+          <a href="destek.html" class="action-card card-highlight"><i class="bi bi-headset"></i><span>TEKNİK DESTEK AL</span></a>
         </div>
 
         <div class="feature-grid">
-          <div class="feature-item">
-            <i class="bi bi-shield-check"></i>
-            <div>
-              <h4>Güvenlik Çemberi</h4>
-              <p>Firewall ve siber güvenlik çözümleriyle uçtan uca koruma.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <i class="bi bi-cloud-arrow-up"></i>
-            <div>
-              <h4>Hibrit Yedekleme</h4>
-              <p>NAS ve Bulut entegrasyonu ile verileriniz her an güvende.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <i class="bi bi-cpu"></i>
-            <div>
-              <h4>7/24 Sistem İzleme</h4>
-              <p>MeshCentral altyapısıyla anlık takip ve hızlı müdahale.</p>
-            </div>
-          </div>
+          <div class="feature-item"><i class="bi bi-shield-check"></i><div><h4>Sistem Güvenliği</h4><p>Zafiyet analizi ve koruma protokolleri.</p></div></div>
+          <div class="feature-item"><i class="bi bi-cloud-arrow-up"></i><div><h4>Veri Yönetimi</h4><p>TexNexus hibrit yedekleme çözümleri.</p></div></div>
+          <div class="feature-item"><i class="bi bi-cpu"></i><div><h4>Aktif Monitoring</h4><p>7/24 Kesintisiz donanım ve ağ takibi.</p></div></div>
         </div>
-
       </div>
 
       <div class="stats-bar">
-        <div class="stat-text">
-          <i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong>
-        </div>
-        <div class="stat-text">
-          <i class="bi bi-shield-lock"></i> AGENTS: <strong style="color:#fff;">312 ACTIVE</strong>
-        </div>
-        <div class="stat-text">
-          <i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong>
-        </div>
+        <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span class="stat-val">ONLINE</span></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <span id="agent-count" class="stat-val">312 ACTIVE</span></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" class="stat-val">Loading...</span></div>
       </div>
-
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background" style="padding: 0; height: 0; overflow: hidden; visibility: hidden;">
-    </footer>
-
   <script>
     const textElement = document.getElementById('changing-text');
-    const texts = ["Bize Emanet.", "Güvende.", "Hızlı ve Stabil.", "Bizimle.", "Optimize Edildi."];
+    const texts = ["Optimize Edildi.", "Güvence Altında.", "Stabilize Edildi.", "Geleceğe Hazır."];
     let index = 0; let charIndex = 0; let isDeleting = false;
+
     function type() {
       const currentText = texts[index];
       if (isDeleting) {
@@ -275,9 +196,10 @@
       } else {
         textElement.textContent = currentText.substring(0, charIndex + 1); charIndex++;
       }
-      let typeSpeed = isDeleting ? 50 : 100;
+      
+      let typeSpeed = isDeleting ? 30 : 60;
       if (!isDeleting && charIndex === currentText.length) {
-        isDeleting = true; typeSpeed = 2000;
+        isDeleting = true; typeSpeed = 4000;
       } else if (isDeleting && charIndex === 0) {
         isDeleting = false; index = (index + 1) % texts.length; typeSpeed = 500;
       }
@@ -285,18 +207,18 @@
     }
     document.addEventListener('DOMContentLoaded', type);
 
-    // IP ADRESİNİ ÇEKEN BASİT SCRIPT
+    function updateAgentCount() {
+      const agentEl = document.getElementById('agent-count');
+      const baseCount = 312;
+      const fluctuation = Math.floor(Math.random() * 7) - 3;
+      agentEl.innerText = (baseCount + fluctuation) + " ACTIVE";
+    }
+    setInterval(updateAgentCount, 4000);
+
     fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById('user-ip').innerText = data.ip;
-      })
-      .catch(error => {
-        document.getElementById('user-ip').innerText = "Gizli";
-      });
+      .then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
   </script>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
 </body>
 </html>
