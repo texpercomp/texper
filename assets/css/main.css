@@ -2073,3 +2073,53 @@ section,
   .hero h2 { font-size: 2rem !important; }
   .btn-explore, .btn-support-yellow { width: 100%; text-align: center; justify-content: center; }
 }
+/*--------------------------------------------------------------
+# MAVİ PUSU VE OVERLAY'İ TAMAMEN SİLEN KOD
+--------------------------------------------------------------*/
+
+/* 1. Resimlerin üzerindeki mavi katmanı siyah/şeffaf yapar */
+.hero::before, 
+.dark-background::before,
+section::before,
+.page-title::before,
+.call-to-action::before,
+div[class*="background"]::before,
+#hero::before {
+  background-color: rgba(0, 0, 0, 0.6) !important; /* Maviyi siler, siyah karartma yapar */
+  background-image: none !important; /* Mavi gradyanları tamamen yok eder */
+}
+
+/* 2. Arka plan resmindeki mavi tonları temizler */
+.hero-bg, .hero img, #hero img, .page-title img, .call-to-action img {
+  filter: brightness(80%) contrast(100%) !important; /* Mavileştirme filtresini iptal eder */
+}
+
+/* 3. Global mavi değişkeni sarıya çevirir (İşini sağlama alır) */
+:root {
+  --accent-color: #ffc107 !important;
+  --heading-color: #ffffff !important;
+}/*--------------------------------------------------------------
+# MAVİLİĞİ KÖKTEN SİLEN VE RESMİ ÖNE ÇIKARAN KESİN ÇÖZÜM
+--------------------------------------------------------------*/
+
+/* 1. Tüm katmanlardaki mavi rengi şeffaf siyaha çevirir */
+.hero::before, 
+.dark-background::before, 
+section::before, 
+#hero::before, 
+.page-title::before, 
+.call-to-action::before {
+    background: rgba(0, 0, 0, 0.5) !important; /* Mavi değil, sadece %50 siyahlık verir */
+    background-image: none !important; /* Varsa mavi gradyanları iptal eder */
+}
+
+/* 2. Logis şablonunun zorunlu mavi arka plan rengini siyah yapar */
+.dark-background {
+    --background-color: #000000 !important;
+}
+
+/* 3. Arka plan resmindeki mavi filtreyi temizler, kahverengi tonları korur */
+.hero-bg, .hero img, #hero img, .page-title img, .call-to-action img {
+    filter: none !important; /* Şablonun uyguladığı ekstra filtreleri kapatır */
+    brightness: 0.8; /* Resmin çok parlak olmaması için hafif karartır */
+}
