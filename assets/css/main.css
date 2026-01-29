@@ -2123,3 +2123,68 @@ section::before,
     filter: none !important; /* Şablonun uyguladığı ekstra filtreleri kapatır */
     brightness: 0.8; /* Resmin çok parlak olmaması için hafif karartır */
 }
+/*--------------------------------------------------------------
+# MOBİL MENÜ ÖZEL DÜZENLEME (VAR OLANLARI BOZMADAN SADECE EKLEME)
+--------------------------------------------------------------*/
+@media (max-width: 1199px) {
+  /* Menü açıldığında tüm ekranı kaplayan katman */
+  .mobile-nav-active .navmenu {
+    background: rgba(0, 0, 0, 0.95) !important; /* Saf siyah ve çok az şeffaf */
+    background-image: url('../img/world-dotted-map.png') !important; /* Arka plan görseli */
+    background-size: cover !important;
+    background-position: center !important;
+    backdrop-filter: blur(10px) !important; /* Buzlu cam efekti */
+    position: fixed !important;
+    inset: 0 !important;
+  }
+
+  /* Menü listesinin kutusu ve linkleri */
+  .navmenu ul {
+    background: transparent !important; /* Kutunun kendi beyazlığını siler */
+    box-shadow: none !important;
+    margin-top: 20px !important;
+  }
+
+  /* Yazı renklerini beyaza zorlar */
+  .navmenu a, 
+  .navmenu a:focus {
+    color: #ffffff !important; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    font-size: 18px !important;
+  }
+
+  /* İkonların arka planı (Ok işaretleri vb.) */
+  .navmenu a i {
+    background-color: rgba(255, 193, 7, 0.2) !important;
+    color: #ffc107 !important;
+  }
+
+  /* Aktif olan menü elemanı */
+  .navmenu .active, 
+  .navmenu a:hover {
+    color: #ffc107 !important;
+  }
+
+  /* Kapatma butonu (X) ve Hamburger ikonunu beyaz yap */
+  .mobile-nav-toggle {
+    color: #ffffff !important;
+  }
+  
+  /* Dropdown (Alt menü) kutuları */
+  .navmenu .dropdown ul {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+/* Maviliği Siyah Yapan Küçük Dokunuş */
+.hero::before, #hero::before, .dark-background::before {
+    background: rgba(0, 0, 0, 0.6) !important;
+}
+
+#site-loader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #000; z-index: 9999; transition: opacity 0.5s, visibility 0.5s;
+    display: flex; justify-content: center; align-items: center;
+}
+#site-loader.hidden { opacity: 0; visibility: hidden; }
