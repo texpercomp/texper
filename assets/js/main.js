@@ -10,11 +10,12 @@
   "use strict";
 
   /**
-   * Apply .scrolled class to the body as the page is scrolled down
+   * Sayfa kaydırıldığında header'a .scrolled sınıfı ekler
    */
   function toggleScrolled() {
     const selectBody = document.querySelector('body');
     const selectHeader = document.querySelector('#header');
+    if (!selectHeader) return;
     if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
     window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
   }
@@ -23,19 +24,26 @@
   window.addEventListener('load', toggleScrolled);
 
   /**
-   * Mobile nav toggle
+   * Mobil Menü Toggle - DÜZELTİLDİ
    */
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
+  const mobileNavToogle = () => {
+    const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+    if (mobileNavToggleBtn) {
+      document.querySelector('body').classList.toggle('mobile-nav-active');
+      mobileNavToggleBtn.classList.toggle('bi-list');
+      mobileNavToggleBtn.classList.toggle('bi-x');
+    }
   }
-  mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+
+  // Tıklama olayını sayfa yüklendikten sonra güvenli şekilde bağla
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('mobile-nav-toggle')) {
+      mobileNavToogle();
+    }
+  });
 
   /**
-   * Hide mobile nav on same-page/hash links
+   * Linklere tıklandığında menüyü kapat
    */
   document.querySelectorAll('#navmenu a').forEach(navmenu => {
     navmenu.addEventListener('click', () => {
@@ -43,11 +51,10 @@
         mobileNavToogle();
       }
     });
-
   });
 
   /**
-   * Toggle mobile nav dropdowns
+   * Dropdownları mobil uyumlu hale getir
    */
   document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
     navmenu.addEventListener('click', function(e) {
@@ -69,7 +76,7 @@
   }
 
   /**
-   * Scroll top button
+   * Scroll top butonu
    */
   let scrollTop = document.querySelector('.scroll-top');
 
@@ -78,63 +85,65 @@
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
+  }
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
 
   /**
-   * Animation on scroll function and init
+   * AOS (Scroll Animasyonları)
    */
   function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 600,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
+    }
   }
   window.addEventListener('load', aosInit);
 
   /**
-   * Initiate Pure Counter
+   * Diğer kütüphane başlatıcıları (Varsa)
    */
-  new PureCounter();
+  if (typeof PureCounter !== 'undefined') new PureCounter();
+  
+  if (typeof GLightbox !== 'undefined') {
+    const glightbox = GLightbox({
+      selector: '.glightbox'
+    });
+  }
 
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
-
-  /**
-   * Init swiper sliders
-   */
   function initSwiper() {
     document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
-
+      let swiperConfigElement = swiperElement.querySelector(".swiper-config");
+      if (!swiperConfigElement) return;
+      
+      let config = JSON.parse(swiperConfigElement.innerHTML.trim());
       if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
+        if (typeof initSwiperWithCustomPagination === 'function') {
+          initSwiperWithCustomPagination(swiperElement, config);
+        }
+      } else if (typeof Swiper !== 'undefined') {
         new Swiper(swiperElement, config);
       }
     });
   }
-
   window.addEventListener("load", initSwiper);
 
   /**
-   * Frequently Asked Questions Toggle
+   * S.S.S (FAQ) Aç-Kapat
    */
   document.querySelectorAll('.faq-item h3, .faq-item .faq-toggle').forEach((faqItem) => {
     faqItem.addEventListener('click', () => {
