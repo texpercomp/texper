@@ -29,7 +29,7 @@
       background-size: 40px 40px; z-index: 1; pointer-events: none;
     }
 
-    /* HERO AREA - MASTER ARKA PLAN YAPISI */
+    /* HERO AREA */
     .hero { 
       min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
@@ -53,7 +53,7 @@
       50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
     }
 
-    /* BLOG KARTLARI (MASTER FEATURE STİLİ) */
+    /* BLOG KARTLARI */
     .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 30px; }
     .blog-card {
       background: rgba(255, 255, 255, 0.02);
@@ -62,8 +62,9 @@
       border-right: 1px solid var(--glass-border);
       border-bottom: 1px solid var(--glass-border);
       padding: 30px; border-radius: 4px; transition: 0.3s;
+      backdrop-filter: blur(10px);
     }
-    .blog-card:hover { background: rgba(255, 193, 7, 0.05); transform: translateY(-5px); }
+    .blog-card:hover { background: rgba(255, 193, 7, 0.05); transform: translateY(-5px); border-color: var(--primary); }
 
     .blog-meta { font-family: 'Roboto Mono', monospace; color: var(--primary); font-size: 0.7rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
     .blog-card h4 { font-size: 1.15rem; color: #fff; font-weight: 700; margin-bottom: 15px; text-transform: uppercase; }
@@ -79,15 +80,12 @@
     }
     .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
 
-    .btn-panel-header {
-      background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
-    }
+    .btn-panel-header { background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
 
     @media (max-width: 991px) {
       .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
       .blog-grid { grid-template-columns: 1fr; }
       .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
-      .btn-panel-header { display: none; }
       .navmenu ul li.mobile-only { display: block !important; }
     }
     .navmenu ul li.mobile-only { display: none; }
@@ -113,7 +111,7 @@
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="#"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
@@ -130,7 +128,7 @@
             </ul>
           </li>
           <li><a href="contact.html">İletişim</a></li>
-          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;"><i class="bi bi-shield-lock-fill"></i> Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -148,7 +146,7 @@
       <div class="container">
         <div class="text-center mb-5">
           <h2 class="headline">NELER <span class="accent">YAPIYORUZ?</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem; opacity: 0.9;">Sistem odalarından bulut mimarisine teknik operasyon kayıtlarımız.</p>
+          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem;">Sistem odalarından bulut mimarisine teknik operasyon kayıtlarımız.</p>
         </div>
 
         <div class="blog-grid">
@@ -198,21 +196,49 @@
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
-    function initMobileMenu() {
-      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-      const body = document.querySelector('body');
-      if (mobileNavToggleBtn) {
-        mobileNavToggleBtn.addEventListener('click', function() {
-          body.classList.toggle('mobile-nav-active');
-          this.classList.toggle('bi-list');
-          this.classList.toggle('bi-x');
-        });
+    (function() {
+      "use strict";
+
+      const select = (el, all = false) => {
+        el = el.trim()
+        if (all) { return [...document.querySelectorAll(el)] } else { return document.querySelector(el) }
       }
-    }
+
+      const on = (type, el, listener, all = false) => {
+        let selectEl = select(el, all)
+        if (selectEl) {
+          if (all) { selectEl.forEach(e => e.addEventListener(type, listener)) } else { selectEl.addEventListener(type, listener) }
+        }
+      }
+
+      // Mobil Menü Toggle
+      on('click', '.mobile-nav-toggle', function(e) {
+        select('body').classList.toggle('mobile-nav-active');
+        this.classList.toggle('bi-list');
+        this.classList.toggle('bi-x');
+      });
+
+      // Mobilde Dropdown (Kurumsal vb.) Tıklama Fix
+      on('click', '.navmenu .dropdown > a', function(e) {
+        if (select('body').classList.contains('mobile-nav-active')) {
+          e.preventDefault();
+          this.parentNode.classList.toggle('active');
+          this.nextElementSibling.classList.toggle('dropdown-active');
+          
+          let icon = this.querySelector('.bi-chevron-down');
+          if (icon) icon.classList.toggle('bi-chevron-up');
+        }
+      }, true);
+    })();
+
     document.addEventListener('DOMContentLoaded', () => {
-      initMobileMenu();
       fetch('https://api.ipify.org?format=json')
         .then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
+        
+      setInterval(() => {
+        const el = document.getElementById('agent-count');
+        if(el) el.innerText = (312 + Math.floor(Math.random() * 5)) + " ACTIVE";
+      }, 4000);
     });
   </script>
 </body>

@@ -29,7 +29,7 @@
       background-size: 40px 40px; z-index: 1; pointer-events: none;
     }
 
-    /* HERO AREA - MASTER ARKA PLAN YAPISI */
+    /* HERO AREA */
     .hero { 
       min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
@@ -45,26 +45,40 @@
     
     .hero .container { position: relative; z-index: 2; }
 
-    /* BAŞLIK VE EFEKT */
     .headline { font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 25px; }
     .accent { color: var(--primary); display: inline-block; animation: glowBreath 3s ease-in-out infinite; }
+    
     @keyframes glowBreath {
       0%, 100% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); transform: scale(1); }
       50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
     }
 
-    /* DESTEK KARTLARI (MASTER FEATURE STİLİ) */
+    /* DESTEK KARTLARI - BELİRGİN ÇERÇEVELİ */
     .support-card {
-      background: rgba(255, 255, 255, 0.02);
-      border-left: 3px solid var(--primary);
-      border-top: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+      border-top: 4px solid var(--primary); /* Üst kısım daha kalın IT havası */
       padding: 30px; border-radius: 4px; transition: 0.3s;
-      height: 100%; text-decoration: none; display: block;
+      height: 100%; text-decoration: none; display: flex; flex-direction: column; align-items: center; text-align: center;
+      backdrop-filter: blur(10px);
     }
-    .support-card:hover { background: rgba(255, 193, 7, 0.05); transform: translateY(-5px); }
-    .support-card i { font-size: 2rem; color: var(--primary); margin-bottom: 20px; display: block; }
-    .support-card h3 { color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; }
-    .support-card p { color: #888; font-size: 0.85rem; margin-bottom: 0; line-height: 1.5; }
+    .support-card:hover { 
+        background: rgba(255, 193, 7, 0.05); 
+        border-color: var(--primary);
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(255, 193, 7, 0.2);
+    }
+    .support-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+    .support-card h3 { color: #fff; font-size: 1.2rem; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+    .support-card p { color: #888; font-size: 0.85rem; margin-bottom: 25px; line-height: 1.5; flex-grow: 1; }
+
+    /* İNDİR BUTONU (KART İÇİ) */
+    .btn-download-inner {
+        background: transparent; color: var(--primary); border: 1px solid var(--primary);
+        padding: 8px 25px; border-radius: 50px; font-size: 0.75rem; font-weight: 800;
+        text-transform: uppercase; transition: 0.3s; letter-spacing: 1px;
+    }
+    .support-card:hover .btn-download-inner { background: var(--primary); color: #000; box-shadow: 0 0 15px var(--primary); }
 
     /* QUICK CONTACT BAR */
     .quick-contact-bar {
@@ -77,30 +91,27 @@
     .q-link:hover { color: var(--primary); }
     .q-link i { color: var(--primary); font-size: 1.1rem; }
 
+    /* MÜŞTERİ PANELİ BUTONU HOVER FİX */
     .btn-action-master {
-      background: var(--primary); color: #000 !important; padding: 16px 45px; border-radius: 50px;
+      background: var(--primary) !important; color: #000 !important; padding: 16px 45px; border-radius: 50px;
       text-decoration: none; display: inline-flex; align-items: center; gap: 12px;
       transition: 0.3s; font-weight: 800; margin-top: 30px; box-shadow: 0 10px 20px rgba(255, 193, 7, 0.2);
     }
+    .btn-action-master:hover { background: var(--primary) !important; color: #000 !important; filter: brightness(1.1); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 193, 7, 0.4); }
 
     /* STATS BAR */
     .stats-bar {
-      background: transparent !important;
-      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      background: transparent !important; padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
       display: flex; justify-content: center; gap: 50px; z-index: 10;
     }
     .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
 
-    .btn-panel-header {
-      background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
-    }
+    .btn-panel-header { background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
 
     @media (max-width: 991px) {
       .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
-      .support-card { padding: 25px; }
       .quick-contact-bar { gap: 20px; padding: 20px; }
       .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
-      .btn-panel-header { display: none; }
       .navmenu ul li.mobile-only { display: block !important; }
     }
     .navmenu ul li.mobile-only { display: none; }
@@ -126,7 +137,7 @@
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="#"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
@@ -134,16 +145,16 @@
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="#" class="active"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="blog.html">Neler Yapıyoruz</a></li>
               <li><a href="project.html">Projelerimiz</a></li>
               <li><a href="referanslar.html">Referanslar</a></li>
-              <li><a href="programlar.html">BT Programlar</a></li>
+              <li><a href="programlar.html" class="active">BT Programlar</a></li>
             </ul>
           </li>
           <li><a href="contact.html">İletişim</a></li>
-          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;"><i class="bi bi-shield-lock-fill"></i> Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -161,36 +172,40 @@
       <div class="container text-center">
         <div class="mb-5">
           <h2 class="headline">DESTEK <span class="accent">MERKEZİ.</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem; opacity: 0.9;">Uzak bağlantı araçları ve hızlı iletişim kanalları ile sorunlarınıza anında çözüm.</p>
+          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem;">Uzak bağlantı araçları ile sorunlarınıza anında çözüm üretiyoruz.</p>
         </div>
 
-        <div class="row g-4 justify-content-center text-start">
+        <div class="row g-4 justify-content-center">
           <div class="col-lg-3 col-md-6">
             <a href="https://download.anydesk.com/AnyDesk.exe" class="support-card">
               <i class="fa-solid fa-desktop"></i>
               <h3>AnyDesk</h3>
-              <p>Güvenli uzak masaüstü erişim protokolü.</p>
+              <p>Hızlı ve güvenli uzak masaüstü bağlantısı.</p>
+              <span class="btn-download-inner">PROGRAMI İNDİR</span>
             </a>
           </div>
           <div class="col-lg-3 col-md-6">
             <a href="https://www.alpemix.com/site/Alpemix.exe" class="support-card">
               <i class="fa-solid fa-rocket"></i>
               <h3>Alpemix</h3>
-              <p>Yerli ve hızlı uzak bağlantı çözümü.</p>
+              <p>Kurulum gerektirmeyen yerli bağlantı aracı.</p>
+              <span class="btn-download-inner">PROGRAMI İNDİR</span>
             </a>
           </div>
           <div class="col-lg-3 col-md-6">
-            <a href="https://my.microsoftpersonalcontent.com/personal/d9e2670e00da7b49/_layouts/15/download.aspx?UniqueId=41528895-d3fe-4d65-814e-9fe511aef086&Translate=false&tempauth=v1e.eyJzaXRlaWQiOiJiZWQ5ZTg0ZC1jMGFiLTQ0YmItOWVmZC1hODc2ZjU2OGI5MWIiLCJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbXkubWljcm9zb2Z0cGVyc29uYWxjb250ZW50LmNvbUA5MTg4MDQwZC02YzY3LTRjNWItYjExMi0zNmEzMDRiNjZkYWQiLCJleHAiOiIxNzY5NjQ5MjM1In0.zniNu8G5mroGe6XSsTmKDyUfkSxRhlm1fxUHXOljac4dMB3YkpjJUO4AZyjeXTBzdF7UX_76HMDE6WfH3_wRiuMO2mPUCSNwF_RMjhD7_15FRb6k-PMdtUeN5x6gulX9OiiI9ZK3v_bvE0Y_pjPN_PkzOWaYML2LJ4QeAUhJZ4dO1KHzlwoq5VlpMW_hXFBwKtzCSrQap4uVGVrl_N32Ob3pJz_PyJ2j__0mBYCHLPkdQ9nbzgoRB4bJOg4Y-PUYsKKyx1UEG0vUXDTVz_gRcKnkxIAa_rdImdXk65pgxzWbeyn8Fg9DnmCHhYcNDqiK6nYuQ_FN9PivMVPlvNjV0WAL_gtky-ct8QmUj3hR6V23d_yGIYE94vp68uixD9UI0ey26SrDxf4LVRj3C_Ublrf-__ji5UqqRgJT9ZFUlnxbrpowW_KXWVj9orsolBS-5s4gCgQwrv1rKkMVMeulJmQPNerJo8tlAgE23IsFXpYf9fAqi3QTbOw58SnNGHhCmbTXtYQcFZz_1bOywTyZuA.9tHOSxNPp7p8ZcUNLp_89S3hnoIPjGeXxq8R1nCBwy0&ApiVersion=2.0" class="support-card" target="_blank">
+            <a href="https://my.microsoftpersonalcontent.com/personal/d9e2670e00da7b49/_layouts/15/download.aspx?UniqueId=41528895-d3fe-4d65-814e-9fe511aef086&Translate=false&tempauth=v1e.eyJzaXRlaWQiOiJiZWQ5ZTg0ZC1jMGFiLTQ0YmItOWVmZC1hODc2ZjU2OGI5MWIiLCJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbXkubWljcm9zb2Z0cGVyc29uYWxjb250ZW50LmNvbUA5MTg4MDQwZC02YzY3LTRjNWItYjExMi0zNmEzMDRiNjZkYWQiLCJleHAiOiIxNzY5NjUzMTk5In0.ad9kHz_VfIP62arYThha79Rs9jNzwRtKUrfglcwWZ2fC2v7QNuu7gezAruZQgpKKCi7DapbxlJOJXVrDyFVrAKIIavxqZ_XymTSIWOajrLdULobVSzAosmHnewpCba2rd0MohQsQSinecHr-VP6pdx3qc7dB82pIH_CyIzn9m7x7hOT_g7TfFHtLQuBlCqlT4QPLaTC2ddmxpomQjoa9mH4622B1i01Xhd7x8tYPFGD_fRcVVn2Am0iIBwcrw7rol4LKkYLE_3M6AtpMOdQVAqqe9UQGdxtiELZBEyp3K6L-lqd43Eba3o_BW47uv43CcQ-WS6UwtQwtTH6Cx4UXVqBrjCeK1SIco0hQTuYGATPgtggm7xYf7GREEQz5jiy8WLWEjfahAM1lGH7eTcq29IuSlkg4tsWDapAwSHuv3Elqnz7-f-cDgcG6loDz7osbasCgGVzYBlGxhkdkl2OJoJGnwCILgiWTUVSMhTztRRTtIVDy06HOzqfPvxv1cHArPN0Jz93sbcw2ix-tErOhUA.X73oh0ky_40tcP-FAco5TgFySOuKNDHlz54gcVO9S-c&ApiVersion=2.0" class="support-card" target="_blank">
               <i class="fa-solid fa-shield-halved"></i>
               <h3>RustDesk</h3>
-              <p>Açık kaynaklı güvenli altyapı erişimi.</p>
+              <p>Açık kaynaklı ve yüksek güvenlikli erişim.</p>
+              <span class="btn-download-inner">PROGRAMI İNDİR</span>
             </a>
           </div>
           <div class="col-lg-3 col-md-6">
             <a href="https://download.teamviewer.com/download/TeamViewerQS.exe" class="support-card">
               <i class="fa-solid fa-users-viewfinder"></i>
               <h3>TeamViewer</h3>
-              <p>QuickSupport hızlı teknik yardım aracı.</p>
+              <p>Anlık teknik yardım için QuickSupport.</p>
+              <span class="btn-download-inner">PROGRAMI İNDİR</span>
             </a>
           </div>
         </div>
@@ -201,9 +216,9 @@
           <a href="mailto:info@texper.com.tr" class="q-link"><i class="bi bi-envelope-at-fill"></i> info@texper.com.tr</a>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-5">
           <a href="mesh.html" class="btn-action-master">
-            <i class="bi bi-shield-lock-fill"></i> KURUMSAL MÜŞTERİ PANELİ GİRİŞİ
+            <i class="bi bi-shield-lock-fill"></i> MÜŞTERİ PANELİ GİRİŞİ
           </a>
         </div>
       </div>
@@ -218,19 +233,39 @@
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script>
-    function initMobileMenu() {
-      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-      const body = document.querySelector('body');
-      if (mobileNavToggleBtn) {
-        mobileNavToggleBtn.addEventListener('click', function() {
-          body.classList.toggle('mobile-nav-active');
-          this.classList.toggle('bi-list');
-          this.classList.toggle('bi-x');
-        });
+    (function() {
+      "use strict";
+
+      const select = (el, all = false) => {
+        el = el.trim()
+        if (all) { return [...document.querySelectorAll(el)] } else { return document.querySelector(el) }
       }
-    }
+
+      const on = (type, el, listener, all = false) => {
+        let selectEl = select(el, all)
+        if (selectEl) {
+          if (all) { selectEl.forEach(e => e.addEventListener(type, listener)) } else { selectEl.addEventListener(type, listener) }
+        }
+      }
+
+      // Mobil Menü Toggle
+      on('click', '.mobile-nav-toggle', function(e) {
+        select('body').classList.toggle('mobile-nav-active');
+        this.classList.toggle('bi-list');
+        this.classList.toggle('bi-x');
+      });
+
+      // Mobilde Dropdown (Kurumsal vb.) Tıklama Fix
+      on('click', '.navmenu .dropdown > a', function(e) {
+        if (select('body').classList.contains('mobile-nav-active')) {
+          e.preventDefault();
+          this.parentNode.classList.toggle('active');
+          this.nextElementSibling.classList.toggle('dropdown-active');
+        }
+      }, true);
+    })();
+
     document.addEventListener('DOMContentLoaded', () => {
-      initMobileMenu();
       fetch('https://api.ipify.org?format=json')
         .then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
     });

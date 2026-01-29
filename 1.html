@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEXPER // FIELD_OP_AUTOPILOT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #000000;
+            --accent: #ffc107;
+            --border: rgba(255, 193, 7, 0.2);
+            --panel: rgba(10, 10, 12, 0.95);
+            --green: #3fb950;
+            --red: #f85149;
+            --blue: #58a6ff;
+            --text-dim: #888;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; cursor: none; font-family: 'Roboto Mono', monospace; }
+        body { 
+            background: var(--bg); color: #fff; height: 100vh; overflow: hidden; 
+            display: flex; flex-direction: column; 
+            position: relative;
+        }
+
+        /* ANALOG TARAMA ÇİZGİLERİ VE GRİD (VİNTAGE TEKNOLOJİ HİSSİ) */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(255, 193, 7, 0.04) 1px, transparent 1px);
+            background-size: 35px 35px; z-index: -1;
+        }
+        body::after {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+            background-size: 100% 3px; pointer-events: none; z-index: 1000;
+        }
+
+        /* HEADER */
+        header {
+            padding: 10px 25px; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(5, 5, 5, 0.9); z-index: 10;
+        }
+        .brand { font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 5px; color: var(--accent); }
+
+        /* GRID STRUCTURE */
+        main { flex: 1; display: grid; grid-template-columns: 350px 1fr 300px; gap: 10px; padding: 10px; }
+
+        .panel {
+            background: var(--panel); border: 1px solid var(--border);
+            padding: 15px; position: relative; display: flex; flex-direction: column;
+            box-shadow: 0 0 15px rgba(255,193,7,0.05); /* Hafif dış ışıma */
+        }
+        .p-title { font-family: 'Orbitron'; font-size: 0.55rem; color: var(--accent); margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 5px; letter-spacing: 1px; }
+
+        /* AUTO-SCROLLING TERMINAL */
+        .terminal {
+            flex: 1; background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.03);
+            padding: 10px; font-size: 0.65rem; color: var(--green); overflow-y: auto; /* Scroll bar'ı gizlemek için */
+            display: flex; flex-direction: column-reverse; /* Yeni loglar alttan eklensin */
+        }
+        .terminal::-webkit-scrollbar { display: none; } /* Chrome, Safari, Opera */
+        .terminal { -ms-overflow-style: none; scrollbar-width: none; } /* IE and Edge */
+
+        .term-line { margin-bottom: 2px; line-height: 1.2; }
+
+        /* VISUAL ELEMENTS */
+        .radar-box { 
+            position: relative; height: 180px; display: flex; justify-content: center; align-items: center; 
+            margin-top: 20px;
+        }
+        .radar-sweep {
+            width: 150px; height: 150px; border: 1px solid var(--border); border-radius: 50%;
+            position: relative; overflow: hidden;
+            box-shadow: 0 0 20px rgba(255,193,7,0.1);
+        }
+        .radar-sweep::after {
+            content: ""; position: absolute; top: 50%; left: 50%; width: 50%; height: 50%;
+            background: linear-gradient(45deg, transparent 50%, var(--accent) 100%);
+            transform-origin: top left; animation: rotate 4s infinite linear;
+        }
+        @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* PROGRESS BARS */
+        .progress-bar { height: 4px; background: rgba(255,255,255,0.05); margin: 10px 0; border-radius: 2px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; box-shadow: 0 0 10px var(--accent); }
+
+        /* NETWORK TAGS */
+        .tag { display: inline-block; padding: 2px 5px; font-size: 0.5rem; background: rgba(255,255,255,0.05); margin-right: 5px; border-radius: 2px; }
+
+        /* LOG BOX */
+        .event-log { 
+            font-size: 0.55rem; color: var(--text-dim); line-height: 1.5; overflow-y: auto; height: 100px;
+            padding-right: 5px; /* Scrollbar boşluğu için */
+        }
+        .event-log::-webkit-scrollbar { display: none; }
+        .event-log { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .metric-value { font-family: 'Orbitron'; font-size: 0.9rem; color: var(--green); margin-bottom: 5px; }
+        .metric-label { font-size: 0.6rem; color: var(--text-dim); text-transform: uppercase; }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="brand">TEXPER // FIELD_OP_AUTOPILOT</div>
+    <div style="font-family: 'Orbitron'; color: var(--accent); font-size: 0.9rem;" id="clock">00:00:00</div>
+</header>
+
+<main>
+    <aside class="panel">
+        <div class="p-title">LOCAL_NODE_IDENTITY</div>
+        <div style="font-size:0.7rem; margin-bottom:15px;">
+            PUBLIC_IP: <span id="pub-ip" style="color:var(--accent)">176.xx.xx.xx</span><br>
+            GATEWAY: <span style="color:var(--accent)">192.168.1.1</span><br>
+            ISP: <span id="isp-name" style="color:var(--accent)">DETECTING...</span>
+        </div>
+
+        <div class="p-title">HARDWARE_MONITOR</div>
+        <div style="font-size:0.6rem; color:var(--text-dim);">
+            CPU_CORE_01: <span id="cpu-load" style="color:var(--green)">14%</span><br>
+            TEMP_SENS: <span id="temp-load" style="color:var(--accent)">41°C</span><br>
+            VOLT_STAB: <span style="color:var(--green)">OPTIMAL</span>
+            <div class="progress-bar"><div class="progress-fill" id="cpu-bar" style="width: 14%"></div></div>
+        </div>
+
+        <div class="radar-box">
+            <div class="radar-sweep"></div>
+            <div style="position:absolute; font-family:'Orbitron'; font-size:0.5rem; color:var(--accent); bottom: 10px;">AREA_SCANNER</div>
+        </div>
+    </aside>
+
+    <section class="panel">
+        <div class="p-title" id="operation-title">SYSTEM_IDLE: AWAITING_SEQUENCE</div>
+        <div class="terminal" id="main-terminal">
+            <div class="term-line">> INITIALIZING AUTOPILOT MODULE...</div>
+            <div class="term-line">> STATUS_REPORT: All systems nominal.</div>
+            <div class="term-line">> SCANNING FOR LOCAL_NETWORK_DEVICES...</div>
+        </div>
+        <div class="progress-bar" style="height: 2px;"><div class="progress-fill" id="op-progress" style="width: 0%"></div></div>
+    </section>
+
+    <aside class="panel">
+        <div class="p-title">GLOBAL_ACTIVITY_FEED</div>
+        <div class="terminal" id="activity-log" style="color:var(--blue); height: 250px;"></div>
+        
+        <div class="p-title" style="margin-top:20px;">SECURITY_SHIELD</div>
+        <div style="text-align:center;">
+            <i class="bi bi-shield-lock-fill" style="font-size:2rem; color:var(--green);"></i>
+            <div style="font-family:'Orbitron'; font-size:0.8rem; color:var(--green); margin-top:5px;">ACTIVE</div>
+            <div style="font-size:0.5rem; color:var(--text-dim); margin-top:5px;">AES-256 ENCRYPTION VERIFIED</div>
+        </div>
+
+        <div class="p-title" style="margin-top:20px;">SYSTEM_HEALTH</div>
+        <div style="display:flex; justify-content: space-around; text-align:center;">
+            <div>
+                <div class="metric-value" id="disk-usage">78%</div>
+                <div class="metric-label">DISK_USAGE</div>
+            </div>
+            <div>
+                <div class="metric-value" id="net-traffic">24MB/s</div>
+                <div class="metric-label">NET_TRAFFIC</div>
+            </div>
+        </div>
+    </aside>
+</main>
+
+
+
+<script>
+    const mainTerminal = document.getElementById('main-terminal');
+    const activityLog = document.getElementById('activity-log');
+    const opTitle = document.getElementById('operation-title');
+    const opProgress = document.getElementById('op-progress');
+
+    // GERÇEK VERİLER (IP, ISP)
+    fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('pub-ip').innerText = data.ip;
+            document.getElementById('isp-name').innerText = data.org;
+        }).catch(() => {
+            document.getElementById('pub-ip').innerText = '192.168.1.XXX';
+            document.getElementById('isp-name').innerText = 'Local Network';
+        });
+
+    setInterval(() => { 
+        document.getElementById('clock').innerText = new Date().toLocaleTimeString('tr-TR', {hour12: false}); 
+        // CPU Simülasyonu
+        let cpuLoad = Math.floor(Math.random()*15 + 10); // 10-25% arası
+        document.getElementById('cpu-load').innerText = cpuLoad + "%";
+        document.getElementById('cpu-bar').style.width = cpuLoad + "%";
+
+        // Sıcaklık Simülasyonu
+        let tempLoad = Math.floor(Math.random()*5 + 38); // 38-42°C arası
+        document.getElementById('temp-load').innerText = tempLoad + "°C";
+
+        // Disk Kullanımı ve Ağ Trafiği Simülasyonu
+        document.getElementById('disk-usage').innerText = `${Math.floor(Math.random() * 20) + 70}%`; // 70-90%
+        document.getElementById('net-traffic').innerText = `${Math.floor(Math.random() * 10) + 15}MB/s`; // 15-25MB/s
+    }, 1000);
+
+    function addLine(el, text, color = null) {
+        const line = document.createElement('div');
+        line.className = 'term-line';
+        if(color) line.style.color = color;
+        line.innerText = `> [${new Date().toLocaleTimeString('tr-TR', {hour12: false})}] ${text}`;
+        el.prepend(line); // Üste ekle
+        if(el.children.length > 20) { // Maksimum 20 satır tut
+            el.removeChild(el.lastChild);
+        }
+    }
+
+    // OTOMATİK OPERASYON DÖNGÜSÜ
+    const tasks = [
+        { name: "IP_SEGMENT_SCANNER", lines: [
+            "SCANNING SUBNET 192.168.1.0/24...",
+            "NODE_FOUND: 192.168.1.15 [PRINTER_01] <span style='color:var(--green)'>ONLINE</span>",
+            "NODE_FOUND: 192.168.1.42 [SERVER_NODE_03] <span style='color:var(--green)'>ONLINE</span>",
+            "SCAN_COMPLETE: 28 Devices Detected.",
+            "ANALYSIS_REPORT: Network stability 98.7%."
+        ]},
+        { name: "SENTRY_PORT_AUDIT", lines: [
+            "INITIALIZING PORT AUDIT ON GATEWAY (192.168.1.1)...",
+            "PORT_80: HTTP <span style='color:var(--green)'>OPEN</span>",
+            "PORT_443: HTTPS <span style='color:var(--green)'>OPEN</span>",
+            "PORT_22: SSH <span style='color:var(--green)'>OPEN</span> (Admin Access)",
+            "PORT_3389: RDP <span style='color:var(--red)'>BLOCKED</span> (External Access)",
+            "AUDIT_COMPLETE: No critical vulnerabilities found."
+        ]},
+        { name: "TX_CLOUD_SYNC", lines: [
+            "CONNECTING TO TEX_NEXUS_CLOUD_NODE_09...",
+            "AUTHENTICATING SECURE_SESSION...",
+            "SYNCING ENCRYPTED_VAULT_BKP (8.2 GB)...",
+            "HASH_VERIFIED: 0x88A2B (INTEGRITY OK)",
+            "SYNC_COMPLETE: Data up-to-date."
+        ]},
+        { name: "MESH_PACKET_SNIFFER", lines: [
+            "ACTIVATING REAL-TIME PACKET CAPTURE...",
+            "FILTER: TCP_HANDSHAKE | PORT_443",
+            "PACKET_STREAM_INIT: Monitoring...",
+            "DATA_IN: 1512 bytes | SOURCE: 172.217.16.14 [GOOGLE]",
+            "DATA_OUT: 64 bytes | DEST: 192.168.1.42 [SERVER]",
+            "SNIFFER_ACTIVE: Low level anomaly detected: <span style='color:var(--blue)'>DNS_QUERY_SPIKE</span>"
+        ]},
+        { name: "VULNERABILITY_ASSESSMENT", lines: [
+            "INITIATING SYSTEM WIDE VULNERABILITY SCAN...",
+            "SCANNING OS_KERNEL_MODULES...",
+            "CHECKING FILE_PERMISSIONS (CRITICAL)...",
+            "REPORT: Low severity advisory: 'Outdated Browser Extension'.",
+            "ASSESSMENT_COMPLETE: No critical threats identified."
+        ]}
+    ];
+
+    let currentTaskIndex = 0;
+    async function runAutopilotSequence() {
+        const task = tasks[currentTaskIndex];
+        opTitle.innerText = `RUNNING_OPERATION: ${task.name}`;
+        opProgress.style.width = '0%';
+        mainTerminal.innerHTML = ""; // Terminali temizle
+
+        // Task loglarını yavaş yavaş yazdır
+        for (let i = 0; i < task.lines.length; i++) {
+            addLine(mainTerminal, task.lines[i]);
+            opProgress.style.width = `${((i + 1) / task.lines.length) * 100}%`;
+            await new Promise(resolve => setTimeout(resolve, Math.random() * 800 + 400)); // Her satır arası rastgele bekleme
+        }
+
+        // Task bittikten sonra bekleme ve bir sonraki task'a geçiş
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Task sonunda kısa bekleme
+        currentTaskIndex = (currentTaskIndex + 1) % tasks.length;
+        runAutopilotSequence(); // Tekrar başlat
+    }
+
+    // Arka Plan Akışı (Mavi Loglar)
+    const backgroundLogs = [
+        "HEARTBEAT_SENT: TexNexus Core", "DB_QUERY_OK: UserAuth", "TUNNEL_STABLE: VPN_MESH_01",
+        "GATEWAY_UPTIME_99.99%: Server_01", "SENTRY_VERIFIED: Firewall_Logs", "CLOUD_BACKUP: Daily Snapshot",
+        "NETWORK_TRAFFIC: Peak_Usage (18:00)", "DNS_RESOLUTION: Success (Google.com)", "SYSTEM_ALERT: Low Disk Space on /dev/sdb1",
+        "PROCESS_CHECK: All Critical Services Active", "SECURITY_AUDIT: Passed (Daily)", "REMOTE_ACCESS: Idle (Last Login 09:30)"
+    ];
+    setInterval(() => {
+        const randomLog = backgroundLogs[Math.floor(Math.random() * backgroundLogs.length)];
+        const logColor = randomLog.includes('ALERT') ? var(--red) : var(--blue);
+        addLine(activityLog, randomLog, logColor);
+    }, 1500); // Daha sık ve dinamik loglar
+
+    runAutopilotSequence(); // Otomatik döngüyü başlat
+</script>
+
+</body>
+</html>

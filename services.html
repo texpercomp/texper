@@ -22,7 +22,7 @@
     html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
-    /* HERO AREA - MASTER HTML İLE BİREBİR ARKA PLAN YAPISI */
+    /* HERO AREA */
     .hero { 
       min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
@@ -32,14 +32,13 @@
     .hero-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
-      /* Master HTML'deki sola yaslı maskeleme */
       mask-image: linear-gradient(to left, #000 60%, transparent);
       -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
     }
     
     .hero .container { position: relative; z-index: 2; }
 
-    /* BAŞLIK VE NEFES ALAN EFEKT */
+    /* BAŞLIK VE EFEKT */
     .hero-content { text-align: left; }
     .headline { font-size: clamp(2.5rem, 8vw, 4.2rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px; margin-bottom: 25px; }
     
@@ -53,7 +52,7 @@
       50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
     }
 
-    /* HİZMET KARTLARI - FEATURE-ITEM STANDARTI */
+    /* HİZMET KARTLARI */
     .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0; }
     .feature-item {
       background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--primary);
@@ -61,7 +60,7 @@
       padding: 20px; border-radius: 4px; text-align: left; display: flex; align-items: center; gap: 15px;
       transition: 0.3s;
     }
-    .feature-item:hover { background: rgba(255, 193, 7, 0.05); }
+    .feature-item:hover { background: rgba(255, 193, 7, 0.05); transform: translateY(-3px); }
     .feature-item i { font-size: 1.5rem; color: var(--primary); }
     .feature-item h4 { font-size: 0.95rem; color: #fff; font-weight: 700; margin: 0; text-transform: uppercase; }
     .feature-item p { font-size: 0.8rem; color: #888; margin: 0; }
@@ -70,22 +69,19 @@
     .sla-box {
       margin-top: 45px; background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--glass-border); border-radius: 4px; padding: 25px;
+      backdrop-filter: blur(10px);
     }
     .sla-item { text-align: center; }
-    .sla-item h5 { font-weight: 800; color: var(--primary); margin-bottom: 5px; }
-    .sla-item p { font-size: 0.75rem; color: #666; text-transform: uppercase; margin: 0; }
+    .sla-item h5 { font-weight: 800; color: var(--primary); margin-bottom: 5px; font-family: 'Roboto Mono', monospace; }
+    .sla-item p { font-size: 0.75rem; color: #888; text-transform: uppercase; margin: 0; letter-spacing: 1px; }
 
-    /* STATS BAR (ŞERİTSİZ - MASTER STİL) */
+    /* STATS BAR */
     .stats-bar {
       background: transparent !important;
       padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
       display: flex; justify-content: center; gap: 50px; z-index: 10;
     }
-    .stat-text { 
-      display: flex; align-items: center; gap: 10px; 
-      color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace;
-      letter-spacing: 1px;
-    }
+    .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
 
     .btn-panel-header {
       background: transparent; color: var(--primary) !important;
@@ -93,16 +89,13 @@
       border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
     }
 
-    /* MOBİL DÜZENLEMELER */
     @media (max-width: 991px) {
       .hero-content { text-align: center; }
       .feature-grid { grid-template-columns: 1fr; margin: 0 auto; }
       .sla-box .row > div { margin-bottom: 20px; }
       .sla-box .row > div:last-child { margin-bottom: 0; }
-      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; }
-      .navmenu ul li.mobile-only { display: block !important; }
+      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
     }
-    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -120,6 +113,7 @@
           <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
               <li><a href="faq.html">S.S.S</a></li>
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
@@ -141,7 +135,7 @@
             </ul>
           </li>
           <li><a href="contact.html">İletişim</a></li>
-          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
+          <li class="d-xl-none"><a href="mesh.html" style="color: var(--primary) !important;"><i class="bi bi-shield-lock-fill"></i> Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -179,7 +173,7 @@
               </div>
               <div class="feature-item">
                 <i class="bi bi-cloud-check"></i>
-                <div><h4>TexNexus Bulut</h4><p>VDS ve yedekleme.</p></div>
+                <div><h4>Bulut Çözümleri</h4><p>VDS ve yedekleme.</p></div>
               </div>
             </div>
 
@@ -207,7 +201,7 @@
       <div class="stats-bar">
         <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span style="color:#2ecc71; font-weight:bold;">ONLINE</span></div>
         <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <span id="agent-count" style="color:#fff; font-weight:bold;">312 ACTIVE</span></div>
-        <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" style="color:#fff; font-weight:bold;">Loading...</span></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" style="color:#fff; font-weight:bold;">...</span></div>
       </div>
     </section>
   </main>
@@ -215,6 +209,35 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <script>
+    (function() {
+      "use strict";
+
+      /**
+       * MOBILE NAV & DROPDOWN FIX
+       */
+      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.addEventListener('click', function(e) {
+          document.body.classList.toggle('mobile-nav-active');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
+        });
+      }
+
+      document.querySelectorAll('.navmenu .dropdown > a').forEach(navdropdown => {
+        navdropdown.addEventListener('click', function(e) {
+          if (document.body.classList.contains('mobile-nav-active')) {
+            e.preventDefault();
+            this.parentNode.classList.toggle('active');
+            
+            const nextEl = this.nextElementSibling;
+            if (nextEl) nextEl.classList.toggle('dropdown-active');
+          }
+        });
+      });
+
+    })();
+
     function updateAgentCount() {
       const agentEl = document.getElementById('agent-count');
       if(agentEl) {
@@ -222,20 +245,7 @@
       }
     }
 
-    function initMobileMenu() {
-      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-      const body = document.querySelector('body');
-      if (mobileNavToggleBtn) {
-        mobileNavToggleBtn.addEventListener('click', function() {
-          body.classList.toggle('mobile-nav-active');
-          this.classList.toggle('bi-list');
-          this.classList.toggle('bi-x');
-        });
-      }
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
-      initMobileMenu();
       setInterval(updateAgentCount, 4000);
       fetch('https://api.ipify.org?format=json')
         .then(r => r.json()).then(d => { 

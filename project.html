@@ -22,7 +22,7 @@
     html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
-    /* HERO AREA - MASTER ARKA PLAN YAPISI */
+    /* HERO AREA */
     .hero { 
       min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
@@ -46,7 +46,7 @@
       50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
     }
 
-    /* PROJE KARTI (MASTER FEATURE-ITEM STİLİ) */
+    /* PROJE KARTI */
     .project-card {
       background: rgba(255, 255, 255, 0.02);
       border-left: 3px solid var(--primary);
@@ -54,9 +54,9 @@
       border-right: 1px solid var(--glass-border);
       border-bottom: 1px solid var(--glass-border);
       padding: 30px; border-radius: 4px; transition: 0.3s;
-      margin-bottom: 25px;
+      margin-bottom: 25px; backdrop-filter: blur(10px);
     }
-    .project-card:hover { background: rgba(255, 193, 7, 0.05); transform: translateY(-5px); }
+    .project-card:hover { background: rgba(255, 193, 7, 0.05); transform: translateY(-5px); border-color: var(--primary); }
     
     .project-badge { font-family: 'Roboto Mono', monospace; font-size: 0.7rem; background: rgba(255, 193, 7, 0.1); padding: 4px 12px; border-radius: 4px; color: var(--primary); font-weight: 700; letter-spacing: 1px; }
     .project-icon { font-size: 2.5rem; color: var(--primary); }
@@ -68,12 +68,6 @@
     .metric-value { display: block; font-size: 1.2rem; font-weight: 800; color: #fff; font-family: 'Roboto Mono', monospace; }
     .metric-label { font-size: 0.7rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
 
-    .btn-panel-header {
-      background: transparent; color: var(--primary) !important;
-      padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700;
-      border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
-    }
-
     /* STATS BAR */
     .stats-bar {
       background: transparent !important;
@@ -82,7 +76,10 @@
     }
     .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
 
-    /* MOBİL DÜZENLEMELER */
+    .btn-panel-header {
+      background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
+    }
+
     @media (max-width: 991px) {
       .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
       .headline { font-size: 2.2rem !important; }
@@ -107,7 +104,6 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
-          
           <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="about.html">Hakkımızda</a></li>
@@ -115,7 +111,6 @@
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
-
           <li class="dropdown"><a href="#"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
@@ -124,7 +119,6 @@
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
             </ul>
           </li>
-
           <li class="dropdown"><a href="#" class="active"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="blog.html">Neler Yapıyoruz</a></li>
@@ -133,10 +127,8 @@
               <li><a href="programlar.html">BT Programlar</a></li>
             </ul>
           </li>
-
           <li><a href="contact.html">İletişim</a></li>
-          
-          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;"><i class="bi bi-shield-lock-fill"></i> Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -209,30 +201,36 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    function initMobileMenu() {
+    (function() {
+      "use strict";
+
+      /**
+       * MOBILE NAV & DROPDOWN FIX
+       */
       const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-      const body = document.querySelector('body');
       if (mobileNavToggleBtn) {
-        mobileNavToggleBtn.addEventListener('click', function() {
-          body.classList.toggle('mobile-nav-active');
+        mobileNavToggleBtn.addEventListener('click', function(e) {
+          document.body.classList.toggle('mobile-nav-active');
           this.classList.toggle('bi-list');
           this.classList.toggle('bi-x');
         });
       }
-      document.querySelectorAll('.navmenu .toggle-dropdown').forEach(dropdown => {
-        dropdown.addEventListener('click', function(e) {
-          if (body.classList.contains('mobile-nav-active')) {
+
+      document.querySelectorAll('.navmenu .dropdown > a').forEach(navdropdown => {
+        navdropdown.addEventListener('click', function(e) {
+          if (document.body.classList.contains('mobile-nav-active')) {
             e.preventDefault();
             this.parentNode.classList.toggle('active');
-            this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-            e.stopImmediatePropagation();
+            
+            const nextEl = this.nextElementSibling;
+            if (nextEl) nextEl.classList.toggle('dropdown-active');
           }
         });
       });
-    }
+
+    })();
 
     document.addEventListener('DOMContentLoaded', () => {
-      initMobileMenu();
       setInterval(() => {
         const el = document.getElementById('agent-count');
         if(el) el.innerText = (312 + Math.floor(Math.random() * 5)) + " ACTIVE";
