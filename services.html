@@ -4,49 +4,105 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Hizmetlerimiz - Texper Bilişim</title>
+  <title>Hizmetler | Texper Bilişim</title>
   
   <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
   <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* MASTER INDEX CSS SADAKATİ */
+    /* MASTER CSS SADAKATİ */
     :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
-    html, body { background-color: #000000 !important; }
+
+    html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding-top: 100px; padding-bottom: 50px; }
-    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.4; z-index: 0; pointer-events: none; }
+    /* HERO AREA - MASTER HTML İLE BİREBİR ARKA PLAN YAPISI */
+    .hero { 
+      min-height: 100vh; 
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; padding-top: 100px; padding-bottom: 50px;
+    }
+
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
+      /* Master HTML'deki sola yaslı maskeleme */
+      mask-image: linear-gradient(to left, #000 60%, transparent);
+      -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
+    }
+    
     .hero .container { position: relative; z-index: 2; }
 
-    .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 40px; }
-    .service-item {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--glass-border);
-      padding: 35px; border-radius: 20px;
-      backdrop-filter: blur(10px); transition: 0.3s; height: 100%;
+    /* BAŞLIK VE NEFES ALAN EFEKT */
+    .hero-content { text-align: left; }
+    .headline { font-size: clamp(2.5rem, 8vw, 4.2rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px; margin-bottom: 25px; }
+    
+    .accent { 
+      color: var(--primary); 
+      display: inline-block;
+      animation: glowBreath 3s ease-in-out infinite;
     }
-    .service-item:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(255, 193, 7, 0.03); }
-    .service-item i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; display: block; }
-    .service-item h4 { font-size: 1.4rem; color: #fff; font-weight: 700; margin-bottom: 15px; }
-    .service-item p { color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0; }
-    .service-tags { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-    .tag-sm { background: rgba(255, 255, 255, 0.05); color: #fff; font-size: 0.7rem; padding: 4px 12px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); }
-
-    .btn-action-master {
-      background: var(--primary); color: #000 !important; padding: 15px 40px; border-radius: 50px;
-      font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; margin-top: 40px; transition: 0.3s;
+    @keyframes glowBreath {
+      0%, 100% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); transform: scale(1); }
+      50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
     }
-    .btn-action-master:hover { background: #fff; transform: scale(1.05); }
 
-    @media (max-width: 991px) { .service-grid { grid-template-columns: 1fr; } }
+    /* HİZMET KARTLARI - FEATURE-ITEM STANDARTI */
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0; }
+    .feature-item {
+      background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--primary);
+      border-top: 1px solid var(--glass-border); border-right: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
+      padding: 20px; border-radius: 4px; text-align: left; display: flex; align-items: center; gap: 15px;
+      transition: 0.3s;
+    }
+    .feature-item:hover { background: rgba(255, 193, 7, 0.05); }
+    .feature-item i { font-size: 1.5rem; color: var(--primary); }
+    .feature-item h4 { font-size: 0.95rem; color: #fff; font-weight: 700; margin: 0; text-transform: uppercase; }
+    .feature-item p { font-size: 0.8rem; color: #888; margin: 0; }
+
+    /* SLA KUTUSU */
+    .sla-box {
+      margin-top: 45px; background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border); border-radius: 4px; padding: 25px;
+    }
+    .sla-item { text-align: center; }
+    .sla-item h5 { font-weight: 800; color: var(--primary); margin-bottom: 5px; }
+    .sla-item p { font-size: 0.75rem; color: #666; text-transform: uppercase; margin: 0; }
+
+    /* STATS BAR (ŞERİTSİZ - MASTER STİL) */
+    .stats-bar {
+      background: transparent !important;
+      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 50px; z-index: 10;
+    }
+    .stat-text { 
+      display: flex; align-items: center; gap: 10px; 
+      color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace;
+      letter-spacing: 1px;
+    }
+
+    .btn-panel-header {
+      background: transparent; color: var(--primary) !important;
+      padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700;
+      border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
+    }
+
+    /* MOBİL DÜZENLEMELER */
+    @media (max-width: 991px) {
+      .hero-content { text-align: center; }
+      .feature-grid { grid-template-columns: 1fr; margin: 0 auto; }
+      .sla-box .row > div { margin-bottom: 20px; }
+      .sla-box .row > div:last-child { margin-bottom: 0; }
+      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; }
+      .navmenu ul li.mobile-only { display: block !important; }
+    }
+    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -57,35 +113,42 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
       </a>
-
+      
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
           <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="about.html">Hakkımızda</a></li>
-              <li><a href="referanslar.html">Referanslar</a></li>
               <li><a href="faq.html">S.S.S</a></li>
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="services.html" class="active"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="#" class="active"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="services.html" class="active">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"><a href="#"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="blog.html">Neler Yapıyoruz</a></li>
+              <li><a href="project.html">Projelerimiz</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
               <li><a href="programlar.html">BT Programlar</a></li>
             </ul>
           </li>
-          <li><a href="project.html">Projeler</a></li>
-          <li><a href="blog.html">Neler Yapıyoruz</a></li>
           <li><a href="contact.html">İletişim</a></li>
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
-      <a class="btn-getstarted" href="https://texper.xyz" style="background: transparent; border: 2px solid #ffc107; color: #ffc107; font-weight: 700; border-radius: 50px; padding: 8px 25px; margin-left: 20px;">Müşteri Paneli</a>
+      
+      <a class="btn-panel-header d-none d-lg-flex" href="mesh.html">
+        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
+      </a>
     </div>
   </header>
 
@@ -94,54 +157,92 @@
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
 
       <div class="container">
-        <div class="text-center mb-5">
-          <h2 style="font-size: 3rem; font-weight: 800;">Uzmanlık <span style="color:var(--primary);">Alanlarımız</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; color: #ccc;">İşletmenizin dijital ve fiziksel altyapısını stabilize eden profesyonel BT operasyonları.</p>
+        <div class="row">
+          <div class="col-lg-8 hero-content">
+            
+            <h1 class="headline">
+              UÇTAN UCA<br><span class="accent">BT ÇÖZÜMLERİ.</span>
+            </h1>
+
+            <p style="max-width: 550px; color: #ccc; font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px;">
+              İşletmenizi modern altyapı modülleriyle güçlendiriyoruz. Texper ile tüm sistemleriniz proaktif takip altında.
+            </p>
+
+            <div class="feature-grid">
+              <div class="feature-item">
+                <i class="bi bi-cpu"></i>
+                <div><h4>Sistem Yönetimi</h4><p>Sunucu ve sanallaştırma.</p></div>
+              </div>
+              <div class="feature-item">
+                <i class="bi bi-diagram-3"></i>
+                <div><h4>Network Altyapı</h4><p>Fiber ve ağ kurulumu.</p></div>
+              </div>
+              <div class="feature-item">
+                <i class="bi bi-cloud-check"></i>
+                <div><h4>TexNexus Bulut</h4><p>VDS ve yedekleme.</p></div>
+              </div>
+            </div>
+
+            <div class="sla-box">
+              <div class="row">
+                <div class="col-md-4 sla-item">
+                  <h5>2 SAAT</h5>
+                  <p>Müdahale Süresi</p>
+                </div>
+                <div class="col-md-4 sla-item">
+                  <h5>%99.9</h5>
+                  <p>Uptime Garantisi</p>
+                </div>
+                <div class="col-md-4 sla-item">
+                  <h5>7/24</h5>
+                  <p>Aktif İzleme</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
+      </div>
 
-        <div class="service-grid">
-          <div class="service-item">
-            <i class="bi bi-diagram-3-fill"></i>
-            <h4>Ağ & Altyapı Çözümleri</h4>
-            <p>Fiber optik sonlandırma, yapısal kablolama ve Keenetic IKEv2 VPN şube birleştirme projeleriyle kesintisiz network sağlıyoruz.</p>
-            <div class="service-tags"><span class="tag-sm">Networking</span><span class="tag-sm">VPN</span><span class="tag-sm">Fiber</span></div>
-          </div>
-
-          <div class="service-item">
-            <i class="bi bi-server"></i>
-            <h4>Sistem & Sanallaştırma</h4>
-            <p>Hyper-V mimarileri, HP/Dell sunucu kurulumları ve P2V taşıma işlemleriyle sistemlerinizi konsolide ediyoruz.</p>
-            <div class="service-tags"><span class="tag-sm">Hyper-V</span><span class="tag-sm">Server</span><span class="tag-sm">P2V</span></div>
-          </div>
-
-          <div class="service-item">
-            <i class="bi bi-cloud-check-fill"></i>
-            <h4>TexNexus Cloud & Backup</h4>
-            <p>QNAP NAS entegrasyonu ve TexNexus hibrit bulut üzerinden verilerinizin 3-2-1 kuralına göre güvenli yedeklenmesi.</p>
-            <div class="service-tags"><span class="tag-sm">TexNexus</span><span class="tag-sm">Backup</span><span class="tag-sm">Recovery</span></div>
-          </div>
-
-          <div class="service-item">
-            <i class="bi bi-shield-lock-fill"></i>
-            <h4>Teknik Destek & Bakım</h4>
-            <p>MeshCentral ve yerinde müdahale ile 7/24 proaktif izleme ve hızlı teknik destek süreçleri.</p>
-            <div class="service-tags"><span class="tag-sm">Remote</span><span class="tag-sm">MeshCentral</span><span class="tag-sm">SLA</span></div>
-          </div>
-        </div>
-
-        <div class="text-center mt-5">
-          <a href="https://texper.xyz" class="btn-action-master">
-            <i class="bi bi-shield-lock-fill"></i> Müşteri Paneline Giriş Yap
-          </a>
-        </div>
+      <div class="stats-bar">
+        <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span style="color:#2ecc71; font-weight:bold;">ONLINE</span></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <span id="agent-count" style="color:#fff; font-weight:bold;">312 ACTIVE</span></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" style="color:#fff; font-weight:bold;">Loading...</span></div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background" style="padding: 20px 0; border-top: 1px solid var(--glass-border); text-align: center;">
-      <p style="margin: 0; opacity: 0.5; font-size: 0.8rem;">© 2026 Texper Bilişim. Tüm Hakları Saklıdır.</p>
-  </footer>
-
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function updateAgentCount() {
+      const agentEl = document.getElementById('agent-count');
+      if(agentEl) {
+        agentEl.innerText = (312 + Math.floor(Math.random() * 5)) + " ACTIVE";
+      }
+    }
+
+    function initMobileMenu() {
+      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+      const body = document.querySelector('body');
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.addEventListener('click', function() {
+          body.classList.toggle('mobile-nav-active');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileMenu();
+      setInterval(updateAgentCount, 4000);
+      fetch('https://api.ipify.org?format=json')
+        .then(r => r.json()).then(d => { 
+          const ipEl = document.getElementById('user-ip');
+          if(ipEl) ipEl.innerText = d.ip; 
+        });
+    });
+  </script>
 </body>
 </html>

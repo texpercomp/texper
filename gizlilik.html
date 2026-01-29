@@ -4,26 +4,25 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Gizlilik & Şartlar - Texper Bilişim</title>
+  <title>Gizlilik & Şartlar | Texper Bilişim</title>
   
   <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
   <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* MASTER INDEX CSS SADAKATİ */
+    /* MASTER CSS SADAKATİ */
     :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
 
-    html, body { background-color: #000000 !important; }
-
+    html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
+    /* HERO AREA - MASTER ARKA PLAN YAPISI */
     .hero { 
       min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
@@ -32,78 +31,61 @@
 
     .hero-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none;
+      object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
+      mask-image: linear-gradient(to left, #000 60%, transparent);
+      -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
     }
     
     .hero .container { position: relative; z-index: 2; }
 
-    /* INDEX MENÜ & BUTON STİLLERİ */
-    .nav-contact-btn {
-      border: 1px solid rgba(255, 255, 255, 0.5) !important;
-      border-radius: 20px;
-      padding: 5px 20px !important;
-      margin-left: 10px;
-      transition: 0.3s;
+    /* BAŞLIK VE EFEKT */
+    .headline { font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 25px; }
+    .accent { color: var(--primary); display: inline-block; animation: glowBreath 3s ease-in-out infinite; }
+    @keyframes glowBreath {
+      0%, 100% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); transform: scale(1); }
+      50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
     }
-    .nav-contact-btn:hover { background: #fff; color: #000 !important; border-color: #fff !important; }
+
+    /* POLİTİKA KONTEYNERI (MASTER STİL) */
+    .policy-container {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 3px solid var(--primary);
+      border-top: 1px solid var(--glass-border);
+      border-right: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 40px; border-radius: 4px; max-width: 950px; margin: 0 auto;
+    }
+
+    .policy-item { margin-bottom: 35px; }
+    .policy-item h4 { 
+      color: var(--primary); font-weight: 800; font-size: 1.1rem; margin-bottom: 15px; 
+      display: flex; align-items: center; gap: 12px; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .policy-item p, .policy-item li { color: #aaa; line-height: 1.8; font-size: 0.9rem; }
+    .policy-item ul { padding-left: 18px; list-style-type: square; }
+
+    /* STATS BAR (MASTER STİL) */
+    .stats-bar {
+      background: transparent !important;
+      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 50px; z-index: 10;
+    }
+    .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
 
     .btn-panel-header {
-      background: transparent; color: var(--primary) !important;
-      padding: 8px 25px; margin-left: 20px;
-      border-radius: 50px; font-weight: 700; font-size: 14px;
-      border: 2px solid var(--primary);
-      text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s;
-    }
-    .btn-panel-header:hover { background: var(--primary); color: #000 !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
-
-    /* POLİTİKA KUTUSU (INDEX STİLİNDE) */
-    .policy-container {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: 20px;
-      border: 1px solid var(--glass-border);
-      max-width: 950px;
-      margin: 0 auto;
+      background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
     }
 
-    .policy-item { margin-bottom: 30px; }
-    .policy-item h4 { 
-      color: var(--primary); 
-      font-weight: 700; 
-      margin-bottom: 15px; 
-      display: flex; 
-      align-items: center; 
-      gap: 10px;
-      font-size: 1.25rem;
-    }
-    .policy-item p, .policy-item li { 
-      color: rgba(255, 255, 255, 0.8); 
-      line-height: 1.8; 
-      font-size: 0.95rem;
-    }
-    .policy-item ul { padding-left: 20px; list-style-type: square; }
-    .policy-item li { margin-bottom: 10px; }
-
-    /* STATS BAR */
-    .stats-bar {
-      border-top: 1px solid var(--glass-border);
-      background: rgba(0, 0, 0, 0.3);
-      padding: 15px 0; width: 100%;
-      position: absolute; bottom: 0; left: 0;
-      display: flex; justify-content: center; gap: 40px;
-      z-index: 10; flex-wrap: wrap;
-    }
-    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; }
-    .ip-highlight { color: #fff; font-weight: bold; }
-
+    /* MOBİL DÜZENLEMELER */
     @media (max-width: 991px) {
-      .hero { padding-top: 120px; height: auto; padding-bottom: 80px; }
-      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
+      .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
+      .headline { font-size: 2.2rem !important; }
+      .policy-container { padding: 30px 20px; margin: 0 10px; text-align: left; }
+      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
       .btn-panel-header { display: none; }
-      .nav-contact-btn { border: none !important; padding: 0 !important; margin: 0 !important; }
-      .policy-container { padding: 25px; }
+      .navmenu ul li.mobile-only { display: block !important; }
     }
+    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -123,28 +105,32 @@
               <li><a href="about.html">Hakkımızda</a></li>
               <li><a href="referanslar.html">Referanslar</a></li>
               <li><a href="faq.html">S.S.S</a></li>
-              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
+              <li><a href="gizlilik.html" class="active">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
           <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
-              <li><a href="programlar.html">Faydalı Programlar</a></li>
             </ul>
           </li>
-          <li><a href="project.html">Projeler</a></li>
-          <li><a href="blog.html">Neler Yapıyoruz</a></li>
-          <li><a href="contact.html" class="nav-contact-btn">İletişim</a></li>
-          <li class="d-md-none"><a href="destek.html">Destek Al</a></li>
-          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
+          <li class="dropdown"><a href="#"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="blog.html">Neler Yapıyoruz</a></li>
+              <li><a href="project.html">Projelerimiz</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="programlar.html">BT Programlar</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">İletişim</a></li>
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       
-      <a class="btn-panel-header d-none d-lg-flex" href="https://texper.xyz">
+      <a class="btn-panel-header d-none d-lg-flex" href="mesh.html">
         <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
       </a>
     </div>
@@ -156,58 +142,61 @@
 
       <div class="container">
         <div class="text-center mb-5">
-          <h2 style="font-size: 3.2rem; font-weight: 800;">Gizlilik & <span style="color: #ffc107;">Şartlar.</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; color: #ccc;">Veri güvenliğiniz ve hizmet kullanım standartlarımız hakkında detaylı bilgilendirme.</p>
+          <h2 class="headline">GİZLİLİK & <span class="accent">ŞARTLAR.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem;">Veri güvenliğiniz ve operasyonel standartlarımız hakkında şeffaf bilgilendirme.</p>
         </div>
 
         <div class="policy-container">
           
           <div class="policy-item">
-            <h4><i class="bi bi-shield-check"></i> KVKK Uyumluluğu ve Veri Güvenliği</h4>
-            <p>Texper Bilişim olarak, müşterilerimize ait verilerin gizliliğini en ön planda tutuyoruz. 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında:</p>
+            <h4><i class="bi bi-shield-lock"></i> KVKK ve Veri Güvenliği</h4>
+            <p>Texper Bilişim, müşteri verilerinin gizliliğini 6698 sayılı Kanun çerçevesinde güvence altına alır:</p>
             <ul>
-              <li>Sunucularımızda barındırılan tüm veriler uçtan uca şifrelenmektedir.</li>
-              <li>Müşteri panelimize yapılan girişler 2FA (Çift Faktörlü Doğrulama) ile korunabilir.</li>
-              <li>Verilerinizin üçüncü taraflarla paylaşımı sadece yasal zorunluluklar çerçevesinde gerçekleşir.</li>
+              <li>Sistemlerimizde barındırılan tüm veriler uçtan uca şifrelenir.</li>
+              <li>Müşteri paneli erişimleri proaktif olarak izlenir ve güvenli protokollerle korunur.</li>
+              <li>Veri işleme süreçleri sadece hizmetin ifası için gerekli sınırlar içinde yürütülür.</li>
             </ul>
           </div>
 
           <div class="policy-item">
-            <h4><i class="bi bi-hdd-network"></i> BT Destek ve Altyapı Şartları</h4>
-            <p>Donanım kurulumu, ağ yapılandırması ve sunucu yönetimi süreçlerinde Texper Bilişim, sağlanan hizmetlerin sürekliliğini (Uptime) en üst seviyede tutmayı taahhüt eder. Uzak bağlantı ile verilen desteklerde, müşteri onayı olmadan hiçbir sisteme müdahale edilmez.</p>
+            <h4><i class="bi bi-hdd-network"></i> Operasyonel Şartlar</h4>
+            <p>BT destek ve altyapı hizmetlerinde, müşteri sistemlerine müdahale sadece onaylı servis protokolleri çerçevesinde gerçekleştirilir. Yapılan her işlem kayıt altına alınarak şeffaflık sağlanır.</p>
           </div>
 
           <div class="policy-item">
-            <h4><i class="bi bi-cloud-check"></i> TexNexus Cloud Kullanım İlkeleri</h4>
-            <p>Bulut hizmetlerimizde yedekleme sorumluluğu, aksi yazılı olarak belirtilmedikçe "Paylaşımlı Sorumluluk" modeline tabidir. Verileriniz donanımsal arızalara karşı RAID yapıları ve günlük imaj yedekleri ile korunur.</p>
-          </div>
-
-          <div class="policy-item">
-            <h4><i class="bi bi-info-circle"></i> Çerez (Cookie) Kullanımı</h4>
-            <p>Web sitemiz, kullanıcı deneyimini analiz etmek ve sistem performansını ölçmek amacıyla anonim çerezler kullanmaktadır. Bu veriler hiçbir şekilde kimlik tanımlayıcı bilgi içermez.</p>
+            <h4><i class="bi bi-cloud-check"></i> Cloud Kullanım İlkeleri</h4>
+            <p>TexNexus Cloud hizmetlerinde süreklilik (Uptime) %99.9 oranında taahhüt edilir. Yedekleme süreçleri, donanımsal ve yazılımsal felaket senaryolarına karşı çok katmanlı olarak yapılandırılmıştır.</p>
           </div>
 
         </div>
       </div>
 
       <div class="stats-bar">
-        <div class="stat-text"><i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong></div>
-        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <strong style="color:#fff;">312 ACTIVE</strong></div>
-        <div class="stat-text"><i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong></div>
+        <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span style="color:#2ecc71; font-weight:bold;">ONLINE</span></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <span id="agent-count" style="color:#fff; font-weight:bold;">312 ACTIVE</span></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" style="color:#fff; font-weight:bold;">...</span></div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background" style="padding: 0; height: 0; overflow: hidden; visibility: hidden;"></footer>
-
-  <script>
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => { document.getElementById('user-ip').innerText = data.ip; })
-      .catch(error => { document.getElementById('user-ip').innerText = "Gizli"; });
-  </script>
-
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script>
+    function initMobileMenu() {
+      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+      const body = document.querySelector('body');
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.addEventListener('click', function() {
+          body.classList.toggle('mobile-nav-active');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
+        });
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileMenu();
+      fetch('https://api.ipify.org?format=json')
+        .then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
+    });
+  </script>
 </body>
 </html>

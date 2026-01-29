@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Texper Bilişim - Digital Hub</title>
+  <title>Digital Hub | Texper Bilişim</title>
   
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   
   <style>
-    :root { --primary: #ffc107; --bg: #05070a; --glass: rgba(255, 255, 255, 0.03); --border: rgba(255, 255, 255, 0.1); }
+    /* MASTER CSS SADAKATİ */
+    :root { --primary: #ffc107; --bg: #000000; --glass: rgba(255, 255, 255, 0.02); --border: rgba(255, 255, 255, 0.1); }
 
-    /* TAM ORTALAMA İÇİN GÜNCELLEME */
     body, html {
       margin: 0; padding: 0; width: 100%; height: 100%;
       background-color: var(--bg);
@@ -19,119 +23,143 @@
       color: #fff;
       display: flex; 
       flex-direction: column; 
-      justify-content: center; /* Dikeyde ortalar */
-      align-items: center;     /* Yatayda ortalar */
-      overflow-x: hidden;
+      justify-content: center; 
+      align-items: center;     
+      overflow: hidden;
     }
 
-    /* ARKA PLAN */
+    /* TEKNOLOJİK ARKA PLAN DOKUSU */
+    body::before {
+      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-image: radial-gradient(rgba(255, 193, 7, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px; z-index: -1;
+    }
+
     .bg-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at 50% 50%, rgba(255, 193, 7, 0.05) 0%, transparent 80%);
+      background: radial-gradient(circle at 50% 50%, rgba(255, 193, 7, 0.08) 0%, transparent 70%);
       z-index: -1;
     }
 
     .container { 
       width: 100%; 
-      max-width: 1000px; 
-      padding: 20px; 
+      max-width: 800px; 
+      padding: 30px; 
       box-sizing: border-box;
+      z-index: 2;
     }
 
-    /* ARAMA BÖLÜMÜ */
-    .search-section { text-align: center; margin-bottom: 40px; }
+    /* LOGO VE ARAMA */
+    .search-section { text-align: center; margin-bottom: 50px; }
     .search-logo { 
-      max-width: 220px; 
-      width: 60%; /* Mobilde küçülmesi için */
-      margin-bottom: 30px; 
-      filter: drop-shadow(0 0 10px rgba(255,193,7,0.2)); 
+      max-width: 250px; 
+      width: 70%;
+      margin-bottom: 40px; 
+      filter: drop-shadow(0 0 15px rgba(255,193,7,0.3)); 
     }
     
     .search-wrapper {
       position: relative;
-      max-width: 600px;
+      max-width: 550px;
       margin: 0 auto;
     }
     .search-input {
       width: 100%;
-      padding: 16px 25px 16px 55px;
-      background: var(--glass);
+      padding: 18px 25px 18px 60px;
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
-      border-radius: 50px;
+      border-radius: 4px; /* Master stile uygun keskin/hafif kavis */
       color: #fff;
       font-size: 16px;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(15px);
       transition: 0.3s;
       box-sizing: border-box;
+      border-left: 3px solid var(--primary); /* Master mühür */
     }
     .search-input:focus {
       outline: none;
       border-color: var(--primary);
-      background: rgba(255, 255, 255, 0.07);
-      box-shadow: 0 0 20px rgba(255, 193, 7, 0.1);
+      background: rgba(255, 193, 7, 0.03);
+      box-shadow: 0 0 30px rgba(255, 193, 7, 0.1);
     }
-    .search-icon { position: absolute; left: 22px; top: 18px; color: var(--primary); font-size: 18px; }
+    .search-icon { position: absolute; left: 25px; top: 20px; color: var(--primary); font-size: 20px; }
 
-    /* HIZLI ERİŞİM */
+    /* HIZLI ERİŞİM KARTLARI */
     .section-title {
-      font-size: 12px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       color: var(--primary);
       text-transform: uppercase;
       margin-bottom: 25px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
+      opacity: 0.7;
     }
     .section-title::after { content: ""; height: 1px; flex-grow: 1; background: var(--border); }
 
     .app-grid { 
       display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+      grid-template-columns: repeat(3, 1fr); 
       gap: 15px; 
     }
     
     .app-card {
-      background: var(--glass);
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border);
-      padding: 18px;
-      border-radius: 15px;
+      padding: 22px 15px;
+      border-radius: 4px;
       transition: 0.3s;
       text-decoration: none;
       color: inherit;
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 12px;
     }
     .app-card:hover {
       border-color: var(--primary);
-      background: rgba(255, 255, 255, 0.05);
-      transform: translateY(-3px);
+      background: rgba(255, 193, 7, 0.05);
+      transform: translateY(-5px);
     }
-    .app-card i { font-size: 20px; color: var(--primary); }
-    .app-card span { font-size: 14px; font-weight: 500; }
+    .app-card i { font-size: 24px; color: var(--primary); }
+    .app-card span { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* FOOTER */
+    /* FOOTER STATUS BAR */
     .footer-bar {
       position: absolute;
-      bottom: 20px;
+      bottom: 25px;
       width: 100%;
       text-align: center;
+      font-family: 'Roboto Mono', monospace;
       font-size: 10px;
-      color: rgba(255,255,255,0.2);
-      letter-spacing: 1px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 2px;
+    }
+    .status-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      background: #2ecc71;
+      border-radius: 50%;
+      margin-right: 8px;
+      box-shadow: 0 0 10px #2ecc71;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
     }
 
-    /* TELEFON UYUMLULUĞU (MOBİL) */
-    @media (max-width: 600px) {
-      .container { padding: 15px; }
-      .search-section { margin-bottom: 30px; }
-      .app-grid { 
-        grid-template-columns: 1fr; /* Mobilde butonlar tek sıra olur */
-      }
-      .app-card { padding: 15px; }
-      .footer-bar { font-size: 9px; bottom: 10px; }
+    /* MOBİL DÜZENLEMELER */
+    @media (max-width: 768px) {
+      .container { padding: 20px; }
+      .app-grid { grid-template-columns: 1fr; }
+      .app-card { flex-direction: row; padding: 18px 25px; justify-content: flex-start; }
+      .search-logo { max-width: 200px; }
+      .footer-bar { font-size: 9px; bottom: 15px; padding: 0 10px; box-sizing: border-box; }
     }
   </style>
 </head>
@@ -146,12 +174,12 @@
       <div class="search-wrapper">
         <i class="bi bi-search search-icon"></i>
         <form action="https://www.google.com/search" method="GET">
-          <input type="text" name="q" class="search-input" placeholder="Google'da veya sistemde ara..." autocomplete="off" autofocus>
+          <input type="text" name="q" class="search-input" placeholder="Google'da veya BT altyapısında ara..." autocomplete="off" autofocus>
         </form>
       </div>
     </section>
 
-    <div class="section-title"><i class="bi bi-grid-fill"></i> Hızlı Erişim</div>
+    <div class="section-title">CORE SERVICES</div>
     
     <div class="app-grid">
       <a href="destek.html" class="app-card">
@@ -159,7 +187,7 @@
         <span>Uzak Destek</span>
       </a>
 
-      <a href="https://texper.xyz" class="app-card">
+      <a href="mesh.html" class="app-card">
         <i class="bi bi-shield-lock"></i>
         <span>Müşteri Paneli</span>
       </a>
@@ -173,7 +201,7 @@
   </div>
 
   <div class="footer-bar">
-    TEXPER BİLİŞİM DIGITAL HUB • SYSTEM STATUS: OPTIMAL
+    <span class="status-dot"></span> TEXPER BİLİŞİM DIGITAL HUB • SYSTEM STATUS: <span style="color:#fff;">OPTIMAL</span>
   </div>
 
 </body>

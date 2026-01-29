@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Texper Bilişim - Profesyonel BT Çözümleri</title>
+  <title>Texper Bilişim | Kurumsal BT Operasyon Merkezi</title>
   
   <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
   <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -17,12 +17,13 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* MASTER CSS SADAKATİ */
+    /* MASTER CSS */
     :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
 
-    html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; }
+    html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
+    /* HERO AREA */
     .hero { 
       min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
@@ -31,67 +32,62 @@
 
     .hero-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.4; z-index: 0; pointer-events: none;
+      object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
+      mask-image: linear-gradient(to left, #000 60%, transparent);
+      -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
     }
     
     .hero .container { position: relative; z-index: 2; }
-    .typed-text { color: var(--primary) !important; border-right: 3px solid var(--primary); padding-right: 5px; }
 
-    /* --- GÜNCEL İLETİŞİM BUTONU (KARARINDA BELİRGİN) --- */
-    .nav-contact-texper {
-      color: var(--primary) !important;
-      border: 1px solid rgba(255, 193, 7, 0.4) !important;
-      border-radius: 50px;
-      padding: 6px 22px !important;
-      margin-left: 15px;
-      transition: 0.3s;
-      font-weight: 500;
+    /* KURUMSAL BAŞLIK VE SOLA YASLI DÜZEN */
+    .hero-content { text-align: left; }
+    .headline { font-size: clamp(2.5rem, 8vw, 4.2rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px; margin-bottom: 25px; }
+    
+    /* NEFES ALAN EFEKT */
+    .accent { 
+      color: var(--primary); 
+      display: inline-block;
+      animation: glowBreath 3s ease-in-out infinite;
     }
-    .nav-contact-texper:hover {
-      background: var(--primary);
-      color: #000 !important;
-      border-color: var(--primary) !important;
-      box-shadow: 0 0 15px rgba(255, 193, 7, 0.2);
+    @keyframes glowBreath {
+      0%, 100% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); transform: scale(1); }
+      50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
     }
 
-    /* ACTION BUTTONS */
-    .action-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; margin-top: 30px; }
+    /* AKSİYON KARTLARI VE GRİD */
+    .action-grid { display: flex; gap: 20px; justify-content: flex-start; flex-wrap: wrap; margin-bottom: 45px; margin-top: 30px; }
     .action-card {
       background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
       padding: 15px 35px; border-radius: 50px; text-decoration: none; color: #fff;
       display: flex; align-items: center; gap: 10px; transition: 0.3s; backdrop-filter: blur(5px);
     }
     .action-card:hover { background: rgba(255, 255, 255, 0.15); color: #fff; transform: translateY(-3px); }
-    .card-highlight { background: var(--primary); color: #000 !important; border: 1px solid var(--primary); font-weight: 700; padding: 15px 45px; }
+    .card-highlight { background: var(--primary); color: #000 !important; border: 1px solid var(--primary); font-weight: 800; padding: 15px 45px; }
 
-    /* FEATURES */
-    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0; }
     .feature-item {
-      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border);
-      padding: 25px; border-radius: 16px; text-align: left; display: flex; align-items: flex-start; gap: 15px;
-      transition: 0.3s; backdrop-filter: blur(5px);
+      background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--primary);
+      border-top: 1px solid var(--glass-border); border-right: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
+      padding: 20px; border-radius: 4px; text-align: left; display: flex; align-items: center; gap: 15px;
+      transition: 0.3s;
     }
-    .feature-item i { font-size: 2rem; color: var(--primary); }
-    .feature-item h4 { font-size: 1.1rem; color: #fff; margin: 0 0 5px 0; }
-    .feature-item p { font-size: 0.9rem; color: #ccc; margin: 0; }
+    .feature-item:hover { background: rgba(255, 193, 7, 0.05); }
+    .feature-item i { font-size: 1.5rem; color: var(--primary); }
+    .feature-item h4 { font-size: 0.95rem; color: #fff; font-weight: 700; margin: 0; text-transform: uppercase; }
+    .feature-item p { font-size: 0.8rem; color: #888; margin: 0; }
 
-    /* TEKNİK ALT BAR */
+    /* STATS BAR (ŞERİTSİZ) */
     .stats-bar {
-      border: none !important;
       background: transparent !important;
-      padding: 25px 0;
-      width: 100%;
-      position: absolute; bottom: 0; left: 0;
-      display: flex; justify-content: center; gap: 40px;
-      z-index: 10;
+      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 50px; z-index: 10;
     }
     .stat-text { 
-      display: flex; align-items: center; gap: 8px; 
-      color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; font-family: 'Courier New', monospace; 
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      display: flex; align-items: center; gap: 10px; 
+      color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace;
+      letter-spacing: 1px;
     }
-    .stat-text i { color: var(--primary); } 
-    .stat-val { color: #fff; font-weight: bold; border-bottom: 1px solid rgba(255,193,7,0.3); }
+    .stat-val { color: #fff; font-weight: bold; }
 
     .btn-panel-header {
       background: transparent; color: var(--primary) !important;
@@ -99,11 +95,16 @@
       border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
     }
 
+    /* MOBİL DÜZENLEMELER */
     @media (max-width: 991px) {
-      .feature-grid { grid-template-columns: 1fr; }
+      .hero-content { text-align: center; }
+      .action-grid { justify-content: center; }
+      .feature-grid { grid-template-columns: 1fr; margin: 0 auto; }
       .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; }
       .nav-contact-texper { margin-left: 0; margin-top: 10px; display: inline-block; }
+      .navmenu ul li.mobile-only { display: block !important; }
     }
+    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -146,11 +147,13 @@
           </li>
 
           <li><a href="contact.html" class="nav-contact-texper">İletişim</a></li>
+          
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       
-      <a class="btn-panel-header d-none d-lg-flex" href="https://texper.xyz">
+      <a class="btn-panel-header d-none d-lg-flex" href="mesh.html">
         <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
       </a>
     </div>
@@ -160,65 +163,83 @@
     <section id="hero" class="hero section dark-background">
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
 
-      <div class="container text-center">
-        <h2 class="mb-3">Dijital Altyapınız <span id="changing-text" class="typed-text"></span></h2>
-        <p>Uçtan uca donanım çözümleri, TexNexus bulut mimarisi ve profesyonel ağ yönetimi ile kurumsal süreçlerinizi tek merkezden modernize ediyoruz.</p>
-        
-        <div class="action-grid">
-          <a href="services.html" class="action-card"><i class="bi bi-hdd-network"></i><span>Çözümlerimiz</span></a>
-          <a href="destek.html" class="action-card card-highlight"><i class="bi bi-headset"></i><span>TEKNİK DESTEK AL</span></a>
-        </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 hero-content">
+            
+            <div class="headline">
+              GÜVENİLİR<br><span class="accent">SIFIR HATA</span><br>ALTYAPI.
+            </div>
 
-        <div class="feature-grid">
-          <div class="feature-item"><i class="bi bi-shield-check"></i><div><h4>Sistem Güvenliği</h4><p>Zafiyet analizi ve koruma protokolleri.</p></div></div>
-          <div class="feature-item"><i class="bi bi-cloud-arrow-up"></i><div><h4>Veri Yönetimi</h4><p>TexNexus hibrit yedekleme çözümleri.</p></div></div>
-          <div class="feature-item"><i class="bi bi-cpu"></i><div><h4>Aktif Monitoring</h4><p>7/24 Kesintisiz donanım ve ağ takibi.</p></div></div>
+            <p style="max-width: 550px; color: #ccc; font-size: 1.1rem; line-height: 1.6;">
+              Karmaşık BT altyapılarını mühendislik disipliniyle basitleştiriyoruz. Texper Bilişim ile sistemleriniz her zaman güvende ve izlemede.
+            </p>
+            
+            <div class="action-grid">
+              <a href="destek.html" class="action-card card-highlight"><i class="bi bi-headset"></i><span>TEKNİK DESTEK AL</span></a>
+              <a href="services.html" class="action-card"><i class="bi bi-hdd-network"></i><span>Çözümlerimiz</span></a>
+            </div>
+
+            <div class="feature-grid">
+              <div class="feature-item"><i class="bi bi-shield-lock"></i><div><h4>Sistem Güvenliği</h4><p>Zafiyet analizi ve koruma.</p></div></div>
+              <div class="feature-item"><i class="bi bi-cloud-arrow-up"></i><div><h4>Veri Yönetimi</h4><p>TexNexus yedekleme.</p></div></div>
+              <div class="feature-item"><i class="bi bi-cpu"></i><div><h4>Aktif Monitoring</h4><p>7/24 Kesintisiz takip.</p></div></div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="stats-bar">
-        <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span class="stat-val">ONLINE</span></div>
+        <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span class="stat-val" style="color:#2ecc71;">ONLINE</span></div>
         <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <span id="agent-count" class="stat-val">312 ACTIVE</span></div>
         <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" class="stat-val">Loading...</span></div>
       </div>
     </section>
   </main>
 
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
   <script>
-    const textElement = document.getElementById('changing-text');
-    const texts = ["Optimize Edildi.", "Güvence Altında.", "Stabilize Edildi.", "Geleceğe Hazır."];
-    let index = 0; let charIndex = 0; let isDeleting = false;
-
-    function type() {
-      const currentText = texts[index];
-      if (isDeleting) {
-        textElement.textContent = currentText.substring(0, charIndex - 1); charIndex--;
-      } else {
-        textElement.textContent = currentText.substring(0, charIndex + 1); charIndex++;
-      }
-      
-      let typeSpeed = isDeleting ? 30 : 60;
-      if (!isDeleting && charIndex === currentText.length) {
-        isDeleting = true; typeSpeed = 4000;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false; index = (index + 1) % texts.length; typeSpeed = 500;
-      }
-      setTimeout(type, typeSpeed);
-    }
-    document.addEventListener('DOMContentLoaded', type);
-
     function updateAgentCount() {
       const agentEl = document.getElementById('agent-count');
-      const baseCount = 312;
-      const fluctuation = Math.floor(Math.random() * 7) - 3;
-      agentEl.innerText = (baseCount + fluctuation) + " ACTIVE";
+      if(agentEl) {
+        const baseCount = 312;
+        const fluctuation = Math.floor(Math.random() * 5) - 2;
+        agentEl.innerText = (baseCount + fluctuation) + " ACTIVE";
+      }
     }
-    setInterval(updateAgentCount, 4000);
 
-    fetch('https://api.ipify.org?format=json')
-      .then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
+    function initMobileMenu() {
+      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+      const body = document.querySelector('body');
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.addEventListener('click', function() {
+          body.classList.toggle('mobile-nav-active');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
+        });
+      }
+      document.querySelectorAll('.navmenu .toggle-dropdown').forEach(dropdown => {
+        dropdown.addEventListener('click', function(e) {
+          if (body.classList.contains('mobile-nav-active')) {
+            e.preventDefault();
+            this.parentNode.classList.toggle('active');
+            this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+            e.stopImmediatePropagation();
+          }
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileMenu();
+      setInterval(updateAgentCount, 4000);
+      fetch('https://api.ipify.org?format=json')
+        .then(r => r.json()).then(d => { 
+          const ipEl = document.getElementById('user-ip');
+          if(ipEl) ipEl.innerText = d.ip; 
+        });
+    });
   </script>
-
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -4,79 +4,102 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>İletişim - Texper Bilişim</title>
+  <title>İletişim | Texper Bilişim</title>
   
   <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
   <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* MASTER INDEX CSS SADAKATİ */
+    /* MASTER CSS SADAKATİ */
     :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
-    html, body { background-color: #000000 !important; font-family: 'Roboto', sans-serif; overflow-x: hidden; }
-    
+
+    html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
-    /* Hero & Arka Plan Derinliği */
-    .hero { min-height: 100vh; display: flex; align-items: center; position: relative; padding-top: 100px; }
-    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none; }
+    /* ARKA PLAN DOKUSU */
+    body::before {
+      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-image: radial-gradient(rgba(255, 193, 7, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px; z-index: 1; pointer-events: none;
+    }
+
+    /* HERO AREA */
+    .hero { 
+      min-height: 100vh; 
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; padding-top: 100px; padding-bottom: 50px;
+    }
+
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
+      mask-image: linear-gradient(to left, #000 60%, transparent);
+      -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
+    }
+    
     .hero .container { position: relative; z-index: 2; }
 
-    /* Cam Kart Yapısı */
+    /* BAŞLIK VE EFEKT */
+    .headline { font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 25px; }
+    .accent { color: var(--primary); display: inline-block; animation: glowBreath 3s ease-in-out infinite; }
+    @keyframes glowBreath {
+      0%, 100% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); transform: scale(1); }
+      50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
+    }
+
+    /* DESTEK TIERLARI (MASTER FEATURE STİLİ) */
+    .support-tier-card {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 3px solid var(--primary);
+      border-top: 1px solid var(--glass-border);
+      padding: 25px; margin-bottom: 20px; backdrop-filter: blur(10px); transition: 0.3s;
+    }
+    .tier-label { color: var(--primary); font-family: 'Roboto Mono', monospace; font-weight: 800; font-size: 0.7rem; display: block; margin-bottom: 10px; letter-spacing: 1px; }
+
+    /* FORM ALANI (NETLEŞTİRİLMİŞ DİZİLİŞ) */
     .contact-glass-box {
-      background: rgba(255, 255, 255, 0.03) !important;
-      border: 1px solid var(--glass-border) !important;
-      padding: 40px; border-radius: 25px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-      height: 100%;
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--glass-border);
+      padding: 40px; border-radius: 4px; backdrop-filter: blur(15px);
     }
-
-    /* FORMA DOKUNULMADI - Mevcut sınıfların korunması için buraya alındı */
     .form-control-texper {
-      background: rgba(0, 0, 0, 0.4) !important;
-      border: 1px solid rgba(255, 255, 255, 0.2) !important;
-      color: #ffffff !important;
-      border-radius: 12px !important;
-      padding: 15px !important;
-      margin-bottom: 20px;
-      width: 100% !important;
-      outline: none !important;
+      background: rgba(15, 15, 15, 0.8) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      color: #ffffff !important; border-radius: 4px !important;
+      padding: 12px 18px !important; margin-bottom: 15px; width: 100%;
     }
-    .form-control-texper:focus {
-      background: rgba(0, 0, 0, 0.7) !important;
-      border-color: #ffc107 !important;
-      color: #ffffff !important;
-    }
+    .form-control-texper:focus { border-color: var(--primary) !important; outline: none; background: #000 !important; }
+
     .btn-submit-texper {
-      background: #ffc107 !important; /* Buton rengi kurumsal sarı ile eşitlendi */
-      color: #000 !important; /* Yazı siyah */
-      padding: 14px 30px !important;
-      border-radius: 50px !important;
-      border: none !important;
-      font-weight: 700 !important;
-      width: 100% !important;
-      transition: 0.3s !important;
-      text-transform: uppercase;
+      background: var(--primary) !important; color: #000 !important; padding: 15px !important;
+      border-radius: 50px !important; font-weight: 800 !important; width: 100% !important;
+      text-transform: uppercase; border: none !important; transition: 0.3s; box-shadow: 0 10px 20px rgba(255, 193, 7, 0.2);
     }
-    .btn-submit-texper:disabled { background: #444 !important; color: #888 !important; }
 
-    /* Hızlı İletişim Butonları */
-    .quick-contact-btn {
-      display: flex; align-items: center; gap: 20px; padding: 20px 30px;
-      border-radius: 15px; margin-bottom: 20px; text-decoration: none;
-      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: 0.3s;
+    /* STATS BAR */
+    .stats-bar {
+      background: transparent !important;
+      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 50px; z-index: 10;
     }
-    .quick-contact-btn:hover { background: rgba(255, 255, 255, 0.1); transform: translateX(5px); }
+    .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
 
-    #status-msg { margin-top: 20px; font-weight: 600; text-align: center; display: none; }
+    /* MOBİL DÜZENLEMELER */
+    @media (max-width: 991px) {
+      .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
+      .contact-glass-box { padding: 30px 20px; margin-top: 30px; }
+      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
+      .btn-panel-header { display: none; }
+      .navmenu ul li.mobile-only { display: block !important; }
+    }
+    .navmenu ul li.mobile-only { display: none; }
+    .btn-panel-header { background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
   </style>
 </head>
 
@@ -87,7 +110,7 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
       </a>
-
+      
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
@@ -99,23 +122,17 @@
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="services.html">Tüm Hizmetler</a></li>
-              <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
-              <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
-              <li><a href="programlar.html">BT Programlar</a></li>
-            </ul>
-          </li>
+          <li><a href="services.html">Hizmetler</a></li>
           <li><a href="project.html">Projeler</a></li>
-          <li><a href="blog.html">Neler Yapıyoruz</a></li>
           <li><a href="contact.html" class="active">İletişim</a></li>
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
-      <a class="btn-getstarted" href="https://texper.xyz" style="background: transparent; border: 2px solid #ffc107; color: #ffc107; font-weight: 700; border-radius: 50px; padding: 8px 25px; margin-left: 20px;">Müşteri Paneli</a>
+      
+      <a class="btn-panel-header d-none d-lg-flex" href="mesh.html">
+        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
+      </a>
     </div>
   </header>
 
@@ -125,86 +142,83 @@
       <div class="container">
         
         <div class="text-center mb-5">
-          <h2 style="font-size: 3.5rem; font-weight: 800; font-family: 'Poppins';">Bize <span style="color:var(--primary);">Ulaşın.</span></h2>
-          <p style="color: #aaa;">BT altyapı projeleriniz ve teknik destek talepleriniz için ekibimizle irtibata geçin.</p>
+          <h2 class="headline">DESTEK <span class="accent">PROTOKOLLERİ.</span></h2>
+          <p style="color: #888;">Hiyerarşik iletişim kanallarımızla anında çözüm.</p>
         </div>
 
-        <div class="row g-4">
+        <div class="row g-4 align-items-start">
           <div class="col-lg-5">
-            <div class="contact-glass-box">
-              <a href="https://wa.me/905000000000" class="quick-contact-btn">
-                <i class="bi bi-whatsapp" style="color:#25d366; font-size: 2rem;"></i>
-                <div style="color:white"><span>WhatsApp</span><br><strong>Hemen Yazın</strong></div>
-              </a>
-              <a href="mailto:info@texper.net" class="quick-contact-btn">
-                <i class="bi bi-envelope-at" style="color:var(--primary); font-size: 2rem;"></i>
-                <div style="color:white"><span>E-Posta</span><br><strong>info@texper.net</strong></div>
-              </a>
-              <div class="mt-4 px-3" style="color: rgba(255,255,255,0.7);">
-                <p><i class="bi bi-geo-alt me-2" style="color:var(--primary);"></i> İstanbul, Türkiye</p>
-                <p><i class="bi bi-clock me-2" style="color:var(--primary);"></i> 09:00 - 18:30 (Pzt-Cmt)</p>
-                <p><i class="bi bi-shield-lock me-2" style="color:var(--primary);"></i> 7/24 Proaktif İzleme Aktif</p>
-              </div>
+            <div class="support-tier-card">
+              <span class="tier-label">TIER 1 - GENEL TALEPLER</span>
+              <h5 class="fw-bold">E-Posta & Form</h5>
+              <p>Teklif talepleri ve genel bilgi. Dönüş: 24 Saat.</p>
+            </div>
+            
+            <div class="support-tier-card">
+              <span class="tier-label">TIER 2 - TEKNİK DESTEK</span>
+              <h5 class="fw-bold">Anlık Bağlantı</h5>
+              <p>Sistem hataları ve operasyonel yardım. Dönüş: 2 Saat.</p>
+            </div>
+
+            <div class="support-tier-card" style="border-color: rgba(255, 193, 7, 0.4);">
+              <span class="tier-label">TIER 3 - ACİL DURUM (SLA)</span>
+              <h5 class="fw-bold">Kurumsal Destek Hattı</h5>
+              <p>Bakım anlaşmalı kurumlar için 7/24 kritik sistem desteği.</p>
             </div>
           </div>
 
           <div class="col-lg-7">
             <div class="contact-glass-box">
-              <form id="contact-form" action="https://formspree.io/f/xqapdovq" method="POST">
-                <input type="text" name="name" class="form-control-texper" placeholder="Adınız Soyadınız" required>
-                <input type="email" name="email" class="form-control-texper" placeholder="E-posta Adresiniz" required>
-                <textarea name="message" rows="5" class="form-control-texper" placeholder="Mesajınız..." required></textarea>
-                <button type="submit" id="submit-btn" class="btn-submit-texper">MESAJI GÖNDER</button>
-                <div id="status-msg"></div>
+              <form action="https://formspree.io/f/xqapdovq" method="POST">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <input type="text" name="name" class="form-control-texper" placeholder="Ad Soyad" required>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="email" name="email" class="form-control-texper" placeholder="E-posta" required>
+                  </div>
+                  <div class="col-12">
+                    <input type="text" name="subject" class="form-control-texper" placeholder="Konu Başlığı">
+                  </div>
+                  <div class="col-12">
+                    <textarea name="message" rows="5" class="form-control-texper" placeholder="Talebinizi buraya yazın..." required></textarea>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn-submit-texper">TALEBİ SİSTEME GÖNDER</button>
+                  </div>
+                </div>
               </form>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="stats-bar">
+        <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span style="color:#2ecc71; font-weight:bold;">ONLINE</span></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <span id="agent-count" style="color:#fff; font-weight:bold;">312 ACTIVE</span></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" style="color:#fff; font-weight:bold;">...</span></div>
+      </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background" style="padding: 30px 0; border-top: 1px solid var(--glass-border); text-align: center;">
-      <p style="margin: 0; opacity: 0.5; font-size: 0.85rem; letter-spacing: 1px;">© 2026 TEXPER BİLİŞİM. TÜM HAKLARI SAKLIDIR.</p>
-  </footer>
-
-  <script>
-    var form = document.getElementById("contact-form");
-    async function handleSubmit(event) {
-      event.preventDefault();
-      var status = document.getElementById("status-msg");
-      var btn = document.getElementById("submit-btn");
-      var data = new FormData(event.target);
-      btn.disabled = true;
-      btn.innerText = "Gönderiliyor...";
-      fetch(event.target.action, {
-        method: form.method,
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          status.innerHTML = "✓ Mesajınız başarıyla iletildi!";
-          status.style.color = "#25d366";
-          status.style.display = "block";
-          form.reset();
-          btn.innerText = "MESAJ GÖNDERİLDİ";
-        } else {
-          status.innerHTML = "Hata oluştu, tekrar deneyin.";
-          status.style.color = "#ff4d4d";
-          status.style.display = "block";
-          btn.disabled = false;
-          btn.innerText = "TEKRAR DENE";
-        }
-      }).catch(error => {
-        status.innerHTML = "Bağlantı hatası!";
-        status.style.display = "block";
-        btn.disabled = false;
-        btn.innerText = "MESAJI GÖNDER";
-      });
-    }
-    form.addEventListener("submit", handleSubmit);
-  </script>
-
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function initMobileMenu() {
+      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+      const body = document.querySelector('body');
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.addEventListener('click', function() {
+          body.classList.toggle('mobile-nav-active');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
+        });
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileMenu();
+      fetch('https://api.ipify.org?format=json')
+        .then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
+    });
+  </script>
 </body>
 </html>

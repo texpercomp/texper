@@ -4,26 +4,25 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>S.S.S - Texper Bilişim</title>
+  <title>S.S.S | Texper Bilişim</title>
   
   <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
   <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* MASTER INDEX CSS SADAKATİ */
+    /* MASTER CSS SADAKATİ */
     :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
 
-    html, body { background-color: #000000 !important; }
-
+    html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
+    /* HERO AREA - MASTER ARKA PLAN YAPISI */
     .hero { 
       min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
@@ -32,102 +31,61 @@
 
     .hero-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none;
+      object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
+      mask-image: linear-gradient(to left, #000 60%, transparent);
+      -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
     }
     
     .hero .container { position: relative; z-index: 2; }
 
-    /* INDEX MENÜ & BUTON STİLLERİ */
-    .nav-contact-btn {
-      border: 1px solid rgba(255, 255, 255, 0.5) !important;
-      border-radius: 20px;
-      padding: 5px 20px !important;
-      margin-left: 10px;
-      transition: 0.3s;
+    /* BAŞLIK VE EFEKT */
+    .headline { font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 25px; }
+    .accent { color: var(--primary); display: inline-block; animation: glowBreath 3s ease-in-out infinite; }
+    @keyframes glowBreath {
+      0%, 100% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); transform: scale(1); }
+      50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
     }
-    .nav-contact-btn:hover { background: #fff; color: #000 !important; border-color: #fff !important; }
+
+    /* ACCORDION (MASTER STİL) */
+    .faq-container { max-width: 850px; margin: 0 auto; }
+    .accordion-item {
+      background: rgba(255, 255, 255, 0.02) !important;
+      border: 1px solid var(--glass-border) !important;
+      border-radius: 4px !important;
+      margin-bottom: 15px;
+    }
+    .accordion-button {
+      background: transparent !important; color: #fff !important;
+      font-weight: 700; padding: 20px; font-size: 0.95rem; box-shadow: none !important;
+    }
+    .accordion-button:not(.collapsed) { color: var(--primary) !important; border-bottom: 1px solid var(--glass-border); }
+    .accordion-button::after { filter: invert(1) sepia(100%) saturate(1000%) hue-rotate(10deg); }
+    .accordion-body { color: #aaa; font-size: 0.9rem; line-height: 1.8; padding: 25px; background: rgba(255,255,255,0.01); }
+    .faq-highlight { color: var(--primary); font-weight: 700; }
+
+    /* STATS BAR (MASTER STİL) */
+    .stats-bar {
+      background: transparent !important;
+      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 50px; z-index: 10;
+    }
+    .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
 
     .btn-panel-header {
-      background: transparent; color: var(--primary) !important;
-      padding: 8px 25px; margin-left: 20px;
-      border-radius: 50px; font-weight: 700; font-size: 14px;
-      border: 2px solid var(--primary);
-      text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s;
+      background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
     }
-    .btn-panel-header:hover { background: var(--primary); color: #000 !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
-
-    /* ACCORDION ÖZEL TASARIM (INDEX STİLİNDE) */
-    .faq-container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .accordion-item {
-      background: rgba(255, 255, 255, 0.03) !important;
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--glass-border) !important;
-      border-radius: 15px !important;
-      margin-bottom: 15px;
-      overflow: hidden;
-    }
-
-    .accordion-button {
-      background: transparent !important;
-      color: #fff !important;
-      font-weight: 600;
-      padding: 20px 25px;
-      box-shadow: none !important;
-    }
-
-    .accordion-button:not(.collapsed) {
-      color: var(--primary) !important;
-      border-bottom: 1px solid var(--glass-border);
-    }
-
-    .accordion-button::after {
-      filter: invert(1);
-    }
-
-    .accordion-body {
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.7;
-      background: rgba(255, 255, 255, 0.01);
-      padding: 25px;
-    }
-
-    .faq-highlight { color: var(--primary); font-weight: 600; }
-
-    /* ANA AKSİYON BUTONU */
     .btn-action-master {
-      background: var(--primary);
-      color: #000 !important;
-      border: 1px solid var(--primary);
-      padding: 15px 45px; border-radius: 50px;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
-      transition: 0.3s; font-weight: 800;
-      box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
-      text-transform: uppercase;
+      background: var(--primary); color: #000 !important; padding: 15px 45px; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; font-weight: 800; box-shadow: 0 10px 20px rgba(255, 193, 7, 0.2); transition: 0.3s;
     }
-    .btn-action-master:hover { background: #fff; border-color: #fff; transform: scale(1.05); }
-
-    /* STATS BAR */
-    .stats-bar {
-      border-top: 1px solid var(--glass-border);
-      background: rgba(0, 0, 0, 0.3);
-      padding: 15px 0; width: 100%;
-      position: absolute; bottom: 0; left: 0;
-      display: flex; justify-content: center; gap: 40px;
-      z-index: 10; flex-wrap: wrap;
-    }
-    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; }
-    .ip-highlight { color: #fff; font-weight: bold; }
 
     @media (max-width: 991px) {
-      .hero { padding-top: 120px; height: auto; padding-bottom: 80px; }
-      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
+      .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
+      .headline { font-size: 2.2rem !important; }
+      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
       .btn-panel-header { display: none; }
-      .nav-contact-btn { border: none !important; padding: 0 !important; margin: 0 !important; }
+      .navmenu ul li.mobile-only { display: block !important; }
     }
+    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -146,7 +104,7 @@
             <ul>
               <li><a href="about.html">Hakkımızda</a></li>
               <li><a href="referanslar.html">Referanslar</a></li>
-              <li><a href="faq.html">S.S.S</a></li>
+              <li><a href="faq.html" class="active">S.S.S</a></li>
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
@@ -154,21 +112,25 @@
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
-              <li><a href="programlar.html">Faydalı Programlar</a></li>
             </ul>
           </li>
-          <li><a href="project.html">Projeler</a></li>
-          <li><a href="blog.html">Neler Yapıyoruz</a></li>
-          <li><a href="contact.html" class="nav-contact-btn">İletişim</a></li>
-          <li class="d-md-none"><a href="destek.html">Destek Al</a></li>
-          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
+          <li class="dropdown"><a href="#"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="blog.html">Neler Yapıyoruz</a></li>
+              <li><a href="project.html">Projelerimiz</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="programlar.html">BT Programlar</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">İletişim</a></li>
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       
-      <a class="btn-panel-header d-none d-lg-flex" href="https://texper.xyz">
+      <a class="btn-panel-header d-none d-lg-flex" href="mesh.html">
         <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
       </a>
     </div>
@@ -180,8 +142,8 @@
 
       <div class="container">
         <div class="text-center mb-5">
-          <h2 style="font-size: 3.2rem; font-weight: 800;">Sıkça Sorulan <span style="color: #ffc107;">Sorular.</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; color: #ccc;">Hizmetlerimiz, süreçlerimiz ve teknik detaylar hakkında merak ettiğiniz her şey.</p>
+          <h2 class="headline">SIKÇA SORULAN <span class="accent">SORULAR.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem;">Hizmetlerimiz ve teknik süreçlerimiz hakkında merak edilenler.</p>
         </div>
 
         <div class="faq-container">
@@ -195,7 +157,7 @@
               </h2>
               <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  Başta <span class="faq-highlight">İstanbul</span> olmak üzere çevre illere yerinde teknik destek, ağ kurulumu ve sistem odası düzenleme hizmeti veriyoruz. Diğer bölgeler için uzak bağlantı ve proje bazlı saha çalışması yapmaktayız.
+                  Başta <span class="faq-highlight">İstanbul</span> olmak üzere Marmara bölgesine yerinde teknik destek sağlıyoruz. Diğer iller için uzak bağlantı ve proje bazlı saha operasyonları yürütüyoruz.
                 </div>
               </div>
             </div>
@@ -208,7 +170,7 @@
               </h2>
               <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  Verileriniz Türkiye lokasyonlu, <span class="faq-highlight">Tier 3+</span> standartlarına sahip güvenli veri merkezlerimizde barındırılmaktadır. KVKK uyumlu ve yüksek hızlı erişim garantisi sunuyoruz.
+                  Verileriniz Türkiye lokasyonlu, <span class="faq-highlight">Tier 3+</span> standartlarına sahip veri merkezlerimizde saklanır. KVKK uyumluluğu ve %99.9 uptime garantisi sunuyoruz.
                 </div>
               </div>
             </div>
@@ -216,25 +178,12 @@
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                  Sistem odası düzenlemesi (Rack Kabin) için keşif ücretli mi?
+                  Sistem odası keşif hizmetiniz ücretli mi?
                 </button>
               </h2>
               <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  Hayır, ağ ve sistem altyapı projeleriniz için gerçekleştirdiğimiz <span class="faq-highlight">ilk keşif hizmeti tamamen ücretsizdir</span>. İhtiyaçlarınızı yerinde analiz edip en uygun projeyi raporluyoruz.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                  Firewall (Güvenlik Duvarı) kiralama modeliniz var mı?
-                </button>
-              </h2>
-              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                  Evet, donanım maliyetine katlanmak istemeyen işletmeler için <span class="faq-highlight">Firewall kiralama ve yönetim</span> modellerimiz mevcuttur. Kurulum ve kural yönetimi Texper uzman ekibi tarafından yapılır.
+                  Hayır, ağ ve sistem altyapı projeleriniz için gerçekleştirdiğimiz <span class="faq-highlight">ilk keşif hizmeti tamamen ücretsizdir</span>. Uzman ekibimiz yerinde analiz yaparak rapor sunar.
                 </div>
               </div>
             </div>
@@ -242,7 +191,6 @@
           </div>
 
           <div class="text-center mt-5">
-            <p style="opacity: 0.6; margin-bottom: 20px;">Aradığınız cevabı bulamadınız mı?</p>
             <a href="contact.html" class="btn-action-master">
               <i class="bi bi-chat-dots"></i> BİZE SORUN
             </a>
@@ -251,23 +199,31 @@
       </div>
 
       <div class="stats-bar">
-        <div class="stat-text"><i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong></div>
-        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <strong style="color:#fff;">312 ACTIVE</strong></div>
-        <div class="stat-text"><i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong></div>
+        <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span style="color:#2ecc71; font-weight:bold;">ONLINE</span></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <span id="agent-count" style="color:#fff; font-weight:bold;">312 ACTIVE</span></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" style="color:#fff; font-weight:bold;">...</span></div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background" style="padding: 0; height: 0; overflow: hidden; visibility: hidden;"></footer>
-
-  <script>
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => { document.getElementById('user-ip').innerText = data.ip; })
-      .catch(error => { document.getElementById('user-ip').innerText = "Gizli"; });
-  </script>
-
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script>
+    function initMobileMenu() {
+      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+      const body = document.querySelector('body');
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.addEventListener('click', function() {
+          body.classList.toggle('mobile-nav-active');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
+        });
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileMenu();
+      fetch('https://api.ipify.org?format=json')
+        .then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
+    });
+  </script>
 </body>
 </html>

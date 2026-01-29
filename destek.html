@@ -4,26 +4,32 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Destek Merkezi - Texper Bilişim</title>
+  <title>Destek Merkezi | Texper Bilişim</title>
   
   <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
   <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* MASTER INDEX CSS SADAKATİ */
+    /* MASTER CSS SADAKATİ */
     :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
 
-    html, body { background-color: #000000 !important; }
-
+    html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
+    /* ARKA PLAN TEKNOLOJİK DOKU */
+    body::before {
+      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-image: radial-gradient(rgba(255, 193, 7, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px; z-index: 1; pointer-events: none;
+    }
+
+    /* HERO AREA - MASTER ARKA PLAN YAPISI */
     .hero { 
       min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
@@ -32,114 +38,72 @@
 
     .hero-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none;
+      object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
+      mask-image: linear-gradient(to left, #000 60%, transparent);
+      -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
     }
     
     .hero .container { position: relative; z-index: 2; }
 
-    /* INDEX MENÜ & BUTON STİLLERİ */
-    .nav-contact-btn {
-      border: 1px solid rgba(255, 255, 255, 0.5) !important;
-      border-radius: 20px;
-      padding: 5px 20px !important;
-      margin-left: 10px;
-      transition: 0.3s;
+    /* BAŞLIK VE EFEKT */
+    .headline { font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 25px; }
+    .accent { color: var(--primary); display: inline-block; animation: glowBreath 3s ease-in-out infinite; }
+    @keyframes glowBreath {
+      0%, 100% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); transform: scale(1); }
+      50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
     }
-    .nav-contact-btn:hover { background: #fff; color: #000 !important; border-color: #fff !important; }
 
-    .btn-panel-header {
-      background: transparent; color: var(--primary) !important;
-      padding: 8px 25px; margin-left: 20px;
-      border-radius: 50px; font-weight: 700; font-size: 14px;
-      border: 2px solid var(--primary);
-      text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s;
-    }
-    .btn-panel-header:hover { background: var(--primary); color: #000 !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
-
-    /* DESTEK KARTLARI */
+    /* DESTEK KARTLARI (MASTER FEATURE STİLİ) */
     .support-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
-      padding: 30px;
-      border-radius: 20px;
-      border: 1px solid var(--glass-border);
-      text-align: center;
-      transition: 0.4s;
-      height: 100%;
-      text-decoration: none;
-      display: block;
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 3px solid var(--primary);
+      border-top: 1px solid var(--glass-border);
+      padding: 30px; border-radius: 4px; transition: 0.3s;
+      height: 100%; text-decoration: none; display: block;
     }
-    .support-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: var(--primary);
-      transform: translateY(-10px);
-    }
-    .support-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; display: block; }
-    .support-card h3 { color: #fff; font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
-    .support-card p { color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 0; }
+    .support-card:hover { background: rgba(255, 193, 7, 0.05); transform: translateY(-5px); }
+    .support-card i { font-size: 2rem; color: var(--primary); margin-bottom: 20px; display: block; }
+    .support-card h3 { color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; }
+    .support-card p { color: #888; font-size: 0.85rem; margin-bottom: 0; line-height: 1.5; }
 
-    /* HIZLI İLETİŞİM ÇUBUĞU */
+    /* QUICK CONTACT BAR */
     .quick-contact-bar {
-      background: rgba(255, 193, 7, 0.1);
-      border: 1px solid rgba(255, 193, 7, 0.2);
-      padding: 20px;
-      border-radius: 50px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 40px;
-      flex-wrap: wrap;
+      background: rgba(255, 193, 7, 0.03);
+      border: 1px solid rgba(255, 193, 7, 0.1);
+      padding: 20px 40px; border-radius: 4px;
+      display: flex; justify-content: center; gap: 40px; margin-top: 45px; flex-wrap: wrap;
     }
-    .q-link {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-    }
+    .q-link { color: #fff; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 10px; transition: 0.3s; font-size: 0.9rem; }
     .q-link:hover { color: var(--primary); }
-    .q-link i { font-size: 1.2rem; color: var(--primary); }
+    .q-link i { color: var(--primary); font-size: 1.1rem; }
 
-    /* PANEL BUTONU (MASTER STYLE) */
     .btn-action-master {
-      background: var(--primary);
-      color: #000 !important;
-      border: 1px solid var(--primary);
-      padding: 18px 45px;
-      border-radius: 50px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      transition: 0.3s;
-      font-weight: 800;
-      margin-top: 30px;
-      box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
-      text-transform: uppercase;
+      background: var(--primary); color: #000 !important; padding: 16px 45px; border-radius: 50px;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 12px;
+      transition: 0.3s; font-weight: 800; margin-top: 30px; box-shadow: 0 10px 20px rgba(255, 193, 7, 0.2);
     }
-    .btn-action-master:hover { background: #fff; border-color: #fff; transform: scale(1.05); }
 
     /* STATS BAR */
     .stats-bar {
-      border-top: 1px solid var(--glass-border);
-      background: rgba(0, 0, 0, 0.3);
-      padding: 15px 0; width: 100%;
-      position: absolute; bottom: 0; left: 0;
-      display: flex; justify-content: center; gap: 40px;
-      z-index: 10; flex-wrap: wrap;
+      background: transparent !important;
+      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 50px; z-index: 10;
     }
-    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; }
-    .ip-highlight { color: #fff; font-weight: bold; }
+    .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
+
+    .btn-panel-header {
+      background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
+    }
 
     @media (max-width: 991px) {
-      .hero { padding-top: 120px; height: auto; padding-bottom: 80px; }
-      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
+      .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
+      .support-card { padding: 25px; }
+      .quick-contact-bar { gap: 20px; padding: 20px; }
+      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
       .btn-panel-header { display: none; }
-      .nav-contact-btn { border: none !important; padding: 0 !important; margin: 0 !important; }
-      .quick-contact-bar { border-radius: 20px; gap: 15px; }
+      .navmenu ul li.mobile-only { display: block !important; }
     }
+    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -166,21 +130,25 @@
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
-              <li><a href="programlar.html">Faydalı Programlar</a></li>
             </ul>
           </li>
-          <li><a href="project.html">Projeler</a></li>
-          <li><a href="blog.html">Neler Yapıyoruz</a></li>
-          <li><a href="contact.html" class="nav-contact-btn">İletişim</a></li>
-          <li class="d-md-none"><a href="destek.html" class="active">Destek Al</a></li>
-          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
+          <li class="dropdown"><a href="#"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="blog.html">Neler Yapıyoruz</a></li>
+              <li><a href="project.html">Projelerimiz</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="programlar.html">BT Programlar</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">İletişim</a></li>
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       
-      <a class="btn-panel-header d-none d-lg-flex" href="https://texper.xyz">
+      <a class="btn-panel-header d-none d-lg-flex" href="mesh.html">
         <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
       </a>
     </div>
@@ -192,78 +160,80 @@
 
       <div class="container text-center">
         <div class="mb-5">
-          <h2 style="font-size: 3.2rem; font-weight: 800;">Destek <span style="color: #ffc107;">Merkezi.</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; color: #ccc;">Uzak bağlantı araçları ve hızlı iletişim kanalları ile sorunlarınıza anında çözüm üretiyoruz.</p>
+          <h2 class="headline">DESTEK <span class="accent">MERKEZİ.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem; opacity: 0.9;">Uzak bağlantı araçları ve hızlı iletişim kanalları ile sorunlarınıza anında çözüm.</p>
         </div>
 
-        <div class="row g-4 justify-content-center">
+        <div class="row g-4 justify-content-center text-start">
           <div class="col-lg-3 col-md-6">
             <a href="https://download.anydesk.com/AnyDesk.exe" class="support-card">
               <i class="fa-solid fa-desktop"></i>
               <h3>AnyDesk</h3>
-              <p>Hızlı ve Güvenli Uzak Masaüstü Erişimi</p>
+              <p>Güvenli uzak masaüstü erişim protokolü.</p>
             </a>
           </div>
           <div class="col-lg-3 col-md-6">
             <a href="https://www.alpemix.com/site/Alpemix.exe" class="support-card">
               <i class="fa-solid fa-rocket"></i>
               <h3>Alpemix</h3>
-              <p>Yerli ve Hızlı Bağlantı Çözümü</p>
+              <p>Yerli ve hızlı uzak bağlantı çözümü.</p>
             </a>
           </div>
           <div class="col-lg-3 col-md-6">
-            <a href="https://github.com/rustdesk/rustdesk/releases/download/1.4.5/rustdesk-1.4.5-x86_64.exe" class="support-card">
+            <a href="https://my.microsoftpersonalcontent.com/personal/d9e2670e00da7b49/_layouts/15/download.aspx?UniqueId=41528895-d3fe-4d65-814e-9fe511aef086&Translate=false&tempauth=v1e.eyJzaXRlaWQiOiJiZWQ5ZTg0ZC1jMGFiLTQ0YmItOWVmZC1hODc2ZjU2OGI5MWIiLCJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbXkubWljcm9zb2Z0cGVyc29uYWxjb250ZW50LmNvbUA5MTg4MDQwZC02YzY3LTRjNWItYjExMi0zNmEzMDRiNjZkYWQiLCJleHAiOiIxNzY5NjQ5MjM1In0.zniNu8G5mroGe6XSsTmKDyUfkSxRhlm1fxUHXOljac4dMB3YkpjJUO4AZyjeXTBzdF7UX_76HMDE6WfH3_wRiuMO2mPUCSNwF_RMjhD7_15FRb6k-PMdtUeN5x6gulX9OiiI9ZK3v_bvE0Y_pjPN_PkzOWaYML2LJ4QeAUhJZ4dO1KHzlwoq5VlpMW_hXFBwKtzCSrQap4uVGVrl_N32Ob3pJz_PyJ2j__0mBYCHLPkdQ9nbzgoRB4bJOg4Y-PUYsKKyx1UEG0vUXDTVz_gRcKnkxIAa_rdImdXk65pgxzWbeyn8Fg9DnmCHhYcNDqiK6nYuQ_FN9PivMVPlvNjV0WAL_gtky-ct8QmUj3hR6V23d_yGIYE94vp68uixD9UI0ey26SrDxf4LVRj3C_Ublrf-__ji5UqqRgJT9ZFUlnxbrpowW_KXWVj9orsolBS-5s4gCgQwrv1rKkMVMeulJmQPNerJo8tlAgE23IsFXpYf9fAqi3QTbOw58SnNGHhCmbTXtYQcFZz_1bOywTyZuA.9tHOSxNPp7p8ZcUNLp_89S3hnoIPjGeXxq8R1nCBwy0&ApiVersion=2.0" class="support-card" target="_blank">
               <i class="fa-solid fa-shield-halved"></i>
               <h3>RustDesk</h3>
-              <p>Açık Kaynaklı Güvenli Bağlantı</p>
+              <p>Açık kaynaklı güvenli altyapı erişimi.</p>
             </a>
           </div>
           <div class="col-lg-3 col-md-6">
             <a href="https://download.teamviewer.com/download/TeamViewerQS.exe" class="support-card">
               <i class="fa-solid fa-users-viewfinder"></i>
               <h3>TeamViewer</h3>
-              <p>QuickSupport (Hızlı Destek)</p>
+              <p>QuickSupport hızlı teknik yardım aracı.</p>
             </a>
           </div>
         </div>
 
         <div class="quick-contact-bar">
-          <a href="https://wa.me/905314017375" class="q-link" target="_blank">
-            <i class="bi bi-whatsapp"></i> WhatsApp Destek Hattı
-          </a>
-          <a href="tel:+905314017375" class="q-link">
-            <i class="bi bi-telephone-fill"></i> 0531 401 73 75
-          </a>
-          <a href="mailto:info@texper.com.tr" class="q-link">
-            <i class="bi bi-envelope-at-fill"></i> info@texper.com.tr
-          </a>
+          <a href="https://wa.me/905314017375" class="q-link" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp Destek</a>
+          <a href="tel:+905314017375" class="q-link"><i class="bi bi-telephone-fill"></i> 0531 401 73 75</a>
+          <a href="mailto:info@texper.com.tr" class="q-link"><i class="bi bi-envelope-at-fill"></i> info@texper.com.tr</a>
         </div>
 
         <div class="mt-4">
-          <a href="https://texper.xyz" class="btn-action-master">
+          <a href="mesh.html" class="btn-action-master">
             <i class="bi bi-shield-lock-fill"></i> KURUMSAL MÜŞTERİ PANELİ GİRİŞİ
           </a>
         </div>
       </div>
 
       <div class="stats-bar">
-        <div class="stat-text"><i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong></div>
-        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <strong style="color:#fff;">312 ACTIVE</strong></div>
-        <div class="stat-text"><i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong></div>
+        <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span style="color:#2ecc71; font-weight:bold;">ONLINE</span></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <span id="agent-count" style="color:#fff; font-weight:bold;">312 ACTIVE</span></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" style="color:#fff; font-weight:bold;">...</span></div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background" style="padding: 0; height: 0; overflow: hidden; visibility: hidden;"></footer>
-
-  <script>
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => { document.getElementById('user-ip').innerText = data.ip; })
-      .catch(error => { document.getElementById('user-ip').innerText = "Gizli"; });
-  </script>
-
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script>
+    function initMobileMenu() {
+      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+      const body = document.querySelector('body');
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.addEventListener('click', function() {
+          body.classList.toggle('mobile-nav-active');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
+        });
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileMenu();
+      fetch('https://api.ipify.org?format=json')
+        .then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
+    });
+  </script>
 </body>
 </html>

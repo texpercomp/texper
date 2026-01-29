@@ -4,53 +4,102 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Kurumsal - Texper Bilişim</title>
+  <title>Hakkımızda | Texper Bilişim</title>
   
   <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
   <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* MASTER INDEX CSS SADAKATİ */
+    /* MASTER CSS SADAKATİ */
     :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
-    html, body { background-color: #000000 !important; }
+
+    html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
-    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding-top: 100px; padding-bottom: 50px; }
-    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none; }
+    /* BOŞLUK HİSSİNİ BİTİREN TEKNOLOJİK DESEN */
+    body::before {
+      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-image: radial-gradient(rgba(255, 193, 7, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px; z-index: 1; pointer-events: none;
+    }
+
+    /* HERO AREA - MASTER ARKA PLAN YAPISI */
+    .hero { 
+      min-height: 100vh; 
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; padding-top: 100px; padding-bottom: 50px;
+    }
+
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
+      mask-image: linear-gradient(to left, #000 60%, transparent);
+      -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
+    }
+    
     .hero .container { position: relative; z-index: 2; }
 
-    /* İÇERİK DÜZENLEMELERİ */
-    .partner-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--glass-border);
-      border-radius: 15px;
-      padding: 30px;
-      text-align: center;
-      transition: 0.3s;
-      height: 100%;
-      backdrop-filter: blur(10px);
+    /* BAŞLIK VE EFEKT */
+    .headline { font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 25px; }
+    .accent { color: var(--primary); display: inline-block; animation: glowBreath 3s ease-in-out infinite; }
+    @keyframes glowBreath {
+      0%, 100% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); transform: scale(1); }
+      50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
     }
-    .partner-card:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(255, 193, 7, 0.05); }
-    .partner-logo { font-size: 3rem; color: var(--primary); margin-bottom: 20px; display: block; }
-    
-    .partner-card h5 { color: var(--primary); font-weight: 700; margin-bottom: 10px; }
-    .partner-card p { font-size: 0.9rem; color: #ccc; margin-bottom: 20px; line-height: 1.6; }
-    
-    .partner-link { 
-      font-size: 0.8rem; color: #fff; text-decoration: none; 
-      border: 1px solid rgba(255,255,255,0.2); padding: 6px 20px; 
-      border-radius: 20px; transition: 0.3s; 
-    }
-    .partner-link:hover { background: #fff; color: #000; }
 
-    .highlight-text { color: var(--primary); }
+    /* TECH STACK TABLE (MASTER STİL) */
+    .tech-stack-container {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--glass-border);
+      border-radius: 4px; padding: 35px; margin-top: 40px;
+    }
+    .tech-table { width: 100%; color: #fff; border-collapse: separate; border-spacing: 0 8px; }
+    .tech-table th { color: var(--primary); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; padding: 15px; border-bottom: 1px solid var(--glass-border); font-family: 'Roboto Mono', monospace; }
+    .tech-table td { padding: 18px 15px; background: rgba(255, 255, 255, 0.03); font-size: 0.9rem; }
+    .tech-table tr:hover td { background: rgba(255, 193, 7, 0.05); }
+    
+    .status-pill {
+      background: rgba(255, 193, 7, 0.1); color: var(--primary); padding: 4px 12px; border-radius: 4px;
+      font-size: 0.7rem; border: 1px solid rgba(255, 193, 7, 0.3); font-family: 'Roboto Mono', monospace; font-weight: 700;
+    }
+
+    /* PARTNER CARDS */
+    .partner-card {
+      background: rgba(255, 255, 255, 0.02); border: 1px solid var(--glass-border);
+      border-radius: 4px; padding: 35px; text-align: center; transition: 0.3s; height: 100%;
+    }
+    .partner-card:hover { border-color: var(--primary); transform: translateY(-5px); background: rgba(255, 193, 7, 0.02); }
+    .partner-logo { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; display: block; }
+    .partner-link { font-size: 0.75rem; color: var(--primary); text-decoration: none; border: 1px solid rgba(255,193,7,0.3); padding: 8px 25px; border-radius: 50px; transition: 0.3s; font-weight: 700; text-transform: uppercase; }
+    .partner-link:hover { background: var(--primary); color: #000; }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: transparent !important; padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 50px; z-index: 10;
+    }
+    .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
+
+    .btn-panel-header {
+      background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
+    }
+
+    @media (max-width: 991px) {
+      .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
+      .headline { font-size: 2.2rem !important; }
+      .tech-table thead { display: none; }
+      .tech-table td { display: block; text-align: center !important; padding: 12px; border-radius: 0 !important; }
+      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
+      .btn-panel-header { display: none; }
+      .navmenu ul li.mobile-only { display: block !important; }
+    }
+    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -61,6 +110,7 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
       </a>
+      
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
@@ -76,91 +126,120 @@
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
-              <li><a href="programlar.html">BT Programlar</a></li>
             </ul>
           </li>
           <li><a href="project.html">Projeler</a></li>
           <li><a href="blog.html">Neler Yapıyoruz</a></li>
           <li><a href="contact.html">İletişim</a></li>
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-      <a class="btn-getstarted" href="https://texper.xyz" style="background: transparent; border: 2px solid #ffc107; color: #ffc107; font-weight: 700; border-radius: 50px; padding: 8px 25px; margin-left: 20px;">Müşteri Paneli</a>
+      
+      <a class="btn-panel-header d-none d-lg-flex" href="mesh.html">
+        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
+      </a>
     </div>
   </header>
 
   <main class="main">
     <section id="hero" class="hero section dark-background">
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
+
       <div class="container">
-        
         <div class="text-center mb-5">
-          <h2 style="font-size: 3.2rem; font-weight: 800;">Biz <span class="highlight-text">Kimiz?</span></h2>
-          <p style="max-width: 900px; margin: 0 auto; font-size: 1.1rem; color: #ccc; line-height: 1.8;">
-            Texper Bilişim olarak, işletmelerin dijital dönüşüm yolculuğunda en güvenilir teknoloji ortağı olmayı hedefliyoruz. Altyapıdan bulut çözümlerine, siber güvenlikten özel yazılımlara kadar geniş bir yelpazede profesyonel hizmet sunuyoruz.
+          <h2 class="headline">BİZ <span class="accent">KİMİZ?</span></h2>
+          <p style="max-width: 900px; margin: 0 auto; color: #ccc; font-size: 1.1rem; line-height: 1.8;">
+            Texper Bilişim olarak, işletmelerin karmaşık BT altyapılarını sadeleştiriyor, proaktif yönetim ve yüksek performanslı bulut mimarileriyle geleceğe hazırlıyoruz.
           </p>
         </div>
 
-        <div class="row g-4 text-center mb-5 pb-4">
-            <div class="col-md-4">
-                <i class="bi bi-shield-check" style="font-size: 2.5rem; color: var(--primary);"></i>
-                <h4 class="mt-3">Güvenilirlik</h4>
-                <p style="opacity: 0.7;">Verilerinizi en yüksek güvenlik standartlarıyla koruyoruz.</p>
+        <div class="tech-stack-container">
+          <h3 class="mb-4 text-center fw-bold" style="font-size: 1.4rem;">TEKNOLOJİ <span class="accent">YETKİNLİKLERİMİZ</span></h3>
+          <div class="table-responsive">
+            <table class="tech-table">
+              <thead>
+                <tr>
+                  <th>KATEGORİ</th>
+                  <th>TEKNOLOJİ VE STANDARTLAR</th>
+                  <th style="text-align: right;">YETKİNLİK</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="fw-bold text-warning">SANALLAŞTIRMA</td>
+                  <td>Microsoft Hyper-V, Proxmox VE, Docker, VM Migration</td>
+                  <td style="text-align: right;"><span class="status-pill">EXPERT</span></td>
+                </tr>
+                <tr>
+                  <td class="fw-bold text-warning">AĞ / VPN</td>
+                  <td>KeeneticOS, IKEv2, SSTP, VLAN Segmentasyonu</td>
+                  <td style="text-align: right;"><span class="status-pill">EXPERT</span></td>
+                </tr>
+                <tr>
+                  <td class="fw-bold text-warning">VERİ MERKEZİ</td>
+                  <td>QNAP Hybrid Backup, NVMe Storage Pools, RAID Mimarileri</td>
+                  <td style="text-align: right;"><span class="status-pill">ADVANCED</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        
+
+        <div class="partners-section mt-5 pt-4 text-center">
+          <h3 class="mb-5 fw-bold">STRATEJİK <span class="accent">İŞ ORTAKLARIMIZ</span></h3>
+          <div class="row g-4 justify-content-center">
+            <div class="col-lg-4 col-md-6">
+              <div class="partner-card">
+                <i class="bi bi-qr-code-scan partner-logo"></i>
+                <h5 class="fw-bold">BARKODUM</h5>
+                <p class="text-secondary small">Barkod ve Vega Yazılım çözümlerinde entegrasyon ortağımız.</p>
+                <a href="https://barkodum.com" target="_blank" class="partner-link">İNCELE</a>
+              </div>
             </div>
-            <div class="col-md-4">
-                <i class="bi bi-lightning-charge" style="font-size: 2.5rem; color: var(--primary);"></i>
-                <h4 class="mt-3">Performans</h4>
-                <p style="opacity: 0.7;">Optimize edilmiş hızlı altyapılar kuruyoruz.</p>
+            <div class="col-lg-4 col-md-6">
+              <div class="partner-card">
+                <i class="bi bi-camera-video-fill partner-logo"></i>
+                <h5 class="fw-bold">EMT BİLİŞİM</h5>
+                <p class="text-secondary small">Kamera ve yapısal kablolama projelerinde çözüm ortağımız.</p>
+                <a href="https://emtbilisim.com" target="_blank" class="partner-link">İNCELE</a>
+              </div>
             </div>
-            <div class="col-md-4">
-                <i class="bi bi-headset" style="font-size: 2.5rem; color: var(--primary);"></i>
-                <h4 class="mt-3">7/24 Destek</h4>
-                <p style="opacity: 0.7;">Kesintisiz iş sürekliliği için her an yanınızdayız.</p>
-            </div>
+          </div>
         </div>
 
-        <div class="partners-section mt-4">
-            <div class="text-center mb-5">
-                <h3 style="font-weight: 700;">Stratejik <span class="highlight-text">İş Ortaklarımız</span></h3>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="partner-card">
-                        <i class="bi bi-qr-code-scan partner-logo"></i>
-                        <h5>Barkodum</h5>
-                        <p>Barkod ve Vega Yazılım çözümlerinde teknoloji ortağımız olarak kurumsal süreçlerinizi yönetiyoruz.</p>
-                        <a href="https://barkodum.com" target="_blank" class="partner-link">barkodum.com</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="partner-card">
-                        <i class="bi bi-camera-video-fill partner-logo"></i>
-                        <h5>EMT Bilişim</h5>
-                        <p>Kamera sistemleri ve yapısal kablolama projelerinizde en güçlü çözüm ortağımızdır.</p>
-                        <a href="https://emtbilisim.com" target="_blank" class="partner-link">emtbilisim.com</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="partner-card">
-                        <i class="bi bi-cloud-check partner-logo"></i>
-                        <h5>TexCloud</h5>
-                        <p>Texper.Net bünyesinde bulut sunucu ve yüksek performanslı yedekleme servisleri merkezimizdir.</p>
-                        <a href="https://texper.net" target="_blank" class="partner-link">texper.net</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
 
+      <div class="stats-bar">
+        <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span style="color:#2ecc71; font-weight:bold;">ONLINE</span></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <span id="agent-count" style="color:#fff; font-weight:bold;">312 ACTIVE</span></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" style="color:#fff; font-weight:bold;">...</span></div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background" style="padding: 20px 0; border-top: 1px solid var(--glass-border); text-align: center;">
-      <p style="margin: 0; opacity: 0.5; font-size: 0.8rem;">© 2024 Texper Bilişim. Tüm Hakları Saklıdır.</p>
-  </footer>
-
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function initMobileMenu() {
+      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+      const body = document.querySelector('body');
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.addEventListener('click', function() {
+          body.classList.toggle('mobile-nav-active');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
+        });
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileMenu();
+      fetch('https://api.ipify.org?format=json')
+        .then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
+    });
+  </script>
 </body>
 </html>

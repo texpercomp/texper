@@ -4,26 +4,25 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Referanslarımız - Texper Bilişim</title>
+  <title>Referanslarımız | Texper Bilişim</title>
   
   <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
   <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* MASTER INDEX CSS SADAKATİ */
+    /* MASTER CSS SADAKATİ */
     :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
 
-    html, body { background-color: #000000 !important; }
-
+    html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
+    /* HERO AREA - MASTER ARKA PLAN YAPISI */
     .hero { 
       min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
@@ -32,63 +31,73 @@
 
     .hero-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none;
+      object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
+      mask-image: linear-gradient(to left, #000 60%, transparent);
+      -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
     }
     
     .hero .container { position: relative; z-index: 2; }
 
-    /* REFERANS KUTULARI (AKILLI BOYUTLANDIRMA) */
+    /* BAŞLIK VE EFEKT */
+    .headline { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 25px; }
+    .accent { color: var(--primary); display: inline-block; animation: glowBreath 3s ease-in-out infinite; }
+    @keyframes glowBreath {
+      0%, 100% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); transform: scale(1); }
+      50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
+    }
+
+    /* REFERANS KUTULARI (KESKİN VE PROFESYONEL) */
     .ref-box {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--glass-border);
-      border-radius: 15px;
+      border-radius: 4px;
       padding: 15px;
       text-align: center;
-      transition: 0.4s ease;
-      height: 120px;
+      transition: 0.3s;
+      height: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
     }
-
     .ref-box:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 193, 7, 0.05);
       border-color: var(--primary);
       transform: translateY(-5px);
     }
-    
     .ref-box img {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain; 
-      filter: grayscale(1) brightness(1.5);
+      max-width: 85%; max-height: 85%;
+      filter: grayscale(1) brightness(1.2);
       transition: 0.4s;
     }
+    .ref-box:hover img { filter: grayscale(0) brightness(1); }
 
-    .ref-box:hover img {
-      filter: grayscale(0) brightness(1);
-    }
-
-    /* STATS BAR */
+    /* STATS BAR (MASTER STİL) */
     .stats-bar {
-      border-top: 1px solid var(--glass-border);
-      background: rgba(0, 0, 0, 0.3);
-      padding: 15px 0; width: 100%;
-      position: absolute; bottom: 0; left: 0;
-      display: flex; justify-content: center; gap: 40px;
-      z-index: 10; flex-wrap: wrap;
+      background: transparent !important;
+      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 50px; z-index: 10;
     }
-    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; }
-    .ip-highlight { color: #fff; font-weight: bold; }
+    .stat-text { 
+      display: flex; align-items: center; gap: 10px; 
+      color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace;
+      letter-spacing: 1px;
+    }
 
-    @media (max-width: 991px) {
-      .hero { padding-top: 120px; height: auto; padding-bottom: 80px; }
-      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
+    .btn-panel-header {
+      background: transparent; color: var(--primary) !important;
+      padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700;
+      border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
     }
+
+    /* MOBİL DÜZENLEMELER */
+    @media (max-width: 991px) {
+      .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
+      .headline { font-size: 2.2rem !important; }
+      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; }
+      .navmenu ul li.mobile-only { display: block !important; }
+    }
+    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -117,17 +126,19 @@
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
               <li><a href="cloud.html">Bulut Hizmetleri</a></li>
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
-              <li><a href="programlar.html">Faydalı Programlar</a></li>
             </ul>
           </li>
           <li><a href="project.html">Projeler</a></li>
           <li><a href="blog.html">Neler Yapıyoruz</a></li>
           <li><a href="contact.html">İletişim</a></li>
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       
-      <a class="btn-getstarted" href="https://texper.xyz" style="background: transparent; border: 2px solid #ffc107; color: #ffc107; font-weight: 700; border-radius: 50px; padding: 8px 25px; margin-left: 20px;">Müşteri Paneli</a>
+      <a class="btn-panel-header d-none d-lg-flex" href="mesh.html">
+        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
+      </a>
     </div>
   </header>
 
@@ -137,48 +148,60 @@
 
       <div class="container">
         <div class="text-center mb-5">
-          <h2 style="font-size: 3.2rem; font-weight: 800;">Mutlu <span style="color: #ffc107;">İş Ortaklarımız.</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; color: #ccc;">Güven ve teknolojiyle değer kattığımız referanslarımız.</p>
+          <h2 class="headline">MUTLU <span class="accent">İŞ ORTAKLARIMIZ.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem;">Güven ve teknolojiyle değer kattığımız, çözüm ürettiğimiz referanslarımız.</p>
         </div>
 
         <div class="row g-3 row-cols-2 row-cols-md-4 row-cols-lg-5 justify-content-center">
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref1.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref2.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref3.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref4.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref5.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref6.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref7.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref8.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref9.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref10.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref11.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref12.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref13.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref14.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref15.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref16.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref17.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref18.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref19.jpg" alt=""></div></div>
-          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref20.jpg" alt=""></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref1.jpg" alt="Referans 1"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref2.jpg" alt="Referans 2"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref3.jpg" alt="Referans 3"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref4.jpg" alt="Referans 4"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref5.jpg" alt="Referans 5"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref6.jpg" alt="Referans 6"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref7.jpg" alt="Referans 7"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref8.jpg" alt="Referans 8"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref9.jpg" alt="Referans 9"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref10.jpg" alt="Referans 10"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref11.jpg" alt="Referans 11"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref12.jpg" alt="Referans 12"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref13.jpg" alt="Referans 13"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref14.jpg" alt="Referans 14"></div></div>
+          <div class="col"><div class="ref-box"><img src="assets/img/ref/ref15.jpg" alt="Referans 15"></div></div>
         </div>
       </div>
 
       <div class="stats-bar">
-        <div class="stat-text"><i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong></div>
-        <div class="stat-text"><i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong></div>
+        <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span style="color:#2ecc71; font-weight:bold;">ONLINE</span></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <span style="color:#fff; font-weight:bold;">312 ACTIVE</span></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" style="color:#fff; font-weight:bold;">Loading...</span></div>
       </div>
     </section>
   </main>
 
-  <script>
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => { document.getElementById('user-ip').innerText = data.ip; });
-  </script>
-
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
+
+  <script>
+    function initMobileMenu() {
+      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+      const body = document.querySelector('body');
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.addEventListener('click', function() {
+          body.classList.toggle('mobile-nav-active');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileMenu();
+      fetch('https://api.ipify.org?format=json')
+        .then(r => r.json()).then(d => { 
+          const ipEl = document.getElementById('user-ip');
+          if(ipEl) ipEl.innerText = d.ip; 
+        });
+    });
+  </script>
 </body>
 </html>

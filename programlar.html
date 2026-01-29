@@ -4,86 +4,99 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>BT Programlar - Texper Bilişim</title>
+  <title>BT Programlar | Texper Bilişim</title>
   
   <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
   <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* MASTER CSS */
-    :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.1); }
-    html, body { background-color: #000000 !important; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+    /* MASTER CSS SADAKATİ */
+    :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
+
+    html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
-    .hero { min-height: 100vh; position: relative; padding-top: 100px; padding-bottom: 80px; }
-    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.3; z-index: 0; pointer-events: none; }
-    .container { position: relative; z-index: 2; }
-
-    /* KOMPAKT TOOL KUTULARI */
-    .category-label {
-      color: var(--primary);
-      font-size: 0.75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin: 30px 0 15px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    /* HERO AREA - MASTER ARKA PLAN YAPISI */
+    .hero { 
+      min-height: 100vh; 
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; padding-top: 100px; padding-bottom: 50px;
     }
-    .category-label::after { content: ""; height: 1px; flex-grow: 1; background: rgba(255,193,7,0.15); }
+
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
+      mask-image: linear-gradient(to left, #000 60%, transparent);
+      -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
+    }
+    
+    .hero .container { position: relative; z-index: 2; }
+
+    /* BAŞLIK VE EFEKT */
+    .headline { font-size: clamp(2.2rem, 6vw, 3rem); font-weight: 800; line-height: 1; letter-spacing: -1px; margin-bottom: 25px; }
+    .accent { color: var(--primary); display: inline-block; animation: glowBreath 3s ease-in-out infinite; }
+    @keyframes glowBreath {
+      0%, 100% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); transform: scale(1); }
+      50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
+    }
+
+    /* TOOL KARTLARI VE KATEGORİLER */
+    .category-label {
+      color: var(--primary); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+      margin: 35px 0 15px 0; display: flex; align-items: center; gap: 15px; font-family: 'Roboto Mono', monospace;
+    }
+    .category-label::after { content: ""; height: 1px; flex-grow: 1; background: rgba(255,193,7,0.1); }
 
     .tool-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--glass-border);
-      border-radius: 8px;
-      padding: 10px 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: 0.2s;
-      margin-bottom: 8px;
+      background: rgba(255, 255, 255, 0.02); border: 1px solid var(--glass-border);
+      border-radius: 4px; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; margin-bottom: 10px;
     }
-    .tool-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: var(--primary);
-      transform: translateY(-2px);
-    }
+    .tool-card:hover { border-color: var(--primary); background: rgba(255, 193, 7, 0.02); transform: translateY(-2px); }
 
-    .tool-name { display: flex; align-items: center; gap: 10px; }
-    .tool-name i { font-size: 1rem; color: var(--primary); }
-    .tool-name span { color: #eee; font-size: 0.8rem; font-weight: 500; }
+    .tool-name { display: flex; align-items: center; gap: 12px; }
+    .tool-name i { font-size: 1.1rem; color: var(--primary); }
+    .tool-name span { color: #ccc; font-size: 0.85rem; font-weight: 600; }
 
     .btn-dl {
-      background: rgba(255, 193, 7, 0.1);
-      color: var(--primary) !important;
-      font-size: 0.65rem;
-      font-weight: 800;
-      padding: 4px 10px;
-      border-radius: 4px;
-      text-decoration: none;
-      border: 1px solid rgba(255,193,7,0.2);
+      background: transparent; color: var(--primary) !important; font-size: 0.7rem; font-weight: 800;
+      padding: 5px 12px; border-radius: 4px; text-decoration: none; border: 1px solid rgba(255,193,7,0.3); transition: 0.2s;
     }
     .btn-dl:hover { background: var(--primary); color: #000 !important; }
 
+    .disclaimer-box {
+      margin-top: 50px; background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--glass-border); border-radius: 4px; padding: 25px;
+    }
+    .disclaimer-box h6 { color: var(--primary); font-weight: 700; font-size: 0.8rem; margin-bottom: 10px; text-transform: uppercase; }
+    .disclaimer-box p { font-size: 0.75rem; color: #666; line-height: 1.6; margin-bottom: 0; }
+
     /* STATS BAR */
     .stats-bar {
-      border-top: 1px solid var(--glass-border);
-      background: rgba(0, 0, 0, 0.5);
-      padding: 12px 0; width: 100%;
-      position: fixed; bottom: 0; left: 0;
-      display: flex; justify-content: center; gap: 30px;
-      z-index: 10;
+      background: transparent !important;
+      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 50px; z-index: 10;
     }
-    .stat-text { display: flex; align-items: center; gap: 8px; color: #888; font-size: 0.75rem; font-family: monospace; }
+    .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
+
+    .btn-panel-header {
+      background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
+    }
+
+    /* MOBİL DÜZENLEMELER */
+    @media (max-width: 991px) {
+      .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
+      .tool-card { padding: 10px 15px; }
+      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
+      .btn-panel-header { display: none; }
+      .navmenu ul li.mobile-only { display: block !important; }
+    }
+    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -98,31 +111,42 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
+          
           <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="about.html">Hakkımızda</a></li>
               <li><a href="referanslar.html">Referanslar</a></li>
               <li><a href="faq.html">S.S.S</a></li>
-              <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="services.html" class="active"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+
+          <li class="dropdown"><a href="#"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
               <li><a href="cloud.html">Bulut Hizmetleri</a></li>
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown"><a href="#" class="active"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="blog.html">Neler Yapıyoruz</a></li>
+              <li><a href="project.html">Projelerimiz</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
               <li><a href="programlar.html" class="active">BT Programlar</a></li>
             </ul>
           </li>
-          <li><a href="project.html">Projeler</a></li>
-          <li><a href="blog.html">Neler Yapıyoruz</a></li>
+
           <li><a href="contact.html">İletişim</a></li>
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       
-      <a class="btn-getstarted" href="https://texper.xyz" style="background: transparent; border: 2px solid #ffc107; color: #ffc107; font-weight: 700; border-radius: 50px; padding: 7px 20px; margin-left: 20px; font-size: 13px;">Müşteri Paneli</a>
+      <a class="btn-panel-header d-none d-lg-flex" href="mesh.html">
+        <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
+      </a>
     </div>
   </header>
 
@@ -131,53 +155,78 @@
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
 
       <div class="container">
-        <div class="text-center mb-4">
-          <h2 style="font-size: 2.5rem; font-weight: 800;">IT <span style="color: #ffc107;">TOOLKIT.</span></h2>
-          <p style="opacity: 0.6; font-size: 0.9rem;">Sistem kurulumu ve teknik operasyonlar için temel yazılım kütüphanesi.</p>
+        <div class="text-center mb-5">
+          <h2 class="headline">IT <span class="accent">REPOSITORY.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1rem; opacity: 0.8;">Sistem kurulumu ve operasyonel süreçler için onaylanmış araç kütüphanesi.</p>
         </div>
 
         <div class="row">
           <div class="col-12"><div class="category-label">Sistem & Runtime Paketleri</div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-box-seam"></i><span>AIO Runtimes</span></div><a href="https://www.computerbase.de/downloads/systemtools/all-in-one-runtimes/" class="btn-dl">İNDİR</a></div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-code-square"></i><span>.NET Desktop</span></div><a href="https://dotnet.microsoft.com/en-us/download/dotnet" class="btn-dl">İNDİR</a></div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-cup-hot"></i><span>Java JRE</span></div><a href="https://www.java.com/tr/download/" class="btn-dl">İNDİR</a></div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-file-earmark-binary"></i><span>DirectX Web</span></div><a href="https://www.microsoft.com/en-us/download/details.aspx?id=35" class="btn-dl">İNDİR</a></div></div>
-
-          <div class="col-12"><div class="category-label">Driver & Donanım Teşhis</div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-pci-card"></i><span>Snappy Driver</span></div><a href="https://sdi-tool.org/" class="btn-dl">İNDİR</a></div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-speedometer"></i><span>CrystalDiskInfo</span></div><a href="https://crystalmark.info/" class="btn-dl">İNDİR</a></div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-activity"></i><span>HWMonitor</span></div><a href="https://www.cpuid.com/" class="btn-dl">İNDİR</a></div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-usb-drive"></i><span>Rufus ISO</span></div><a href="https://rufus.ie/" class="btn-dl">İNDİR</a></div></div>
-
+          <div class="col-md-4"><div class="tool-card"><div class="tool-name"><i class="bi bi-box-seam"></i><span>AIO Runtimes</span></div><a href="https://www.computerbase.de/downloads/systemtools/all-in-one-runtimes/" class="btn-dl" target="_blank">İNDİR</a></div></div>
+          <div class="col-md-4"><div class="tool-card"><div class="tool-name"><i class="bi bi-code-square"></i><span>.NET Desktop</span></div><a href="https://dotnet.microsoft.com/en-us/download/dotnet" class="btn-dl" target="_blank">İNDİR</a></div></div>
+          
           <div class="col-12"><div class="category-label">Uzak Bağlantı & Destek</div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-display"></i><span>AnyDesk</span></div><a href="https://anydesk.com/" class="btn-dl">İNDİR</a></div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-cpu"></i><span>Alpemix</span></div><a href="https://www.alpemix.com/" class="btn-dl">İNDİR</a></div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-terminal"></i><span>RustDesk</span></div><a href="https://rustdesk.com/" class="btn-dl">İNDİR</a></div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-shield-lock"></i><span>MeshCentral</span></div><a href="https://panel.texper.net" class="btn-dl">GİRİŞ</a></div></div>
-
+          <div class="col-md-4"><div class="tool-card"><div class="tool-name"><i class="bi bi-display"></i><span>AnyDesk</span></div><a href="https://anydesk.com/" class="btn-dl" target="_blank">İNDİR</a></div></div>
+          <div class="col-md-4"><div class="tool-card"><div class="tool-name"><i class="bi bi-terminal"></i><span>RustDesk</span></div><a href="https://rustdesk.com/" class="btn-dl" target="_blank">İNDİR</a></div></div>
+          
+          <div class="col-12"><div class="category-label">Donanım & Teşhis</div></div>
+          <div class="col-md-4"><div class="tool-card"><div class="tool-name"><i class="bi bi-speedometer"></i><span>CrystalDiskInfo</span></div><a href="https://crystalmark.info/" class="btn-dl" target="_blank">İNDİR</a></div></div>
+          <div class="col-md-4"><div class="tool-card"><div class="tool-name"><i class="bi bi-usb-drive"></i><span>Rufus ISO</span></div><a href="https://rufus.ie/" class="btn-dl" target="_blank">İNDİR</a></div></div>
+          
           <div class="col-12"><div class="category-label">Genel Araçlar</div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-file-zip"></i><span>WinRAR (x64)</span></div><a href="https://www.win-rar.com/" class="btn-dl">İNDİR</a></div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-browser-chrome"></i><span>Chrome (Off)</span></div><a href="https://www.google.com/intl/tr/chrome/?standalone=1" class="btn-dl">İNDİR</a></div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-file-pdf"></i><span>Sumatra PDF</span></div><a href="https://www.sumatrapdfreader.org/" class="btn-dl">İNDİR</a></div></div>
-          <div class="col-md-3"><div class="tool-card"><div class="tool-name"><i class="bi bi-eraser"></i><span>Revo Uninstall</span></div><a href="https://www.revouninstaller.com/" class="btn-dl">İNDİR</a></div></div>
+          <div class="col-md-4"><div class="tool-card"><div class="tool-name"><i class="bi bi-file-zip"></i><span>WinRAR (x64)</span></div><a href="https://www.win-rar.com/" class="btn-dl" target="_blank">İNDİR</a></div></div>
+          <div class="col-md-4"><div class="tool-card"><div class="tool-name"><i class="bi bi-eraser"></i><span>Revo Uninstall</span></div><a href="https://www.revouninstaller.com/" class="btn-dl" target="_blank">İNDİR</a></div></div>
         </div>
+
+        <div class="disclaimer-box">
+          <h6><i class="bi bi-exclamation-triangle-fill me-2"></i> Teknik Sorumluluk Sınırlandırması</h6>
+          <p>Yukarıda listelenen yazılımlar, Texper Bilişim tarafından geliştirilmemiştir. Bu araçlar sadece teknik saha operasyonlarında kolaylık sağlaması amacıyla ilgili geliştiricilerin resmi sayfalarına yönlendirilmiştir. Yazılımların kullanımından doğabilecek veri kayıpları veya sistem hatalarından Texper Bilişim sorumlu tutulamaz.</p>
+        </div>
+
       </div>
 
       <div class="stats-bar">
-        <div class="stat-text"><i class="bi bi-hdd-stack"></i> DEPLOYMENT STATUS: <strong style="color:var(--primary);">READY</strong></div>
-        <div class="stat-text"><i class="bi bi-shield-lock"></i> IP: <strong id="user-ip" style="color:#fff;">...</strong></div>
+        <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span style="color:#2ecc71; font-weight:bold;">ONLINE</span></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <span id="agent-count" style="color:#fff; font-weight:bold;">312 ACTIVE</span></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" style="color:#fff; font-weight:bold;">Loading...</span></div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background" style="padding:0; height:0; visibility:hidden;"></footer>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    fetch('https://api.ipify.org?format=json')
-      .then(r => r.json())
-      .then(d => { document.getElementById('user-ip').innerText = d.ip; });
+    function initMobileMenu() {
+      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+      const body = document.querySelector('body');
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.addEventListener('click', function() {
+          body.classList.toggle('mobile-nav-active');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
+        });
+      }
+      document.querySelectorAll('.navmenu .toggle-dropdown').forEach(dropdown => {
+        dropdown.addEventListener('click', function(e) {
+          if (body.classList.contains('mobile-nav-active')) {
+            e.preventDefault();
+            this.parentNode.classList.toggle('active');
+            this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+            e.stopImmediatePropagation();
+          }
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileMenu();
+      setInterval(() => {
+        const el = document.getElementById('agent-count');
+        if(el) el.innerText = (312 + Math.floor(Math.random() * 5)) + " ACTIVE";
+      }, 4000);
+      fetch('https://api.ipify.org?format=json')
+        .then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
+    });
   </script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
 </body>
 </html>

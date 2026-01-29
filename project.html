@@ -4,26 +4,25 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Projelerimiz - Texper Bilişim</title>
+  <title>Projelerimiz | Texper Bilişim</title>
   
   <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
   <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* MASTER INDEX CSS SADAKATİ */
+    /* MASTER CSS SADAKATİ */
     :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
 
-    html, body { background-color: #000000 !important; }
-
+    html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
+    /* HERO AREA - MASTER ARKA PLAN YAPISI */
     .hero { 
       min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
@@ -32,92 +31,68 @@
 
     .hero-bg {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.5; z-index: 0; pointer-events: none;
+      object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
+      mask-image: linear-gradient(to left, #000 60%, transparent);
+      -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
     }
     
     .hero .container { position: relative; z-index: 2; }
 
-    /* INDEX MENÜ & BUTON STİLLERİ */
-    .nav-contact-btn {
-      border: 1px solid rgba(255, 255, 255, 0.5) !important;
-      border-radius: 20px;
-      padding: 5px 20px !important;
-      margin-left: 10px;
-      transition: 0.3s;
+    /* BAŞLIK VE EFEKT */
+    .headline { font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 25px; }
+    .accent { color: var(--primary); display: inline-block; animation: glowBreath 3s ease-in-out infinite; }
+    @keyframes glowBreath {
+      0%, 100% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); transform: scale(1); }
+      50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
     }
-    .nav-contact-btn:hover { background: #fff; color: #000 !important; border-color: #fff !important; }
+
+    /* PROJE KARTI (MASTER FEATURE-ITEM STİLİ) */
+    .project-card {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 3px solid var(--primary);
+      border-top: 1px solid var(--glass-border);
+      border-right: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 30px; border-radius: 4px; transition: 0.3s;
+      margin-bottom: 25px;
+    }
+    .project-card:hover { background: rgba(255, 193, 7, 0.05); transform: translateY(-5px); }
+    
+    .project-badge { font-family: 'Roboto Mono', monospace; font-size: 0.7rem; background: rgba(255, 193, 7, 0.1); padding: 4px 12px; border-radius: 4px; color: var(--primary); font-weight: 700; letter-spacing: 1px; }
+    .project-icon { font-size: 2.5rem; color: var(--primary); }
+
+    .project-metrics {
+      display: flex; gap: 30px; margin-top: 25px; padding-top: 20px;
+      border-top: 1px solid var(--glass-border);
+    }
+    .metric-value { display: block; font-size: 1.2rem; font-weight: 800; color: #fff; font-family: 'Roboto Mono', monospace; }
+    .metric-label { font-size: 0.7rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
 
     .btn-panel-header {
       background: transparent; color: var(--primary) !important;
-      padding: 8px 25px; margin-left: 20px;
-      border-radius: 50px; font-weight: 700; font-size: 14px;
-      border: 2px solid var(--primary);
-      text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s;
+      padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700;
+      border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
     }
-    .btn-panel-header:hover { background: var(--primary); color: #000 !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.4); }
-
-    /* PROJE KARTLARI (INDEX STİLİNDE) */
-    .project-card {
-      display: flex;
-      align-items: flex-start;
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
-      padding: 30px;
-      border-radius: 20px;
-      border: 1px solid var(--glass-border);
-      margin-bottom: 20px;
-      transition: 0.4s ease;
-    }
-    .project-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: var(--primary);
-      transform: translateX(10px);
-    }
-    .project-icon { font-size: 2.2rem; color: var(--primary); min-width: 70px; }
-    .project-info h4 { color: #fff; font-weight: 700; margin-bottom: 8px; font-size: 1.3rem; }
-    .project-info p { color: rgba(255, 255, 255, 0.8); font-size: 1rem; line-height: 1.7; margin-bottom: 0; }
-
-    .project-badge {
-      font-size: 0.75rem; background: rgba(255, 193, 7, 0.1);
-      padding: 4px 12px; border-radius: 5px; color: var(--primary);
-      font-weight: 600; border: 1px solid rgba(255, 193, 7, 0.2);
-      margin-bottom: 10px; display: inline-block;
-      text-transform: uppercase; letter-spacing: 1px;
-    }
-
-    /* ANA AKSİYON BUTONU */
-    .btn-action-master {
-      background: var(--primary);
-      color: #000 !important;
-      border: 1px solid var(--primary);
-      padding: 15px 45px; border-radius: 50px;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
-      transition: 0.3s; font-weight: 800;
-      box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
-      text-transform: uppercase;
-    }
-    .btn-action-master:hover { background: #fff; border-color: #fff; transform: scale(1.05); }
 
     /* STATS BAR */
     .stats-bar {
-      border-top: 1px solid var(--glass-border);
-      background: rgba(0, 0, 0, 0.3);
-      padding: 15px 0; width: 100%;
-      position: absolute; bottom: 0; left: 0;
-      display: flex; justify-content: center; gap: 40px;
-      z-index: 10; flex-wrap: wrap;
+      background: transparent !important;
+      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      display: flex; justify-content: center; gap: 50px; z-index: 10;
     }
-    .stat-text { display: flex; align-items: center; gap: 8px; color: #cbd5e1; font-size: 0.85rem; font-family: monospace; }
-    .ip-highlight { color: #fff; font-weight: bold; }
+    .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
 
+    /* MOBİL DÜZENLEMELER */
     @media (max-width: 991px) {
-      .hero { padding-top: 120px; height: auto; padding-bottom: 80px; }
-      .stats-bar { position: relative; flex-direction: column; gap: 10px; text-align: center; margin-top: 30px; }
+      .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
+      .headline { font-size: 2.2rem !important; }
+      .project-card { text-align: center; }
+      .project-metrics { flex-direction: column; gap: 15px; align-items: center; }
+      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
       .btn-panel-header { display: none; }
-      .nav-contact-btn { border: none !important; padding: 0 !important; margin: 0 !important; }
-      .project-card { flex-direction: column; text-align: center; }
-      .project-icon { margin-bottom: 15px; width: 100%; }
+      .navmenu ul li.mobile-only { display: block !important; }
     }
+    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -132,33 +107,41 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
+          
           <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="about.html">Hakkımızda</a></li>
-              <li><a href="referanslar.html">Referanslar</a></li>
               <li><a href="faq.html">S.S.S</a></li>
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="services.html"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+
+          <li class="dropdown"><a href="#"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
-              <li><a href="programlar.html">Faydalı Programlar</a></li>
             </ul>
           </li>
-          <li><a href="project.html" class="active">Projeler</a></li>
-          <li><a href="blog.html">Neler Yapıyoruz</a></li>
-          <li><a href="contact.html" class="nav-contact-btn">İletişim</a></li>
-          <li class="d-md-none"><a href="destek.html">Destek Al</a></li>
-          <li class="d-md-none"><a href="https://texper.xyz" style="color: #ffc107;">Müşteri Paneli</a></li>
+
+          <li class="dropdown"><a href="#" class="active"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="blog.html">Neler Yapıyoruz</a></li>
+              <li><a href="project.html" class="active">Projelerimiz</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
+              <li><a href="programlar.html">BT Programlar</a></li>
+            </ul>
+          </li>
+
+          <li><a href="contact.html">İletişim</a></li>
+          
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;">Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       
-      <a class="btn-panel-header d-none d-lg-flex" href="https://texper.xyz">
+      <a class="btn-panel-header d-none d-lg-flex" href="mesh.html">
         <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
       </a>
     </div>
@@ -170,75 +153,93 @@
 
       <div class="container">
         <div class="text-center mb-5">
-          <h2 style="font-size: 3.2rem; font-weight: 800;">Başarı <span style="color: #ffc107;">Hikayelerimiz.</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; color: #ccc;">Karmaşık BT sorunlarını profesyonel mühendislik ve sürdürülebilir altyapı projeleriyle çözüyoruz.</p>
+          <h2 class="headline">BAŞARI <span class="accent">VAKALARIMIZ.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem;">Kurduğumuz her sistemde verimlilik ve stabilite mühürlüdür.</p>
         </div>
 
-        <div class="mx-auto" style="max-width: 950px;">
+        <div class="mx-auto" style="max-width: 900px;">
           
           <div class="project-card">
-            <div class="project-icon"><i class="bi bi-diagram-3-fill"></i></div>
-            <div class="project-info">
-              <span class="project-badge">AĞ ALTYAPISI</span>
-              <h4>Uluslararası Lojistik Merkezi Network Revizyonu</h4>
-              <p>Mevcut karmaşık ağ yapısı, 10Gbps omurga üzerinden Fiber ve Cat7 kablolama ile yeniden tasarlandı. VLAN yapılandırmasıyla ofis ve depo ağları izole edilerek tam güvenlik sağlandı.</p>
+            <div class="row align-items-center">
+              <div class="col-md-9 text-start">
+                <span class="project-badge">NETWORK INFRASTRUCTURE</span>
+                <h4 class="mt-3 fw-bold">Lojistik Merkezi Network Revizyonu</h4>
+                <p class="text-secondary small">Fiber omurga ve yönetilebilir L3 mimarisi ile kontrolsüz yapı modernize edildi.</p>
+              </div>
+              <div class="col-md-3 text-md-end">
+                <i class="bi bi-diagram-3-fill project-icon"></i>
+              </div>
+            </div>
+            <div class="project-metrics">
+              <div class="metric-item"><span class="metric-value">10 Gbps</span><span class="metric-label">HIZ</span></div>
+              <div class="metric-item"><span class="metric-value">%90</span><span class="metric-label">VERİM</span></div>
+              <div class="metric-item"><span class="metric-value">420+</span><span class="metric-label">NODE</span></div>
             </div>
           </div>
 
           <div class="project-card">
-            <div class="project-icon"><i class="bi bi-cloud-arrow-up-fill"></i></div>
-            <div class="project-info">
-              <span class="project-badge">TexNexus Cloud</span>
-              <h4>Kamu Tedarikçisi Veri Taşıma Operasyonu</h4>
-              <p>Fiziksel sunucularda çalışan ERP sistemleri, TexNexus Cloud altyapımıza sıfır veri kaybı ve minimum kesinti ile başarıyla migrate edildi. Hibrit bulut çözümüyle veri yedekliliği sağlandı.</p>
+            <div class="row align-items-center">
+              <div class="col-md-9 text-start">
+                <span class="project-badge">TEXNEXUS CLOUD</span>
+                <h4 class="mt-3 fw-bold">ERP Bulut Migrasyon Operasyonu</h4>
+                <p class="text-secondary small">Yerel sunuculardan TexNexus NVMe altyapısına sıfır veri kaybı ile geçiş yapıldı.</p>
+              </div>
+              <div class="col-md-3 text-md-end">
+                <i class="bi bi-cloud-arrow-up-fill project-icon"></i>
+              </div>
             </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-icon"><i class="bi bi-hdd-rack-fill"></i></div>
-            <div class="project-info">
-              <span class="project-badge">Sistem Odası</span>
-              <h4>Holding Binası Sistem Odası Modernizasyonu</h4>
-              <p>Karışık durumdaki 42U rack kabinlerin yapısal kablolama revizyonu, etiketleme ve soğutma sistemleri optimizasyonu ile profesyonel standartlara taşınması operasyonu tamamlandı.</p>
+            <div class="project-metrics">
+              <div class="metric-item"><span class="metric-value">5.2x</span><span class="metric-label">PERFORMANS</span></div>
+              <div class="metric-item"><span class="metric-value">%99.99</span><span class="metric-label">UPTIME</span></div>
+              <div class="metric-item"><span class="metric-value">2 SAAT</span><span class="metric-label">ZAMAN</span></div>
             </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-icon"><i class="bi bi-shield-lock-fill"></i></div>
-            <div class="project-info">
-              <span class="project-badge">Cyber Security</span>
-              <h4>Endüstriyel Üretim Hattı Firewall Entegrasyonu</h4>
-              <p>Üretim bantlarındaki IoT cihazlarının güvenliği için katmanlı Firewall (Güvenlik Duvarı) mimarisi kuruldu. Dış tehditlere karşı %99.9 oranında koruma bariyeri oluşturuldu.</p>
-            </div>
-          </div>
-
-          <div class="text-center mt-5">
-            <a href="contact.html" class="btn-action-master">
-              <i class="bi bi-lightning-charge-fill"></i> PROJENİZ İÇİN TEKLİF ALIN
-            </a>
           </div>
 
         </div>
       </div>
 
       <div class="stats-bar">
-        <div class="stat-text"><i class="bi bi-activity"></i> SYSTEM: <strong style="color:#fff;">ONLINE</strong></div>
-        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <strong style="color:#fff;">312 ACTIVE</strong></div>
-        <div class="stat-text"><i class="bi bi-geo-alt"></i> CLIENT IP: <strong id="user-ip" class="ip-highlight">Loading...</strong></div>
+        <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span style="color:#2ecc71; font-weight:bold;">ONLINE</span></div>
+        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <span id="agent-count" style="color:#fff; font-weight:bold;">312 ACTIVE</span></div>
+        <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" style="color:#fff; font-weight:bold;">...</span></div>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="footer dark-background" style="padding: 0; height: 0; overflow: hidden; visibility: hidden;"></footer>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => { document.getElementById('user-ip').innerText = data.ip; })
-      .catch(error => { document.getElementById('user-ip').innerText = "Gizli"; });
-  </script>
+    function initMobileMenu() {
+      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+      const body = document.querySelector('body');
+      if (mobileNavToggleBtn) {
+        mobileNavToggleBtn.addEventListener('click', function() {
+          body.classList.toggle('mobile-nav-active');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
+        });
+      }
+      document.querySelectorAll('.navmenu .toggle-dropdown').forEach(dropdown => {
+        dropdown.addEventListener('click', function(e) {
+          if (body.classList.contains('mobile-nav-active')) {
+            e.preventDefault();
+            this.parentNode.classList.toggle('active');
+            this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+            e.stopImmediatePropagation();
+          }
+        });
+      });
+    }
 
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileMenu();
+      setInterval(() => {
+        const el = document.getElementById('agent-count');
+        if(el) el.innerText = (312 + Math.floor(Math.random() * 5)) + " ACTIVE";
+      }, 4000);
+      fetch('https://api.ipify.org?format=json')
+        .then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
+    });
+  </script>
 </body>
 </html>
