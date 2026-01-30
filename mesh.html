@@ -6,9 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Müşteri Portalı | Texper Bilişim</title>
   
-  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
-  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
-
+  <link rel="icon" href="assets/img/favicon.png?v=999" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -16,49 +14,26 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* MASTER CSS SADAKATİ */
     :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
-
     html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
-    section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
-
-    /* TEKNOLOJİK DESEN */
+    
     body::before {
       content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background-image: radial-gradient(rgba(255, 193, 7, 0.04) 1px, transparent 1px);
       background-size: 40px 40px; z-index: 1; pointer-events: none;
     }
 
-    /* HERO AREA */
-    .hero { 
-      min-height: 100vh; 
-      display: flex; flex-direction: column; justify-content: center;
-      position: relative; padding-top: 100px; padding-bottom: 50px;
-    }
+    .header { background: transparent !important; border-bottom: none !important; }
 
-    .hero-bg {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
-      mask-image: linear-gradient(to left, #000 60%, transparent);
-      -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
-    }
-    
-    .hero .container { position: relative; z-index: 2; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding-top: 100px; padding-bottom: 50px; }
+    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none; mask-image: linear-gradient(to left, #000 60%, transparent); }
 
-    /* PORTAL MODÜLÜ */
+    /* PORTAL CARD */
     .portal-card {
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      padding: 45px 35px;
-      border-radius: 4px;
-      border-left: 3px solid var(--primary);
-      border-top: 1px solid var(--glass-border);
-      border-right: 1px solid var(--glass-border);
-      border-bottom: 1px solid var(--glass-border);
-      max-width: 450px;
-      margin: 0 auto;
-      text-align: center;
+      background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+      padding: 45px 35px; border-radius: 4px; border-left: 3px solid var(--primary);
+      border-top: 1px solid var(--glass-border); border-right: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
+      max-width: 450px; margin: 0 auto; text-align: center; position: relative;
     }
 
     .portal-title { font-size: 2rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 5px; color: #fff; text-transform: uppercase; }
@@ -67,32 +42,57 @@
     .portal-btn {
       display: flex; align-items: center; justify-content: center; gap: 15px; width: 100%; padding: 16px; margin-bottom: 12px;
       background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #fff; text-decoration: none; border-radius: 4px; font-weight: 700; transition: 0.3s ease;
+      color: #fff; text-decoration: none; border-radius: 4px; font-weight: 700; transition: 0.3s ease; cursor: pointer;
+    }
+    .portal-btn:hover { background: rgba(255, 193, 7, 0.1); border-color: var(--primary); transform: translateY(-3px); color: var(--primary); }
+
+    .btn-return-outer {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin: 30px auto 0; color: var(--primary); text-decoration: none; font-size: 0.9rem;
+      font-weight: 800; transition: 0.3s; width: max-content; letter-spacing: 1px;
+    }
+    .btn-return-outer:hover { filter: brightness(1.2); transform: scale(1.05); }
+
+    /* MODAL OVERLAYS */
+    .custom-modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+      background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(15px);
+      display: none; justify-content: center; align-items: center; z-index: 9999;
+    }
+    .modal-box {
+      background: #0a0a0a; border: 1px solid var(--glass-border); border-top: 3px solid var(--primary);
+      padding: 35px; border-radius: 4px; width: 100%; max-width: 400px; text-align: center;
     }
 
-    .portal-btn:hover {
-      background: rgba(255, 193, 7, 0.1); border-color: var(--primary); transform: translateY(-3px); color: var(--primary); box-shadow: 0 5px 15px rgba(255, 193, 7, 0.2);
+    .form-control-portal {
+      background: rgba(255, 255, 255, 0.05) !important; border: 1px solid var(--glass-border) !important;
+      color: #fff !important; padding: 12px !important; margin-bottom: 15px; width: 100%; border-radius: 4px; text-align: center;
     }
-    .portal-btn.btn-return { margin-top: 20px; border-color: rgba(255,255,255,0.05); opacity: 0.6; font-size: 0.8rem; }
-    .portal-btn.btn-return:hover { opacity: 1; color: #fff; border-color: #fff; background: transparent; }
+    .btn-action-portal {
+      width: 100%; padding: 14px; background: var(--primary); color: #000; font-weight: 800; 
+      border: none; border-radius: 50px; transition: 0.3s; text-transform: uppercase;
+    }
+
+    .link-secondary { color: #555; font-size: 0.75rem; margin-top: 15px; cursor: pointer; display: inline-block; text-transform: uppercase; text-decoration: none; }
+    .link-secondary:hover { color: var(--primary); }
+
+    #errorMsg { color: #ff4d4d; font-size: 0.75rem; font-weight: 700; margin-top: 10px; display: none; animation: shake 0.3s ease-in-out; }
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
 
     /* STATS BAR */
     .stats-bar {
-      background: transparent !important;
-      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      background: transparent !important; padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
       display: flex; justify-content: center; gap: 50px; z-index: 10;
     }
-    .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; letter-spacing: 1px; }
+    .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
 
     .btn-panel-header { background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
 
     @media (max-width: 991px) {
-      .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
-      .portal-card { padding: 35px 25px; margin: 0 15px; }
-      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
-      .navmenu ul li.mobile-only { display: block !important; }
+      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; margin-top: 40px; border-top: 1px solid var(--glass-border); }
+      .navmenu ul { background: transparent !important; backdrop-filter: none !important; border: none !important; }
+      .navmenu a { color: #fff !important; font-size: 18px !important; }
     }
-    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -107,7 +107,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
-          <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="javascript:void(0)"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="about.html">Hakkımızda</a></li>
               <li><a href="referanslar.html">Referanslar</a></li>
@@ -115,15 +115,15 @@
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="javascript:void(0)"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
             </ul>
           </li>
-          <li class="dropdown"><a href="#"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="javascript:void(0)"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="blog.html">Neler Yapıyoruz</a></li>
               <li><a href="project.html">Projelerimiz</a></li>
@@ -132,7 +132,7 @@
             </ul>
           </li>
           <li><a href="contact.html">İletişim</a></li>
-          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;"><i class="bi bi-shield-lock-fill"></i> Müşteri Paneli</a></li>
+          <li class="mobile-only d-lg-none"><a href="mesh.html" style="color: var(--primary) !important;"><i class="bi bi-shield-lock-fill"></i> Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -146,24 +146,27 @@
   <main class="main">
     <section id="hero" class="hero section dark-background">
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
-
       <div class="container">
         <div class="portal-card">
           <div class="portal-title">PANE<span style="color: var(--primary);">L</span></div>
-          <div class="subtitle">Systems Online</div>
+          <div class="subtitle">Secure Systems Access</div>
           
-          <a href="https://mesh.texper.keenetic.pro" class="portal-btn" target="_blank">
-            <i class="fas fa-server"></i> Mesh Central Girişi
+          <a onclick="openModal('loginOverlay')" class="portal-btn">
+            <i class="fas fa-desktop"></i> Uzaktan Yönetim Konsolu
           </a>
           
           <a href="http://depo.texper.keenetic.pro" class="portal-btn" target="_blank">
             <i class="fas fa-database"></i> Dosya Deposu (NAS)
           </a>
-          
-          <a href="index.html" class="portal-btn btn-return">
-            <i class="fas fa-arrow-left"></i> Ana Sayfaya Dön
+
+          <a href="destek.html" class="portal-btn">
+            <i class="fas fa-headset"></i> Teknik Destek Al
           </a>
         </div>
+
+        <a href="index.html" class="btn-return-outer">
+          <i class="fas fa-chevron-left"></i> ANA SAYFAYA DÖN
+        </a>
       </div>
 
       <div class="stats-bar">
@@ -174,50 +177,100 @@
     </section>
   </main>
 
+  <div id="loginOverlay" class="custom-modal-overlay">
+    <div class="modal-box">
+      <h5>GÜVENLİK DOĞRULAMASI</h5>
+      <input type="password" id="accessPass" class="form-control-portal" placeholder="••••" maxlength="4">
+      <button onclick="checkPass()" class="btn-action-portal">ERİŞİM SAĞLA</button>
+      <div id="errorMsg">GEÇERSİZ GÜVENLİK ANAHTARI!</div>
+      
+      <div class="d-flex flex-column mt-3">
+        <span class="link-secondary" onclick="closeModal('loginOverlay')">OTURUMU KAPAT</span>
+        <span class="link-secondary" style="color: var(--primary); font-weight: 800;" onclick="switchModal()">ÜYE OL</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="registerOverlay" class="custom-modal-overlay">
+    <div class="modal-box" style="max-width: 450px;">
+      <div id="formContainer">
+        <h5>YENİ ÜYELİK TALEBİ</h5>
+        <p style="font-size: 0.75rem; color: #777; margin-bottom: 20px;">Sisteme erişim için kayıt formunu doldurun.</p>
+        <form id="ajaxForm">
+          <input type="text" name="name" class="form-control-portal" placeholder="Ad Soyad" required>
+          <input type="email" name="email" class="form-control-portal" placeholder="Kurumsal E-Posta" required>
+          <input type="text" name="subject" class="form-control-portal" placeholder="Firma Adı">
+          <textarea name="message" rows="3" class="form-control-portal" placeholder="Erişim talebi notu..."></textarea>
+          <button type="submit" id="submitBtn" class="btn-action-portal">PROTOKOLÜ GÖNDER</button>
+        </form>
+        <span class="link-secondary" onclick="closeModal('registerOverlay')">İPTAL</span>
+      </div>
+
+      <div id="successMessage" style="display:none; padding: 20px;">
+        <i class="bi bi-check-circle-fill" style="font-size: 3rem; color: #2ecc71;"></i>
+        <h5 style="color: #fff; margin-top: 15px;">TALEP İLETİLDİ</h5>
+        <p style="font-size: 0.85rem; color: #888;">Erişim protokolü merkeze ulaştı.</p>
+      </div>
+    </div>
+  </div>
+
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
   <script>
-    (function() {
-      "use strict";
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; if(id==='loginOverlay') document.getElementById('accessPass').focus(); }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+    function switchModal() { closeModal('loginOverlay'); setTimeout(() => openModal('registerOverlay'), 200); }
 
-      const select = (el, all = false) => {
-        el = el.trim()
-        if (all) { return [...document.querySelectorAll(el)] } else { return document.querySelector(el) }
+    function checkPass() {
+      const pass = document.getElementById('accessPass').value;
+      const error = document.getElementById('errorMsg');
+      if (pass === "908") {
+        window.open('https://mesh.texper.keenetic.pro', '_blank');
+        closeModal('loginOverlay');
+      } else {
+        error.style.display = 'block';
+        document.getElementById('accessPass').value = "";
+        setTimeout(() => { error.style.display = 'none'; }, 2000);
       }
+    }
 
-      const on = (type, el, listener, all = false) => {
-        let selectEl = select(el, all)
-        if (selectEl) {
-          if (all) { selectEl.forEach(e => e.addEventListener(type, listener)) } else { selectEl.addEventListener(type, listener) }
+    const form = document.getElementById("ajaxForm");
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const btn = document.getElementById("submitBtn");
+      btn.disabled = true; btn.innerText = "GÖNDERİLİYOR...";
+      fetch("https://formspree.io/f/xqapdovq", {
+        method: "POST",
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          document.getElementById("formContainer").style.display = "none";
+          document.getElementById("successMessage").style.display = "block";
+          setTimeout(() => { location.reload(); }, 3000);
         }
-      }
+      });
+    });
 
-      // Mobil Menü Toggle
-      on('click', '.mobile-nav-toggle', function(e) {
-        select('body').classList.toggle('mobile-nav-active');
+    document.getElementById('accessPass').addEventListener('keypress', (e) => { if (e.key === 'Enter') checkPass(); });
+    fetch('https://api.ipify.org?format=json').then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
+    
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    if (mobileNavToggle) { 
+      mobileNavToggle.addEventListener('click', function() { 
+        document.body.classList.toggle('mobile-nav-active'); 
         this.classList.toggle('bi-list');
         this.classList.toggle('bi-x');
-      });
+      }); 
+    }
 
-      // Mobilde Dropdown Fix
-      on('click', '.navmenu .dropdown > a', function(e) {
-        if (select('body').classList.contains('mobile-nav-active')) {
+    document.querySelectorAll('.navmenu .dropdown > a').forEach(el => {
+      el.addEventListener('click', function(e) {
+        if (document.body.classList.contains('mobile-nav-active')) {
           e.preventDefault();
           this.parentNode.classList.toggle('active');
           this.nextElementSibling.classList.toggle('dropdown-active');
-          
-          let icon = this.querySelector('.bi-chevron-down');
-          if (icon) icon.classList.toggle('bi-chevron-up');
         }
-      }, true);
-    })();
-
-    document.addEventListener('DOMContentLoaded', () => {
-      fetch('https://api.ipify.org?format=json')
-        .then(r => r.json()).then(d => { 
-          const ipEl = document.getElementById('user-ip');
-          if(ipEl) ipEl.innerText = d.ip; 
-        });
+      });
     });
   </script>
 </body>
