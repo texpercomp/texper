@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>İletişim | Texper Bilişim</title>
+  <title>İletişim & Destek | Texper Bilişim</title>
   
   <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
   <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
@@ -22,14 +22,12 @@
     html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
-    /* ARKA PLAN DOKUSU */
     body::before {
       content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background-image: radial-gradient(rgba(255, 193, 7, 0.04) 1px, transparent 1px);
       background-size: 40px 40px; z-index: 1; pointer-events: none;
     }
 
-    /* HERO AREA */
     .hero { 
       min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
@@ -45,7 +43,6 @@
     
     .hero .container { position: relative; z-index: 2; }
 
-    /* BAŞLIK VE EFEKT */
     .headline { font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 25px; }
     .accent { color: var(--primary); display: inline-block; animation: glowBreath 3s ease-in-out infinite; }
     @keyframes glowBreath {
@@ -53,31 +50,38 @@
       50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
     }
 
+    /* İLETİŞİM BİLGİ KARTLARI */
+    .contact-info-wrapper { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 25px; }
+    .info-box {
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border);
+      padding: 20px; border-radius: 4px; transition: 0.3s; text-decoration: none; display: block;
+    }
+    .info-box:hover { background: rgba(255, 193, 7, 0.05); border-color: var(--primary); transform: translateY(-3px); }
+    .info-box i { color: var(--primary); font-size: 1.2rem; margin-bottom: 10px; display: block; }
+    .info-box h6 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 5px; }
+    .info-box p { font-size: 0.95rem; margin: 0; font-weight: 600; color: #fff; font-family: 'Roboto Mono', monospace; }
+
     /* DESTEK TIERLARI */
     .support-tier-card {
-      background: rgba(255, 255, 255, 0.02);
-      border-left: 3px solid var(--primary);
-      border-top: 1px solid var(--glass-border);
-      padding: 25px; margin-bottom: 20px; backdrop-filter: blur(10px); transition: 0.3s;
+      background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--primary);
+      border-top: 1px solid var(--glass-border); padding: 25px; margin-bottom: 15px;
+      backdrop-filter: blur(10px); transition: 0.3s;
     }
     .support-tier-card:hover { background: rgba(255, 193, 7, 0.05); transform: translateX(10px); }
     .tier-label { color: var(--primary); font-family: 'Roboto Mono', monospace; font-weight: 800; font-size: 0.7rem; display: block; margin-bottom: 10px; letter-spacing: 1px; }
 
     /* FORM ALANI */
     .contact-glass-box {
-      background: rgba(255, 255, 255, 0.01);
-      border: 1px solid var(--glass-border);
-      padding: 40px; border-radius: 4px; backdrop-filter: blur(15px);
+      background: rgba(255, 255, 255, 0.01); border: 1px solid var(--glass-border);
+      padding: 40px; border-radius: 4px; backdrop-filter: blur(15px); height: 100%;
     }
     .form-control-texper {
-      background: rgba(15, 15, 15, 0.8) !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
-      color: #ffffff !important; border-radius: 4px !important;
-      padding: 12px 18px !important; margin-bottom: 15px; width: 100%; transition: 0.3s;
+      background: rgba(15, 15, 15, 0.8) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      color: #ffffff !important; border-radius: 4px !important; padding: 12px 18px !important;
+      margin-bottom: 15px; width: 100%; transition: 0.3s;
     }
     .form-control-texper:focus { border-color: var(--primary) !important; outline: none; background: #000 !important; box-shadow: 0 0 10px rgba(255, 193, 7, 0.2); }
 
-    /* BUTON HOVER DÜZELTME */
     .btn-submit-texper {
       background: var(--primary) !important; color: #000 !important; padding: 15px !important;
       border-radius: 50px !important; font-weight: 800 !important; width: 100% !important;
@@ -87,8 +91,7 @@
 
     /* STATS BAR */
     .stats-bar {
-      background: transparent !important;
-      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      background: transparent !important; padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
       display: flex; justify-content: center; gap: 50px; z-index: 10;
     }
     .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
@@ -97,6 +100,7 @@
 
     @media (max-width: 991px) {
       .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
+      .contact-info-wrapper { grid-template-columns: 1fr; }
       .contact-glass-box { padding: 30px 20px; margin-top: 30px; }
       .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
       .navmenu ul li.mobile-only { display: block !important; }
@@ -159,27 +163,39 @@
         
         <div class="text-center mb-5">
           <h2 class="headline">DESTEK <span class="accent">PROTOKOLLERİ.</span></h2>
-          <p style="color: #888;">Hiyerarşik iletişim kanallarımızla anında çözüm.</p>
+          <p style="color: #888;">0531 401 73 75 üzerinden 7/24 Teknik Destek Talebi.</p>
         </div>
 
-        <div class="row g-4 align-items-start">
+        <div class="row g-4">
           <div class="col-lg-5">
+            <div class="contact-info-wrapper">
+              <a href="tel:+905314017375" class="info-box">
+                <i class="bi bi-telephone-fill"></i>
+                <h6>Teknik Hat</h6>
+                <p>0531 401 73 75</p>
+              </a>
+              <a href="mailto:info@texper.com.tr" class="info-box">
+                <i class="bi bi-envelope-at-fill"></i>
+                <h6>E-Posta</h6>
+                <p>info@texper.com.tr</p>
+              </a>
+              <div class="info-box" style="grid-column: span 2;">
+                <i class="bi bi-geo-alt-fill"></i>
+                <h6>Operasyon Merkezi</h6>
+                <p>İstanbul / Türkiye - Yerinde ve Uzaktan Destek</p>
+              </div>
+            </div>
+
             <div class="support-tier-card">
               <span class="tier-label">TIER 1 - GENEL TALEPLER</span>
-              <h5 class="fw-bold">E-Posta & Form</h5>
-              <p>Teklif talepleri ve genel bilgi. Dönüş: 24 Saat.</p>
-            </div>
-            
-            <div class="support-tier-card">
-              <span class="tier-label">TIER 2 - TEKNİK DESTEK</span>
-              <h5 class="fw-bold">Anlık Bağlantı</h5>
-              <p>Sistem hataları ve operasyonel yardım. Dönüş: 2 Saat.</p>
+              <h5 class="fw-bold">Kurumsal İletişim</h5>
+              <p>Bilgi ve teklif talepleriniz için info@texper.com.tr adresini kullanın.</p>
             </div>
 
             <div class="support-tier-card" style="border-left: 3px solid #2ecc71;">
-              <span class="tier-label" style="color: #2ecc71;">TIER 3 - ACİL DURUM (SLA)</span>
-              <h5 class="fw-bold">Kurumsal Destek Hattı</h5>
-              <p>Bakım anlaşmalı kurumlar için 7/24 kritik sistem desteği.</p>
+              <span class="tier-label" style="color: #2ecc71;">TIER 3 - KRİTİK DESTEK (SLA)</span>
+              <h5 class="fw-bold">Acil Müdahale</h5>
+              <p>Bakım anlaşmalı kurumlar için 7/24 doğrudan telefon desteği.</p>
             </div>
           </div>
 
@@ -194,13 +210,13 @@
                     <input type="email" name="email" class="form-control-texper" placeholder="E-posta" required>
                   </div>
                   <div class="col-12">
-                    <input type="text" name="subject" class="form-control-texper" placeholder="Konu Başlığı">
+                    <input type="text" name="subject" class="form-control-texper" placeholder="Hizmet Talebi / Konu">
                   </div>
                   <div class="col-12">
-                    <textarea name="message" rows="5" class="form-control-texper" placeholder="Talebinizi buraya yazın..." required></textarea>
+                    <textarea name="message" rows="6" class="form-control-texper" placeholder="Sistem hatası veya proje detaylarını buraya yazın..." required></textarea>
                   </div>
                   <div class="col-12">
-                    <button type="submit" class="btn-submit-texper">TALEBİ SİSTEME GÖNDER</button>
+                    <button type="submit" class="btn-submit-texper">GÖNDER</button>
                   </div>
                 </div>
               </form>
@@ -234,26 +250,29 @@
         }
       }
 
-      // Mobil Menü Toggle
+      /**
+       * MOBİL MENÜ ÇALIŞTIRICI
+       */
       on('click', '.mobile-nav-toggle', function(e) {
         select('body').classList.toggle('mobile-nav-active');
         this.classList.toggle('bi-list');
         this.classList.toggle('bi-x');
       });
 
-      // Mobilde Dropdown Fix
+      /**
+       * MOBİL DROPDOWN TIKLAMA FİX
+       */
       on('click', '.navmenu .dropdown > a', function(e) {
         if (select('body').classList.contains('mobile-nav-active')) {
           e.preventDefault();
           this.parentNode.classList.toggle('active');
-          
-          const nextEl = this.nextElementSibling;
-          if (nextEl) nextEl.classList.toggle('dropdown-active');
+          this.nextElementSibling.classList.toggle('dropdown-active');
           
           let icon = this.querySelector('.bi-chevron-down');
           if (icon) icon.classList.toggle('bi-chevron-up');
         }
       }, true);
+
     })();
 
     document.addEventListener('DOMContentLoaded', () => {

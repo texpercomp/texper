@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Texper SOC | Fixed Topology</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; padding: 0; background: #000; overflow: hidden; font-family: 'Share Tech Mono', monospace; color: #fff; }
+        #chart-container { width: 100vw; height: 100vh; position: absolute; z-index: 1; }
+        
+        .hud-header { position: absolute; top: 25px; left: 25px; z-index: 10; display: flex; align-items: center; gap: 15px; pointer-events: none; }
+        .master-logo { max-height: 40px; width: auto; }
+        .brand { border-left: 2px solid #ffc107; padding-left: 15px; line-height: 1; }
+        .brand div:first-child { font-size: 18px; font-weight: bold; letter-spacing: 2px; }
+        .brand div:last-child { font-size: 9px; color: #ffc107; letter-spacing: 1px; margin-top: 3px; }
+
+        #node-details {
+            position: absolute; top: 110px; left: 25px; width: 240px;
+            background: rgba(10, 10, 10, 0.9); border: 1px solid #333;
+            padding: 15px; display: none; z-index: 11; border-left: 3px solid #ffc107;
+            backdrop-filter: blur(8px);
+        }
+        .detail-header { font-size: 16px; color: #ffc107; margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 5px; }
+        .stat-item { margin-bottom: 8px; font-size: 11px; display: flex; justify-content: space-between; align-items: center; }
+
+        #terminal-log {
+            position: absolute; bottom: 20px; right: 20px; width: 280px; height: 140px;
+            background: rgba(5, 5, 5, 0.7); border: 1px solid #222;
+            padding: 10px; z-index: 12; font-size: 10px; overflow: hidden;
+            display: flex; flex-direction: column-reverse; pointer-events: none;
+        }
+        .log-line { margin-bottom: 3px; border-bottom: 1px solid rgba(255,255,255,0.02); }
+        .btn-reset { margin-top: 15px; color: #ffc107; cursor: pointer; font-size: 10px; pointer-events: all; text-align: right; border: 1px solid #333; padding: 2px 5px; display: inline-block; float: right; }
+    </style>
+</head>
+<body>
+
+    <div class="hud-header">
+        <img src="assets/img/1.png" alt="Texper Bilişim" class="master-logo">
+        <div class="brand">
+            <div>NEXUS<span>SOC</span></div>
+            <div>STABLE TOPOLOGY ACTIVE</div>
+        </div>
+    </div>
+
+    <div id="node-details">
+        <div class="detail-header" id="d-name">ANALYSIS</div>
+        <div class="stat-item"><b>TYPE:</b><span id="d-type">---</span></div>
+        <div class="stat-item"><b>STATUS:</b><span id="d-status">---</span></div>
+        <div class="stat-item"><b>LATENCY:</b><span id="d-latency">---</span></div>
+        <div class="btn-reset" onclick="resetZoom()">[ RESET_VIEW ]</div>
+    </div>
+
+    <div id="terminal-log"></div>
+    <div id="chart-container"></div>
+
+    <script>
+        var dom = document.getElementById('chart-container');
+        var myChart = echarts.init(dom, 'dark');
+
+        var nodesMap = {
+            'Istanbul-HQ': [28.97, 41.00], 'Istanbul-Cloud': [29.05, 41.05],
+            'Istanbul-DR': [28.85, 40.95], 'Istanbul-Edge': [29.15, 41.10],
+            'Izmir-Node': [27.14, 38.42], 'Frankfurt-GW': [8.68, 50.11],
+            'NewYork-Nexus': [-74.00, 40.71], 'Azure-Dublin': [-6.26, 53.34],
+            'AWS-Singapore': [103.85, 1.35], 'Cloudflare-DNS': [-122.41, 37.77],
+            'Russia-Srv': [37.61, 55.75]
+        };
+
+        var nodeStats = {
+            'Istanbul-HQ': { type: 'Primary Core', lat: '1ms', status: 'Operational', online: true, color: '#ffc107' },
+            'Istanbul-Cloud': { type: 'Virtual Compute', lat: '2ms', status: 'Operational', online: true, color: '#ffc107' },
+            'Istanbul-DR': { type: 'Disaster Recovery', lat: '3ms', status: 'Standby', online: true, color: '#ffc107' },
+            'Istanbul-Edge': { type: 'Network Gateway', lat: '1ms', status: 'Operational', online: true, color: '#ffc107' },
+            'Izmir-Node': { type: 'Regional Edge', lat: '9ms', status: 'Operational', online: true, color: '#ffc107' },
+            'Frankfurt-GW': { type: 'Euro Gateway', lat: '32ms', status: 'Operational', online: true, color: '#ffc107' },
+            'NewYork-Nexus': { type: 'US Node', lat: '84ms', status: 'Operational', online: true, color: '#ffc107' },
+            'Azure-Dublin': { type: 'Cloud Backup', lat: '45ms', status: 'Connected', online: true, color: '#0078d4' },
+            'AWS-Singapore': { type: 'Cloud Proxy', lat: '160ms', status: 'Connected', online: true, color: '#ff9900' },
+            'Cloudflare-DNS': { type: 'WAF / Security', lat: '12ms', status: 'Active', online: true, color: '#f38020' },
+            'Russia-Srv': { type: 'Legacy', lat: '---', status: 'OFFLINE', online: false, color: '#ff3333' }
+        };
+
+        function getNodeSeries() {
+            return {
+                name: 'NexusNodes', 
+                type: 'effectScatter', 
+                coordinateSystem: 'geo', // BURASI KRİTİK: Haritaya çiviler
+                zlevel: 2,
+                rippleEffect: { brushType: 'stroke', scale: 3 },
+                label: { show: true, position: 'right', formatter: '{b}', fontSize: 9 },
+                data: Object.keys(nodesMap).map(k => ({
+                    name: k, 
+                    value: nodesMap[k].concat(100),
+                    itemStyle: { color: nodeStats[k].color }
+                }))
+            };
+        }
+
+        var option = {
+            backgroundColor: '#050505',
+            geo: {
+                map: 'world',
+                roam: true, // Mouse ile gezmeyi sağlar
+                center: [28.97, 41.00], 
+                zoom: 10,
+                itemStyle: { normal: { areaColor: '#080808', borderColor: '#222', borderWidth: 1 } }
+            },
+            series: [getNodeSeries()]
+        };
+
+        myChart.setOption(option);
+
+        // --- SEQUENCE: ISTANBUL -> GLOBAL ---
+        setTimeout(() => {
+            myChart.setOption({ geo: { center: null, zoom: 1.4, transition: 'all 2.0s ease-in-out' } });
+            addLog("STABLE TOPOLOGY SYNCED.");
+        }, 1500);
+
+        function addLog(msg) {
+            const logBox = document.getElementById('terminal-log');
+            const line = document.createElement('div');
+            line.className = 'log-line';
+            line.innerHTML = `<span style="color:#444">${new Date().toLocaleTimeString()}</span> <span style="color:#ffc107">#NEXUS:</span> ${msg}`;
+            logBox.prepend(line);
+            if (logBox.children.length > 10) logBox.lastChild.remove();
+        }
+
+        function triggerTraffic() {
+            const allNodes = Object.keys(nodesMap);
+            const s = allNodes[Math.floor(Math.random() * 4)];
+            const t = allNodes[Math.floor(Math.random() * allNodes.length)];
+            if (s === t) return;
+
+            const target = nodeStats[t];
+            myChart.setOption({
+                series: [getNodeSeries(), {
+                    name: 'Traffic', 
+                    type: 'lines', 
+                    coordinateSystem: 'geo', // Trafiği de haritaya çiviler
+                    zlevel: 3,
+                    effect: { show: true, period: 3, trailLength: 0.5, color: target.color, symbolSize: 3 },
+                    lineStyle: { normal: { color: target.color, width: 1, opacity: 0.1, curveness: 0.2 } },
+                    data: [{ coords: [nodesMap[s], nodesMap[t]] }]
+                }]
+            });
+            addLog(`SYNC: ${s} > ${t}`);
+            setTimeout(() => { myChart.setOption({ series: [getNodeSeries(), { name: 'Traffic', data: [] }] }); }, 4000);
+        }
+
+        setInterval(triggerTraffic, 12000);
+
+        myChart.on('click', function(params) {
+            if (params.componentType === 'series' && params.name) {
+                const s = nodeStats[params.name];
+                myChart.setOption({ geo: { center: params.value.slice(0, 2), zoom: 7, transition: 'all 0.5s' } });
+                document.getElementById('node-details').style.display = 'block';
+                document.getElementById('d-name').innerText = params.name.toUpperCase();
+                document.getElementById('d-type').innerText = s.type;
+                document.getElementById('d-status').innerText = s.status;
+                document.getElementById('d-status').style.color = s.online ? s.color : '#ff3333';
+                document.getElementById('d-latency').innerText = s.lat;
+            }
+        });
+
+        function resetZoom() {
+            myChart.setOption({ geo: { center: null, zoom: 1.4, transition: 'all 0.5s' } });
+            document.getElementById('node-details').style.display = 'none';
+        }
+
+        window.addEventListener('resize', myChart.resize);
+    </script>
+</body>
+</html>

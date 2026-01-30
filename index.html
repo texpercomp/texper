@@ -6,106 +6,76 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Texper Bilişim | Kurumsal BT Operasyon Merkezi</title>
   
-  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
-  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
-
+  <link rel="icon" href="assets/img/favicon.png?v=999" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* MASTER CSS */
+    /* MASTER RESET */
     :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
-
     html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; }
-    section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+    
+    .header { background: transparent !important; border-bottom: none !important; }
 
     /* HERO AREA */
-    .hero { 
-      min-height: 100vh; 
-      display: flex; flex-direction: column; justify-content: center;
-      position: relative; padding-top: 100px; padding-bottom: 50px;
-    }
-
-    .hero-bg {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
-      mask-image: linear-gradient(to left, #000 60%, transparent);
-      -webkit-mask-image: linear-gradient(to left, #000 60%, transparent);
-    }
-    
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding-top: 100px; padding-bottom: 50px; }
+    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none; mask-image: linear-gradient(to left, #000 60%, transparent); -webkit-mask-image: linear-gradient(to left, #000 60%, transparent); }
     .hero .container { position: relative; z-index: 2; }
 
-    /* BAŞLIK VE EFEKT */
-    .hero-content { text-align: left; }
-    .headline { font-size: clamp(2.5rem, 8vw, 4.2rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px; margin-bottom: 25px; }
-    
-    .accent { 
-      color: var(--primary); 
-      display: inline-block;
-      animation: glowBreath 3s ease-in-out infinite;
+    /* SLOGAN & HEADLINE HİZALAMA */
+    .headline-box { display: inline-block; text-align: left; }
+    .pre-headline { 
+      font-family: 'Roboto Mono', monospace; font-size: 11px; color: #777; 
+      margin-bottom: 5px; display: flex; justify-content: space-between; 
+      text-transform: uppercase; font-weight: 700; width: 100%;
     }
-    @keyframes glowBreath {
-      0%, 100% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); transform: scale(1); }
-      50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
+    .headline { font-size: clamp(2.5rem, 8vw, 4.2rem); font-weight: 800; line-height: 1.0; letter-spacing: -2px; margin-bottom: 25px; }
+
+    .drop-letter { display: inline-block; opacity: 0; transform: translateY(-50px); animation: dropDown 0.6s ease forwards; }
+    @keyframes dropDown { to { opacity: 1; transform: translateY(0); } }
+
+    .accent { color: var(--primary); display: inline-block; text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); animation: growNeon 4s ease-in-out infinite; }
+    @keyframes growNeon {
+      0%, 100% { transform: scale(1); text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); }
+      50% { transform: scale(1.04); text-shadow: 0 0 25px rgba(255, 193, 7, 0.6); }
     }
 
-    /* AKSİYON KARTLARI */
-    .action-grid { display: flex; gap: 20px; justify-content: flex-start; flex-wrap: wrap; margin-bottom: 45px; margin-top: 30px; }
-    .action-card {
-      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
-      padding: 15px 35px; border-radius: 50px; text-decoration: none; color: #fff;
-      display: flex; align-items: center; gap: 10px; transition: 0.3s; backdrop-filter: blur(5px);
+    /* KUTULAR ETKİLEŞİM - MOUSE İLE BÜYÜME */
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin-top: 30px; }
+    .feature-item { 
+      background: rgba(255, 255, 255, 0.02); border: 1px solid var(--glass-border); border-left: 3px solid var(--primary); 
+      padding: 20px; border-radius: 4px; display: flex; align-items: center; gap: 15px; 
+      transition: all 0.3s ease; text-decoration: none; color: inherit; cursor: pointer;
     }
-    .action-card:hover { background: rgba(255, 255, 255, 0.15); color: #fff; transform: translateY(-3px); }
-    
-    /* TEKNİK DESTEK AL BUTONU HOVER DÜZELTME */
-    .card-highlight { background: var(--primary) !important; color: #000 !important; border: 1px solid var(--primary) !important; font-weight: 800; }
-    .card-highlight:hover { background: var(--primary) !important; color: #000 !important; filter: brightness(1.1); box-shadow: 0 0 20px rgba(255, 193, 7, 0.5); transform: translateY(-3px); }
-
-    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0; }
-    .feature-item {
-      background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--primary);
-      border-top: 1px solid var(--glass-border); border-right: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
-      padding: 20px; border-radius: 4px; text-align: left; display: flex; align-items: center; gap: 15px;
-      transition: 0.3s;
+    .feature-item:hover { 
+      background: rgba(255, 193, 7, 0.05); 
+      transform: scale(1.05); 
+      border-color: var(--primary);
     }
-    .feature-item:hover { background: rgba(255, 193, 7, 0.05); }
     .feature-item i { font-size: 1.5rem; color: var(--primary); }
-    .feature-item h4 { font-size: 0.95rem; color: #fff; font-weight: 700; margin: 0; text-transform: uppercase; }
-    .feature-item p { font-size: 0.8rem; color: #888; margin: 0; }
+    .feature-item h4 { font-size: 0.95rem; font-weight: 700; margin: 0; text-transform: uppercase; color: #fff; }
+    .feature-item p { font-size: 0.8rem; color: #888; margin: 0; line-height: 1.4; }
 
-    /* STATS BAR */
-    .stats-bar {
-      background: transparent !important;
-      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
-      display: flex; justify-content: center; gap: 50px; z-index: 10;
-    }
-    .stat-text { 
-      display: flex; align-items: center; gap: 10px; 
-      color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace;
-      letter-spacing: 1px;
-    }
-    .stat-val { color: #fff; font-weight: bold; }
+    /* BUTONLAR */
+    .action-grid { display: flex; gap: 15px; margin: 35px 0; flex-wrap: wrap; }
+    .action-card { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); padding: 15px 35px; border-radius: 50px; text-decoration: none; color: #fff; display: flex; align-items: center; gap: 10px; transition: 0.3s; backdrop-filter: blur(5px); font-size: 0.95rem; font-weight: 600; }
+    .card-highlight { background: var(--primary) !important; color: #000 !important; font-weight: 800 !important; }
+    .card-highlight:hover { filter: brightness(1.2); box-shadow: 0 0 20px rgba(255, 193, 7, 0.6); transform: translateY(-3px); }
 
-    .btn-panel-header {
-      background: transparent; color: var(--primary) !important;
-      padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700;
-      border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
-    }
+    /* HEADER BUTON */
+    .btn-panel-header { background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
 
-    /* MOBİL DÜZENLEMELER */
     @media (max-width: 991px) {
-      .hero-content { text-align: center; }
+      .headline { font-size: 2.2rem; text-align: center; }
+      .headline-box { text-align: center; width: 100%; }
+      .pre-headline { justify-content: center; gap: 15px; }
       .action-grid { justify-content: center; }
-      .feature-grid { grid-template-columns: 1fr; margin: 0 auto; }
-      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; }
-      .navmenu ul li.mobile-only { display: block !important; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .navmenu ul { background: transparent !important; backdrop-filter: none !important; border: none !important; }
     }
-    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -116,19 +86,17 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <img src="assets/img/1.png" alt="Texper Bilişim" style="max-height: 35px;">
       </a>
-      
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html" class="active">Anasayfa</a></li>
-          
           <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="about.html">Hakkımızda</a></li>
+              <li><a href="referanslar.html">Referanslar</a></li>
               <li><a href="faq.html">S.S.S</a></li>
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
-
           <li class="dropdown"><a href="#"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
@@ -137,7 +105,6 @@
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
             </ul>
           </li>
-
           <li class="dropdown"><a href="#"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="blog.html">Neler Yapıyoruz</a></li>
@@ -146,14 +113,11 @@
               <li><a href="programlar.html">BT Programlar</a></li>
             </ul>
           </li>
-
           <li><a href="contact.html">İletişim</a></li>
-          
-          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;"><i class="bi bi-shield-lock-fill"></i> Müşteri Paneli</a></li>
+          <li class="mobile-only d-lg-none"><a href="mesh.html" style="color: var(--primary) !important;"><i class="bi bi-shield-lock-fill"></i> Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-      
       <a class="btn-panel-header d-none d-lg-flex" href="mesh.html">
         <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
       </a>
@@ -163,94 +127,79 @@
   <main class="main">
     <section id="hero" class="hero section dark-background">
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
-
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 hero-content">
-            <div class="headline">GÜVENİLİR<br><span class="accent">SIFIR HATA</span><br>ALTYAPI.</div>
+          <div class="col-lg-10 hero-content">
+            <div class="headline-box">
+              <div class="pre-headline"><span>PROTECT.</span><span>INNOVATE.</span><span>SECURE.</span></div>
+              <div class="headline">
+                <div id="drop-container"></div>
+                <span class="accent">SIFIR HATA</span><br>
+                <span style="color: #fff; display: block;">ALTYAPI.</span>
+              </div>
+            </div>
             <p style="max-width: 550px; color: #ccc; font-size: 1.1rem; line-height: 1.6;">Karmaşık BT altyapılarını mühendislik disipliniyle basitleştiriyoruz. Texper Bilişim ile sistemleriniz her zaman güvende.</p>
             
             <div class="action-grid">
               <a href="destek.html" class="action-card card-highlight"><i class="bi bi-headset"></i><span>TEKNİK DESTEK AL</span></a>
               <a href="services.html" class="action-card"><i class="bi bi-hdd-network"></i><span>Çözümlerimiz</span></a>
+              <a href="map.html" target="_blank" class="action-card" style="border-color: #2ecc71 !important; color: #2ecc71 !important; background: rgba(46, 204, 113, 0.1) !important; text-decoration: none; display: flex; align-items: center; gap: 8px; border-radius: 50px; padding: 15px 35px;">
+                <div style="width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; box-shadow: 0 0 10px #2ecc71;"></div><span>NEXUS_SOC CANLI</span>
+              </a>
             </div>
 
             <div class="feature-grid">
-              <div class="feature-item"><i class="bi bi-shield-lock"></i><div><h4>Sistem Güvenliği</h4><p>Zafiyet analizi ve koruma.</p></div></div>
-              <div class="feature-item"><i class="bi bi-cloud-arrow-up"></i><div><h4>Veri Yönetimi</h4><p>TexNexus yedekleme.</p></div></div>
-              <div class="feature-item"><i class="bi bi-cpu"></i><div><h4>Aktif Monitoring</h4><p>7/24 Kesintisiz takip.</p></div></div>
+              <a href="services.html" class="feature-item">
+                <i class="bi bi-shield-lock"></i>
+                <div><h4>Sistem Güvenliği</h4><p>Zafiyet analizi ve koruma.</p></div>
+              </a>
+              <a href="cloud.html" class="feature-item">
+                <i class="bi bi-cloud-arrow-up"></i>
+                <div><h4>Veri Yönetimi</h4><p>TexNexus yedekleme.</p></div>
+              </a>
+              <a href="services.html" class="feature-item">
+                <i class="bi bi-cpu"></i>
+                <div><h4>Aktif Monitoring</h4><p>7/24 Kesintisiz takip.</p></div>
+              </a>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="stats-bar">
-        <div class="stat-text"><i class="bi bi-activity"></i> STATUS: <span class="stat-val" style="color:#2ecc71;">ONLINE</span></div>
-        <div class="stat-text"><i class="bi bi-shield-lock"></i> AGENTS: <span id="agent-count" class="stat-val">312 ACTIVE</span></div>
-        <div class="stat-text"><i class="bi bi-geo-alt"></i> NODE IP: <span id="user-ip" class="stat-val">Loading...</span></div>
       </div>
     </section>
   </main>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
   <script>
-    (function() {
-      "use strict";
-
-      /**
-       * MOBİL NAVİGASYON VE DROPDOWN TIKLAMA FİX
-       */
-      const select = (el, all = false) => {
-        el = el.trim()
-        if (all) { return [...document.querySelectorAll(el)] } else { return document.querySelector(el) }
-      }
-
-      const on = (type, el, listener, all = false) => {
-        let selectEl = select(el, all)
-        if (selectEl) {
-          if (all) { selectEl.forEach(e => e.addEventListener(type, listener)) } else { selectEl.addEventListener(type, listener) }
-        }
-      }
-
-      // Mobil Menü Toggle
-      on('click', '.mobile-nav-toggle', function(e) {
-        select('body').classList.toggle('mobile-nav-active');
-        this.classList.toggle('bi-list');
-        this.classList.toggle('bi-x');
-      });
-
-      // Mobilde Dropdown (Kurumsal, Hizmetler vb.) Tıklama Kontrolü
-      on('click', '.navmenu .dropdown > a', function(e) {
-        if (select('body').classList.contains('mobile-nav-active')) {
-          e.preventDefault();
-          this.parentNode.classList.toggle('active');
-          this.nextElementSibling.classList.toggle('dropdown-active');
-          
-          // Chevron ikonunu değiştir
-          let icon = this.querySelector('.bi-chevron-down');
-          if (icon) icon.classList.toggle('bi-chevron-up');
-        }
-      }, true);
-
-    })();
-
-    function updateAgentCount() {
-      const agentEl = document.getElementById('agent-count');
-      if(agentEl) {
-        const baseCount = 312;
-        const fluctuation = Math.floor(Math.random() * 5) - 2;
-        agentEl.innerText = (baseCount + fluctuation) + " ACTIVE";
-      }
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
-      setInterval(updateAgentCount, 4000);
-      fetch('https://api.ipify.org?format=json')
-        .then(r => r.json()).then(d => { 
-          const ipEl = document.getElementById('user-ip');
-          if(ipEl) ipEl.innerText = d.ip; 
+      const container = document.getElementById('drop-container');
+      const text = "GÜVENİLİR";
+      text.split('').forEach((char, i) => {
+        const span = document.createElement('span');
+        span.innerText = char;
+        span.className = 'drop-letter';
+        span.style.animationDelay = `${i * 0.1}s`;
+        container.appendChild(span);
+      });
+      container.innerHTML += '<br>';
+
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', function() {
+          document.body.classList.toggle('mobile-nav-active');
+          this.classList.toggle('bi-list');
+          this.classList.toggle('bi-x');
         });
+      }
+
+      document.querySelectorAll('.navmenu .dropdown > a').forEach(el => {
+        el.addEventListener('click', function(e) {
+          if (document.body.classList.contains('mobile-nav-active')) {
+            e.preventDefault();
+            this.parentNode.classList.toggle('active');
+            this.nextElementSibling.classList.toggle('dropdown-active');
+          }
+        });
+      });
     });
   </script>
 </body>

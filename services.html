@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Hizmetler | Texper Bilişim</title>
+  <title>Hizmetler & Çözümler | Texper Bilişim</title>
   
   <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
   <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
@@ -22,7 +22,12 @@
     html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
-    /* HERO AREA */
+    body::before {
+      content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-image: radial-gradient(rgba(255, 193, 7, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px; z-index: 1; pointer-events: none;
+    }
+
     .hero { 
       min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
@@ -38,64 +43,69 @@
     
     .hero .container { position: relative; z-index: 2; }
 
-    /* BAŞLIK VE EFEKT */
-    .hero-content { text-align: left; }
-    .headline { font-size: clamp(2.5rem, 8vw, 4.2rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px; margin-bottom: 25px; }
-    
-    .accent { 
-      color: var(--primary); 
-      display: inline-block;
-      animation: glowBreath 3s ease-in-out infinite;
-    }
+    /* BAŞLIK */
+    .headline { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; line-height: 0.95; letter-spacing: -2px; margin-bottom: 25px; }
+    .accent { color: var(--primary); display: inline-block; animation: glowBreath 3s ease-in-out infinite; }
     @keyframes glowBreath {
       0%, 100% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.2); transform: scale(1); }
       50% { text-shadow: 0 0 25px rgba(255, 193, 7, 0.6), 0 0 5px rgba(255, 193, 7, 0.8); transform: scale(1.02); }
     }
 
-    /* HİZMET KARTLARI */
-    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0; }
-    .feature-item {
-      background: rgba(255, 255, 255, 0.02); border-left: 3px solid var(--primary);
-      border-top: 1px solid var(--glass-border); border-right: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);
-      padding: 20px; border-radius: 4px; text-align: left; display: flex; align-items: center; gap: 15px;
-      transition: 0.3s;
+    /* PROFESYONEL HİZMET KARTLARI */
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 50px; }
+    
+    .service-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--glass-border);
+      padding: 35px 25px; border-radius: 4px; transition: 0.3s;
+      backdrop-filter: blur(15px); display: flex; flex-direction: column; height: 100%;
     }
-    .feature-item:hover { background: rgba(255, 193, 7, 0.05); transform: translateY(-3px); }
-    .feature-item i { font-size: 1.5rem; color: var(--primary); }
-    .feature-item h4 { font-size: 0.95rem; color: #fff; font-weight: 700; margin: 0; text-transform: uppercase; }
-    .feature-item p { font-size: 0.8rem; color: #888; margin: 0; }
+    .service-card:hover { 
+      background: rgba(255, 193, 7, 0.05); transform: translateY(-7px); 
+      border-color: var(--primary); box-shadow: 0 15px 30px rgba(0,0,0,0.5); 
+    }
+    
+    .card-icon { 
+      width: 60px; height: 60px; background: rgba(255,193,7,0.1); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+      font-size: 1.8rem; color: var(--primary); border: 1px solid rgba(255,193,7,0.3);
+    }
+    
+    .service-card h4 { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; color: #fff; letter-spacing: 0.5px; }
+    
+    .tech-list { list-style: none; padding: 0; margin-bottom: 25px; flex-grow: 1; }
+    .tech-list li { 
+      font-size: 0.85rem; color: #bbb; margin-bottom: 10px; 
+      padding-left: 20px; position: relative; line-height: 1.5;
+    }
+    .tech-list li::before {
+      content: "›"; position: absolute; left: 0; top: 0; 
+      color: var(--primary); font-weight: bold; font-size: 1.2rem; line-height: 1.1;
+    }
 
-    /* SLA KUTUSU */
-    .sla-box {
-      margin-top: 45px; background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--glass-border); border-radius: 4px; padding: 25px;
-      backdrop-filter: blur(10px);
+    .brand-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .badge-tech {
+      font-size: 0.65rem; background: rgba(255,255,255,0.05); color: #888;
+      padding: 3px 8px; border-radius: 3px; font-weight: 700; font-family: 'Roboto Mono';
     }
-    .sla-item { text-align: center; }
-    .sla-item h5 { font-weight: 800; color: var(--primary); margin-bottom: 5px; font-family: 'Roboto Mono', monospace; }
-    .sla-item p { font-size: 0.75rem; color: #888; text-transform: uppercase; margin: 0; letter-spacing: 1px; }
+    .service-card:hover .badge-tech { color: #fff; background: rgba(255,193,7,0.2); }
 
     /* STATS BAR */
     .stats-bar {
-      background: transparent !important;
-      padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
+      background: transparent !important; padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
       display: flex; justify-content: center; gap: 50px; z-index: 10;
     }
     .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
 
-    .btn-panel-header {
-      background: transparent; color: var(--primary) !important;
-      padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700;
-      border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;
-    }
+    .btn-panel-header { background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
 
     @media (max-width: 991px) {
       .hero-content { text-align: center; }
-      .feature-grid { grid-template-columns: 1fr; margin: 0 auto; }
-      .sla-box .row > div { margin-bottom: 20px; }
-      .sla-box .row > div:last-child { margin-bottom: 0; }
+      .service-grid { grid-template-columns: 1fr; }
       .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
+      .navmenu ul li.mobile-only { display: block !important; }
     }
+    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -110,6 +120,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.html">Anasayfa</a></li>
+          
           <li class="dropdown"><a href="#"><span>Kurumsal</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="about.html">Hakkımızda</a></li>
@@ -118,6 +129,7 @@
               <li><a href="gizlilik.html">Gizlilik & Şartlar</a></li>
             </ul>
           </li>
+
           <li class="dropdown"><a href="#" class="active"><span>Hizmetler</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="services.html" class="active">Tüm Hizmetler</a></li>
@@ -126,6 +138,7 @@
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
             </ul>
           </li>
+
           <li class="dropdown"><a href="#"><span>Teknik Operasyonlar</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="blog.html">Neler Yapıyoruz</a></li>
@@ -134,8 +147,9 @@
               <li><a href="programlar.html">BT Programlar</a></li>
             </ul>
           </li>
+
           <li><a href="contact.html">İletişim</a></li>
-          <li class="d-xl-none"><a href="mesh.html" style="color: var(--primary) !important;"><i class="bi bi-shield-lock-fill"></i> Müşteri Paneli</a></li>
+          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;"><i class="bi bi-shield-lock-fill"></i> Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -151,50 +165,119 @@
       <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg">
 
       <div class="container">
-        <div class="row">
-          <div class="col-lg-8 hero-content">
-            
-            <h1 class="headline">
-              UÇTAN UCA<br><span class="accent">BT ÇÖZÜMLERİ.</span>
-            </h1>
+        <div class="text-center mb-5">
+          <h1 class="headline">KURUMSAL <span class="accent">HİZMET KATALOGU.</span></h1>
+          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem; opacity: 0.9;">
+            Uçtan uca sistem yönetimi, güvenlik ve bulut entegrasyonu. Tek noktadan tam kapsamlı BT operasyonları.
+          </p>
+        </div>
 
-            <p style="max-width: 550px; color: #ccc; font-size: 1.1rem; line-height: 1.6; margin-bottom: 40px;">
-              İşletmenizi modern altyapı modülleriyle güçlendiriyoruz. Texper ile tüm sistemleriniz proaktif takip altında.
-            </p>
-
-            <div class="feature-grid">
-              <div class="feature-item">
-                <i class="bi bi-cpu"></i>
-                <div><h4>Sistem Yönetimi</h4><p>Sunucu ve sanallaştırma.</p></div>
-              </div>
-              <div class="feature-item">
-                <i class="bi bi-diagram-3"></i>
-                <div><h4>Network Altyapı</h4><p>Fiber ve ağ kurulumu.</p></div>
-              </div>
-              <div class="feature-item">
-                <i class="bi bi-cloud-check"></i>
-                <div><h4>Bulut Çözümleri</h4><p>VDS ve yedekleme.</p></div>
-              </div>
+        <div class="service-grid">
+          
+          <div class="service-card">
+            <div class="card-icon"><i class="bi bi-shield-lock"></i></div>
+            <h4>Firewall ve Ağ Güvenliği</h4>
+            <ul class="tech-list">
+              <li>Kurumsal güvenlik duvarı kurulumu ve 5651 loglama.</li>
+              <li>Şubeler arası VPN tünel (IPSec/SSL) ve VLAN yapılandırması.</li>
+              <li>Siber saldırı (DDoS/Ransomware) önleme politikaları.</li>
+              <li>Kullanıcı yetkilendirme ve Hotspot sistemleri.</li>
+            </ul>
+            <div class="brand-badges">
+              <span class="badge-tech">FORTINET</span>
+              <span class="badge-tech">BERQNET</span>
+              <span class="badge-tech">KEENETIC</span>
+              <span class="badge-tech">DRAYTEK</span>
+              <span class="badge-tech">SOPHOS</span>
             </div>
-
-            <div class="sla-box">
-              <div class="row">
-                <div class="col-md-4 sla-item">
-                  <h5>2 SAAT</h5>
-                  <p>Müdahale Süresi</p>
-                </div>
-                <div class="col-md-4 sla-item">
-                  <h5>%99.9</h5>
-                  <p>Uptime Garantisi</p>
-                </div>
-                <div class="col-md-4 sla-item">
-                  <h5>7/24</h5>
-                  <p>Aktif İzleme</p>
-                </div>
-              </div>
-            </div>
-
           </div>
+
+          <div class="service-card">
+            <div class="card-icon"><i class="bi bi-hdd-rack"></i></div>
+            <h4>Sunucu ve Sanallaştırma</h4>
+            <ul class="tech-list">
+              <li>Fiziksel sunucu kurulumu, Kabin düzenleme ve PDU montajı.</li>
+              <li>Hyper-V ve VMware sanallaştırma ile kaynak konsolidasyonu.</li>
+              <li>Windows Server, Active Directory ve DNS yönetimi.</li>
+              <li>Terminal Server ve Uzak Masaüstü (RDS) lisanslama.</li>
+            </ul>
+            <div class="brand-badges">
+              <span class="badge-tech">MICROSOFT</span>
+              <span class="badge-tech">HYPER-V</span>
+              <span class="badge-tech">DELL/HP</span>
+              <span class="badge-tech">PROXMOX</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="card-icon"><i class="bi bi-database-check"></i></div>
+            <h4>Veri Yedekleme ve Storage</h4>
+            <ul class="tech-list">
+              <li>QNAP ve Synology NAS kurulumu, RAID yapılandırması.</li>
+              <li>SQL Veritabanı otomatik yedekleme senaryoları.</li>
+              <li>Azure ve Hibrit Bulut entegrasyonlu 3-2-1 yedekleme.</li>
+              <li>Fidye yazılımına karşı "Immutable" yedekleme.</li>
+            </ul>
+            <div class="brand-badges">
+              <span class="badge-tech">QNAP</span>
+              <span class="badge-tech">SYNOLOGY</span>
+              <span class="badge-tech">VEEAM</span>
+              <span class="badge-tech">AZURE</span>
+              <span class="badge-tech">SQL</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="card-icon"><i class="bi bi-tools"></i></div>
+            <h4>Bakım Anlaşması ve Destek</h4>
+            <ul class="tech-list">
+              <li>Kurumsal Bakım Anlaşması ile düzenli sistem kontrolleri.</li>
+              <li>7/24 Uzak Masaüstü (Remote) ve Telefon desteği.</li>
+              <li>Kritik durumlarda acil "Yerinde Servis" müdahalesi.</li>
+              <li>Envanter takibi ve periyodik raporlama hizmeti.</li>
+            </ul>
+            <div class="brand-badges">
+              <span class="badge-tech">SLA</span>
+              <span class="badge-tech">YERİNDE SERVİS</span>
+              <span class="badge-tech">UZAK DESTEK</span>
+              <span class="badge-tech">DANIŞMANLIK</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="card-icon"><i class="bi bi-globe"></i></div>
+            <h4>Web, Domain ve Mail</h4>
+            <ul class="tech-list">
+              <li>Kurumsal E-Posta (Exchange/Hosting) kurulum ve yönetimi.</li>
+              <li>Domain (Alan Adı) tescili ve DNS kayıt yönetimi.</li>
+              <li>Kurumsal Web Sitesi tasarımı ve Hosting barındırma.</li>
+              <li>SSL Sertifikası ve güvenlik optimizasyonu.</li>
+            </ul>
+            <div class="brand-badges">
+              <span class="badge-tech">C-PANEL</span>
+              <span class="badge-tech">PLESK</span>
+              <span class="badge-tech">WORDPRESS</span>
+              <span class="badge-tech">OUTLOOK</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div class="card-icon"><i class="bi bi-diagram-3"></i></div>
+            <h4>Yapısal Kablolama ve Ağ</h4>
+            <ul class="tech-list">
+              <li>Uçtan uca Cat6/Cat7 ve Fiber Optik kablolama.</li>
+              <li>Patch Panel sonlandırma ve etiketleme (Labeling).</li>
+              <li>Sistem odası revizyonu ve Switch yönetimi.</li>
+              <li>Kesintisiz Wi-Fi (Roaming) ve Access Point kurulumu.</li>
+            </ul>
+            <div class="brand-badges">
+              <span class="badge-tech">UBIQUITI</span>
+              <span class="badge-tech">ARUBA</span>
+              <span class="badge-tech">FIBER</span>
+              <span class="badge-tech">RACK KABİN</span>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -207,51 +290,52 @@
   </main>
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
   <script>
     (function() {
       "use strict";
 
-      /**
-       * MOBILE NAV & DROPDOWN FIX
-       */
-      const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-      if (mobileNavToggleBtn) {
-        mobileNavToggleBtn.addEventListener('click', function(e) {
-          document.body.classList.toggle('mobile-nav-active');
-          this.classList.toggle('bi-list');
-          this.classList.toggle('bi-x');
-        });
+      const select = (el, all = false) => {
+        el = el.trim()
+        if (all) { return [...document.querySelectorAll(el)] } else { return document.querySelector(el) }
       }
 
-      document.querySelectorAll('.navmenu .dropdown > a').forEach(navdropdown => {
-        navdropdown.addEventListener('click', function(e) {
-          if (document.body.classList.contains('mobile-nav-active')) {
-            e.preventDefault();
-            this.parentNode.classList.toggle('active');
-            
-            const nextEl = this.nextElementSibling;
-            if (nextEl) nextEl.classList.toggle('dropdown-active');
-          }
-        });
+      const on = (type, el, listener, all = false) => {
+        let selectEl = select(el, all)
+        if (selectEl) {
+          if (all) { selectEl.forEach(e => e.addEventListener(type, listener)) } else { selectEl.addEventListener(type, listener) }
+        }
+      }
+
+      on('click', '.mobile-nav-toggle', function(e) {
+        select('body').classList.toggle('mobile-nav-active');
+        this.classList.toggle('bi-list');
+        this.classList.toggle('bi-x');
       });
 
+      on('click', '.navmenu .dropdown > a', function(e) {
+        if (select('body').classList.contains('mobile-nav-active')) {
+          e.preventDefault();
+          this.parentNode.classList.toggle('active');
+          const nextEl = this.nextElementSibling;
+          if (nextEl) nextEl.classList.toggle('dropdown-active');
+          
+          let icon = this.querySelector('.bi-chevron-down');
+          if (icon) icon.classList.toggle('bi-chevron-up');
+        }
+      }, true);
     })();
 
-    function updateAgentCount() {
-      const agentEl = document.getElementById('agent-count');
-      if(agentEl) {
-        agentEl.innerText = (312 + Math.floor(Math.random() * 5)) + " ACTIVE";
-      }
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
-      setInterval(updateAgentCount, 4000);
       fetch('https://api.ipify.org?format=json')
         .then(r => r.json()).then(d => { 
           const ipEl = document.getElementById('user-ip');
           if(ipEl) ipEl.innerText = d.ip; 
         });
+        
+      setInterval(() => {
+        const el = document.getElementById('agent-count');
+        if(el) el.innerText = (312 + Math.floor(Math.random() * 5)) + " ACTIVE";
+      }, 4000);
     });
   </script>
 </body>

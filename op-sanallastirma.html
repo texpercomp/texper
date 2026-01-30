@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>VM Konsolidasyon | Texper Bilişim</title>
+  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    :root { --primary: #ffc107; --glass-border: rgba(255, 255, 255, 0.15); }
+    html, body { background-color: #000; color: #fff; font-family: 'Poppins', sans-serif; height: 100%; overflow-x: hidden; }
+    body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(rgba(255, 193, 7, 0.04) 1px, transparent 1px); background-size: 40px 40px; z-index: 1; pointer-events: none; }
+    .op-detail-section { padding: 120px 0 80px; position: relative; z-index: 2; }
+    .op-header { border-left: 4px solid var(--primary); padding-left: 25px; margin-bottom: 50px; }
+    .op-header span { font-family: 'Roboto Mono', monospace; color: var(--primary); font-size: 0.8rem; letter-spacing: 2px; }
+    .op-header h2 { font-weight: 800; text-transform: uppercase; margin-top: 10px; }
+    .op-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--glass-border); padding: 40px; border-radius: 4px; backdrop-filter: blur(15px); }
+    .tech-list { list-style: none; padding: 0; margin-top: 30px; }
+    .tech-list li { margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; color: #bbb; }
+    .tech-list li i { color: var(--primary); font-size: 1.2rem; }
+    .tech-list li b { color: #fff; display: block; margin-bottom: 5px; }
+    .sidebar-info { background: rgba(255, 193, 7, 0.05); border: 1px solid rgba(255, 193, 7, 0.2); padding: 30px; border-radius: 4px; }
+    .btn-back { display: inline-flex; align-items: center; gap: 10px; color: var(--primary); text-decoration: none; font-weight: 700; margin-top: 40px; transition: 0.3s; }
+    .btn-back:hover { gap: 20px; color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="container op-detail-section">
+    <div class="op-header">
+      <span>LOG_ID: #VIRT-2026-001</span>
+      <h2>VM KURULUM VE KONSOLİDASYON</h2>
+    </div>
+    <div class="row g-5">
+      <div class="col-lg-8">
+        <div class="op-card">
+          <h4>Operasyonel Kapsam</h4>
+          <p>Mevcut donanım parkurunun performans analizi sonrası, fiziksel sunucu bağımlılığını ortadan kaldırarak kaynakları tek bir havuzda toplama sürecidir. Bu operasyon, donanım arızalarında iş sürekliliğini %99.9 oranına çıkarır.</p>
+          <ul class="tech-list">
+            <li><i class="bi bi-cpu"></i><span><b>Kaynak Tahsisi</b> CPU ve RAM kaynaklarının sanal makineler arasında dinamik paylaştırılması.</span></li>
+            <li><i class="bi bi-shield-check"></i><span><b>Failover Cluster</b> Fiziksel sunucu arızasında VM'lerin otomatik taşınması.</span></li>
+            <li><i class="bi bi-hdd-network"></i><span><b>P2V Migrasyon</b> Fiziksel sunucuların veri kaybısız sanallaştırılması.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="sidebar-info">
+          <h6 class="fw-bold mb-4 text-warning">TEKNİK STACK</h6>
+          <p class="small text-secondary mb-1">Platform:</p>
+          <p class="fw-bold small mb-3">Hyper-V Server 2025</p>
+          <p class="small text-secondary mb-1">Depolama:</p>
+          <p class="fw-bold small mb-3">NVMe RAID Pool</p>
+          <p class="small text-secondary mb-1">Yönetim:</p>
+          <p class="fw-bold small">MeshCentral & WAC</p>
+        </div>
+      </div>
+    </div>
+    <a href="blog.html" class="btn-back"><i class="bi bi-arrow-left"></i> OPERASYONLARA DÖN</a>
+  </div>
+</body>
+</html>

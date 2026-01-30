@@ -22,18 +22,16 @@
     html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
-    /* TEKNOLOJİK DOKU */
     body::before {
       content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background-image: radial-gradient(rgba(255, 193, 7, 0.04) 1px, transparent 1px);
       background-size: 40px 40px; z-index: 1; pointer-events: none;
     }
 
-    /* HERO AREA */
     .hero { 
       min-height: 100vh; 
       display: flex; flex-direction: column; justify-content: center;
-      position: relative; padding-top: 100px; padding-bottom: 50px;
+      position: relative; padding-top: 100px; padding-bottom: 80px;
     }
 
     .hero-bg {
@@ -45,7 +43,6 @@
     
     .hero .container { position: relative; z-index: 2; }
 
-    /* BAŞLIK VE EFEKT */
     .headline { font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 25px; }
     .accent { color: var(--primary); display: inline-block; animation: glowBreath 3s ease-in-out infinite; }
     @keyframes glowBreath {
@@ -57,45 +54,39 @@
     .detail-row {
       display: flex; align-items: flex-start; background: rgba(255, 255, 255, 0.02);
       border-left: 3px solid var(--primary); border-top: 1px solid var(--glass-border);
-      padding: 30px; border-radius: 4px; margin-bottom: 20px; transition: 0.3s;
+      padding: 30px; border-radius: 4px; margin-bottom: 25px; transition: 0.3s;
       backdrop-filter: blur(10px);
     }
     .detail-row:hover { background: rgba(255, 193, 7, 0.05); transform: translateX(10px); border-color: var(--primary); }
     .detail-icon { font-size: 2.2rem; color: var(--primary); min-width: 70px; }
-    .detail-info h4 { color: #fff; font-weight: 700; margin-bottom: 10px; font-size: 1.2rem; text-transform: uppercase; }
-    .detail-info p { color: #888; font-size: 0.95rem; line-height: 1.7; margin-bottom: 15px; }
+    .detail-info h4 { color: #fff; font-weight: 700; margin-bottom: 12px; font-size: 1.25rem; text-transform: uppercase; letter-spacing: 1px; }
+    .detail-info p { color: #bbb; font-size: 0.95rem; line-height: 1.7; margin-bottom: 15px; }
 
     .spec-tag {
       font-family: 'Roboto Mono', monospace; font-size: 0.7rem; background: rgba(255, 193, 7, 0.05);
       padding: 4px 12px; border-radius: 4px; color: var(--primary); font-weight: 700;
-      border: 1px solid rgba(255, 193, 7, 0.2); margin-right: 8px; margin-top: 5px; display: inline-block;
+      border: 1px solid rgba(255, 193, 7, 0.2); margin-right: 8px; margin-top: 8px; display: inline-block;
     }
 
-    /* BUTON HOVER DÜZELTME */
+    /* BUTON */
     .btn-action-master {
       background: var(--primary) !important; color: #000 !important; padding: 16px 45px; border-radius: 50px;
       text-decoration: none; display: inline-flex; align-items: center; gap: 12px;
       transition: 0.3s; font-weight: 800; box-shadow: 0 10px 20px rgba(255, 193, 7, 0.2); border: none;
     }
-    .btn-action-master:hover { background: var(--primary) !important; color: #000 !important; filter: brightness(1.1); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 193, 7, 0.4); }
+    .btn-action-master:hover { filter: brightness(1.1); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 193, 7, 0.4); }
 
-    /* STATS BAR */
     .stats-bar {
       background: transparent !important; padding: 30px 0; width: 100%; position: absolute; bottom: 0; left: 0;
       display: flex; justify-content: center; gap: 50px; z-index: 10;
     }
-    .stat-text { display: flex; align-items: center; gap: 10px; color: rgba(255, 255, 255, 0.4); font-size: 0.75rem; font-family: 'Roboto Mono', monospace; }
-
-    .btn-panel-header { background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
 
     @media (max-width: 991px) {
-      .hero { text-align: center; height: auto; min-height: 100vh; padding-bottom: 80px; }
-      .detail-row { flex-direction: column; text-align: center; padding: 25px; }
+      .hero { text-align: center; padding-bottom: 80px; }
+      .detail-row { flex-direction: column; text-align: center; }
       .detail-icon { margin-bottom: 15px; width: 100%; }
-      .stats-bar { position: relative; flex-direction: column; gap: 15px; text-align: center; padding-bottom: 40px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
-      .navmenu ul li.mobile-only { display: block !important; }
+      .stats-bar { position: relative; flex-direction: column; gap: 15px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
     }
-    .navmenu ul li.mobile-only { display: none; }
   </style>
 </head>
 
@@ -122,7 +113,7 @@
             <ul>
               <li><a href="services.html">Tüm Hizmetler</a></li>
               <li><a href="ag-kurulumu.html" class="active">Ağ Kurulumu</a></li>
-              <li><a href="cloud.html">Bulut Hizmetleri (TexNexus)</a></li>
+              <li><a href="cloud.html">Bulut Hizmetleri</a></li>
               <li><a href="yazilim-gelistirme.html">Yazılım Geliştirme</a></li>
             </ul>
           </li>
@@ -135,12 +126,11 @@
             </ul>
           </li>
           <li><a href="contact.html">İletişim</a></li>
-          <li class="mobile-only"><a href="mesh.html" style="color: var(--primary) !important;"><i class="bi bi-shield-lock-fill"></i> Müşteri Paneli</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       
-      <a class="btn-panel-header d-none d-lg-flex" href="mesh.html">
+      <a class="btn-panel-header d-none d-lg-flex" href="mesh.html" style="background: transparent; color: var(--primary) !important; padding: 8px 25px; margin-left: 20px; border-radius: 50px; font-weight: 700; border: 2px solid var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px;">
         <i class="bi bi-shield-lock-fill"></i> Müşteri Paneli
       </a>
     </div>
@@ -153,18 +143,29 @@
       <div class="container">
         <div class="text-center mb-5">
           <h2 class="headline">AĞ VE <span class="accent">ALTYAPI.</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem; opacity: 0.9;">Kesintisiz iletişim için mühendislik disipliniyle optimize edilmiş ağ tasarımları.</p>
+          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem; opacity: 0.9;">İstanbul genelinde kurumsal ağ projeleri, fiber sonlandırma ve kesintisiz yapısal kablolama hizmetleri.</p>
         </div>
 
-        <div class="mx-auto" style="max-width: 900px;">
+        <div class="mx-auto" style="max-width: 950px;">
           
           <div class="detail-row">
             <div class="detail-icon"><i class="bi bi-diagram-3"></i></div>
             <div class="detail-info">
-              <h4>YAPISAL KABLOLAMA & SONLANDIRMA</h4>
-              <p>Cat6, Cat7 ve Fiber Optik projelerinde en yüksek iletim hızını garanti ediyoruz. Patch panel yönetimi ile karmaşaya son veriyoruz.</p>
+              <h4>YAPISAL KABLOLAMA & SİSTEM ODASI</h4>
+              <p>Yeni ofis kurulumları veya mevcut sistem odalarının revizyonu. Kabin düzenleme, etiketleme ve patch panel sonlandırma işlemlerini mühendislik standartlarında (TIA/EIA) gerçekleştiriyoruz.</p>
               <div class="tech-specs">
-                <span class="spec-tag">CAT6A / CAT7</span><span class="spec-tag">FIBER OPTIC</span><span class="spec-tag">TIA/EIA-568</span>
+                <span class="spec-tag">CAT6 / CAT7 HIZ</span><span class="spec-tag">KABİN DÜZENLEME</span><span class="spec-tag">ETİKETLEME</span><span class="spec-tag">TEST & RAPOR</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-row">
+            <div class="detail-icon"><i class="bi bi-lightning-charge"></i></div>
+            <div class="detail-info">
+              <h4>FİBER OPTİK SONLANDIRMA (FÜZYON EK)</h4>
+              <p>Yüksek hızlı veri iletimi için backbone (omurga) fiber optik kablolama. Fusion Splicer cihazlarımız ile kayıpsız ekleme ve fiber sonlandırma çözümleri sunuyoruz.</p>
+              <div class="tech-specs">
+                <span class="spec-tag">SINGLE MODE</span><span class="spec-tag">MULTI MODE</span><span class="spec-tag">FUSION SPLICER</span><span class="spec-tag">OTDR TEST</span>
               </div>
             </div>
           </div>
@@ -172,10 +173,10 @@
           <div class="detail-row">
             <div class="detail-icon"><i class="bi bi-router"></i></div>
             <div class="detail-info">
-              <h4>AKTİF CİHAZ YAPILANDIRMASI</h4>
-              <p>Yönetilebilir switch ve core router kurulumları. VLAN yapılandırmaları ile ağ trafiğinizi optimize ediyor ve güvenli segmentlere ayırıyoruz.</p>
+              <h4>SWITCHING & VLAN SEGMENTASYONU</h4>
+              <p>Ağ trafiğini optimize etmek ve güvenliği artırmak için L2/L3 switch yapılandırması. Misafir ağı (Guest VLAN), kamera ağı ve personel ağlarını birbirinden izole ederek performansı artırıyoruz.</p>
               <div class="tech-specs">
-                <span class="spec-tag">VLAN</span><span class="spec-tag">L2/L3 SWITCHING</span><span class="spec-tag">STP/RSTP</span>
+                <span class="spec-tag">CISCO / HP / ARUBA</span><span class="spec-tag">VLAN CONFIG</span><span class="spec-tag">TRUNK PORT</span><span class="spec-tag">STP PROTECTION</span>
               </div>
             </div>
           </div>
@@ -183,17 +184,17 @@
           <div class="detail-row">
             <div class="detail-icon"><i class="bi bi-wifi"></i></div>
             <div class="detail-info">
-              <h4>ENDÜSTRİYEL WI-FI ÇÖZÜMLERİ</h4>
-              <p>Geniş alanlarda kesintisiz roaming sağlayan Access Point kurulumları. Sinyal kirliliğini önleyen profesyonel Wi-Fi ağları.</p>
+              <h4>ROAMING WI-FI MİMARİSİ</h4>
+              <p>Ofis veya depo içerisinde hareket halindeyken bağlantı kopması yaşatmayan (Zero-Handoff) Access Point kurulumları. Sinyal çakışmalarını önleyen profesyonel kanal yönetimi.</p>
               <div class="tech-specs">
-                <span class="spec-tag">WI-FI 6E</span><span class="spec-tag">ROAMING</span><span class="spec-tag">CONTROLLER BASED</span>
+                <span class="spec-tag">WI-FI 6 (802.11ax)</span><span class="spec-tag">SEAMLESS ROAMING</span><span class="spec-tag">MESH NETWORK</span><span class="spec-tag">UBIQUITI / KEENETIC</span>
               </div>
             </div>
           </div>
 
           <div class="text-center mt-5">
             <a href="contact.html" class="btn-action-master">
-              <i class="bi bi-calendar-check"></i> ÜCRETSİZ KEŞİF İSTEYİN
+              <i class="bi bi-tools"></i> ÜCRETSİZ KEŞİF VE PROJELENDİRME
             </a>
           </div>
 
@@ -212,33 +213,26 @@
   <script>
     (function() {
       "use strict";
-
       const select = (el, all = false) => {
         el = el.trim()
         if (all) { return [...document.querySelectorAll(el)] } else { return document.querySelector(el) }
       }
-
       const on = (type, el, listener, all = false) => {
         let selectEl = select(el, all)
         if (selectEl) {
           if (all) { selectEl.forEach(e => e.addEventListener(type, listener)) } else { selectEl.addEventListener(type, listener) }
         }
       }
-
-      // Mobil Menü Toggle
       on('click', '.mobile-nav-toggle', function(e) {
         select('body').classList.toggle('mobile-nav-active');
         this.classList.toggle('bi-list');
         this.classList.toggle('bi-x');
       });
-
-      // Mobilde Dropdown (Hizmetler vb.) Tıklama Fix
       on('click', '.navmenu .dropdown > a', function(e) {
         if (select('body').classList.contains('mobile-nav-active')) {
           e.preventDefault();
           this.parentNode.classList.toggle('active');
           this.nextElementSibling.classList.toggle('dropdown-active');
-          
           let icon = this.querySelector('.bi-chevron-down');
           if (icon) icon.classList.toggle('bi-chevron-up');
         }
@@ -248,7 +242,6 @@
     document.addEventListener('DOMContentLoaded', () => {
       fetch('https://api.ipify.org?format=json')
         .then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
-        
       setInterval(() => {
         const el = document.getElementById('agent-count');
         if(el) el.innerText = (312 + Math.floor(Math.random() * 5)) + " ACTIVE";

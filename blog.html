@@ -22,7 +22,7 @@
     html, body { background-color: #000000 !important; color: #fff; overflow-x: hidden; font-family: 'Poppins', sans-serif; height: 100%; }
     section, div, h2, p, span { opacity: 1 !important; visibility: visible !important; transform: none !important; }
 
-    /* ARKA PLAN TEKNOLOJİK DOKU */
+    /* TEKNOLOJİK DOKU */
     body::before {
       content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background-image: radial-gradient(rgba(255, 193, 7, 0.04) 1px, transparent 1px);
@@ -45,7 +45,6 @@
     
     .hero .container { position: relative; z-index: 2; }
 
-    /* BAŞLIK VE EFEKT */
     .headline { font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; line-height: 1; letter-spacing: -2px; margin-bottom: 25px; }
     .accent { color: var(--primary); display: inline-block; animation: glowBreath 3s ease-in-out infinite; }
     @keyframes glowBreath {
@@ -62,13 +61,18 @@
       border-right: 1px solid var(--glass-border);
       border-bottom: 1px solid var(--glass-border);
       padding: 30px; border-radius: 4px; transition: 0.3s;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px); display: flex; flex-direction: column;
     }
     .blog-card:hover { background: rgba(255, 193, 7, 0.05); transform: translateY(-5px); border-color: var(--primary); }
 
     .blog-meta { font-family: 'Roboto Mono', monospace; color: var(--primary); font-size: 0.7rem; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
     .blog-card h4 { font-size: 1.15rem; color: #fff; font-weight: 700; margin-bottom: 15px; text-transform: uppercase; }
-    .blog-card p { color: #888; font-size: 0.85rem; line-height: 1.7; margin-bottom: 20px; }
+    .blog-card p { color: #888; font-size: 0.85rem; line-height: 1.7; margin-bottom: 20px; flex-grow: 1; }
+
+    /* TEKNİK SÜREÇ ÇİZELGESİ */
+    .op-step-bar { display: flex; gap: 5px; margin-bottom: 25px; }
+    .op-step { height: 3px; flex-grow: 1; background: rgba(255,255,255,0.1); position: relative; }
+    .op-step.active { background: var(--primary); box-shadow: 0 0 10px var(--primary); }
 
     .read-btn { color: var(--primary); text-decoration: none; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; letter-spacing: 1px; }
     .read-btn:hover { gap: 15px; color: #fff; }
@@ -145,8 +149,8 @@
 
       <div class="container">
         <div class="text-center mb-5">
-          <h2 class="headline">NELER <span class="accent">YAPIYORUZ?</span></h2>
-          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem;">Sistem odalarından bulut mimarisine teknik operasyon kayıtlarımız.</p>
+          <h2 class="headline">OPERASYON <span class="accent">KAYITLARI.</span></h2>
+          <p style="max-width: 800px; margin: 0 auto; color: #ccc; font-size: 1.1rem;">Sistem odalarından bulut mimarisine teknik saha operasyonlarımız.</p>
         </div>
 
         <div class="blog-grid">
@@ -154,29 +158,41 @@
           <div class="blog-card">
             <div class="blog-meta">VIRTUALIZATION • HYPER-V</div>
             <h4>VM KURULUM VE KONSOLİDASYON</h4>
-            <p>Fiziksel sunucuların Hyper-V üzerinde optimize edilmesi ve donanım maliyetlerini düşüren sanallaştırma projeleri.</p>
-            <a href="services.html" class="read-btn">TEKNİK DETAY <i class="bi bi-arrow-right"></i></a>
+            <p>Fiziksel sunucuların sanallaştırma mimarisine taşınması (P2V) ve kaynak yönetiminin optimize edilmesi. Kesintisiz yüksek erişilebilirlik konfigürasyonu.</p>
+            <div class="op-step-bar">
+              <div class="op-step active"></div><div class="op-step active"></div><div class="op-step active"></div><div class="op-step"></div>
+            </div>
+            <a href="op-sanallastirma.html" class="read-btn">TEKNİK DETAY <i class="bi bi-arrow-right"></i></a>
           </div>
 
           <div class="blog-card">
             <div class="blog-meta">BACKUP • DISASTER RECOVERY</div>
             <h4>TEXNEXUS VE QNAP HİBRİT YEDEKLEME</h4>
-            <p>Kritik verilerin QNAP NAS üniteleri ve TexNexus bulut altyapısı ile eş zamanlı, şifreli yedeklenmesi operasyonu.</p>
-            <a href="services.html" class="read-btn">YEDEKLEME YAPISI <i class="bi bi-arrow-right"></i></a>
+            <p>Kritik verilerin QNAP NAS üniteleri ve TexNexus bulut altyapısı ile eş zamanlı, şifreli yedeklenmesi. Ransomware korumalı versiyonlama.</p>
+            <div class="op-step-bar">
+              <div class="op-step active"></div><div class="op-step active"></div><div class="op-step active"></div><div class="op-step active"></div>
+            </div>
+            <a href="op-yedekleme.html" class="read-btn">YEDEKLEME YAPISI <i class="bi bi-arrow-right"></i></a>
           </div>
 
           <div class="blog-card">
             <div class="blog-meta">NETWORKING • IKEv2</div>
             <h4>KEENETIC VPN İLE ŞUBE BİRLEŞTİRME</h4>
-            <p>Farklı lokasyonların Keenetic cihazlar ve IKEv2 tünelleri ile tek bir güvenli ağ (VPN) üzerinde toplanması.</p>
-            <a href="services.html" class="read-btn">VPN ÇÖZÜMLERİ <i class="bi bi-arrow-right"></i></a>
+            <p>Farklı lokasyonların Keenetic cihazlar ve IKEv2 tünelleri ile tek bir güvenli ağ üzerinde toplanması. ERP ve Dosya Sunucu erişim optimizasyonu.</p>
+            <div class="op-step-bar">
+              <div class="op-step active"></div><div class="op-step active"></div><div class="op-step"></div><div class="op-step"></div>
+            </div>
+            <a href="op-network.html" class="read-btn">VPN ÇÖZÜMLERİ <i class="bi bi-arrow-right"></i></a>
           </div>
 
           <div class="blog-card">
             <div class="blog-meta">INFRASTRUCTURE • SERVER CABINET</div>
             <h4>KABİN MONTAJI VE SWITCH DÜZENLEME</h4>
-            <p>42U Kabin kurulumu, etiketleme ve yönetilebilir switch yapılandırması ile sistem odası stabilizasyonu.</p>
-            <a href="services.html" class="read-btn">SİSTEM ODASI DÜZENİ <i class="bi bi-arrow-right"></i></a>
+            <p>42U Kabin kurulumu, etiketleme ve yönetilebilir switch yapılandırması ile sistem odası stabilizasyonu. Profesyonel kablolama.</p>
+            <div class="op-step-bar">
+              <div class="op-step active"></div><div class="op-step active"></div><div class="op-step active"></div><div class="op-step"></div>
+            </div>
+            <a href="op-sistem-odasi.html" class="read-btn">SİSTEM ODASI DÜZENİ <i class="bi bi-arrow-right"></i></a>
           </div>
 
         </div>
@@ -198,35 +214,26 @@
   <script>
     (function() {
       "use strict";
-
       const select = (el, all = false) => {
         el = el.trim()
         if (all) { return [...document.querySelectorAll(el)] } else { return document.querySelector(el) }
       }
-
       const on = (type, el, listener, all = false) => {
         let selectEl = select(el, all)
         if (selectEl) {
           if (all) { selectEl.forEach(e => e.addEventListener(type, listener)) } else { selectEl.addEventListener(type, listener) }
         }
       }
-
-      // Mobil Menü Toggle
       on('click', '.mobile-nav-toggle', function(e) {
         select('body').classList.toggle('mobile-nav-active');
         this.classList.toggle('bi-list');
         this.classList.toggle('bi-x');
       });
-
-      // Mobilde Dropdown (Kurumsal vb.) Tıklama Fix
       on('click', '.navmenu .dropdown > a', function(e) {
         if (select('body').classList.contains('mobile-nav-active')) {
           e.preventDefault();
           this.parentNode.classList.toggle('active');
           this.nextElementSibling.classList.toggle('dropdown-active');
-          
-          let icon = this.querySelector('.bi-chevron-down');
-          if (icon) icon.classList.toggle('bi-chevron-up');
         }
       }, true);
     })();
@@ -234,11 +241,6 @@
     document.addEventListener('DOMContentLoaded', () => {
       fetch('https://api.ipify.org?format=json')
         .then(r => r.json()).then(d => { document.getElementById('user-ip').innerText = d.ip; });
-        
-      setInterval(() => {
-        const el = document.getElementById('agent-count');
-        if(el) el.innerText = (312 + Math.floor(Math.random() * 5)) + " ACTIVE";
-      }, 4000);
     });
   </script>
 </body>
