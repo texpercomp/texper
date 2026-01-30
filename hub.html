@@ -6,9 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Digital Hub | Texper Bilişim</title>
   
-  <link rel="icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
-  <link rel="shortcut icon" href="assets/img/favicon.png?v=fresh_start_999" type="image/png">
-
+  <link rel="icon" href="assets/img/favicon.png?v=999" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   
@@ -21,151 +19,115 @@
       background-color: var(--bg);
       font-family: 'Poppins', sans-serif;
       color: #fff;
-      display: flex; 
-      flex-direction: column; 
-      justify-content: center; 
-      align-items: center;     
+      display: flex; flex-direction: column; justify-content: center; align-items: center;      
       overflow: hidden;
     }
 
-    /* TEKNOLOJİK ARKA PLAN DOKUSU */
+    /* TEKNOLOJİK ARKA PLAN */
     body::before {
       content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background-image: radial-gradient(rgba(255, 193, 7, 0.05) 1px, transparent 1px);
-      background-size: 50px 50px; z-index: -1;
+      background-image: radial-gradient(rgba(255, 193, 7, 0.05) 1.2px, transparent 1.2px);
+      background-size: 40px 40px; z-index: -1;
     }
 
-    .bg-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(circle at 50% 50%, rgba(255, 193, 7, 0.08) 0%, transparent 70%);
-      z-index: -1;
+    .bg-glow {
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255, 193, 7, 0.05) 0%, transparent 70%);
+      z-index: -1; pointer-events: none;
     }
 
     .container { 
-      width: 100%; 
-      max-width: 800px; 
-      padding: 30px; 
-      box-sizing: border-box;
-      z-index: 2;
+      width: 100%; max-width: 650px; padding: 40px; z-index: 2;
     }
 
     /* LOGO VE ARAMA */
-    .search-section { text-align: center; margin-bottom: 50px; }
+    .search-section { text-align: center; margin-bottom: 60px; }
     .search-logo { 
-      max-width: 250px; 
-      width: 70%;
-      margin-bottom: 40px; 
-      filter: drop-shadow(0 0 15px rgba(255,193,7,0.3)); 
+      max-width: 220px; margin-bottom: 45px; 
+      filter: drop-shadow(0 0 20px rgba(255,193,7,0.2)); 
     }
     
-    .search-wrapper {
-      position: relative;
-      max-width: 550px;
-      margin: 0 auto;
-    }
+    .search-wrapper { position: relative; width: 100%; }
     .search-input {
-      width: 100%;
-      padding: 18px 25px 18px 60px;
+      width: 100%; padding: 20px 25px 20px 65px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
-      border-radius: 4px; /* Master stile uygun keskin/hafif kavis */
-      color: #fff;
-      font-size: 16px;
-      backdrop-filter: blur(15px);
-      transition: 0.3s;
+      border-left: 4px solid var(--primary);
+      border-radius: 4px;
+      color: #fff; font-size: 16px;
+      backdrop-filter: blur(20px); transition: 0.4s;
       box-sizing: border-box;
-      border-left: 3px solid var(--primary); /* Master mühür */
     }
     .search-input:focus {
-      outline: none;
-      border-color: var(--primary);
-      background: rgba(255, 193, 7, 0.03);
-      box-shadow: 0 0 30px rgba(255, 193, 7, 0.1);
+      outline: none; border-color: var(--primary);
+      background: rgba(255, 193, 7, 0.05);
+      box-shadow: 0 0 40px rgba(255, 193, 7, 0.15);
     }
-    .search-icon { position: absolute; left: 25px; top: 20px; color: var(--primary); font-size: 20px; }
+    .search-icon { position: absolute; left: 25px; top: 22px; color: var(--primary); font-size: 22px; opacity: 0.8; }
 
-    /* HIZLI ERİŞİM KARTLARI */
+    /* CORE GRID */
     .section-title {
-      font-family: 'Roboto Mono', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--primary);
-      text-transform: uppercase;
-      margin-bottom: 25px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      opacity: 0.7;
+      font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 800;
+      letter-spacing: 4px; color: var(--primary); text-transform: uppercase;
+      margin-bottom: 30px; display: flex; align-items: center; gap: 20px;
     }
-    .section-title::after { content: ""; height: 1px; flex-grow: 1; background: var(--border); }
+    .section-title::after { content: ""; height: 1px; flex-grow: 1; background: linear-gradient(to right, var(--border), transparent); }
 
     .app-grid { 
-      display: grid; 
-      grid-template-columns: repeat(3, 1fr); 
-      gap: 15px; 
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; 
     }
     
     .app-card {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border);
-      padding: 22px 15px;
-      border-radius: 4px;
-      transition: 0.3s;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
+      padding: 30px 20px; border-radius: 4px;
+      transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; align-items: center; gap: 15px;
     }
     .app-card:hover {
       border-color: var(--primary);
-      background: rgba(255, 193, 7, 0.05);
-      transform: translateY(-5px);
+      background: rgba(255, 193, 7, 0.08);
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-    .app-card i { font-size: 24px; color: var(--primary); }
-    .app-card span { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .app-card i { font-size: 28px; color: var(--primary); transition: 0.3s; }
+    .app-card:hover i { transform: scale(1.1); text-shadow: 0 0 15px var(--primary); }
+    .app-card span { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #ccc; }
+    .app-card:hover span { color: #fff; }
 
-    /* FOOTER STATUS BAR */
+    /* FOOTER BAR */
     .footer-bar {
-      position: absolute;
-      bottom: 25px;
-      width: 100%;
-      text-align: center;
-      font-family: 'Roboto Mono', monospace;
-      font-size: 10px;
-      color: rgba(255,255,255,0.3);
-      letter-spacing: 2px;
+      position: fixed; bottom: 30px; width: 100%;
+      text-align: center; font-family: 'Roboto Mono', monospace;
+      font-size: 10px; color: rgba(255,255,255,0.2); letter-spacing: 2px;
+    }
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(46, 204, 113, 0.05);
+      border: 1px solid rgba(46, 204, 113, 0.2);
+      padding: 6px 15px; border-radius: 50px;
+      color: #2ecc71; font-weight: 800;
     }
     .status-dot {
-      display: inline-block;
-      width: 8px; height: 8px;
-      background: #2ecc71;
-      border-radius: 50%;
-      margin-right: 8px;
-      box-shadow: 0 0 10px #2ecc71;
-      animation: pulse 2s infinite;
+      width: 7px; height: 7px; background: #2ecc71; border-radius: 50%;
+      box-shadow: 0 0 10px #2ecc71; animation: blink 1.5s infinite;
     }
-    @keyframes pulse {
-      0% { opacity: 1; }
-      50% { opacity: 0.5; }
-      100% { opacity: 1; }
-    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-    /* MOBİL DÜZENLEMELER */
     @media (max-width: 768px) {
-      .container { padding: 20px; }
-      .app-grid { grid-template-columns: 1fr; }
-      .app-card { flex-direction: row; padding: 18px 25px; justify-content: flex-start; }
-      .search-logo { max-width: 200px; }
-      .footer-bar { font-size: 9px; bottom: 15px; padding: 0 10px; box-sizing: border-box; }
+      .container { padding: 30px 20px; }
+      .app-grid { grid-template-columns: 1fr; gap: 12px; }
+      .app-card { flex-direction: row; padding: 20px 25px; justify-content: flex-start; gap: 25px; }
+      .search-logo { max-width: 180px; }
+      .footer-bar { bottom: 20px; font-size: 8px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="bg-overlay"></div>
+  <div class="bg-glow"></div>
 
   <div class="container">
     
@@ -174,34 +136,37 @@
       <div class="search-wrapper">
         <i class="bi bi-search search-icon"></i>
         <form action="https://www.google.com/search" method="GET">
-          <input type="text" name="q" class="search-input" placeholder="Google'da veya BT altyapısında ara..." autocomplete="off" autofocus>
+          <input type="text" name="q" class="search-input" placeholder="Sistemlerde veya Web'de ara..." autocomplete="off" autofocus>
         </form>
       </div>
     </section>
 
-    <div class="section-title">CORE SERVICES</div>
+    <div class="section-title">OPERATIONAL CORE</div>
     
     <div class="app-grid">
       <a href="destek.html" class="app-card">
         <i class="bi bi-headset"></i>
-        <span>Uzak Destek</span>
+        <span>Remote Help</span>
       </a>
 
       <a href="mesh.html" class="app-card">
-        <i class="bi bi-shield-lock"></i>
-        <span>Müşteri Paneli</span>
+        <i class="bi bi-shield-lock-fill"></i>
+        <span>Secure Panel</span>
       </a>
 
       <a href="contact.html" class="app-card">
-        <i class="bi bi-envelope-at"></i>
-        <span>İletişim Hattı</span>
+        <i class="bi bi-terminal-fill"></i>
+        <span>Direct Comms</span>
       </a>
     </div>
 
   </div>
 
   <div class="footer-bar">
-    <span class="status-dot"></span> TEXPER BİLİŞİM DIGITAL HUB • SYSTEM STATUS: <span style="color:#fff;">OPTIMAL</span>
+    <div class="status-pill">
+      <span class="status-dot"></span> HUB STATUS: OPTIMAL
+    </div>
+    <div style="margin-top: 15px;">© 2026 TEXPER BİLİŞİM • ALL SYSTEMS OPERATIONAL</div>
   </div>
 
 </body>
